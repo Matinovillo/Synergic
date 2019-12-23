@@ -1,5 +1,10 @@
 .contacto {
+<<<<<<< HEAD
   font-size: 2em;
   border-bottom: 1px solid #aaaaaa;
   margin: 0 auto
+=======
+  font-size: 3em;
+  text-align: center;
+>>>>>>> 193c1a8766cecd9bfa7dde989593c4a5e7eed6a8
 }

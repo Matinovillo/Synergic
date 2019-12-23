@@ -1,8 +1,26 @@
+<<<<<<< HEAD
 
 .faq{
     margin-top: 50px;
     margin-bottom: 50px;
 }
+=======
+* {
+    margin: 0px; 
+    padding: 0px; 
+    box-sizing: border-box;
+}
+
+body {
+    margin-top: 0px;
+}
+
+body, html {
+    height: 100%;
+    font-family: Poppins-Regular, sans-serif;
+}
+
+>>>>>>> 193c1a8766cecd9bfa7dde989593c4a5e7eed6a8
 .faq-nav {
     flex-direction: column;
     border-radius: 2px;    
@@ -85,13 +103,27 @@
 .tab-content .card-body p:last-of-type {
     margin: 0;
 }
+<<<<<<< HEAD
+=======
+/*
+.accordion > .card:not(:first-child) {
+    border-top: 0 !important;
+}   */
+/*
+.collapse.show .card-body {
+    border-bottom: 1px solid rgba(0,0,0,.125);
+}*/
+>>>>>>> 193c1a8766cecd9bfa7dde989593c4a5e7eed6a8
 
 .col-cont{
     padding-top: 15px;
     padding-bottom: 15px;
+<<<<<<< HEAD
 }
 
 .nav-pills .nav-link.active, .nav-pills .show>.nav-link {
     color: #fff;
     background-color: #0e8ce4;
+=======
+>>>>>>> 193c1a8766cecd9bfa7dde989593c4a5e7eed6a8
 }

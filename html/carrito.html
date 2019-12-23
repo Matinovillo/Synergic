@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Carrito de Compra</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link rel="icon" type="image/png" href="img/favicon.ico"/>
+	<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="../css/carrito.css">
+	<link rel="stylesheet" type="text/css" href="../fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+	<!--<link rel="stylesheet" type="text/css" href="fonts/Linearicons-Free-v1.0.0/icon-font.min.css">-->
+
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</head>
+<body>
+  <section class="section_page shoppingProducts container">
+  	<div class="container">
+      	<div class="row">
+          	<div class="col-lg-9 contentProductShopping col-cont">
+                  <form name="cart_quantity" action="https://www.venex.com.ar/shopping_cart.php?action=update_product" method="post">
+                    <div class="title_section_summary text-center" style="margin-bottom: 40px">
+                      Carrito de Compra 
+                    </div>          
+                    <div class="row" style="margin-bottom: 20px;">
+                      <div class="col-sm-5 text-center">
+                        Producto            
+                      </div>
+                      <!--<div class="col-sm-3 text-center">
+                        Descripción            
+                      </div>-->
+                      <div class="col-sm-2 text-center">
+                        Cantidad            
+                      </div>
+                      <div class="col-sm-2 text-center">
+                        Precio            
+                      </div>
+                      <div class="col-sm-2 text-center">
+                        Subtotal            
+                      </div>
+                      <div class="col-sm-1 text-center"></div>
+                    </div>
+                    <div class="row">
+                      <div class="col-sm-5 contenido-centrado">
+                        <div class="contentImageShopping">
+                          <img src="https://www.venex.com.ar/products_images/1575916726_assswe.png" alt="Pc AMD Gamer ZEN Kronos Ryzen 5 3400G Ssd 240Gb 8GB (2x4gb)" title=" Pc AMD Gamer ZEN Kronos Ryzen 5 3400G Ssd 240Gb 8GB (2x4gb) " width="100" height="100">                
+                        </div>
+                        <div class="contentImageDescription">
+                          <a href="https://www.venex.com.ar/computadoras-y-servidores/pcs-de-escritorio/pc-amd-gamer-zen-kronos-ryzen-5-3400g.html"><strong>Pc AMD Gamer ZEN Kronos Ryzen 5 3400G Ssd 240Gb 8GB (2x4gb)</strong>
+                        | </a>
+                          <!--<span class="markProductOutOfStock hidden">&nbsp;&nbsp;&nbsp;(SIN STOCK)</span>-->
+                          <br>
+                        </div>
+                      </div>
+                      <!--<div class="col-sm-3 contenido-centrado text-center">
+                        <a href="https://www.venex.com.ar/computadoras-y-servidores/pcs-de-escritorio/pc-amd-gamer-zen-kronos-ryzen-5-3400g.html"><strong>Pc AMD Gamer ZEN Kronos Ryzen 5 3400G Ssd 240Gb 8GB (2x4gb)</strong>
+                        </a>
+                        <span class="markProductOutOfStock hidden">&nbsp;&nbsp;&nbsp;(SIN STOCK)</span>
+                        <br>
+                      </div>-->
+                      <div class="col-sm-2 contenido-centrado">
+                        <div class="input-group-qty">
+                          <select class="custom-select" id="inputGroupSelect01">
+                            <option selected></option>
+                            <option selected="selected" value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="col-sm-2 contenido-centrado">
+                        <div class="prod-price">
+                          <strong class="precioProducto">$26990</strong>                
+                        </div>
+                      </div>
+                      <div class="col-sm-2 contenido-centrado">
+                        <div class="prod-price">
+                          <strong id="priceProduct_11411">$26990</strong>               
+                        </div>
+                      </div>
+                      <div class="col-sm-1 contenido-centrado">
+                        <div class="prod-rm">
+                          <a class="" href="https://www.venex.com.ar/shopping_cart.php?products_id=11411&amp;action=remove_product" title="Eliminar Producto">
+                            <i class="fa fa-trash-o quitarProducto" aria-hidden="true"></i>
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                    <hr class="separatorProducts">
+                  </form>           
+
+                                  <!-- Modal 
+                                  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                      <div class="modal-content">
+                                        <div class="modal-header">
+                                          <h5 class="modal-title" id="exampleModalLabel">Eliminar Producto</h5>
+                                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                          </button>
+                                        </div>
+                                        <div class="modal-body">
+                                          ¿Confirma que desea eliminar el producto del Carrito de Compra?
+                                        </div>
+                                        <div class="modal-footer">
+                                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                          <button type="button" class="btn btn-primary">Aceptar</button>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>-->
+            </div>
+          	<div class="col-lg-3 content_cart_order_totals col-cont">
+                    <div class="contentTotals">
+                      <div class="title_section_summary text-center">
+                        Resumen
+                      </div>
+                      <table class="contentOtTotals">
+                        <tbody>
+                          <tr class="ot_subtotal_0">
+                            <td class=" texto-destacado">
+                                Subtotal:
+                            </td>
+                            <td>
+                              <div class="recuadroGris order-total-out" style="text-align:right;">
+                                $26990
+                              </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td colspan="2">
+                              <hr class="separatorTotals">
+                            </td>
+                          </tr>
+                          <tr class="ot_total_0">
+                            <td class="textOrder texto-destacado">
+                              Total:
+                            </td>
+                            <td>
+                              <div class="recuadroGris order-total-out" style="text-align:right;">
+                                <strong>$26990</strong>
+                              </div>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                      <div class="buttonAction text-center action-shopping-cart">
+                        <a id="tdb1" href="https://www.venex.com.ar/checkout_shipping.php">
+                          <span class="btn ">
+                            Finalizar Compra
+                          </span>
+                          </a>
+                      </div>
+                    </div>
+            </div>
+          </div>
+        </div>
+  </section>
+</body>
+</html>

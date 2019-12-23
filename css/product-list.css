@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .category-head{
   background-color:#0e8ce4;
   color: white;
@@ -6,3 +7,8 @@
 a{
   cursor: pointer;
 }
+=======
+.title {
+  background-color: grey;
+}
+>>>>>>> 193c1a8766cecd9bfa7dde989593c4a5e7eed6a8
