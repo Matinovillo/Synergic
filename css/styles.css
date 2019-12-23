@@ -9,7 +9,6 @@ HOME PAGE
 }
 
 body {
-	
 	font-family: Arial, sans-serif;
 }
 
@@ -21,24 +20,26 @@ a {
 /*Header section*/
 
 header{
-	background-color:white;
-	box-shadow: 0px 2px 2px  rgb(46, 167, 252, 0.5);
-	padding: 18px 0 14px;
-	margin-bottom: 2px;
-	
+	padding: 5px;
+
+}
+.logo-img img{
+	width: 200px;
+	height: 50px;
+	margin-top: 10px;
+	margin-bottom: 10px;
 }
 
-header .row .test3{
-	padding: 15px;
+header .header-row{
+	align-items: center;
+
 }
-
-
 
 .form-inline{
 	width: 100%;
     position: relative;
 	padding: 5px;
-	
+
 }
 
 .form-inline .inpt{
@@ -57,7 +58,7 @@ header .row .test3{
     right: 25px;
     top: -4;
     font-size: 26px;
-    color: #000;
+	color: #000000;
     border: none;
     cursor: pointer;
     background-color: transparent;
@@ -65,21 +66,25 @@ header .row .test3{
 
 .user-panel .up-item {
 	display: inline-block;
-	font-size: 14px;
-}
-
-.user-panel .up-item i {
-	font-size: 22px;
+	font-size: 10px;
+	margin-right: 20px;
+	margin-left: 20px;
 }
 
 .user-panel .up-item a {
-	font-size: 13px;
-	color: #000;
+	font-size: 17px;
+	color: #414141;
+	cursor: pointer;
+	text-decoration: none;
 }
 
-.user-panel .up-item:first-child {
-	margin-right: 29px;
+.user-panel .up-item a:hover {
+	color: #0e8ce4;
+	-webkit-transition: all 0.3s;
+	-o-transition: all 0.3s;
+	transition: all 0.3s;
 }
+
 
 .shopping-card {
 	display: inline-block;
@@ -89,44 +94,41 @@ header .row .test3{
 .shopping-card span {
 	position: absolute;
 	top: -12px;
-	left: 100%;
+    left: 20px;
+
 	height: 16px;
 	min-width: 16px;
 	color: #fff;
 	font-size: 13px;
-	background: #48729c;
+	background: #0e8ce4;
 	text-align: center;
 	border-radius: 30px;
 	padding: 0 2px;
 	margin-left: -7px;
 }
-
 /*********************
-Nav bar section
+Carousel
 **********************/
+.carousel-sec img{
+	width: 100%;
+	height: 500px;
+}
 
-.nav-section .nav-bar-list nav .navbar-nav li a:hover{
-	color: #22E3EC;
-	font-size: 15px;
-	-webkit-transition: all 0.3s;
-	-o-transition: all 0.3s;
-	transition: all 0.3s;
-	
-}				
+
 
 /*********************
 SECTION PRODUCTS
 **********************/
 .banner1{
-	background-color:#3b3535;
-	color: #9f9fa0;
+	background-color:#0e8ce4;
+	color: white;
 	height: 100px;
 	margin-top: 50px;
 	text-align: center;
 	display: flex;
 	justify-content: center;
-	
-	
+
+
 }
 
 .sec-prdcts .car-icon{
@@ -137,10 +139,11 @@ SECTION PRODUCTS
 
 .sec-prdcts .car-icon:hover{
 	font-size: 30px;
-	color: #f0f0f0;
+	color: #0e8ce4;
 	-webkit-transition: all 0.3s;
 	-o-transition: all 0.3s;
 	transition: all 0.3s;
+	cursor: pointer;
 }
 
 
@@ -151,6 +154,13 @@ Footer
 .footer-section {
 	background: white;
 	margin-top: 50px;
+}
+
+.footer-section .logo-img img{
+	width: 200px;
+	height: 50px;
+	margin-top: 20px;
+	margin-bottom: 20px;
 }
 
 .footer-widget {
@@ -273,7 +283,7 @@ Footer
 
 /*------Foooter Redes Sociales-------*/
 .social-links-warp {
-	background-color: #3b3535;
+	background-color: #0e8ce4;
 	border-top: 1px solid black;
 	padding: 46px 0;
 }
@@ -303,7 +313,7 @@ Footer
 	font-size: 12px;
 	font-weight: 600;
 	text-transform: uppercase;
-	color: #9f9fa0;
+	color: white;
 	padding-top: 10px;
 	-webkit-transition: all 0.3s;
 	-o-transition: all 0.3s;
@@ -349,34 +359,26 @@ Footer
 }
 
 
-/*****************************
-       /HOME PAGE
-*****************************/
-
-
-
-/*****************************
-		PRODUCTS PAGE
-*****************************/
 
 
 
 
 
 /** Small devices (landscape phones, 576px and up)**/
-@media (max-width: 576.98px) { 
+@media (max-width: 576.98px) {
 	header .h-logo{
 		text-align: center;
 		display: flex;
 		justify-content: center;
-		
+
 	}
 	header .user-panel {
 		text-align: center;
-	
+
 	}
 	header .user-panel .up-item a{
-		font-size: 10px;
+		font-size: 13px;
+
 	}
 
 	.footer-widget {
@@ -391,7 +393,7 @@ Footer
 		margin-bottom: 40px;
 		margin-top: 40px;
 		text-align: center;
-		
+
 	}
 
 	.footer-widget ul{
@@ -408,27 +410,24 @@ Footer
 	.social-links a span {
 		display: none;
 	}
+
+	.carousel-sec img{
+		width: 100%;
+		height: 200px;
+	}
 }
-/* 
+/*
 Medium devices (tablets, 768px and up) */
-@media (max-width:991.98px) { 
+@media (max-width:991.98px) {
 	header .h-logo{
 		text-align: center;
 		display: flex;
 		justify-content: center;
-		
+
 	}
 
 	header .user-panel {
 		text-align: left;
-		margin-right: 30px;
-		margin-left: 30px;
-	
-	}
-	header .user-panel .item2 {
-		font-size: 14px;
-		float: right;
-		
 	}
 
 	.social-links {
@@ -440,17 +439,21 @@ Medium devices (tablets, 768px and up) */
 	.social-links a span {
 		display: none;
 	}
-	
+
+	.carousel-sec img{
+		width: 100%;
+		height: 300px;
+	}
  }
 
 /* // Large devices (desktops, 992px and up) */
 
-@media (min-width: 992px) { 
-	
+@media (min-width: 992px) {
+
 	header .h-logo{
 		text-align: center;
 		display: flex;
 		justify-content: center;
-		
+
 	}
 }
