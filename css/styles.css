@@ -382,7 +382,7 @@ a{
 .contacto {
 	font-size: 2em;
 	border-bottom: 1px solid #aaaaaa;
-	margin: 0 auto
+	margin: 0 auto;
 }
 
 .contact .form-group .btn-contact{
@@ -390,9 +390,10 @@ a{
 	color: white;
 }
 
+
 .warning::placeholder {
   color: red!important;
-  opacity:0.7!important;
+  opacity:0.3!important;
 }
 
 /*****************************
