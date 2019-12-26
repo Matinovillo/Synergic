@@ -86,8 +86,9 @@
           <a href="" class="facebook"><i class="fab fa-facebook"></i><span>facebook</span></a>
           <a href="" class="twitter"><i class="fab fa-twitter"></i><span>twitter</span></a>
           <a href="" class="youtube"><i class="fab fa-youtube"></i><span>youtube</span></a>
-
-          <p class="text-white text-center my-3">Copyright &copy; Todos los derechos reservados | Synergic</p>
+        <div class="mt-4">
+          <small class="text-white text-center">Copyright &copy; Todos los derechos reservados | Synergic</small>
+        </div>
         </div>
       </div>
     </div>

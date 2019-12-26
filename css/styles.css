@@ -946,7 +946,9 @@ Medium devices (tablets, 768px and up) */
 	}
 
 	header .user-panel {
-		text-align: left;
+        text-align: center;
+        margin-top: 6px;
+        margin-bottom: 6px;
 	}
 
 	.social-links {
