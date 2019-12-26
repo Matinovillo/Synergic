@@ -1,3 +1,100 @@
+<?php
+error_reporting(E_ALL ^ E_NOTICE); //desactiva los errores NOTICE
+require_once '../drivers/helpers.php'; //funcion para hacer un var_dump
+require_once '../drivers/validaciondata.php'; // funcion para recuperar los datos en caso de error
+$errores = [];
+
+
+//validar nombre
+if (isset($_POST["username"])) {
+  if (empty($_POST["username"])) {
+    $errores['username'][] = "Este campo es obligatorio";
+  }
+  if (strlen($_POST["username"]) < 4){
+    $errores['username'][] = "Este campo debe tener como minimo 4 caracteres";
+  }
+
+}
+
+//validar email
+if (isset($_POST["email"])) {
+  if (empty($_POST["email"])) {
+    $errores['email'][] = "Este campo es obligatorio";
+  }
+  if (!filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)) {
+    $errores['email'][] = "Debes ingresar un email valido";
+  }
+}
+//validar password
+if (isset($_POST["password"])) {
+  if (empty($_POST["password"])) {
+    $errores['password'][] = "Este campo es obligatorio";
+  }
+
+  if (strlen($_POST["password"]) < 6){
+      $errores['password'][] = "La contraseña debe tener al menos 6 caracteres";
+  }
+}
+
+//validar confirmar password
+if (isset($_POST["confirmpassword"])) {
+  if (empty($_POST["confirmpassword"])) {
+    $errores['confirmpassword'][] = "Este campo es obligatorio";
+  }
+
+  if ($_POST["password"] != $_POST["confirmpassword"]) {
+    $errores['confirmpassword'][] = "Las contraseñas deben coincidir";
+  }
+}
+
+//validar avatar
+if (!empty($_FILES['avatar'])) {
+if (isset($_FILES['avatar'])) {
+  if ($_FILES['avatar']['size'] > 3000000 ) {
+    $errores['avatar'][] = "El tamaño maximo es de 3mb";
+  }
+
+  $nombreArchivo = $_FILES["avatar"]["name"];
+  $extension = pathinfo($nombreArchivo, PATHINFO_EXTENSION);
+  $extension = strtolower($extension);
+  if ($extension != "jpg" && $extension != "png" && $extension != "jpeg") {
+        $errores['avatar'][] = "el formato de archivo no es valido";
+      }
+
+  }
+}
+
+if (count($errores) == 0) {
+  //Guardar Avatar
+  //1. Obtener la extension del archivo.
+$extension = pathinfo($_FILES["avatar"]["name"], PATHINFO_EXTENSION);
+  //2. obtener la ruta del archivo.
+$temp = $_FILES["avatar"]["tmp_name"];
+  //3. Construir la ruta donde queremos enviar la imagen.
+$nuevaRuta = dirname(__DIR__);
+$nuevaRuta = $nuevaRuta . "/avatars/";
+  //4. darle un nombre al archivo (uniqid otorga un string random)
+$fileName = "avatar_" . uniqid() . "." . $extension;
+  //5. mover el archivo
+move_uploaded_file($temp, $nuevaRuta.$fileName);
+
+//Register del Usuario
+  $newUser = [
+    "username" => trim($_POST["username"]),
+    "email" => trim($_POST["email"]),
+    "password" => password_hash($_POST["password"], PASSWORD_DEFAULT),
+    "avatar" => $fileName
+  ];
+
+  $newUser = json_encode($newUser);
+  file_put_contents("../json/usuarios.json", $newUser, FILE_APPEND);
+}
+
+ ?>
+
+
+
+
 <!doctype html>
 <html lang="en">
 
@@ -37,29 +134,68 @@
             <div class="card-img-left d-none d-md-flex">
             </div>
             <div class="card-body">
-              
               <h5 class="card-title text-center">Registro</h5>
-              <form class="form-signin">
+              <form class="form-signin" method="post" action="Register form.php" enctype="multipart/form-data">
                 <div class="form-label-group">
-                  <input type="text" id="inputUserame" class="form-control" placeholder="Username" required autofocus>
+                  <input type="text" name="username" id="inputUserame" class="form-control" placeholder="Username" value="<?= persistirDatos('username', $errores) ?>" >
                   <label for="inputUserame">Nombre de usuario</label>
+                  <?php
+                    if (isset($errores["username"])) {
+                      foreach ($errores['username'] as $error) {
+                        echo "<small class='text-danger'>" . $error . "</small><br>" ;
+                      }
+                    }
+                   ?>
                 </div>
 
                 <div class="form-label-group">
-                  <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required>
+                  <input type="email" name="email" id="inputEmail" class="form-control" placeholder="Email address" value="<?= persistirDatos('email', $errores) ?>">
                   <label for="inputEmail">Direccion de Email</label>
+                  <?php
+                    if (isset($errores["email"])) {
+                      foreach ($errores['email'] as $error) {
+                        echo "<small class='text-danger'>" . $error . "</small><br>" ;
+                      }
+                    }
+                   ?>
                 </div>
 
                 <hr>
 
                 <div class="form-label-group">
-                  <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+                  <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" value="<?= persistirDatos('password', $errores) ?>" >
                   <label for="inputPassword">Contraseña</label>
+                  <?php
+                    if (isset($errores["password"])) {
+                      foreach ($errores['password'] as $error) {
+                        echo "<small class='text-danger'>" . $error . "</small><br>" ;
+                      }
+                    }
+                   ?>
                 </div>
 
                 <div class="form-label-group">
-                  <input type="password" id="inputConfirmPassword" class="form-control" placeholder="Password" required>
+                  <input type="password" name="confirmpassword" id="inputConfirmPassword" class="form-control" placeholder="Password">
                   <label for="inputConfirmPassword">Confirmar Contraseña</label>
+                  <?php
+                    if (isset($errores["confirmpassword"])) {
+                      foreach ($errores['confirmpassword'] as $error) {
+                        echo "<small class='text-danger'>" . $error . "</small><br>" ;
+                      }
+                    }
+                   ?>
+                </div>
+
+                <div class="form-group">
+                    <label for="avatar">Imagen de usuario</label>
+                    <input type="file" name="avatar" class="form-control-file" id="avatar">
+                    <?php
+                      if (isset($errores['avatar'])) {
+                        foreach ($errores['avatar'] as $error) {
+                          echo "<small class='text-danger'>" . $error . "</small><br>" ;
+                        }
+                      }
+                     ?>
                 </div>
 
                 <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Registrarse</button>
