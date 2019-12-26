@@ -83,11 +83,11 @@ if($_POST) {
                 "ceular" => $_POST["inputcelph"],
                 "mensaje" => $_POST["comentario"]];
 
-    $CONTACTOS_JSON = file_get_contents("../archivos/contactos.txt");
+    $CONTACTOS_JSON = file_get_contents("../json/contactos.txt");
     $CONTACTOS = json_decode($CONTACTOS_JSON,true);
     $CONTACTOS[] = $CONTACTO;
     $CONTACTOS_JSON = json_encode($CONTACTOS);
-    file_put_contents("../archivos/contactos.txt",$CONTACTOS_JSON);
+    file_put_contents("../json/contactos.txt",$CONTACTOS_JSON);
 
     $nombre = "";
     $apellido = "";
