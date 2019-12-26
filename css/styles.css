@@ -384,6 +384,9 @@ a{
 	border-bottom: 1px solid #aaaaaa;
 	margin: 0 auto;
 }
+.mensaje {
+	font-size:1em!important;
+}
 
 .contact .form-group .btn-contact{
 	background-color: #0e8ce4;
