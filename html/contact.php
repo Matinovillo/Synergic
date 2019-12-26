@@ -144,11 +144,9 @@ include("header.php");
       <!-- MENSAJE DE CONSULTA RECIBIDA -->
 
       <div class="row">
-        <div class="contacto col-xs-12 col-md-4 mb-5 offset-lg-3 text-center d-none <?=$mostrar?>">
-          <h1>
-            TU MENSAJE HA SIDO ENVIADO.
-            En breve enviaremos una respuesta a tu consulta.
-          </h1>
+        <div class="contacto mensaje col-xs-12 col-md-9 mb-5 mt-5 offset-lg-3 text-center d-none <?=$mostrar?>">
+          TU MENSAJE HA SIDO ENVIADO.<br>
+          En breve enviaremos una respuesta a tu consulta.
         </div>
       </div>
 
@@ -156,7 +154,7 @@ include("header.php");
 
       <form method="POST" class="mt-5 <?=$ocultar?>">
         <div class="row ">
-          <div class="contacto col-xs-12 col-md-4 mb-5 offset-lg-3 text-center">
+          <div class="contacto  col-xs-12 col-md-6  mb-5 offset-lg-3 text-center">
             CONTACTANOS
           </div>
         </div>
