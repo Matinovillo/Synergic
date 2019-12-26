@@ -163,28 +163,28 @@ include("header.php");
         <div class="form-row">
           <div class="form-group col-xs-12 col-md-6 col-lg-4 offset-lg-2">
             <label for="inputname">Nombre</label>
-            <input type="text" class="form-control advertencia" name = "inputname" id="inputname" value = "<?= $nombre?>" placeholder = "<?= $frase_nombre?>">
+            <input type="text" class="form-control warning" name = "inputname" id="inputname" value = "<?= $nombre?>" placeholder = "<?= $frase_nombre?>">
           </div>
           <div class="form-group col-xs-12 col-md-6 col-lg-4">
             <label for="inputsname">Apellido</label>
-            <input type="text" class="form-control advertencia" name = "inputsname" id="inputsname" value = "<?= $apellido?>" placeholder = "<?= $frase_apellido?>">
+            <input type="text" class="form-control warning" name = "inputsname" id="inputsname" value = "<?= $apellido?>" placeholder = "<?= $frase_apellido?>">
           </div>
         </div>
         <div class="form-row">
           <div class=" col-xs-12 col-md-6 col-lg-4 offset-lg-2">
             <label for="inputphone">Teléfono fijo</label>
-            <input type="phone" class="form-control advertencia" name = "inputphone" id="inputphone" value = "<?= $telefono?>" placeholder = "<?= $frase_telefono?>">
+            <input type="phone" class="form-control  warning" name = "inputphone" id="inputphone" value = "<?= $telefono?>" placeholder = "<?= $frase_telefono?>">
           </div>
           <div class=" col-xs-12 col-md-6 col-lg-4">
             <label for="inputcelph">Celular</label>
-            <input type="phone" class="form-control advertencia" name = "inputcelph" id="inputcelph" value = "<?= $celular?>" placeholder = "<?= $frase_celular?>">
+            <input type="phone" class="form-control warning" name = "inputcelph" id="inputcelph" value = "<?= $celular?>" placeholder = "<?= $frase_celular?>">
           </div>
         </div>
         <div class="form-row">
           <div class="form-group col-xs-12 col-md-12 col-lg-8 offset-lg-2">
             <label for="">Mensaje</label>
-            <textarea class="form-control advertencia" rows="6" name="comentario" placeholder = "<?= $frase_comentario?>"><?=$comentario?></textarea>
-            <button type="submit" class="btn btn-contact mt-2">Enviar</button>
+            <textarea class="form-control  warning" rows="6" name="comentario" placeholder = "<?= $frase_comentario?>"><?=$comentario?></textarea>
+            <button type="submit" class="btn btn-primary mt-2">Enviar</button>
           </div>
         </div>
 
