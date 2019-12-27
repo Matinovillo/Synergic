@@ -49,7 +49,6 @@ if (isset($_POST["confirmpassword"])) {
 
 //validar avatar
 if (!empty($_FILES['avatar'])) {
-if (isset($_FILES['avatar'])) {
   if ($_FILES['avatar']['size'] > 3000000 ) {
     $errores['avatar'][] = "El tamaño maximo es de 3mb";
   }
@@ -62,7 +61,7 @@ if (isset($_FILES['avatar'])) {
       }
 
   }
-}
+
 
 if (count($errores) == 0) {
   //Guardar Avatar
@@ -89,7 +88,7 @@ move_uploaded_file($temp, $nuevaRuta.$fileName);
   $newUser = json_encode($newUser);
   file_put_contents("../json/usuarios.json", $newUser, FILE_APPEND);
 }
-
+pre($_FILES);
  ?>
 
 
@@ -137,7 +136,11 @@ move_uploaded_file($temp, $nuevaRuta.$fileName);
               <h5 class="card-title text-center">Registro</h5>
               <form class="form-signin" method="post" action="Register form.php" enctype="multipart/form-data">
                 <div class="form-label-group">
-                  <input type="text" name="username" id="inputUserame" class="form-control" placeholder="Username" value="<?= persistirDatos('username', $errores) ?>" >
+                  <input type="text" name="username" id="inputUserame" class="form-control" placeholder="Username"
+                  value="<?php 
+                  if(count($errores) != 0)
+                  echo persistirDatos('username', $errores) ?>"
+                   >
                   <label for="inputUserame">Nombre de usuario</label>
                   <?php
                     if (isset($errores["username"])) {
@@ -149,7 +152,9 @@ move_uploaded_file($temp, $nuevaRuta.$fileName);
                 </div>
 
                 <div class="form-label-group">
-                  <input type="email" name="email" id="inputEmail" class="form-control" placeholder="Email address" value="<?= persistirDatos('email', $errores) ?>">
+                  <input type="email" name="email" id="inputEmail" class="form-control" placeholder="Email address" value="<?php 
+                  if(count($errores) != 0)
+                  echo persistirDatos('email', $errores) ?>">
                   <label for="inputEmail">Direccion de Email</label>
                   <?php
                     if (isset($errores["email"])) {
@@ -163,7 +168,7 @@ move_uploaded_file($temp, $nuevaRuta.$fileName);
                 <hr>
 
                 <div class="form-label-group">
-                  <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" value="<?= persistirDatos('password', $errores) ?>" >
+                  <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password">
                   <label for="inputPassword">Contraseña</label>
                   <?php
                     if (isset($errores["password"])) {
