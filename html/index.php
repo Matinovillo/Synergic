@@ -38,21 +38,21 @@
         </ol>
         <div class="carousel-inner">
           <div class="carousel-item active">
-            <img src="https://via.placeholder.com/1000x500" class="d-block w-100" alt="...">
+            <img src="../img/intel.jpg" class="d-block w-100" alt="...">
             <div class="carousel-caption d-none d-md-block">
               <h5>First slide label</h5>
               <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
             </div>
           </div>
           <div class="carousel-item">
-            <img src="https://via.placeholder.com/1000x500" class="d-block w-100" alt="...">
+            <img src="../img/nvidia carousel.jpg" class="d-block w-100" alt="...">
             <div class="carousel-caption d-none d-md-block">
               <h5>Second slide label</h5>
               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
             </div>
           </div>
           <div class="carousel-item">
-            <img src="https://via.placeholder.com/1000x500" class="d-block w-100" alt="...">
+            <img src="../img/ryzen.png" class="d-block w-100" alt="...">
             <div class="carousel-caption d-none d-md-block">
               <h5>Third slide label</h5>
               <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
@@ -72,12 +72,70 @@
   </section>
   <!--/Carousel-->
 
+  <!--cards-->
+	<div class="cards">
+		<div class="container">
+			<div class="row">
+
+				<!-- Char. Item -->
+				<div class="col-lg-3 col-md-6 char_col">
+					
+					<div class="cards-item d-flex flex-row align-items-center justify-content-start">
+						<div class="cards-icon"><img src="../img/char_1.png" alt=""></div>
+						<div class="cards-content">
+							<div class="cards-title">Envios Gratis</div>
+							<div class="cards-subtitle">En productos seleccionados</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- Char. Item -->
+				<div class="col-lg-3 col-md-6 char_col">
+					
+					<div class="cards-item d-flex flex-row align-items-center justify-content-start">
+						<div class="cards-icon"><img src="../img/char_2.png" alt=""></div>
+						<div class="cards-content">
+							<div class="cards-title">Devoluciones</div>
+							<div class="cards-subtitle">No dudes en consultar!</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- Char. Item -->
+				<div class="col-lg-3 col-md-6 char_col">
+					
+					<div class="cards-item d-flex flex-row align-items-center justify-content-start">
+						<div class="cards-icon"><img src="../img/char_3.png" alt=""></div>
+						<div class="cards-content">
+							<div class="cards-title">Formas de pago</div>
+							<div class="cards-subtitle">Recibimos todas las tarjetas</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- Char. Item -->
+				<div class="col-lg-3 col-md-6 char_col">
+					
+					<div class="cards-item d-flex flex-row align-items-center justify-content-start">
+						<div class="cards-icon"><img src="../img/contact_3.png" alt=""></div>
+						<div class="cards-content">
+							<div class="cards-title">Visita nuestra tienda</div>
+							<div class="cards-subtitle">1481 lorem, Córdoba, Arg</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+  <!--cards-->
+ 
+ 
   <!--Banner-->
-  <section class="banner1 align-items-center">
-    <div class="container-fluid">
+  <section class="banner1">
+    <div class="container">
       <div class="row">
         <div class="col-lg-12">
-          <h1>Lorem ipsum dolor sit amet</h1>
+          <h2>Productos destacados</h2>
         </div>
       </div>
     </div>
@@ -87,80 +145,63 @@
 
   <!--Productos-->
   <div class="container my-5">
-    <section class="sec-prdcts rounded">
+    <section class="sec-prdcts">
       <div class="row">
 
         <!-- -----item 3------ -->
         <div class="col-xl-3 col-lg-4 col-md-6 mb-4">
-          <div class="card h-100 shadow">
-            <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+          <div class="card-index">
+            <a href="#"><img class="card-img-top" src="../img/descarga.jpg" alt=""></a>
             <div class="card-body">
-              <h4 class="card-title">
-                <a href="#">Item tres</a>
-              </h4>
-              <h5>$00.00</h5>
-              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!
-              </p>
+              
+              <p class="card-text">Lorem ipsum dolor sit amet.
             </div>
             <div class="card-footer">
-              <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+              <small class="text-primary">$00.00</small>
               <i class="fas fa-cart-plus car-icon" title="Añadir al carro de compras"></i>
               <i class="far fa-heart car-icon mx-4" title="Añadir a favoritos"></i>
             </div>
           </div>
         </div>
-        <!-- -----item 4------ -->
+        <!-- -----item 3------ -->
         <div class="col-xl-3 col-lg-4 col-md-6 mb-4">
-          <div class="card h-100 shadow">
-            <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+          <div class="card-index">
+            <a href="#"><img class="card-img-top" src="../img/descarga.jpg" alt=""></a>
             <div class="card-body">
-              <h4 class="card-title">
-                <a href="#">Item cuatro</a>
-              </h4>
-              <h5>$00.00</h5>
-              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!
-              </p>
+              
+              <p class="card-text">Lorem ipsum dolor sit amet. 
             </div>
             <div class="card-footer">
-              <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+              <small class="text-primary">$00.00</small>
               <i class="fas fa-cart-plus car-icon" title="Añadir al carro de compras"></i>
               <i class="far fa-heart car-icon mx-4" title="Añadir a favoritos"></i>
             </div>
           </div>
         </div>
-        <!-- -----item 5------ -->
+        <!-- -----item 3------ -->
         <div class="col-xl-3 col-lg-4 col-md-6 mb-4">
-          <div class="card h-100 shadow">
-            <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+          <div class="card-index">
+            <a href="#"><img class="card-img-top" src="../img/descarga.jpg" alt=""></a>
             <div class="card-body">
-              <h4 class="card-title">
-                <a href="#">Item cinco</a>
-              </h4>
-              <h5>$00.00</h5>
-              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!
-                Lorem ipsum dolor sit amet.</p>
+              
+              <p class="card-text">Lorem ipsum dolor sit amet.
             </div>
             <div class="card-footer">
-              <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+              <small class="text-primary">$00.00</small>
               <i class="fas fa-cart-plus car-icon" title="Añadir al carro de compras"></i>
               <i class="far fa-heart car-icon mx-4" title="Añadir a favoritos"></i>
             </div>
           </div>
         </div>
-        <!-- -----item 6------ -->
+        <!-- -----item 3------ -->
         <div class="col-xl-3 col-lg-4 col-md-6 mb-4">
-          <div class="card h-100 shadow">
-            <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+          <div class="card-index">
+            <a href="#"><img class="card-img-top" src="../img/descarga.jpg" alt=""></a>
             <div class="card-body">
-              <h4 class="card-title">
-                <a href="#">Item Seis</a>
-              </h4>
-              <h5>$00.00</h5>
-              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!
-              </p>
+              <p class="card-text">Lorem ipsum dolor sit amet.
             </div>
             <div class="card-footer">
-              <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+              <small class="text-primary">$00.00</small>
               <i class="fas fa-cart-plus car-icon" title="Añadir al carro de compras"></i>
               <i class="far fa-heart car-icon mx-4" title="Añadir a favoritos"></i>
             </div>
@@ -170,18 +211,6 @@
     </section>
   </div>
   <!--/Productos-->
-
-  <!--Banner-->
-  <section class="banner1 align-items-center shadow">
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-lg-12">
-          <h1>Lorem ipsum dolor sit amet</h1>
-        </div>
-      </div>
-    </div>
-  </section>
-  <!--/banner-->
 
   <!--footer-->
   <?php 
