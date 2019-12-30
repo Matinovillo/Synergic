@@ -5,7 +5,10 @@ require_once '../drivers/validaciondata.php'; // funcion para recuperar los dato
 $errores = [];
 
 
+pre($_FILES);
+
 //validar nombre
+if($_POST){
 if (isset($_POST["username"])) {
   if (empty($_POST["username"])) {
     $errores['username'][] = "Este campo es obligatorio";
@@ -61,8 +64,10 @@ if (!empty($_FILES['avatar'])) {
       }
 
   }
+}
 
 
+if($_POST){
 if (count($errores) == 0) {
   //Guardar Avatar
   //1. Obtener la extension del archivo.
@@ -71,13 +76,14 @@ $extension = pathinfo($_FILES["avatar"]["name"], PATHINFO_EXTENSION);
 $temp = $_FILES["avatar"]["tmp_name"];
   //3. Construir la ruta donde queremos enviar la imagen.
 $nuevaRuta = dirname(__DIR__);
-$nuevaRuta = $nuevaRuta . "/avatars/";
+$nuevaRuta = $nuevaRuta . "\avatars/";
   //4. darle un nombre al archivo (uniqid otorga un string random)
 $fileName = "avatar_" . uniqid() . "." . $extension;
   //5. mover el archivo
 move_uploaded_file($temp, $nuevaRuta.$fileName);
 
 //Register del Usuario
+
   $newUser = [
     "username" => trim($_POST["username"]),
     "email" => trim($_POST["email"]),
@@ -86,9 +92,9 @@ move_uploaded_file($temp, $nuevaRuta.$fileName);
   ];
 
   $newUser = json_encode($newUser);
-  file_put_contents("../json/usuarios.json", $newUser, FILE_APPEND);
+  file_put_contents("../files/usuarios.json", $newUser, FILE_APPEND);
 }
-pre($_FILES);
+}
  ?>
 
 
