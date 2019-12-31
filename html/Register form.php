@@ -1,7 +1,7 @@
 <?php
 error_reporting(E_ALL ^ E_NOTICE); //desactiva los errores NOTICE
 require_once '../drivers/helpers.php'; //funcion para hacer un var_dump
-require_once '../drivers/validaciondata.php'; // funcion para recuperar los datos en caso de error
+require_once '../drivers/validaciondata.php'; //funcion para recuperar los datos en caso de error
 $errores = [];
 
 
@@ -51,7 +51,7 @@ if (isset($_POST["confirmpassword"])) {
 }
 
 //validar avatar
-if (!empty($_FILES['avatar'])) {
+if (!empty($_FILES['avatar']['name'])) {
   if ($_FILES['avatar']['size'] > 3000000 ) {
     $errores['avatar'][] = "El tamaño maximo es de 3mb";
   }
