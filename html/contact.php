@@ -37,7 +37,7 @@ if($_POST) {
   }
 
   // VALIDACION DEL TELEFONO FIJO
-
+if(!isset($_POST["inputphone"])){
   if($_POST["inputphone"] == "") {
     $frase_telefono = "Debe proveer un telefono";
     $condicion = false;
@@ -49,7 +49,7 @@ if($_POST) {
   else {
     $telefono = $_POST["inputphone"];
   }
-
+}
   //VALIDACION DEL CELULAR
 
   if($_POST["inputcelph"]) {
@@ -83,11 +83,11 @@ if($_POST) {
                 "ceular" => $_POST["inputcelph"],
                 "mensaje" => $_POST["comentario"]];
 
-    $CONTACTOS_JSON = file_get_contents("../json/contactos.txt");
+    $CONTACTOS_JSON = file_get_contents("../files/contactos.json");
     $CONTACTOS = json_decode($CONTACTOS_JSON,true);
     $CONTACTOS[] = $CONTACTO;
     $CONTACTOS_JSON = json_encode($CONTACTOS);
-    file_put_contents("../json/contactos.txt",$CONTACTOS_JSON);
+    file_put_contents("../files/contactos.json",$CONTACTOS_JSON);
 
     $nombre = "";
     $apellido = "";
