@@ -37,12 +37,8 @@ if($_POST) {
   }
 
   // VALIDACION DEL TELEFONO FIJO
-if(!isset($_POST["inputphone"])){
-  if($_POST["inputphone"] == "") {
-    $frase_telefono = "Debe proveer un telefono";
-    $condicion = false;
-  }
-  else if(!is_numeric($_POST["inputphone"])) {
+if($_POST["inputphone"]) {
+  if(!is_numeric($_POST["inputphone"])) {
     $frase_telefono =  "El teléfono debe contener solo números";
     $condicion = false;
   }
