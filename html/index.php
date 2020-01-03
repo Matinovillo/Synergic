@@ -151,7 +151,7 @@
         <!-- -----item 3------ -->
         <div class="col-xl-3 col-lg-4 col-md-6 mb-4">
           <div class="card-index">
-            <a href="#"><img class="card-img-top" src="../img/descarga.jpg" alt=""></a>
+            <a href="#"><img class="card-img-top" src="../img/pc.png" alt=""></a>
             <div class="card-body">
               
               <p class="card-text">Lorem ipsum dolor sit amet.
@@ -166,7 +166,7 @@
         <!-- -----item 3------ -->
         <div class="col-xl-3 col-lg-4 col-md-6 mb-4">
           <div class="card-index">
-            <a href="#"><img class="card-img-top" src="../img/descarga.jpg" alt=""></a>
+            <a href="#"><img class="card-img-top" src="../img/pc.png" alt=""></a>
             <div class="card-body">
               
               <p class="card-text">Lorem ipsum dolor sit amet. 
@@ -181,7 +181,7 @@
         <!-- -----item 3------ -->
         <div class="col-xl-3 col-lg-4 col-md-6 mb-4">
           <div class="card-index">
-            <a href="#"><img class="card-img-top" src="../img/descarga.jpg" alt=""></a>
+            <a href="#"><img class="card-img-top" src="../img/pc.png" alt=""></a>
             <div class="card-body">
               
               <p class="card-text">Lorem ipsum dolor sit amet.
@@ -196,7 +196,7 @@
         <!-- -----item 3------ -->
         <div class="col-xl-3 col-lg-4 col-md-6 mb-4">
           <div class="card-index">
-            <a href="#"><img class="card-img-top" src="../img/descarga.jpg" alt=""></a>
+            <a href="#"><img class="card-img-top" src="../img/pc.png" alt=""></a>
             <div class="card-body">
               <p class="card-text">Lorem ipsum dolor sit amet.
             </div>

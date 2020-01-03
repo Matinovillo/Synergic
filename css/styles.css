@@ -38,6 +38,81 @@ a {
 /*****************************
 1.0 Home
 *****************************/
+/* 1.1 top bar*/
+
+.top_bar
+{
+	width: 100%;
+	height: 36px;
+	background: white;
+	border-bottom: solid 1px rgba(0,0,0,0.05)
+}
+
+.top-bar-icon{
+    color: #0e8ce4;
+
+}
+.top_bar_contact_item
+{
+	font-size: 16px;
+	font-weight: 300;
+	line-height: 36px;
+	margin-right: 40px;
+}
+
+.top_bar_contact_item a
+{
+	font-size: 16px;
+	font-weight: 300;
+	line-height: 36px;
+	color: #646a7c;
+
+}
+.top_bar_contact_item
+{
+	font-size: 16px;
+	font-weight: 300;
+	line-height: 36px;
+	color: #646a7c;
+
+}
+.top_bar_contact_item a:hover
+{
+    color: #0e8ce4;
+    -webkit-transition: all 0.3s;
+	-o-transition: all 0.3s;
+    transition: all 0.3s;
+    text-decoration: none;
+}
+
+.top_bar_user div
+{
+	display: inline-block;
+}
+.top_bar_user span
+{
+    margin-right: 10px;
+    margin-left: 10px;
+    color: rgba(0,0,0,0.3);
+    
+}
+.top_bar_user a
+{
+	font-size: 16px;
+	font-weight: 300;
+	line-height: 36px;
+	color: #646a7c;
+}
+.top_bar_user a:hover
+{
+    color: #0e8ce4;
+    -webkit-transition: all 0.3s;
+	-o-transition: all 0.3s;
+    transition: all 0.3s;
+    text-decoration: none;
+}
+
+
 
 /*1.1 Header section*/
 header{
@@ -45,9 +120,9 @@ header{
 }
 .logo-img img{
 	width: 200px;
-	height: 50px;
-	margin-top: 10px;
-	margin-bottom: 10px;
+    height: 50px;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 header .header-row{
@@ -984,7 +1059,13 @@ td, th {
 	.carousel-sec img{
 		width: 100%;
 		height: 200px;
-	}
+    }
+    
+    /* top-bar */
+    .top_bar .top_bar_contact_item{
+        display: none;
+    }
+    
 }
 /*
 Medium devices (tablets, 768px and up) */

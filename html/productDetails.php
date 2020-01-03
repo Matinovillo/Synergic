@@ -40,22 +40,22 @@ include("header.php");
             <div class="row">
               <div class="col-sm-3 contenido-centrado-imgs">
                 <div class="contentImageShoppingImgs">
-                  <img src="https://www.venex.com.ar/products_images/1575916726_assswe.png"
+                  <img src="../img/pc.png"
                     alt="Pc AMD Gamer ZEN Kronos Ryzen 5 3400G Ssd 240Gb 8GB (2x4gb)"
                     title=" Pc AMD Gamer ZEN Kronos Ryzen 5 3400G Ssd 240Gb 8GB (2x4gb) " width="100" height="100">
                 </div>
                 <div class="contentImageShoppingImgs">
-                  <img src="https://www.venex.com.ar/products_images/1575916726_assswe.png"
+                  <img src="../img/pc.png"
                     alt="Pc AMD Gamer ZEN Kronos Ryzen 5 3400G Ssd 240Gb 8GB (2x4gb)"
                     title=" Pc AMD Gamer ZEN Kronos Ryzen 5 3400G Ssd 240Gb 8GB (2x4gb) " width="100" height="100">
                 </div>
                 <div class="contentImageShoppingImgs">
-                  <img src="https://www.venex.com.ar/products_images/1575916726_assswe.png"
+                  <img src="../img/pc.png"
                     alt="Pc AMD Gamer ZEN Kronos Ryzen 5 3400G Ssd 240Gb 8GB (2x4gb)"
                     title=" Pc AMD Gamer ZEN Kronos Ryzen 5 3400G Ssd 240Gb 8GB (2x4gb) " width="100" height="100">
                 </div>
                 <div class="contentImageShoppingImgs">
-                  <img src="https://www.venex.com.ar/products_images/1575916726_assswe.png"
+                  <img src="../img/pc.png"
                     alt="Pc AMD Gamer ZEN Kronos Ryzen 5 3400G Ssd 240Gb 8GB (2x4gb)"
                     title=" Pc AMD Gamer ZEN Kronos Ryzen 5 3400G Ssd 240Gb 8GB (2x4gb) " width="100" height="100">
                 </div>
@@ -64,17 +64,17 @@ include("header.php");
                 <div id="carouselExampleControls" class="carousel slide contentImageShopping" data-ride="carousel">
                   <div class="carousel-inner">
                     <div class="carousel-item active">
-                      <img src="https://www.venex.com.ar/products_images/1575916726_assswe.png"
+                      <img src="../img/pc.png"
                         alt="Pc AMD Gamer ZEN Kronos Ryzen 5 3400G Ssd 240Gb 8GB (2x4gb)"
                         title=" Pc AMD Gamer ZEN Kronos Ryzen 5 3400G Ssd 240Gb 8GB (2x4gb) " width="100" height="100">
                     </div>
                     <div class="carousel-item">
-                      <img src="https://www.venex.com.ar/products_images/1575916726_assswe.png"
+                      <img src="../img/pc.png"
                         alt="Pc AMD Gamer ZEN Kronos Ryzen 5 3400G Ssd 240Gb 8GB (2x4gb)"
                         title=" Pc AMD Gamer ZEN Kronos Ryzen 5 3400G Ssd 240Gb 8GB (2x4gb) " width="100" height="100">
                     </div>
                     <div class="carousel-item">
-                      <img src="https://www.venex.com.ar/products_images/1575916726_assswe.png"
+                      <img src="../img/pc.png"
                         alt="Pc AMD Gamer ZEN Kronos Ryzen 5 3400G Ssd 240Gb 8GB (2x4gb)"
                         title=" Pc AMD Gamer ZEN Kronos Ryzen 5 3400G Ssd 240Gb 8GB (2x4gb) " width="100" height="100">
                     </div>
