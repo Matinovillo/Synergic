@@ -1,3 +1,5 @@
+
+
 <!doctype html>
 <html lang="en">
 
@@ -9,7 +11,7 @@
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
     integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
- 
+
     <!-- Font Awesome icons CSS-->
   <link rel="stylesheet" href="../fonts/css webfont/all.min.css">
 
@@ -22,7 +24,7 @@
 </head>
 
 <body>
-<?php 
+<?php
   include("header.php");
 ?>
 
@@ -36,33 +38,43 @@
       </div>
     </div>
     <div class="row mb-5">
-      <div class="col-xs-12 col-md-5">
+      <div class="col-10 col-md-5">
         <table class="table table-bordered">
           <tbody>
-            <tr>
-              <th scope="row">Usuario</th>
-              <td>Mark</td>
-            </tr>
-            <tr>
-              <th scope="row">Email</th>
-              <td>Jacob</td>
-            </tr>
-            <tr>
-              <th scope="row">Nombre y Apellido</th>
-              <td>gonzalo acosta</td>
-            </tr>
-            <tr>
-              <th scope="row">Dirección</th>
-              <td>Larry</td>
-            </tr>
-            <tr>
-              <th scope="row">Telefono</th>
-              <td>Larry</td>
-            </tr>
-          </tbody>
+            <?php
+
+            $usuarios_json = file_get_contents("../files/usuarios.json");
+            $usuarios = json_decode($usuarios_json, true);
+
+            foreach ($usuarios as $user => $value) :
+
+              foreach ($value as $key => $value2) :
+                if($value2["username"] == $_SESSION["username"]) :
+                  foreach($value2 as $clave => $valor) :
+                    if($clave != "password" && $clave != "avatar"):?>
+                    <tr>
+                      <th scope="row"><?=$clave?></th>
+                      <td><?=$valor?></td>
+                    </tr>
+                  <?php endif;
+                    if($clave == "avatar"):
+
+                      $foto = $valor;
+
+                    endif;
+
+                  endforeach;
+                endif;
+              endforeach;
+            endforeach; ?>
+            </tbody>
         </table>
 
         <button type="button" class="btn btn-primary">Modificar</button>
+      </div>
+      <div class="col-2 col-md-2 pl-0 pr-1">
+        <img class = "img-fluid" src="../avatars/avatar_5e0a82ce89f64.jpg" alt="">
+
       </div>
     </div>
 
@@ -107,11 +119,11 @@
       </div>
     </div>
   </div>
- 
+
   <!--/Cuenta-->
 
 
-<?php 
+<?php
   include("footer.php");
 ?>
 
