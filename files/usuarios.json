@@ -1,23 +1,40 @@
 {
-    "usuarios": [{
-                "username": "Skall123",
-                "email": "skall1556@gmail.com",
-                "password": "$2y$10$NivJIXjdxSznVVt6gckW2.VoSEnlwznmIxv6.MLGa.OXYHZvqDgiu",
-                "avatar": "avatar_5e0a82ce89f64.jpg"
-                },{
-                "username": "camistar12",
-                "email": "cami@gmail.com",
-                "password": "$2y$10$PJP0CdeMCK6xaIWSJqdezedcwJzc6QWd3qz6VEAP25AcDYb24xamO",
-                "avatar": "avatar_5e0a8a91b6b79."
-                },{
-                "username": "aleja123",
-                "email": "ale@gmail.com",
-                "password": "$2y$10$seU41vLfvCQNi.CfdlE5mupatW5U8VQ8WnZ\/FSHtR\/LWRteyAl.na",
-                "avatar": "avatar_5e0bac9064455."
-                },{
-                "username": "sarasa",
-                "email": "sarasa@gmail.com",
-                "password": "$2y$10$2QZ.WHIzSnMKhP9araRSROjVTCMZ9gH4ZqE7INCyRW5rtLN/YDe32",
-                "avatar": "avatar_5e0a8a91b6b79."
-                }]
+    "usuarios": [
+        {
+            "username": "Skall123",
+            "email": "skall1556@gmail.com",
+            "password": "$2y$10$NivJIXjdxSznVVt6gckW2.VoSEnlwznmIxv6.MLGa.OXYHZvqDgiu",
+            "avatar": "avatar_5e0a82ce89f64.jpg"
+        },
+        {
+            "username": "camistar12",
+            "email": "cami@gmail.com",
+            "password": "$2y$10$PJP0CdeMCK6xaIWSJqdezedcwJzc6QWd3qz6VEAP25AcDYb24xamO",
+            "avatar": "avatar_5e0a8a91b6b79."
+        },
+        {
+            "username": "aleja123",
+            "email": "ale@gmail.com",
+            "password": "$2y$10$seU41vLfvCQNi.CfdlE5mupatW5U8VQ8WnZ\/FSHtR\/LWRteyAl.na",
+            "avatar": "avatar_5e0bac9064455."
+        },
+        {
+            "username": "sarasa",
+            "email": "sarasa@gmail.com",
+            "password": "$2y$10$2QZ.WHIzSnMKhP9araRSROjVTCMZ9gH4ZqE7INCyRW5rtLN/YDe32",
+            "avatar": "avatar_5e0a8a91b6b79."
+        },
+        {
+            "username": "skall",
+            "email": "skall1556@gmail.com",
+            "password": "$2y$10$aOzsqJSfq1QVNrkppPg62eMxSCtdAfImvLxgt86ze5igpf7C\/n.Y6",
+            "avatar": "avatar_5e0f45e7c1a99.png"
+        },
+        {
+            "username": "jon snow",
+            "email": "jonsnow@starks.com",
+            "password": "$2y$10$F2dLkmPPAHucp9ZSMfFg7OR3ZqbONZ3QV39tHRlWxnEOS9qcTBABC",
+            "avatar": "avatar_5e0f69a954ffd.jpg"
+        }
+    ]
 }
