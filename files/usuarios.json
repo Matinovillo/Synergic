@@ -1,5 +1,4 @@
-{
-    "usuarios": [
+[
         {
             "username": "Skall123",
             "email": "skall1556@gmail.com",
@@ -36,5 +35,4 @@
             "password": "$2y$10$F2dLkmPPAHucp9ZSMfFg7OR3ZqbONZ3QV39tHRlWxnEOS9qcTBABC",
             "avatar": "avatar_5e0f69a954ffd.jpg"
         }
-    ]
-}
+]

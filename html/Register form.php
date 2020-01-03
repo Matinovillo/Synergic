@@ -89,9 +89,15 @@ move_uploaded_file($temp, $nuevaRuta.$fileName);
     "password" => password_hash($_POST["password"], PASSWORD_DEFAULT),
     "avatar" => $fileName
   ];
+$paginaInicio = file_get_contents("../files/usuarios.json");
 
-  $newUser = json_encode($newUser);
-  file_put_contents("../files/usuarios.json", $newUser, FILE_APPEND);
+$jsonUsers = json_decode($paginaInicio,true);
+  //$newUser = json_encode($newUser);
+  //file_put_contents("../files/usuarios.json", $newUser, FILE_APPEND);
+  array_push($jsonUsers, $newUser);
+  $newUser = json_encode($jsonUsers);
+  file_put_contents("../files/usuarios.json", $newUser);
+
   header('location: login.php');
   exit;
 }

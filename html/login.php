@@ -48,14 +48,10 @@
                     
                     foreach ($jsonUsers as $user => $value) {
                       /*echo "<pre>";
-                        print_r($user . ':[');
+                        print_r($user .' - ' .$value["username"]);
                         echo "</pre>";*/
-                      foreach ($value as $key => $value2) {
-                      /*echo "<pre>";
-                        print_r('{' .$key .' => ' . $value2["password"] .'},');
-                        echo "</pre>";
-*/
-                          if ($value2["username"] != $username){
+                          
+                          if ($value["username"] != $username){
                            $msjUserValildate = "<li>El usuario ingresado no existe.</li>";
                            $error  = "mostrar-error";
                           }else{
@@ -63,7 +59,7 @@
                              $msjUserValildate = "";
                           }
 
-                          if(!password_verify($password, $value2["password"])){
+                          if(!password_verify($password, $value["password"])){
                             $msjPassValidate = "<li>La contraseña ingresada es incorrecta.</li>";
                             $error  = "mostrar-error";
                           }else{
@@ -81,17 +77,15 @@
                              setcookie("usuario", $username, time() + 3600);
 
                              foreach ($jsonUsers as $user => $value) {
-                              foreach ($value as $key => $value2) {
                               
-                                if($value2["username"] == $username){
-                                  $_SESSION["nombre"] = "oasis";
+                                if($value["username"] == $username){
+                                  $_SESSION["email"] = $value["email"];
                                 }
-                              }
                             }
                              header('Location: index.php');
                       }
                   
-                  }
+                  
              
               ?>
               <div class="envolver-login">
