@@ -41,6 +41,22 @@ button:hover {
   ;
 }
 
+.ocultar-error{
+  display: none;
+}
+
+.mostrar-error{
+  display: block;
+  border: 1px solid #e6e6e6;
+  padding: 10px;
+  background-color: red;
+  border-radius: 3px;
+}
+
+.mostrar-error li{
+  color: white;
+}
+
 
 /*-----------login------------------*/
 .contenido-login{
@@ -54,6 +70,11 @@ button:hover {
 	z-index: 1;
 }
 
+.logo-img img{
+  margin-top: 30px; 
+  margin-bottom: 40px;
+}
+
 
 .envolver-login{
   width: 450px;
@@ -61,6 +82,7 @@ button:hover {
   border-radius: 3px;
   overflow: hidden;
   padding: 30px 50px 30px 50px;
+  border: 1px solid #e6e6e6;
 }
 
 .formulario-login{
@@ -95,17 +117,18 @@ button:hover {
 	font-size: 24px;
 	color: #999999;
 	display: flex;
-  	align-items: center;
-  	position: absolute;
-  	border-radius: 25px;
-  	bottom: 0;
-  	left: 0;
-  	width: 100%;
-  	height: 100%;
-  	padding-left: 23px;
-  	padding-bottom: 5px;
-  	pointer-events: none;
-  	transition: all 0.4s;
+	/*align-items: center;*/
+  top: 12px;
+	position: absolute;
+	border-radius: 25px;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	padding-left: 23px;
+	
+	pointer-events: none;
+	transition: all 0.4s;
 }
 
 .campos:focus + .focus-campo + .simbolo-campo{
@@ -118,10 +141,21 @@ button:hover {
 }
 
 .custom-control .chck-bx{
-  color: #999999;
+  color: #999999 !important;
   cursor: pointer;
   margin-bottom: 10px;
 }
+
+.custom-control-label::before{
+      border: #adb5bd solid 1px !important;
+}
+
+.custom-control-input:checked~.custom-control-label::before {
+    color: #fff !important;
+    border-color: #007bff !important;
+    background-color: #007bff !important;
+}
+
 
 .contenidod-login-formulario-btn{
   width: 100%;
@@ -207,8 +241,7 @@ button:hover {
 
 @media (max-width: 480px) {
   .envolver-login {
-    padding-left: 15px;
-    padding-right: 15px;
+    padding: 0px;
     border: none;
   }
 }

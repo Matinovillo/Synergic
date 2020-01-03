@@ -1,5 +1,17 @@
 
   <!--Header-->
+  <?php
+
+    if(isset($_COOKIE["usuario"])){
+      $logeado = "<a href='#'><i class='fas fa-user'></i>" .$_COOKIE["usuario"] ."</a>";
+      $cerrarSesion = "<div class='up-item'><a href='./login.php'><i class='fas fa-sign-out-alt'></i>Cerrar Sesión</a></div>";
+    }else{
+      $logeado = "<a href='./login.php'><i class='fas fa-user'></i>Ingresar</a>";
+      $cerrarSesion = "";
+    }
+      session_start();
+      var_dump($_SESSION);
+    ?>
   <header>
     <div class="container">
       <div class="row header-row">
@@ -17,11 +29,13 @@
         <div class="col-xl-4 col-lg-5 col-md-12 col-sm-12 col-xs-12 text-right text-sm-center">
           <div class="user-panel">
             <div class="up-item">
-              <a data-toggle="modal" data-target="#exampleModalLong">
+              <?=$logeado?>
+              <!--<a href="./login.php">
                 <i class="fas fa-user"></i>
                 Ingresar
-              </a>
+              </a>-->
             </div>
+            <?=$cerrarSesion?>
             <div class="up-item">
               <div class="shopping-card">
                 <span>0</span>
