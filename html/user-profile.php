@@ -38,7 +38,7 @@
       </div>
     </div>
     <div class="row mb-5">
-      <div class="col-xs-12 col-md-5">
+      <div class="col-10 col-md-5">
         <table class="table table-bordered">
           <tbody>
             <?php
@@ -72,8 +72,8 @@
 
         <button type="button" class="btn btn-primary">Modificar</button>
       </div>
-      <div class="col-xs-12 col-md-5">
-        <img src="../avatars/<?=$foto?>" height = 100 width = 100 alt="">
+      <div class="col-2 col-md-2 pl-0 pr-1">
+        <img class = "img-fluid" src="../avatars/avatar_5e0a82ce89f64.jpg" alt="">
 
       </div>
     </div>
