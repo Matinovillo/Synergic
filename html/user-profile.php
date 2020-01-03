@@ -73,7 +73,7 @@
         <button type="button" class="btn btn-primary">Modificar</button>
       </div>
       <div class="col-xs-12 col-md-5">
-        <img src="../avatars/avatar_5e0608d540ff3.jpg" height = 100 width = 100 alt="">
+        <img src="../avatars/<?=$foto?>" height = 100 width = 100 alt="">
 
       </div>
     </div>
