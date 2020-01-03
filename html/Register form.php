@@ -5,7 +5,6 @@ require_once '../drivers/validaciondata.php'; //funcion para recuperar los datos
 $errores = [];
 
 
-pre($_FILES);
 
 //validar nombre
 if($_POST){
@@ -93,6 +92,8 @@ move_uploaded_file($temp, $nuevaRuta.$fileName);
 
   $newUser = json_encode($newUser);
   file_put_contents("../files/usuarios.json", $newUser, FILE_APPEND);
+  header('location: login.php');
+  exit;
 }
 }
  ?>
