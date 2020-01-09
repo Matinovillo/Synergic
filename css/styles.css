@@ -1,19 +1,21 @@
 /* Documentation.
 0.0 General Styles
 1.0 Home page
-    1.1 Header section
-    1.2 Carousel
-    1.3 Productos de muestra
-    1.4 footer
-    1.5 footer social links
+    1.1 Top Bar
+    1.2 Header section
+    1.3 Carousel
+    1.4 Productos de muestra
+    1.5 footer
+    1.6 footer social links
 
 2.0 Product List Page
 3.0 Contact Page
 4.0 F.A.Q. Page
 5.0 Product Details
     5.1 Responsive Product Details
-6.0 Register Page
-7.0 Responsive index
+6.0 Register Page Login Page
+7.0 Account Page
+8.0 Responsive index
 
 */
 
@@ -114,7 +116,7 @@ a {
 
 
 
-/*1.1 Header section*/
+/*1.2 Header section*/
 header{
 	padding: 5px;
 }
@@ -162,13 +164,11 @@ header .header-row{
 .user-panel .up-item {
 	display: inline-block;
 	font-size: 10px;
-	margin-right: 20px;
-	margin-left: 20px;
 }
 
 .user-panel .up-item a {
 	font-size: 17px;
-	color: #414141;
+	color: #646a7c;
 	cursor: pointer;
 	text-decoration: none;
 }
@@ -201,13 +201,13 @@ header .header-row{
 	padding: 0 2px;
 	margin-left: -7px;
 }
-/*1.2 Carousel*/
+/*1.3 Carousel*/
 .carousel-sec img{
 	width: 100%;
 	height: 400px;
 }
 
-/*1.3 productos muestra*/
+/*1.4 productos muestra*/
 
 .cards
 {
@@ -279,7 +279,7 @@ header .header-row{
     
 }
 
-/*1.4 Footer*/
+/*1.5 Footer*/
 
 .footer-section .logo-img img{
 	width: 200px;
@@ -406,7 +406,7 @@ header .header-row{
 	overflow: hidden;
 }
 
-/*1.5 Foooter Redes Sociales*/
+/*1.6 Foooter Redes Sociales*/
 .social-links-warp {
 	background-color: #0e8ce4;
 	padding: 15px 0;
@@ -1005,12 +1005,29 @@ td, th {
     background-color: #3b5998;
   }
 
+/*****************************
+7.0 account page
+*****************************/
+.account-sec{
+    min-height: 73vh;
+}
 
-
+.account-logo a img{
+    height: 50px;
+    width: 200px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+.account-text h3{
+    color: #646a7c;
+}
+.account-text a{
+    color: #0e8ce4;
+}
 
 
 /*****************************
-7.0 RESPONSIVE INDEX
+8.0 RESPONSIVE INDEX
 *****************************/
 
 /** Small devices (landscape phones, 576px and up)**/
@@ -1064,6 +1081,10 @@ td, th {
     /* top-bar */
     .top_bar .top_bar_contact_item{
         display: none;
+    }
+    .top_bar .top_bar_content{
+        margin: 0 auto;
+        
     }
     
 }
