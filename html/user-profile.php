@@ -1,5 +1,5 @@
 <?php 
-error_reporting(E_ALL & ~E_NOTICE);
+
 ?>
 
 <!doctype html>
@@ -44,20 +44,34 @@ error_reporting(E_ALL & ~E_NOTICE);
         <table class="table table-bordered">
           <tbody>
                     <tr>
-                      <th scope="row"><?=$_SESSION['email']?></th>
-                      <td><?=$_SESSION['username']?></td>
+                    <?php if(isset($_SESSION['email'])) : ?>
+                      <th scope="row">E-mail:</th>
+                      <td><?=$_SESSION['email']?></td>
+                      <?php else : ?>
+                      <th></th>
+                      <td></td>
+                      <?php endif; ?>
                     </tr>
                     <tr>
+                    <?php if(isset($_SESSION['username'])) : ?>
+                      <th scope="row">Nombre de usuario:</th>
+                      <td><?=$_SESSION['username']?></td>
+                      <?php else : ?>
+                      <th></th>
+                      <td></td>
+                      <?php endif; ?>
+                    </tr>
+                    <tr>
+                    <?php if(isset($_SESSION['avatar'])) : ?>
                       <img src="../avatars/<?=$_SESSION['avatar']?>" alt="">
+                    <?php else : ?>
+                      <?=''?>
+                    <?php endif; ?>
                     </tr>
             </tbody>
         </table>
 
         <button type="button" class="btn btn-primary">Modificar</button>
-      </div>
-      <div class="col-2 col-md-2 pl-0 pr-1">
-        <img class = "img-fluid" src="../avatars/avatar_5e0a82ce89f64.jpg" alt="">
-
       </div>
     </div>
 
