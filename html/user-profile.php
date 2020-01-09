@@ -14,7 +14,7 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
     integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
-    <!-- Font Awesome icons CSS-->
+  <!-- Font Awesome icons CSS-->
   <link rel="stylesheet" href="../fonts/css webfont/all.min.css">
 
   <!-- Secciones CSS-->
@@ -26,11 +26,11 @@
 </head>
 
 <body>
-<?php
+  <?php
   include("header.php");
 ?>
 
-
+  <?php if(isset($_SESSION['email'])) : ?>
   <!--/Cuenta-->
   <div class="container-fluid">
     <!-- SECCION DE DATOS PERSONALES -->
@@ -43,32 +43,32 @@
       <div class="col-10 col-md-5">
         <table class="table table-bordered">
           <tbody>
-                    <tr>
-                    <?php if(isset($_SESSION['email'])) : ?>
-                      <th scope="row">E-mail:</th>
-                      <td><?=$_SESSION['email']?></td>
-                      <?php else : ?>
-                      <th></th>
-                      <td></td>
-                      <?php endif; ?>
-                    </tr>
-                    <tr>
-                    <?php if(isset($_SESSION['username'])) : ?>
-                      <th scope="row">Nombre de usuario:</th>
-                      <td><?=$_SESSION['username']?></td>
-                      <?php else : ?>
-                      <th></th>
-                      <td></td>
-                      <?php endif; ?>
-                    </tr>
-                    <tr>
-                    <?php if(isset($_SESSION['avatar'])) : ?>
-                      <img src="../avatars/<?=$_SESSION['avatar']?>" alt="">
-                    <?php else : ?>
-                      <?=''?>
-                    <?php endif; ?>
-                    </tr>
-            </tbody>
+            <tr>
+              <?php if(isset($_SESSION['email'])) : ?>
+              <th scope="row">E-mail:</th>
+              <td><?=$_SESSION['email']?></td>
+              <?php else : ?>
+              <th></th>
+              <td></td>
+              <?php endif; ?>
+            </tr>
+            <tr>
+              <?php if(isset($_SESSION['username'])) : ?>
+              <th scope="row">Nombre de usuario:</th>
+              <td><?=$_SESSION['username']?></td>
+              <?php else : ?>
+              <th></th>
+              <td></td>
+              <?php endif; ?>
+            </tr>
+            <tr>
+              <?php if(isset($_SESSION['avatar'])) : ?>
+              <img src="../avatars/<?=$_SESSION['avatar']?>" alt="">
+              <?php else : ?>
+              <?=''?>
+              <?php endif; ?>
+            </tr>
+          </tbody>
         </table>
 
         <button type="button" class="btn btn-primary">Modificar</button>
@@ -118,9 +118,24 @@
   </div>
 
   <!--/Cuenta-->
+    <?php else : ?>
+    <section class="account-sec">
+      <div class="container">
+        <div class="row"></div>
+        <div class="col-xl-12 account-logo text-center" >
+          <a href="index.php"><img src="../img/logo.png" alt=""></a>
+        </div>
+        <div class="col-xl-12 text-center account-text">
+          <h3>
+            ¿Ya tenes una cuenta? <a href="login.php">¡Ingresa aca!</a>
+            Si todavia no estas registrado <a href="register form.php">¡Registrate!</a>
+          </h3>
+        </div>
+      </div>
+    </section>
 
-
-<?php
+  <?php endif; ?>
+  <?php
   include("footer.php");
 ?>
 
