@@ -1,12 +1,33 @@
-
 <?php
-   session_start();
-   setcookie("usuario", "", time() - 3600); //send browser command remove sid from cookie
-   //session_destroy(); //remove sid-login from server storage
-   //session_write_close();
+ session_start();
+ require_once '../drivers/validaciondata.php';
+ $loginErrors = [];
+ if($_POST) {
+     $loginErrors = validarFormulario();
+     if(count($loginErrors) == 0) {
+         $usuariosRegistrados = file_get_contents("../files/usuarios.json");
+         $usuariosRegistrados = json_decode($usuariosRegistrados,true);      
+         foreach($usuariosRegistrados as $usuario) {
+             if($_POST['email'] == $usuario['email']) {
+                 if(password_verify($_POST['password'], $usuario['password'])) {
+                     $_SESSION['email'] = $usuario['email'];
+                     $_SESSION['username']= $usuario['username'];
+                     $_SESSION['avatar'] = $usuario['avatar'];
+                     if(isset($_POST['recuerdame']) && $_POST['recuerdame'] == "1") {
+                         //setcookie(nombreCookie, valorCookie, tiempoCookie);
+                         setcookie("usuarioEmail", $usuario['email'], time() + 60 * 60 * 24 * 7, "/");  
+                     }
+                     header('Location: index.php');
+                     exit;
+                 }
+             }
+         }
+     }
+ }
 ?>
 <!DOCTYPE html>
 <html>
+
 <head>
   <!-- Required meta tags -->
   <meta charset="utf-8">
@@ -26,161 +47,122 @@
 
   <title>Synergic || Tienda tecno</title>
 </head>
+
 <body>
 
-          <div class="page">
-            <div class="contenido-login">
-              <?php
-                $username = "";
-                $password = "";
-                $msjUserValildate = "";
-                $msjPassValidate = "";
-                $error = "";
-                $paginaInicio = file_get_contents("../files/usuarios.json");
-
-                $jsonUsers = json_decode($paginaInicio, true);
-
-               if (isset($_POST["login"])){
-                  $username = $_POST["username"];
-                  $password = $_POST["password"];
-
-                  if (!empty($username) && !empty($password)){
-                    
-                    foreach ($jsonUsers as $user => $value) {
-                      /*echo "<pre>";
-                        print_r($user .' - ' .$value["username"]);
-                        echo "</pre>";*/
-                          
-                          if ($value["username"] != $username){
-                           $msjUserValildate = "<li>El usuario ingresado no existe.</li>";
-                           $error  = "mostrar-error";
-                          }else{
-                             $error = "ocultar-error";
-                             $msjUserValildate = "";
+  <div class="page">
+    <div class="contenido-login">
+      <div class="envolver-login">
+        <form class="formulario-login needs-validation" novalidate method="POST" name="signin-form"
+          action="<?=htmlspecialchars($_SERVER['PHP_SELF'])?>">
+          <a href="index.php" class="logo-img m-auto">
+            <img src="../img/logo.png" alt="">
+          </a>
+          <div class="formulario-campos">
+            <input class="campos form-control" type="text" name="email" placeholder="E-Mail" value="<?=PersistirDatos('email',$loginErrors) ?>" required>
+            <span class="focus-campo"></span>
+            <span class="simbolo-campo">
+              <span><i class="far fa-user"></i></span>
+            </span>
+            <?php
+                   if(isset($loginErrors['email'])) {
+                    foreach($loginErrors['email'] as $error){
+                    echo '<small class="text-danger">' . $error . '</small><br>';
                           }
+                      } else {
+                   echo "";
+                  }
+            ?>
+            <div class="invalid-feedback">
+              Por favor, Ingrese el E-Mail.
+            </div>
+            
+          </div>
 
-                          if(!password_verify($password, $value["password"])){
-                            $msjPassValidate = "<li>La contraseña ingresada es incorrecta.</li>";
-                            $error  = "mostrar-error";
-                          }else{
-                            $error = "ocultar-error";
-                            $msjPassValidate = "";
+          <div class="formulario-campos">
+            <input class="campos form-control" type="password" name="password" placeholder="Contraseña" value=""
+              required>
+            <span class="focus-campo"></span>
+            <span class="simbolo-campo">
+              <span><i class="fas fa-lock"></i></span>
+            </span>
+            <?php
+                   if(isset($loginErrors['password'])) {
+                    foreach($loginErrors['password'] as $error){
+                    echo '<small class="text-danger">' . $error . '</small><br>';
                           }
-                        }
-                      }
-                    }
-
-                      if($error == "ocultar-error") {
-                             $_SESSION["valid"] = true;
-                             $_SESSION["timeout"] = time();
-                             $_SESSION["username"] = $username;                             
-                             setcookie("usuario", $username, time() + 3600);
-
-                             foreach ($jsonUsers as $user => $value) {
-                              
-                                if($value["username"] == $username){
-                                  $_SESSION["email"] = $value["email"];
-                                }
-                            }
-                             header('Location: index.php');
-                      }
-                  
-                  
-             
-              ?>
-              <div class="envolver-login">
-                <div class="<?=$error?>">          
-                    <?=$msjUserValildate?>
-                    <?=$msjPassValidate?>
-                </div>
-                <form class="formulario-login needs-validation" novalidate method="POST" name="signin-form" action="<?=htmlspecialchars($_SERVER['PHP_SELF'])?>">
-                  <a href="index.php" class="logo-img m-auto">
-                    <img src="../img/logo.png" alt="">
-                  </a>
-                  <div class="formulario-campos">
-                    <input class="campos form-control" type="text" name="username" placeholder="Usuario" value="" required>
-                    <span class="focus-campo"></span>
-                    <span class="simbolo-campo">
-                      <span><i class="far fa-user"></i></span>
-                    </span>
-                    <div class="invalid-feedback">
-                      Por favor, ingrese el usuario.
-                    </div>
-                  </div>
-
-                  <div class="formulario-campos">
-                    <input class="campos form-control" type="password" name="password" placeholder="Contraseña" value="" required>
-                    <span class="focus-campo"></span>
-                    <span class="simbolo-campo">
-                      <span><i class="fas fa-lock"></i></span>
-                    </span>
-                    <div class="invalid-feedback">
-                      Por favor, ingrese la contraseña.
-                    </div>
-                  </div>
-
-                  <div class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="customCheck1">
-                    <label class="custom-control-label chck-bx" for="customCheck1">Recuerdame</label>
-                  </div>
-
-                  <div class="contenidod-login-formulario-btn">
-                    <button class="login-formulario-btn" type="submit" name="login" value="login" formnovalidate>
-                      Iniciar Sesión
-                    </button>
-                  </div>
-
-                  <div class="text-center w-full no-acount">
-                    <a href="#">
-                      ¿Olvidaste tu contraseña?
-                    </a>
-                  </div>
-
-                  <a href="#" class="btn-face">
-                    <i class="fab fa-facebook"></i>
-                    Facebook
-                  </a>
-
-                  <a href="#" class="btn-google">
-                    <img src="../img/icon-google.png" alt="Google">
-                    Google
-                  </a>
-
-                  <div class="text-center w-full no-acount">
-                    <span class="txt1">
-                      ¿No tienes una cuenta?
-                    </span>
-
-                    <a class="register" href="Register form.php">
-                      Regístrate
-                    </a>
-                  </div>
-                </form>
-              </div>
+                      } else {
+                   echo "";
+                  }
+            ?>
+            <div class="invalid-feedback">
+              Por favor, ingrese la contraseña.
             </div>
           </div>
+
+          <div class="custom-control custom-checkbox">
+            <input type="checkbox" name="recuerdame" class="custom-control-input" id="customCheck1" value="1">
+            <label class="custom-control-label chck-bx" for="customCheck1">Recuerdame</label>
+          </div>
+
+          <div class="contenidod-login-formulario-btn">
+            <button class="login-formulario-btn" type="submit" name="login" value="login" formnovalidate>
+              Iniciar Sesión
+            </button>
+          </div>
+
+          <div class="text-center w-full no-acount">
+            <a href="#">
+              ¿Olvidaste tu contraseña?
+            </a>
+          </div>
+
+          <a href="#" class="btn-face">
+            <i class="fab fa-facebook"></i>
+            Facebook
+          </a>
+
+          <a href="#" class="btn-google">
+            <img src="../img/icon-google.png" alt="Google">
+            Google
+          </a>
+
+          <div class="text-center w-full no-acount">
+            <span class="txt1">
+              ¿No tienes una cuenta?
+            </span>
+
+            <a class="register" href="Register form.php">
+              Regístrate
+            </a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
   <!--/Modal Login-->
 
-  <script>
-// Example starter JavaScript for disabling form submissions if there are invalid fields
-(function() {
-  'use strict';
-  window.addEventListener('load', function() {
-    // Fetch all the forms we want to apply custom Bootstrap validation styles to
-    var forms = document.getElementsByClassName('needs-validation');
-    // Loop over them and prevent submission
-    var validation = Array.prototype.filter.call(forms, function(form) {
-      form.addEventListener('submit', function(event) {
-        if (form.checkValidity() === false) {
-          event.preventDefault();
-          event.stopPropagation();
-        }
-        form.classList.add('was-validated');
+  <!-- <script>
+    // Example starter JavaScript for disabling form submissions if there are invalid fields
+    (function () {
+      'use strict';
+      window.addEventListener('load', function () {
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        var forms = document.getElementsByClassName('needs-validation');
+        // Loop over them and prevent submission
+        var validation = Array.prototype.filter.call(forms, function (form) {
+          form.addEventListener('submit', function (event) {
+            if (form.checkValidity() === false) {
+              event.preventDefault();
+              event.stopPropagation();
+            }
+            form.classList.add('was-validated');
+          }, false);
+        });
       }, false);
-    });
-  }, false);
-})();
-</script>
+    })();
+  </script> -->
 
 </body>
+
 </html>

@@ -1,17 +1,18 @@
 
-  <!--Header-->
   <?php
+   require_once '../drivers/validaciondata.php';
+    session_start();
     $mostrarRegister = "";
-    if(isset($_COOKIE["usuario"])){
-      $logeado = "<a href='#'><i class='fas fa-user mr-2 top-bar-icon'></i>" . $_COOKIE["usuario"] ."</a>";
-      $cerrarSesion = "<div class='up-item'><a href='./login.php'><i class='fas fa-sign-out-alt mr-2 top-bar-icon'></i>Cerrar Sesión</a></div>";
+    if(isset($_SESSION["email"])){
+      $logeado = "<a href='#'><i class='fas fa-user mr-2 top-bar-icon'></i>" . $_SESSION["username"] ."</a>";
+      $cerrarSesion = "<div class='up-item'><a href='logout.php'><i class='fas fa-sign-out-alt mr-2 top-bar-icon'></i>Cerrar Sesión</a></div>";
     }else{
       $logeado = "<a href='./login.php'><i class='fas fa-user mr-2 top-bar-icon'></i>Ingresar</a>";
       $mostrarRegister ="<div><a href='register form.php'>Registrate</a>";
       $cerrarSesion = "";
     }
-      session_start();
 
+  
     ?>
      <!-- Top Bar -->
      <div class="top_bar">

@@ -1,4 +1,6 @@
-
+<?php 
+error_reporting(E_ALL & ~E_NOTICE);
+?>
 
 <!doctype html>
 <html lang="en">
@@ -41,32 +43,13 @@
       <div class="col-10 col-md-5">
         <table class="table table-bordered">
           <tbody>
-            <?php
-
-            $usuarios_json = file_get_contents("../files/usuarios.json");
-            $usuarios = json_decode($usuarios_json, true);
-
-            foreach ($usuarios as $user => $value) :
-
-              foreach ($value as $key => $value2) :
-                if($value2["username"] == $_SESSION["username"]) :
-                  foreach($value2 as $clave => $valor) :
-                    if($clave != "password" && $clave != "avatar"):?>
                     <tr>
-                      <th scope="row"><?=$clave?></th>
-                      <td><?=$valor?></td>
+                      <th scope="row"><?=$_SESSION['email']?></th>
+                      <td><?=$_SESSION['username']?></td>
                     </tr>
-                  <?php endif;
-                    if($clave == "avatar"):
-
-                      $foto = $valor;
-
-                    endif;
-
-                  endforeach;
-                endif;
-              endforeach;
-            endforeach; ?>
+                    <tr>
+                      <img src="../avatars/<?=$_SESSION['avatar']?>" alt="">
+                    </tr>
             </tbody>
         </table>
 

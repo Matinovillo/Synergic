@@ -1,111 +1,39 @@
 <?php
-error_reporting(E_ALL ^ E_NOTICE); //desactiva los errores NOTICE
-require_once '../drivers/helpers.php'; //funcion para hacer un var_dump
-require_once '../drivers/validaciondata.php'; //funcion para recuperar los datos en caso de error
-$errores = [];
+// session_start();
+require_once '../drivers/validaciondata.php';
 
+$registerErrors = [];
+if($_POST) {
+  $registerErrors = validarFormulario();
 
+  if(count($registerErrors) == 0) {
+        //Guardar Avatar
+        $extension = pathinfo($_FILES["avatar"]["name"], PATHINFO_EXTENSION);
+        $temp = $_FILES["avatar"]["tmp_name"];
+        $nuevaRuta = dirname(__DIR__);
+        $nuevaRuta = $nuevaRuta . "\avatars/";
+        $fileName = "avatar_" . uniqid() . "." . $extension;
+        move_uploaded_file($temp, $nuevaRuta.$fileName);
 
-//validar nombre
-if($_POST){
-if (isset($_POST["username"])) {
-  if (empty($_POST["username"])) {
-    $errores['username'][] = "Este campo es obligatorio";
+        //Register del Usuario
+        $newUser = [
+        "username" => trim($_POST["username"]),
+        "email" => trim($_POST["email"]),
+        "password" => password_hash($_POST["password"], PASSWORD_DEFAULT),
+        "avatar" => $fileName
+        ];
+        
+        $paginaInicio = file_get_contents("../files/usuarios.json");
+        $jsonUsers = json_decode($paginaInicio,true);
+        array_push($jsonUsers, $newUser);
+        $newUser = json_encode($jsonUsers);
+        file_put_contents("../files/usuarios.json", $newUser);
+
+            header('location: login.php');
+            exit;
   }
-  if (strlen($_POST["username"]) < 4){
-    $errores['username'][] = "Este campo debe tener como minimo 4 caracteres";
-  }
-
-}
-
-//validar email
-if (isset($_POST["email"])) {
-  if (empty($_POST["email"])) {
-    $errores['email'][] = "Este campo es obligatorio";
-  }
-  if (!filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)) {
-    $errores['email'][] = "Debes ingresar un email valido";
-  }
-}
-//validar password
-if (isset($_POST["password"])) {
-  if (empty($_POST["password"])) {
-    $errores['password'][] = "Este campo es obligatorio";
-  }
-
-  if (strlen($_POST["password"]) < 6){
-      $errores['password'][] = "La contraseña debe tener al menos 6 caracteres";
-  }
-}
-
-//validar confirmar password
-if (isset($_POST["confirmpassword"])) {
-  if (empty($_POST["confirmpassword"])) {
-    $errores['confirmpassword'][] = "Este campo es obligatorio";
-  }
-
-  if ($_POST["password"] != $_POST["confirmpassword"]) {
-    $errores['confirmpassword'][] = "Las contraseñas deben coincidir";
-  }
-}
-
-//validar avatar
-if (!empty($_FILES['avatar']['name'])) {
-  if ($_FILES['avatar']['size'] > 3000000 ) {
-    $errores['avatar'][] = "El tamaño maximo es de 3mb";
-  }
-
-  $nombreArchivo = $_FILES["avatar"]["name"];
-  $extension = pathinfo($nombreArchivo, PATHINFO_EXTENSION);
-  $extension = strtolower($extension);
-  if ($extension != "jpg" && $extension != "png" && $extension != "jpeg") {
-        $errores['avatar'][] = "el formato de archivo no es valido";
-      }
-
-  }
-}
-
-
-if($_POST){
-if (count($errores) == 0) {
-  //Guardar Avatar
-  //1. Obtener la extension del archivo.
-$extension = pathinfo($_FILES["avatar"]["name"], PATHINFO_EXTENSION);
-  //2. obtener la ruta del archivo.
-$temp = $_FILES["avatar"]["tmp_name"];
-  //3. Construir la ruta donde queremos enviar la imagen.
-$nuevaRuta = dirname(__DIR__);
-$nuevaRuta = $nuevaRuta . "\avatars/";
-  //4. darle un nombre al archivo (uniqid otorga un string random)
-$fileName = "avatar_" . uniqid() . "." . $extension;
-  //5. mover el archivo
-move_uploaded_file($temp, $nuevaRuta.$fileName);
-
-//Register del Usuario
-
-  $newUser = [
-    "username" => trim($_POST["username"]),
-    "email" => trim($_POST["email"]),
-    "password" => password_hash($_POST["password"], PASSWORD_DEFAULT),
-    "avatar" => $fileName
-  ];
-$paginaInicio = file_get_contents("../files/usuarios.json");
-
-$jsonUsers = json_decode($paginaInicio,true);
-  //$newUser = json_encode($newUser);
-  //file_put_contents("../files/usuarios.json", $newUser, FILE_APPEND);
-  array_push($jsonUsers, $newUser);
-  $newUser = json_encode($jsonUsers);
-  file_put_contents("../files/usuarios.json", $newUser);
-
-  header('location: login.php');
-  exit;
-}
 }
  ?>
-
-
-
 
 <!doctype html>
 <html lang="en">
@@ -151,13 +79,13 @@ $jsonUsers = json_decode($paginaInicio,true);
                 <div class="form-label-group">
                   <input type="text" name="username" id="inputUserame" class="form-control" placeholder="Username"
                   value="<?php 
-                  if(count($errores) != 0)
-                  echo persistirDatos('username', $errores) ?>"
+                  if(count($registerErrors) != 0)
+                  echo persistirDatos('username', $registerErrors) ?>"
                    >
                   <label for="inputUserame">Nombre de usuario</label>
                   <?php
-                    if (isset($errores["username"])) {
-                      foreach ($errores['username'] as $error) {
+                    if (isset($registerErrors["username"])) {
+                      foreach ($registerErrors['username'] as $error) {
                         echo "<small class='text-danger'>" . $error . "</small><br>" ;
                       }
                     }
@@ -166,12 +94,12 @@ $jsonUsers = json_decode($paginaInicio,true);
 
                 <div class="form-label-group">
                   <input type="email" name="email" id="inputEmail" class="form-control" placeholder="Email address" value="<?php 
-                  if(count($errores) != 0)
-                  echo persistirDatos('email', $errores) ?>">
+                  if(count($registerErrors) != 0)
+                  echo persistirDatos('email', $registerErrors) ?>">
                   <label for="inputEmail">Direccion de Email</label>
                   <?php
-                    if (isset($errores["email"])) {
-                      foreach ($errores['email'] as $error) {
+                    if (isset($registerErrors["email"])) {
+                      foreach ($registerErrors['email'] as $error) {
                         echo "<small class='text-danger'>" . $error . "</small><br>" ;
                       }
                     }
@@ -184,8 +112,8 @@ $jsonUsers = json_decode($paginaInicio,true);
                   <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password">
                   <label for="inputPassword">Contraseña</label>
                   <?php
-                    if (isset($errores["password"])) {
-                      foreach ($errores['password'] as $error) {
+                    if (isset($registerErrors["password"])) {
+                      foreach ($registerErrors['password'] as $error) {
                         echo "<small class='text-danger'>" . $error . "</small><br>" ;
                       }
                     }
@@ -193,11 +121,11 @@ $jsonUsers = json_decode($paginaInicio,true);
                 </div>
 
                 <div class="form-label-group">
-                  <input type="password" name="confirmpassword" id="inputConfirmPassword" class="form-control" placeholder="Password">
-                  <label for="inputConfirmPassword">Confirmar Contraseña</label>
+                  <input type="password" name="repassword" id="inputRepassword" class="form-control" placeholder="Password">
+                  <label for="inputRepassword">Confirmar Contraseña</label>
                   <?php
-                    if (isset($errores["confirmpassword"])) {
-                      foreach ($errores['confirmpassword'] as $error) {
+                    if (isset($registerErrors["repassword"])) {
+                      foreach ($registerErrors['repassword'] as $error) {
                         echo "<small class='text-danger'>" . $error . "</small><br>" ;
                       }
                     }
@@ -208,8 +136,8 @@ $jsonUsers = json_decode($paginaInicio,true);
                     <label for="avatar">Imagen de usuario</label>
                     <input type="file" name="avatar" class="form-control-file" id="avatar">
                     <?php
-                      if (isset($errores['avatar'])) {
-                        foreach ($errores['avatar'] as $error) {
+                      if (isset($registerErrors['avatar'])) {
+                        foreach ($registerErrors['avatar'] as $error) {
                           echo "<small class='text-danger'>" . $error . "</small><br>" ;
                         }
                       }
