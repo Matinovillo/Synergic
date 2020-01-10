@@ -53,7 +53,7 @@
             <div class="row">
               <div class="col-sm-5 contenido-centrado">
                 <div class="contentImageShopping">
-                  <img src="https://www.venex.com.ar/products_images/1575916726_assswe.png"
+                  <img src="../img/pc.png"
                     alt="Pc AMD Gamer ZEN Kronos Ryzen 5 3400G Ssd 240Gb 8GB (2x4gb)"
                     title=" Pc AMD Gamer ZEN Kronos Ryzen 5 3400G Ssd 240Gb 8GB (2x4gb) " width="100" height="100">
                 </div>

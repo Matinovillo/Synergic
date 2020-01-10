@@ -269,9 +269,6 @@ header .header-row{
 	cursor: pointer;
 }
 
-.sec-prdcts .card-index a img{
-    height: 250px;
-}
 
 .sec-prdcts .card-index:hover{
     cursor: pointer;
