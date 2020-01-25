@@ -71,7 +71,7 @@
             <div class="shopping-card">
               <a href="#">
               <i class="fas fa-heart"></i>
-              Bienvenido! usuario/a
+              Bienvenido/a usuario.
               </a>
             </div>
           </div>
