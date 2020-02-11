@@ -1,0 +1,32 @@
+[
+    {
+        "username": "noelga",
+        "email": "noel@gmail.com",
+        "password": "$2y$10$ulOlOosA1FUKYs9ACJaT6egpeTzh3BhzJCCBN6DvVzcanW2b9KSJi",
+        "avatar": "avatar_5e10deed44368.jpg"
+    },
+    {
+        "username": "gragas",
+        "email": "gragas@lol.com",
+        "password": "$2y$10$3cmWF.yTZWLIHzOJCpwGe.UdnplD7Q\/8lBV4cOYBR2tLQpQDAji9C",
+        "avatar": "avatar_5e10df243c4cc.jpg"
+    },
+    {
+        "username": "noface",
+        "email": "noface@chihiro.gmail",
+        "password": "$2y$10$rU.sbiBHIaXLOtaq2XGC..NN3xvew.Zt\/.SavckYqhtZOa0qx3I5u",
+        "avatar": "avatar_5e10df8a75a75.jpg"
+    },
+    {
+        "username": "yasuo123",
+        "email": "yasuo@gmail.com",
+        "password": "$2y$10$q1mZ76LP7pDHv3V8i0Ivg.Qzy\/E1S1eAXN\/hHZtNS6xPyXgfjCksq",
+        "avatar": "avatar_5e10ee4cd89cd.jpg"
+    },
+    {
+        "username": "ragnar",
+        "email": "ragnar@vikings.com",
+        "password": "$2y$10$dF\/gt1VxMdEk10laZSh7wegRlOWg4Jf\/iQ\/FBZspZAptpp2RQQbBG",
+        "avatar": "avatar_5e14b99887719.jpg"
+    }
+]
