@@ -1400,7 +1400,7 @@ td, th {
 	color: white;
 	background: #232F3F;
 	text-align: center;
-	
+
 
 }
 .admin-list{
@@ -1458,6 +1458,20 @@ td, th {
 	background-color:#232F3F;
 	color: white;
 }
+
+/********************************************
+adminpage2
+*********************************************/
+.admin-nav-links{
+	width: 100%;
+}
+
+.admin-searcher{
+	width: 50%
+}
+
+
+
 /*****************************
 8.0 RESPONSIVE INDEX
 *****************************/

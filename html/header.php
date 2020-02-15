@@ -11,7 +11,7 @@
       $cerrarSesion = "";
     }
 
-  
+
     ?>
 <!-- Top Bar -->
 <div class="top_bar">
@@ -109,8 +109,9 @@
         <button class="btn-regresar"><i class="fas fa-arrow-left"></i> Regresar</button>
         <h3 class="subtitulo">Categorias</h3>
 
-        <a href="productos.php" data-categoria="componentes-de-pc">Productos<i class="fas fa-angle-right"></i></a>
+        <a href="productos.php" data-categoria="componentes-de-pc">Componentes de PC<i class="fas fa-angle-right"></i></a>
         <a href="#" data-categoria="pc-de-escritorio">PC de escritorio <i class="fas fa-angle-right"></i></a>
+        <a href="#" data-categoria="notebooks">Notebooks <i class="fas fa-angle-right"></i></a>
         <a href="#" data-categoria="monitores">Monitores <i class="fas fa-angle-right"></i></a>
         <a href="#" data-categoria="perifericos">Perifericos <i class="fas fa-angle-right"></i></a>
       </div>
@@ -119,7 +120,7 @@
         <div class="subcategoria " data-categoria="componentes-de-pc">
           <div class="enlaces-subcategoria">
             <button class="btn-regresar"><i class="fas fa-arrow-left"></i>Regresar</button>
-            <h3 class="subtitulo">Productos</h3>
+            <h3 class="subtitulo">Componentes de PC</h3>
             <a href="#">Procesadores</a>
             <a href="#">Motherboards</a>
             <a href="#">Memoria RAM</a>
@@ -156,6 +157,38 @@
             <h3 class="subtitulo">PC de escritorio</h3>
             <a href="#">AMD</a>
             <a href="#">INTEL</a>
+          </div>
+
+          <div class="banner-subcategoria">
+            <a href="#">
+              <img src="https://via.placeholder.com/300x300" alt="">
+            </a>
+          </div>
+
+          <div class="galeria-subcategoria">
+            <a href="#">
+              <img src="https://via.placeholder.com/300x300" alt="">
+            </a>
+            <a href="#">
+              <img src="https://via.placeholder.com/300x300" alt="">
+            </a>
+            <a href="#">
+              <img src="https://via.placeholder.com/300x300" alt="">
+            </a>
+            <a href="#">
+              <img src="https://via.placeholder.com/300x300" alt="">
+            </a>
+          </div>
+        </div>
+
+        <div class="subcategoria" data-categoria="notebooks">
+          <div class="enlaces-subcategoria">
+            <button class="btn-regresar"><i class="fas fa-arrow-left"></i>Regresar</button>
+            <h3 class="subtitulo">Notebooks</h3>
+            <a href="#">Acer</a>
+            <a href="#">Lenovo</a>
+            <a href="#">Asus</a>
+            <a href="#">HP</a>
           </div>
 
           <div class="banner-subcategoria">
