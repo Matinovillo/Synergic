@@ -18,14 +18,15 @@
             <span class="simbolo-campo">
               <span><i class="far fa-user"></i></span>
             </span>
-            <div class="invalid-feedback">
-              Por favor, Ingrese el E-Mail.
-            </div>
+            
             @error('email')
             <span class="invalid-feedback" role="alert">
                 <strong>{{ $message }}</strong>
             </span>
             @enderror
+            <div class="invalid-feedback">
+              Por favor, Ingrese el E-Mail.
+            </div>
             
           </div>
 
@@ -35,14 +36,15 @@
             <span class="simbolo-campo">
               <span><i class="fas fa-lock"></i></span>
             </span>
-            <div class="invalid-feedback">
-              Por favor, ingrese la contraseña.
-            </div>
+            
             @error('password')
             <span class="invalid-feedback" role="alert">
                 <strong>{{ $message }}</strong>
             </span>
             @enderror
+            <div class="invalid-feedback">
+              Por favor, ingrese la contraseña.
+            </div>
           </div>
 
           <div class="custom-control custom-checkbox">
