@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'nombre', 'apellido', 'email', 'password'
+        'nombre', 'apellido', 'email', 'password','avatar'
     ];
 
     /**
@@ -37,5 +37,9 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    public function fotos()
+    {
+        return $this->belongsTo('Foto', 'id_foto');
+    }
     
 }

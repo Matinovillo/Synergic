@@ -12,7 +12,10 @@ class Fotos extends Model
     public $primaryKey = 'id';
 
 
-    
+    public function users()
+    {
+        return $this->hasMany('User', 'id_foto');
+    }
 
 }
 
