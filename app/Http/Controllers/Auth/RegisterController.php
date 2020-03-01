@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\User;
+use App\Fotos;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -54,6 +55,7 @@ class RegisterController extends Controller
             'apellido' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'avatar' => ['file'],
         
         ]);
     }
@@ -64,13 +66,31 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\User
      */
-    protected function create(array $data)
-    {
+    protected function create(Array $data)
+    {   
+        if (isset($data['avatar'])){
+        $ruta = $data['avatar']->store('public');
+          $nombreArchivo = basename($ruta);
+          $foto = new Fotos();
+          $foto->nombre = $nombreArchivo;
+          $foto->save();
+
+          $fotos = Fotos::all();
+          $fotos = $fotos->last();
+        
+        $ruta = $data['avatar']->store('public');
+        $nombreArchivo = basename($ruta);
+        }else{
+            
+        }
         return User::create([
             'nombre' => $data['nombre'],
             'apellido' => $data['apellido'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'id_foto' => $avatar = (isset($data['avatar'])) ? $fotos->id : 1,
         ]);
     }
+
+    
 }
