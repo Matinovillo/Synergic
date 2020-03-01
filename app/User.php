@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use App\Foto;
 
 class User extends Authenticatable
 {
@@ -16,7 +17,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'nombre', 'apellido', 'email', 'password','avatar'
+        'nombre', 'apellido', 'email', 'password','id_foto'
     ];
 
     /**
@@ -37,9 +38,9 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function fotos()
+    public function foto()
     {
-        return $this->belongsTo('Foto', 'id_foto');
+        return $this->belongsTo('App\Fotos', 'id_foto');
     }
     
 }
