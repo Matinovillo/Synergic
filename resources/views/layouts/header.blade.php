@@ -144,7 +144,14 @@
         <div class="enlaces">
           <a href="index.php">Home</a>
           <a href="contact.php">Contacto</a>
-          <a href="user-profile.php">Cuenta</a>
+          {{-- si el usuario loguea se muestra cuenta --}}
+          @if (Route::has('login'))
+            @auth
+            <a href="/cuenta">Cuenta</a>
+            @endauth
+          @else
+          
+          @endif
           <a href="F.a.q.php">F.A.Q</a>
         </div>
       </div>
