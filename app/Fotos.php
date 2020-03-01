@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\User;
 
 class Fotos extends Model
 {
@@ -12,9 +13,9 @@ class Fotos extends Model
     public $primaryKey = 'id';
 
 
-    public function users()
+    public function user()
     {
-        return $this->hasMany('User', 'id_foto');
+        return $this->hasOne('App\User','id_foto');
     }
 
 }
