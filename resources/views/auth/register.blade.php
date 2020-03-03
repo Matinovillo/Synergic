@@ -1,4 +1,4 @@
-@include('layouts.header')
+@include('layouts.configTop')
 
 
   <!--Register-->
@@ -88,4 +88,4 @@
   <!--/Register-->
 
 
-  @include('layouts.footer')
+  @include('layouts.configBot')
