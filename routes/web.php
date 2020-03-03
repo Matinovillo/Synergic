@@ -20,3 +20,26 @@ Auth::routes();
 //Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('cuenta', 'UserController@cuenta');
+
+
+//ABM
+
+route::get('/admin', function(){
+    return view('ABM.admin');
+});
+//listado de productos
+route::get('admin/listadoProductos', 'productosController@listadoProductos');
+route::post('/borrarProducto', 'productosController@borrarProducto');
+
+
+//agregar producto
+route::get('admin/crearProducto','productosController@crearProductoVista');
+route::post('admin/crearProducto','productosController@crearProducto');
+
+//editar producto
+
+route::get('admin/editarProducto/{id}','productosController@editarProductoVista');
+route::post('admin/editarProducto/{id}','productosController@editarProducto');
+
+//listado de usuarios
+route::get('admin/listadoUsuarios', 'UserController@listadoUsuarios');
