@@ -1,3 +1,4 @@
+@include('layouts.configTop')
 @include('layouts.header')
 
 
@@ -162,20 +163,5 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
 @include('layouts.footer')
+@include('layouts.configBot')

@@ -1,3 +1,4 @@
+@include('layouts.configTop')
 @include('layouts.header')
 
 
@@ -210,7 +211,6 @@
 <!--/roductos Destacados-->
 
 
-
-
 @include('layouts.footer')
+@include('layouts.configBot')
 

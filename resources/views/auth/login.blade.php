@@ -1,5 +1,4 @@
-
-@include('layouts.header')
+@include('layouts.configTop')
 
 
 
@@ -90,4 +89,4 @@
     </div>
   </div>
 
-  @include('layouts.footer')
+  @include('layouts.configBot')
