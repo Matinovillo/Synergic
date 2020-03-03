@@ -15,4 +15,14 @@ class UserController extends Controller
         return view('/cuenta',compact('foto'));
         
     }
+
+    public function ListadoUsuarios(){
+        $usuarios = User::all();
+
+        foreach ($usuarios as $user) {
+            $foto = User::find($user->id)->foto;
+        }
+
+        return view('ABM.listadoUsuarios',compact('usuarios','foto'));
+    }
 }
