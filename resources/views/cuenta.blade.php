@@ -59,16 +59,7 @@
           </div>
 {{-- PRODUCTOS FAVORITOS --}}
           <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
-            <table class="table">
-              <tbody>
-                <tr>
-                  <th scope="row">1</th>
-                <td>{{$producto->nombre}}</td>
-                <td>{{$producto->precio}}</td> 
-                </tr>
-                
-              </tbody>
-            </table>
+            
           </div>
 {{-- MIS COMPTRAS --}}
           <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">

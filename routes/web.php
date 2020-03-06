@@ -52,3 +52,11 @@ route::get('admin/listadoCategorias', 'CategoriasController@listadoCategorias');
 //agregar categoria
 route::get('admin/crearCategoria','CategoriasController@crearCategoriaVista');
 route::post('admin/crearCategoria','CategoriasController@crearCategoria');
+
+//editar categoria
+
+route::get('admin/editarCategoria/{id}','CategoriasController@editarCategoriaVista');
+route::post('admin/editarCategoria/{id}','CategoriasController@editarCategoria');
+
+//borrar categoria
+route::post('/borrarCategoria', 'CategoriasController@borrarCategoria');

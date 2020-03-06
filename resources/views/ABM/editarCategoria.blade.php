@@ -3,26 +3,20 @@
 
 <div class="row justify-content-center my-5">
     <div class="col-10">
-      <h2 class="text-muted">Crear Categoria</h2>
+      <h2 class="text-muted">Editar Categoria</h2>
       <form method="post">
         @csrf
         <div class="row">
           <div class="col-6">
             <div class="form-group">
               <label>Nombre:</label>
-              <input type="text" class="form-control" value="" name="nombre">
-              @error('nombre')
-                <small class="text-danger">{{$message}}</small>
-              @enderror
+            <input type="text" class="form-control" value="{{$categoria->nombre}}" name="nombre">
             </div>
           </div>
           <div class="col-6">
             <div class="form-group">
               <label>Descripcion:</label>
-              <input type="text" class="form-control" value="" name="descripcion">
-              @error('descripcion')
-                <small class="text-danger">{{$message}}</small>
-              @enderror
+              <input type="text" class="form-control" value="{{$categoria->descripcion}}" name="descripcion">
             </div>
           </div>
           <div class="col-6">
@@ -34,19 +28,13 @@
               <option value="{{$padre->id}}">{{$padre->nombre}}</option>
                 @endforeach
               </select>
-              @error('id_categoria_padre')
-                <small class="text-danger">{{$message}}</small>
-              @enderror
             </div>
           </div>
 
           <div class="col-6">
             <div class="form-group">
               <label>Orden:</label>
-              <input type="text" class="form-control" name="orden" value="">
-              @error('nombre')
-                <small class="text-danger">{{$message}}</small>
-              @enderror
+              <input type="text" class="form-control" name="orden" value="{{$categoria->orden}}">
             </div>
           </div>
   

@@ -11,25 +11,37 @@
           <div class="col-6">
             <div class="form-group">
               <label>Nombre:</label>
-              <input type="text" class="form-control" value="" name="nombre">
+            <input type="text" class="form-control" value="{{old("nombre")}}" name="nombre">
+              @error('nombre')
+                <small class="text-danger">{{$message}}</small>
+              @enderror
             </div>
           </div>
           <div class="col-6">
             <div class="form-group">
               <label>Descripcion:</label>
-              <input type="text" class="form-control" value="" name="descripcion">
+              <input type="text" class="form-control" value="{{old("descripcion")}}" name="descripcion">
+              @error('descripcion')
+                <small class="text-danger">{{$message}}</small>
+              @enderror
             </div>
           </div>
           <div class="col-6">
             <div class="form-group">
               <label>Precio:</label>
-              <input type="text" class="form-control" value="" name="precio">
+              <input type="text" class="form-control" value="{{old("precio")}}" name="precio">
+              @error('precio')
+                <small class="text-danger">{{$message}}</small>
+              @enderror
             </div>
           </div>
           <div class="col-6">
             <div class="form-group">
               <label>Stock:</label>
-              <input type="text" class="form-control" value="" name="stock">
+              <input type="text" class="form-control" value="{{old("stock")}}" name="stock">
+              @error('stock')
+                <small class="text-danger">{{$message}}</small>
+              @enderror
             </div>
           </div>
   
@@ -38,11 +50,13 @@
               <label>Categoria:</label>
               <select class="form-control" name="id_categoria">
                 <option value="">Elegí una Categoria</option>
-                @foreach ($categorias as $categoria)
-              <option value="{{$categoria->id}}">{{$categoria->nombre}}</option>
-                @endforeach
-                
+                  @foreach ($categorias as $categoria)
+                    <option value="{{$categoria->id}}">{{$categoria->nombre}}</option>
+                   @endforeach
               </select>
+              @error('id_categoria')
+                <small class="text-danger">{{$message}}</small>
+              @enderror
             </div>
           </div>
   

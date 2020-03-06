@@ -1,6 +1,15 @@
 @include('layouts.configTop')
 @include('layouts.adminHeader')
-
+<script>
+  function ConfirmarDelete(){
+    var respuesta = confirm('¿Estas seguro que deseas eliminar esta categoria?');
+    if(respuesta == true){
+      return true;
+    }else{
+      return false;
+    }
+  }
+</script>
 <section class="admin-table-sec my-2">
     <div class="container-fluid">
   
@@ -23,15 +32,20 @@
       <tbody>
   
           @foreach ($categorias as $categoria)
+            
             <tr scope="row">
                         <th scope="row">{{$categoria->id}}</th>
                         <td>{{$categoria->nombre}}</td>
                         <td>{{$categoria->descripcion}}</td>
                         <td>{{$categoria->padre->nombre}}</td>
                         <td>{{$categoria->orden}}</td>
-              <td>
-                <a title="editar" href=""><button class="action-button-edit"><i class="fas fa-pen"></i></button></a>
-                <a title="eliminar" href=""><button class="action-button-delete"><i class="fas fa-trash-alt"></i></button></a>
+              <td class="d-flex">
+                <a title="editar" href="/admin/editarCategoria/{{$categoria->id}}"><button class="action-button-edit mr-2"><i class="fas fa-pen"></i></button></a>
+                <form action="/borrarCategoria" method="post">
+                  @csrf
+                  <input type="hidden" name="id" value="{{$categoria->id}}">
+                <a title="eliminar"><button type="submit" class="action-button-delete" onclick="return ConfirmarDelete()"><i class="fas fa-trash-alt" ></i></button></a>
+              </form>
               </td>
             </tr>
           @endforeach
