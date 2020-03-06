@@ -152,7 +152,7 @@
                                 </div>
                                 @endfor	
                             </div>
-                </div>
+                     </div>
                 
                 {{-- 2da seccion --}}
                         <div class="item carousel-item">

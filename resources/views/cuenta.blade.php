@@ -13,8 +13,8 @@
               <h3 class="profile-name">{{auth()->user()->nombre}} {{auth()->user()->apellido}}</h3>
             </div>
           </div>
-          <div class="row">
-            <div class="col-xl-12 text-center">
+          <div class="row ">
+            <div class="col-xl-12 text-center avatar-content">
             <img class="profile-avatar" src="/storage/{{$foto->nombre}}" alt="">
             </div>
           </div>
@@ -33,6 +33,7 @@
 
       <div class="col-xl-8">
         <div class="tab-content" id="v-pills-tabContent">
+
           <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
             <h2 class="text-muted p-2">Mis datos</h2>
             <div class="row p-4">
@@ -56,9 +57,94 @@
               </div>
             </div>
           </div>
-          <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">...</div>
-          <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">...</div>
-          <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">...</div>
+{{-- PRODUCTOS FAVORITOS --}}
+          <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+            <table class="table">
+              <tbody>
+                <tr>
+                  <th scope="row">1</th>
+                <td>{{$producto->nombre}}</td>
+                <td>{{$producto->precio}}</td> 
+                </tr>
+                
+              </tbody>
+            </table>
+          </div>
+{{-- MIS COMPTRAS --}}
+          <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
+              
+          </div>
+
+
+
+{{-- MODIFICAR MIS DATOS --}}
+          <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
+            <h2 class="text-muted p-2">Modificar mis datos</h2>
+            <form class="p-5" method="post">
+              @csrf
+              {{--  --}}
+              <div class="form-row">
+                <div class="col-md-4 mb-3">
+                  <label for="" class="text-muted">Nombre</label>
+                  <input type="text" class="form-control" value="{{auth()->user()->nombre}}" required name="nombre">
+                </div>
+                {{--  --}}
+                <div class="col-md-4 mb-3">
+                  <label for="" class="text-muted">Apellido</label>
+                  <input type="text" class="form-control" id="" value="{{auth()->user()->apellido}}" required name="apellido">
+                </div>
+                {{--  --}}
+                <div class="col-md-4 mb-3">
+                  <label for="" class="text-muted">E-mail</label>
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" id="inputGroupPrepend">@</span>
+                    </div>
+                    <input type="text" class="form-control" id="" value="{{auth()->user()->email}}" aria-describedby="inputGroupPrepend" required name="email">
+                  </div>
+                </div>
+                {{--  --}}
+              </div>
+              {{--  --}}
+              <div class="form-row">
+                <div class="col-md-6 mb-3">
+                  <label for="" class="text-muted">Domicilio</label>
+                  <input type="text" class="form-control" id="" placeholder="domicilio" >
+                </div>
+                {{--  --}}
+                <div class="col-md-3 mb-3">
+                  <label for="" class="text-muted">Ciudad</label>
+                  <input type="text" class="form-control" id="" placeholder="Ciudad">
+                </div>
+                {{--  --}}
+                <div class="col-md-3 mb-3">
+                  <label for="" class="text-muted">Barrio</label>
+                  <input type="text" class="form-control" id="" placeholder="Barrio">
+                </div>
+                {{--  --}}
+                <div class="col-md-3 mb-3">
+                  <div class="form-group">
+                    <label for="" class="text-muted">Sexo</label>
+                    <select class="form-control" id="">
+                      <option>1</option>
+                      <option>2</option>
+                      <option>3</option>
+                      <option>4</option>
+                      <option>5</option>
+                    </select>
+                    </div>
+                </div>
+                {{--  --}}
+                <div class="col-md-6 mb-6">
+                <div class="form-group ml-5">
+                  <label for="avatar" class="text-muted">Avatar</label>
+                  <input type="file" name="avatar" class="form-control-file" id="avatar">
+                </div>
+              </div>
+              </div>
+              <button class="btn btn-outline-info" type="submit">Guardar</button>
+            </form>
+          </div>
         </div>
 
       </div>
