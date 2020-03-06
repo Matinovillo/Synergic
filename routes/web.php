@@ -20,6 +20,7 @@ Auth::routes();
 //Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('cuenta', 'UserController@cuenta');
+Route::post('cuenta', 'UserController@modificarDatos');
 
 
 //ABM
@@ -43,3 +44,11 @@ route::post('admin/editarProducto/{id}','productosController@editarProducto');
 
 //listado de usuarios
 route::get('admin/listadoUsuarios', 'UserController@listadoUsuarios');
+
+
+//listado de categorias
+route::get('admin/listadoCategorias', 'CategoriasController@listadoCategorias');
+
+//agregar categoria
+route::get('admin/crearCategoria','CategoriasController@crearCategoriaVista');
+route::post('admin/crearCategoria','CategoriasController@crearCategoria');

@@ -12,8 +12,15 @@ class Categoria extends Model
     public $guarded = [];
 
 
-    public function producto()
-    {
+    public function producto(){
         return $this->hasOne('App\Producto','id_categoria');
+    }
+
+    public function hijas(){
+    return $this->hasMany('App\Categoria', 'id_categoria_padre');
+    }
+
+    public function padre(){
+    return $this->belongsTo('App\Categoria', 'id_categoria_padre');
     }
 }

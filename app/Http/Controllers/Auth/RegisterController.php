@@ -78,8 +78,6 @@ class RegisterController extends Controller
           $fotos = Fotos::all();
           $fotos = $fotos->last();
         
-        $ruta = $data['avatar']->store('public');
-        $nombreArchivo = basename($ruta);
         }else{
             
         }

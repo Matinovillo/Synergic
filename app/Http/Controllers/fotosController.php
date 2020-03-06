@@ -12,7 +12,6 @@ class fotosController extends Controller
             'name' => 'TestName'
         ]);
         $id = Fotos::getPdo()->lastInsertId();;
-        dd($id);
     }
 
 
