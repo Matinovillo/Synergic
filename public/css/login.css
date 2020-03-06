@@ -1,0 +1,241 @@
+
+/*--------------------IMPUTS-------------------------*/
+input {
+	outline: none;
+	border: none;
+}
+
+textarea {
+  outline: none;
+  border: none;
+}
+
+textarea:focus, input:focus {
+  border-color: transparent !important;
+}
+
+button {
+	outline: none !important;
+	border: none;
+	background: transparent;
+}
+
+button:hover {
+	cursor: pointer;
+}
+
+.register{
+  font-weight: 600;
+	color: #0e8ce4;
+}
+
+/*--------------Utility-----------------------*/
+.txt1 {
+  font-size: 16px;
+  color: #999999;
+  line-height: 1.4;
+}
+
+.hov1:hover {
+  border-color:#0e8ce4;
+  ;
+}
+
+.ocultar-error{
+  display: none;
+}
+
+.mostrar-error{
+  display: block;
+  border: 1px solid #e6e6e6;
+  padding: 10px;
+  background-color: red;
+  border-radius: 3px;
+}
+
+.mostrar-error li{
+  color: white;
+}
+
+
+/*-----------login------------------*/
+.contenido-login{
+	width: 100%;
+	min-height: 100vh;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	padding: 15px;
+	position: relative;
+	z-index: 1;
+}
+
+.envolver-login{
+  width: 450px;
+  background: #fff;
+  border-radius: 3px;
+  overflow: hidden;
+  padding: 30px 50px 30px 50px;
+  border: 1px solid #e6e6e6;
+}
+
+.formulario-login{
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+}
+
+
+.formulario-campos{
+	position: relative;
+	width: 100%;
+	z-index: 1;
+	margin-bottom: 16px;
+}
+
+.campos{
+  font-size: 18px;
+  line-height: 1.2;
+  color: #686868;
+  display: block;
+  width: 100%;
+  background: #e6e6e6;
+  height: 62px;
+  border-radius: 3px;
+  padding: 0 30px 0 65px;
+}
+
+
+.simbolo-campo{
+	font-size: 24px;
+	color: #999999;
+	display: flex;
+	/*align-items: center;*/
+  top: 12px;
+	position: absolute;
+	border-radius: 25px;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	padding-left: 23px;
+	
+	pointer-events: none;
+	transition: all 0.4s;
+}
+
+.campos:focus + .focus-campo + .simbolo-campo{
+	color: #0e8ce4;
+	padding-left: 18px;
+}
+
+.campo-checkbox{
+	display: none;
+}
+
+.custom-control .chck-bx{
+  color: #999999 !important;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+.custom-control-label::before{
+      border: #adb5bd solid 1px !important;
+}
+
+.custom-control-input:checked~.custom-control-label::before {
+    color: #fff !important;
+    border-color: #007bff !important;
+    background-color: #007bff !important;
+}
+
+
+.contenidod-login-formulario-btn{
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.login-formulario-btn {
+  font-size: 16px;
+  line-height: 1.5;
+  color: #fff;
+  text-transform: uppercase;
+  width: 100%;
+  height: 62px;
+  border-radius: 3px;
+  background: #0e8ce4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 25px;
+  transition: all 0.4s;
+}
+
+.login-formulario-btn:hover{
+  background: #999999;
+}
+
+.btn-face,
+.btn-google {
+  font-size: 16px;
+  line-height: 1.2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: calc((100% - 10px) / 2);
+  height: 40px;
+  border-radius: 3px;
+  border: 1px solid #e6e6e6;
+  background-color: #fff;
+  transition: all 0.4s;
+  margin-bottom: 10px;
+}
+
+.btn-face {
+  color: #3b5998;
+}
+.btn-google {
+  color: #DB4437;
+}
+
+.btn-face i {
+  font-size: 20px;
+  margin-right: 10px;
+  padding-bottom: 1px;
+}
+
+
+.btn-google img {
+  width: 19px;
+  margin-right: 10px;
+  padding-bottom: 1px;
+}
+
+
+.btn-face:hover,
+.btn-google:hover {
+  border-color: #0e8ce4;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.no-acount{
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.w-full {width: 100%;}
+
+
+/*//////////////////////////////////////////////////////////////////
+[ responsive ]*/
+
+@media (max-width: 480px) {
+  .envolver-login {
+    padding: 0px;
+    border: none;
+  }
+}
