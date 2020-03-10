@@ -31,4 +31,6 @@ class Categoria extends Model
     return $this->belongsTo('App\Categoria', 'id_categoria_padre');
     }
 
+    
+
 }

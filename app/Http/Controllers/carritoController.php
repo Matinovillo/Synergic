@@ -11,7 +11,7 @@ class carritoController extends Controller
 {
 
     public function listadoProductosCarrito(){
-    $productos = CarritoUser::all();//where('id_usuario',auth()->user()->id);
+    $productos = CarritoUser::where('id_usuario',auth()->user()->id);
     $cantidad = User::obtenerCantidadProductoCarrito();	
     $categorias = Categoria::whereNull('id_categoria_padre')->with('subcategorias')->get();
 

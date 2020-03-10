@@ -5,9 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Producto;
 use App\Categoria;
-use App\User;
 
-class productosController extends Controller
+class ProductosController extends Controller
 {
     
 
@@ -39,23 +38,7 @@ class productosController extends Controller
         }
 
         public function crearProducto (Request $req){
-          $reglas = [
-            'nombre' => 'required|min:10|max:255|string',
-            'descripcion' =>'required|string',
-            'precio' =>'required|numeric',
-            'stock' =>'required|numeric',
-            'id_categoria' =>'required'
-
-          ];
-          $mensajes = [
-            'required' => 'El campo :attribute no puede estar vacio',
-            'string' => 'El campo :attribute debe ser de tipo texto',
-            'min' => 'El campo :attribute debe tener un minimo de :min caracteres',
-            'max' => 'El campo :attributte no puede tener mas de :max caracteres',
-            'id_categoria.required' => 'Tenes que elegir una categoria!',
-            'numeric' =>'El campo :attribute debe ser un numero'
-          ];
-          $this->validate($req,$reglas,$mensajes);
+            
             $producto = new Producto();
             
             $producto->nombre = $req['nombre'];
@@ -93,18 +76,8 @@ class productosController extends Controller
           public function borrarProducto(Request $request){
             $id = $request['id'];
             $producto = Producto::find($id);
-            $producto->delete();
+           $producto->delete();
             return redirect('admin/listadoProductos');
-          }
-          
-          public function listadoProductos2(){	
-            $productos = Producto::where('flag','!=', 'N')->paginate(2);	
-            $cantidad = User::obtenerCantidadProductoCarrito();	
-            //$categorias = Categorias::whereNull('id_categoria_padre')->orderBy('nombre')->get();	
-            //$categorias = Categorias::where('id_categoria_padre', '!=', null)->whereHas('sub_category')->with('sub_category')->get();	
-            $categorias = Categoria::whereNull('id_categoria_padre')->with('subcategorias')->get();	
-                
-            return view('producto',  compact('productos','categorias', 'cantidad'));	
           }
 
 }

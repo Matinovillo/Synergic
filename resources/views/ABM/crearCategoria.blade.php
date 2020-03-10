@@ -11,12 +11,18 @@
             <div class="form-group">
               <label>Nombre:</label>
               <input type="text" class="form-control" value="" name="nombre">
+              @error('nombre')
+                <small class="text-danger">{{$message}}</small>
+              @enderror
             </div>
           </div>
           <div class="col-6">
             <div class="form-group">
               <label>Descripcion:</label>
               <input type="text" class="form-control" value="" name="descripcion">
+              @error('descripcion')
+                <small class="text-danger">{{$message}}</small>
+              @enderror
             </div>
           </div>
           <div class="col-6">
@@ -28,15 +34,21 @@
               <option value="{{$padre->id}}">{{$padre->nombre}}</option>
                 @endforeach
               </select>
+              @error('id_categoria_padre')
+                <small class="text-danger">{{$message}}</small>
+              @enderror
             </div>
           </div>
 
-          {{-- <div class="col-6">
+          <div class="col-6">
             <div class="form-group">
               <label>Orden:</label>
               <input type="text" class="form-control" name="orden" value="">
+              @error('nombre')
+                <small class="text-danger">{{$message}}</small>
+              @enderror
             </div>
-          </div> --}}
+          </div>
   
           <div class="col-12 text-center">
             <button type="submit" name="" class="btn btn-primary">GUARDAR</button>

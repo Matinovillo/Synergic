@@ -147,7 +147,7 @@
                                             <p class="item-price">Precio: <b>${{$producto->precio}}</b></p>
                                             <form method="POST" action="carrito">
                                             {{ csrf_field() }}
-                                            <input type="text" name="id_producto" value="{{$producto->id}}">
+                                            <input type="hidden" name="id_producto" value="{{$producto->id}}">
                                             <input type="submit" value="Add to Cart" class="btn btn-primary">
                                             </form>
                                             

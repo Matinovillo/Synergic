@@ -1,6 +1,15 @@
 @include('layouts.configTop')
 @include('layouts.adminHeader')
-
+<script>
+  function ConfirmarDelete(){
+    var respuesta = confirm('¿Estas seguro que deseas eliminar este producto');
+    if(respuesta == true){
+      return true;
+    }else{
+      return false;
+    }
+  }
+</script>
 <section class="admin-table-sec my-2">
   <div class="container-fluid">
 
@@ -35,7 +44,7 @@
                       <form action="/borrarProducto" method="post">
                         @csrf
                         <input type="hidden" name="id" value="{{$producto->id}}">
-                      <a title="eliminar"><button type="submit" class="action-button-delete"><i class="fas fa-trash-alt"></i></button></a>
+                      <a title="eliminar"><button type="submit" class="action-button-delete" onclick="return ConfirmarDelete()"><i class="fas fa-trash-alt"></i></button></a>
                     </form>
                     </td>
                   </tr>

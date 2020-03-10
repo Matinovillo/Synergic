@@ -45,7 +45,9 @@
                   <a href="{{ url('') }}">
                     <i class='fas fa-user mr-2 top-bar-icon'></i>Bienvenido! {{ Auth::user()->email }}
                   </a>
-                  </div>
+                </div>
+                <span> | </span>
+                <div><a href="/admin"><i class="fas fa-cog mr-2 top-bar-icon"></i>Administración</a></div>
                 <span> | </span>
                 
                 

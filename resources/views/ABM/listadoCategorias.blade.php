@@ -21,7 +21,7 @@
         </tr>
       </thead>
       <tbody>
-  
+          
           @foreach ($categorias as $categoria)
             <tr scope="row">
                         <th scope="row">{{$categoria->id}}</th>

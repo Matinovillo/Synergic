@@ -13,6 +13,6 @@ class ContactoController extends Controller
         $cantidad = User::obtenerCantidadProductoCarrito();	
         $categorias = Categoria::whereNull('id_categoria_padre')->with('subcategorias')->get();
 
-        return view('/carrito', compact('cantidad', 'categorias'));
+        return view('contacto', compact('cantidad', 'categorias'));
     }
 }
