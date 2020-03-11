@@ -9,14 +9,15 @@ class CategoriasController extends Controller
 {
     public function listadoCategorias(){
         $categorias = Categoria::all()->sortBy('id_categoria_padre');
+        $categorias = Categoria::paginate(5);
         $vac = compact('categorias');
         return view('ABM.listadoCategorias',$vac);
     }
 
     public function crearCategoriaVista(){
-        $categorias = Categoria::all();
-        $unique = $categorias->unique('id_categoria_padre');
-        $vac = compact('unique');
+        $categorias = Categoria::whereNull('id_categoria_padre')->get();
+        
+        $vac = compact('categorias');
         return view('ABM.crearCategoria',$vac);
       }
 
@@ -42,7 +43,12 @@ class CategoriasController extends Controller
         
         $categoria->nombre = $req['nombre'];
         $categoria->descripcion = $req['descripcion'];
-        $categoria->id_categoria_padre = $req['id_categoria_padre'];
+        if($req['id_categoria_padre'] == '0'){
+          $req['id_categoria_padre'] = null;
+        }else{
+          $categoria->id_categoria_padre = $req['id_categoria_padre'];
+        }
+        
         $categoria->orden = $req['orden'];
         
         $categoria->save();
@@ -53,9 +59,8 @@ class CategoriasController extends Controller
 
         public function editarCategoriaVista($id){
         $categoria = Categoria::find($id);
-        $padre = Categoria::all();
-        $unique = $padre->unique('id_categoria_padre');
-        $vac = compact('unique','categoria');
+        $category = Categoria::whereNull('id_categoria_padre')->get();
+        $vac = compact('category','categoria');
         return view('ABM.editarCategoria',$vac);
     }
 
@@ -65,7 +70,11 @@ class CategoriasController extends Controller
   
         $categoria->nombre = $request['nombre'];
         $categoria->descripcion = $request['descripcion'];
-        $categoria->id_categoria_padre = $request['id_categoria_padre'];
+        if($request['id_categoria_padre'] == '0'){
+          $categoria->id_categoria_padre = null;
+        }else{
+          $categoria->id_categoria_padre = $request['id_categoria_padre'];
+        }
         $categoria->orden= $request['orden'];
        
         $categoria->save();
