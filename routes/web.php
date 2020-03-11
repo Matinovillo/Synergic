@@ -60,3 +60,8 @@ route::post('admin/editarCategoria/{id}','CategoriasController@editarCategoria')
 
 //borrar categoria
 route::post('/borrarCategoria', 'CategoriasController@borrarCategoria');
+
+
+route::get('admin/listadoPedidos',function(){
+    return view('ABM.listadoPedidos');
+});
