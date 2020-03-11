@@ -1,29 +1,14 @@
-@include('layouts.configTop')
-@include('layouts.adminHeader')
+@extends('ABM.crudLayout')
 
-<script>
-  function ConfirmarDelete(){
-    var respuesta = confirm('¿Estas seguro que deseas eliminar este producto');
-    if(respuesta == true){
-      return true;
-    }else{
-      return false;
-    }
-  }
-</script>
+@section('productos', 'active')
+@section('title', 'Productos')
+@section('dashboard', 'Productos')
 
-
+@section('content')
 <section class="admin-table-sec my-2">
   <div class="container-fluid">
-
-
   <div class="row">
     <div class="col-xl-12">
-  <h2 class="text-center">Listado de productos</h2>
-    
-    
-
-
     <table class="table shadow">
       <thead class="adm-th bg-dark">
         <tr>
@@ -69,4 +54,15 @@
   </div>
 </section>
 
-@include('layouts.configBot')
+<script>
+  function ConfirmarDelete(){
+    var respuesta = confirm('¿Estas seguro que deseas eliminar este producto');
+    if(respuesta == true){
+      return true;
+    }else{
+      return false;
+    }
+  }
+</script>
+
+@endsection

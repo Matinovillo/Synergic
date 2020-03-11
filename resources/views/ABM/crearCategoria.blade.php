@@ -1,16 +1,19 @@
-@include('layouts.configTop')
-@include('layouts.adminHeader')
+@extends('ABM.crudLayout')
 
+@section('categorias', 'active')
+@section('title', 'Admin Page')
+@section('dashboard', 'Crear categoria')
+
+@section('content')
 <div class="row justify-content-center my-5">
     <div class="col-10">
-      <h2 class="text-muted">Crear Categoria</h2>
       <form method="post">
         @csrf
         <div class="row">
           <div class="col-6">
             <div class="form-group">
               <label>Nombre:</label>
-              <input type="text" class="form-control" value="" name="nombre">
+              <input type="text" class="form-control" value="{{old('nombre')}}" name="nombre">
               @error('nombre')
                 <small class="text-danger">{{$message}}</small>
               @enderror
@@ -19,7 +22,7 @@
           <div class="col-6">
             <div class="form-group">
               <label>Descripcion:</label>
-              <input type="text" class="form-control" value="" name="descripcion">
+            <input type="text" class="form-control" value="{{old('descripcion')}}" name="descripcion">
               @error('descripcion')
                 <small class="text-danger">{{$message}}</small>
               @enderror
@@ -30,9 +33,10 @@
               <label>Categoria:</label>
               <select class="form-control" name="id_categoria_padre">
                 <option value="">Elegí una Categoria</option>
-                @foreach ($unique as $padre)
-              <option value="{{$padre->id}}">{{$padre->nombre}}</option>
+                @foreach ($categorias as $padre)
+                    <option value="{{$padre->id}}">{{$padre->nombre}}</option>
                 @endforeach
+              <option value="0">Categoria padre</option>
               </select>
               @error('id_categoria_padre')
                 <small class="text-danger">{{$message}}</small>
@@ -43,7 +47,7 @@
           <div class="col-6">
             <div class="form-group">
               <label>Orden:</label>
-              <input type="text" class="form-control" name="orden" value="">
+              <input type="text" class="form-control" name="orden" value="{{old('orden')}}">
               @error('nombre')
                 <small class="text-danger">{{$message}}</small>
               @enderror
@@ -58,7 +62,7 @@
     </div>
   </div>
   
-  @include('layouts.configBot')
+  @endsection
   
   
   

@@ -1,23 +1,22 @@
-@include('layouts.configTop')
-@include('layouts.adminHeader')
-<script>
-  function ConfirmarDelete(){
-    var respuesta = confirm('¿Estas seguro que deseas eliminar esta categoria?');
-    if(respuesta == true){
-      return true;
-    }else{
-      return false;
-    }
-  }
-</script>
+@extends('ABM.crudLayout')
+
+@section('categorias', 'active')
+@section('title', 'Admin Page')
+@section('dashboard', 'Categorias')
+
+@section('content')
+  
+
 <section class="admin-table-sec my-2">
     <div class="container-fluid">
-  
-  
     <div class="row">
       <div class="col-xl-12">
-    <h2 class="text-center text-muted">Listado de Categorias</h2>
-  
+      
+    <div class="col-xl-12 my-2 p-0">
+    <a href="crearCategoria"> <button type="button" class="btn btn-outline-dark btn"><i class="fas fa-plus mr-2"></i>Crear Categoria</button></a>
+    <a href="restoreCategoria.php"> <button type="button" class="btn btn-outline-dark btn"><i class="fas fa-plus mr-2"></i>Restaurar Categoria</button></a>
+    </div>
+
     <table class="table shadow">
       <thead class="adm-th bg-dark">
         <tr>
@@ -32,12 +31,15 @@
       <tbody>
   
           @foreach ($categorias as $categoria)
-            
             <tr scope="row">
+          
                         <th scope="row">{{$categoria->id}}</th>
                         <td>{{$categoria->nombre}}</td>
                         <td>{{$categoria->descripcion}}</td>
-                        <td>{{$categoria->padre->nombre}}</td>
+                        <td>@foreach ($categoria->padre()->get() as $test)
+                            {{$test->nombre}}
+                            @endforeach
+                        </td>
                         <td>{{$categoria->orden}}</td>
               <td class="d-flex">
                 <a title="editar" href="/admin/editarCategoria/{{$categoria->id}}"><button class="action-button-edit mr-2"><i class="fas fa-pen"></i></button></a>
@@ -52,14 +54,23 @@
   
       </tbody>
     </table>
+    {{ $categorias->links() }}
     </div>
-    <div class="col-xl-12">
-    <a href="crearCategoria"> <button type="button" class="btn btn-outline-dark btn"><i class="fas fa-plus mr-2"></i>Crear Categoria</button></a>
-    <a href="restoreCategoria.php"> <button type="button" class="btn btn-outline-dark btn"><i class="fas fa-plus mr-2"></i>Restaurar Categoria</button></a>
-    </div>
+    
   
     </div>
     </div>
   </section>
 
-  @include('layouts.configBot')
+  <script>
+    function ConfirmarDelete(){
+      var respuesta = confirm('¿Estas seguro que deseas eliminar esta categoria?');
+      if(respuesta == true){
+        return true;
+      }else{
+        return false;
+      }
+    }
+  </script>
+
+@endsection

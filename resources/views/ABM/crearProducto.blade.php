@@ -1,10 +1,12 @@
-@include('layouts.configTop')
-@include('ABM.admin')
+@extends('ABM.crudLayout')
 
+@section('productos', 'active')
+@section('title', 'Admin Page')
+@section('dashboard', 'Crear Producto')
+
+@section('content')
 <div class="row justify-content-center my-5">
     <div class="col-10">
-      <h2>Crear Producto</h2>
-  
       <form method="post" action="">
         @csrf
         <div class="row">
@@ -73,5 +75,5 @@
       </form>
     </div>
   </div>
+@endsection
 
-@include('layouts.configBot')

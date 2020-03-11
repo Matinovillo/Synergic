@@ -1,17 +1,18 @@
-@include('layouts.configTop')
-@include('ABM.admin')
+@extends('ABM.crudLayout')
+
+@section('usuarios', 'active')
+@section('title', 'Admin Page')
+@section('dashboard', 'Usuarios')
+
+@section('content')
+  
 
 <section class="admin-table-sec my-2">
   <div class="container-fluid">
-
-
   <div class="row">
     <div class="col-xl-12">
-  <h2 class="text-center">Listado de usuarios</h2>
 
- 
-
-  <table class="table shadow">
+  <table class="table">
     <thead class="adm-th bg-dark">
       <tr>
         <th scope="col">ID</th>
@@ -41,8 +42,8 @@
                     <td>{{$usuario->id_sexo}}</td>
                     {{-- <td>{{$usuario->foto->nombre}}</td> --}}
                     <td>{{$usuario->id_domicilio}}</td>
-            <td>
-              <a title="editar" href=""><button class="action-button-edit"><i class="fas fa-pen"></i></button></a>
+            <td class="d-flex">
+              <a title="editar" class="mr-2" href=""><button class="action-button-edit"><i class="fas fa-pen"></i></button></a>
               <a title="eliminar" href=""><button class="action-button-delete"><i class="fas fa-trash-alt"></i></button></a>
             </td>
           </tr>
@@ -56,4 +57,4 @@
   </div>
 </section>
 
-@include('layouts.configBot')
+@endsection

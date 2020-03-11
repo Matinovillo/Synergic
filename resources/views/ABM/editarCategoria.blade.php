@@ -1,6 +1,10 @@
-@include('layouts.configTop')
-@include('layouts.adminHeader')
+@extends('ABM.crudLayout')
 
+@section('categorias', 'active')
+@section('title', 'Admin Page')
+@section('dashboard', 'Editar Categoria')
+
+@section('content')
 <div class="row justify-content-center my-5">
     <div class="col-10">
       <h2 class="text-muted">Editar Categoria</h2>
@@ -24,9 +28,10 @@
               <label>Categoria:</label>
               <select class="form-control" name="id_categoria_padre">
                 <option value="">Elegí una Categoria</option>
-                @foreach ($unique as $padre)
-              <option value="{{$padre->id}}">{{$padre->nombre}}</option>
-                @endforeach
+                @foreach ($category as $padre)
+                <option value="{{$padre->id}}">{{$padre->nombre}}</option>
+               @endforeach
+          <option value="0">Categoria padre</option>
               </select>
             </div>
           </div>
@@ -46,7 +51,7 @@
     </div>
   </div>
   
-  @include('layouts.configBot')
+  @endsection
   
   
   
