@@ -44,7 +44,11 @@
                     <td>{{$usuario->id_domicilio}}</td>
             <td class="d-flex">
               <a title="editar" class="mr-2" href=""><button class="action-button-edit"><i class="fas fa-pen"></i></button></a>
-              <a title="eliminar" href=""><button class="action-button-delete"><i class="fas fa-trash-alt"></i></button></a>
+              <form action="/borrarUsuario" method="post">
+                @csrf
+                <input type="hidden" name="id" value="{{$usuario->id}}">
+              <a title="eliminar"><button type="submit" class="action-button-delete" onclick="return ConfirmarDelete()"><i class="fas fa-trash-alt"></i></button></a>
+            </form>
             </td>
           </tr>
         @endforeach
@@ -52,9 +56,20 @@
     </tbody>
   </table>
   </div>
-
   </div>
   </div>
 </section>
+
+
+<script>
+  function ConfirmarDelete(){
+    var respuesta = confirm('¿Estas seguro que deseas eliminar este usuario?');
+    if(respuesta == true){
+      return true;
+    }else{
+      return false;
+    }
+  }
+</script>
 
 @endsection
