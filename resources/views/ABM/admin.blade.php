@@ -1,3 +1,9 @@
-@include('layouts.configTop')
-@include('layouts.adminHeader')
-@include('layouts.configBot')
+@extends('ABM.crudLayout')
+
+@section('inicio', 'active')
+@section('title', 'Admin Page')
+@section('dashboard', 'inicio')
+
+@section('content')
+
+@endsection
