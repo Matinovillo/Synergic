@@ -5,23 +5,24 @@
 @section('dashboard', 'Crear categoria')
 
 @section('content')
-<div class="row justify-content-center my-5">
+<div class="form-back  my-5">
+  <div class="row justify-content-center">
     <div class="col-10">
       <form method="post">
         @csrf
         <div class="row">
-          <div class="col-6">
+          <div class="col-12">
             <div class="form-group">
-              <label>Nombre:</label>
+              <label class="text-muted h6">Nombre:</label>
               <input type="text" class="form-control" value="{{old('nombre')}}" name="nombre">
               @error('nombre')
                 <small class="text-danger">{{$message}}</small>
               @enderror
             </div>
           </div>
-          <div class="col-6">
+          <div class="col-12">
             <div class="form-group">
-              <label>Descripcion:</label>
+              <label class="text-muted h6">Descripcion:</label>
             <input type="text" class="form-control" value="{{old('descripcion')}}" name="descripcion">
               @error('descripcion')
                 <small class="text-danger">{{$message}}</small>
@@ -30,7 +31,7 @@
           </div>
           <div class="col-6">
             <div class="form-group">
-              <label>Categoria:</label>
+              <label class="text-muted h6">Categoria:</label>
               <select class="form-control" name="id_categoria_padre">
                 <option value="">Elegí una Categoria</option>
                 @foreach ($categorias as $padre)
@@ -46,7 +47,7 @@
 
           <div class="col-6">
             <div class="form-group">
-              <label>Orden:</label>
+              <label class="text-muted h6">Orden:</label>
               <input type="text" class="form-control" name="orden" value="{{old('orden')}}">
               @error('nombre')
                 <small class="text-danger">{{$message}}</small>
@@ -61,6 +62,7 @@
       </form>
     </div>
   </div>
+</div>
   
   @endsection
   

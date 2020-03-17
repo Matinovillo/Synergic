@@ -40,6 +40,8 @@ route::get('admin/editarProducto/{id}','productosController@editarProductoVista'
 route::post('admin/editarProducto/{id}','productosController@editarProducto');
 //borrar producto
 route::post('/borrarProducto', 'productosController@borrarProducto');
+//borrar imagen de producto
+route::post('/borrarImagen','productosController@borrarImagenDeProducto');
 
 //listado de usuarios
 route::get('admin/listadoUsuarios', 'UserController@listadoUsuarios');

@@ -5,18 +5,46 @@
 @section('dashboard', 'Categorias')
 
 @section('content')
-  
+
+<div class="container-fluid">
+  <div class="row">
+   <div class="col-12">
+      <div class="list-head my-2">
+          <div class="row">
+            <div class="col-3 d-flex">
+            <form action="" method="GET">
+                <div class="form-group d-flex">
+                  <select class="form-control" name="orderBy" onchange="javascript:handleSelect(this)">
+                    <option value="">Ordenar por:</option>
+                    <option value="orderBy=id">Id</option>
+                    <option value="orderBy=nombre">Nombre</option>
+                    <option value="orderBy=padre">Categoria padre</option>
+                    <option value="orderBy=orden">Orden</option>
+                  </select>
+                </div>
+            </form>
+              
+            </div>
+            <div class="col-3">
+
+            </div>
+            <div class="col-6">
+              <form method="GET" class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" name="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Search</button>
+              </form>
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 <section class="admin-table-sec my-2">
     <div class="container-fluid">
     <div class="row">
       <div class="col-xl-12">
-      
-    <div class="col-xl-12 my-2 p-0">
-    <a href="crearCategoria"> <button type="button" class="btn btn-outline-dark btn"><i class="fas fa-plus mr-2"></i>Crear Categoria</button></a>
-    <a href="restoreCategoria.php"> <button type="button" class="btn btn-outline-dark btn"><i class="fas fa-plus mr-2"></i>Restaurar Categoria</button></a>
-    </div>
-
+    <div class="table-wrapper-scroll-y my-custom-scrollbar">
     <table class="table shadow">
       <thead class="adm-th bg-dark">
         <tr>
@@ -32,12 +60,12 @@
   
           @foreach ($categorias as $categoria)
             <tr scope="row">
-          
+              
                         <th scope="row">{{$categoria->id}}</th>
                         <td>{{$categoria->nombre}}</td>
                         <td>{{$categoria->descripcion}}</td>
-                        <td>@foreach ($categoria->padre()->get() as $test)
-                            {{$test->nombre}}
+                        <td>@foreach ($categoria->padre()->get() as $padre)
+                            {{$padre->nombre}}
                             @endforeach
                         </td>
                         <td>{{$categoria->orden}}</td>
@@ -54,6 +82,7 @@
   
       </tbody>
     </table>
+    </div>
     {{ $categorias->links() }}
     </div>
     
@@ -73,4 +102,14 @@
     }
   </script>
 
+  <script type="text/javascript">
+  function handleSelect(elem)
+  {
+  window.location = "?"+elem.value;
+  }
+  </script>
+
 @endsection
+
+  
+  

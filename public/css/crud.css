@@ -14,7 +14,36 @@ https://bootstrapious.com/p/admin-template
 *     GENERAL STYLES
 * ==========================================================
 */
+@import url(https://fonts.googleapis.com/css?family=Nunito);
 
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+html {
+	font-family: sans-serif;
+	line-height: 1.15;
+	-webkit-text-size-adjust: 100%;
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  }
+
+body {
+		margin: 0;
+		font-family: "Nunito", sans-serif;
+		font-size: 0.9rem;
+		font-weight: 400;
+		line-height: 1.6;
+		color: #212529;
+		text-align: left;
+		background-color: #f0f0f0;
+}
+
+
+a {
+	text-decoration: none;
+}
 
 a,
 i,
@@ -97,7 +126,8 @@ span {
 
 .adm-th{
 	background-color:#232F3F;
-	color: white;
+  color: white;
+  position:sticky;
 }
 
 /********************************************
@@ -124,7 +154,8 @@ adminpage2
 }
 
 header.page-header {
-  padding: 20px 0;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 table {
@@ -236,24 +267,12 @@ nav.side-navbar a {
   font-size: 0.9em;
 }
 
-nav.side-navbar a[data-toggle="collapse"]::before {
-  content: '\f104';
-  display: inline-block;
-  -webkit-transform: translateY(-50%);
-  transform: translateY(-50%);
-  font-family: 'FontAwesome';
-  position: absolute;
-  top: 50%;
-  right: 20px;
-}
 
 nav.side-navbar a[aria-expanded="true"] {
   background: #EEF5F9;
 }
 
-nav.side-navbar a[aria-expanded="true"]::before {
-  content: '\f107';
-}
+
 
 nav.side-navbar a i {
   font-size: 1.2em;
@@ -488,8 +507,6 @@ nav.side-navbar.shrinked .sidebar-header .title {
 */
 nav.navbar {
   background: #2f333e;
-  padding-top: 15px;
-  padding-bottom: 15px;
   color: #fff;
   position: relative;
   border-radius: 0;
@@ -922,4 +939,42 @@ section.dashboard-counts div[class*='col-']:last-of-type .item {
   section.dashboard-header div[class*='col-'] {
     margin-bottom: 20px;
   }
+}
+
+.product-img img{
+  width: 200px;
+  height: 200px;
+  
+}
+
+.product-img .btn-img-delete{
+  position: relative;
+  right: 34px;
+  bottom: 83px;
+}
+
+.form-back{
+  background-color: #fff;
+  width: 60%;
+  margin: auto;
+  border-radius: 5px;
+  padding: 15px;
+  
+}
+.content{
+  background-color: #f0f0f0;
+}
+
+.list-head{
+  background-color: #fff;
+  border-radius: 5px;
+  padding: 15px;
+  height: 60px;
+}
+
+
+.img-cont{
+  overflow: hidden;
+  width: 90%;
+  margin: auto;
 }

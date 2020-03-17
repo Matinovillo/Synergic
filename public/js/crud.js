@@ -39,7 +39,50 @@ $(document).ready(function () {
             $('.navbar-header .brand-small').show();
         }
     });
-
-  
   
 });
+
+// // ------------------------------------------------------- //
+//     // Ajax crear producto
+//     // ------------------------------------------------------ //
+//     function mostrarMensaje(mensaje){
+//         $("#divmensaje").empty(); //limpiar 
+//         $("#divmensaje").append("<p>"+mensaje+"</p>");
+//         $("#divmensaje").show(500);
+//         $("#divmensaje").hide(5000);
+//     };   
+
+
+//     $.ajaxSetup({
+//         headers:{
+//             'X-CSRF-TOKEN': $("meta[name='csrf-token]").attr('content'),
+//         }
+//     });
+
+//     $(".btnenviar").click(function(e){
+//         e.preventDefault();
+//         var nombre = $('input[name=nombre]').val();
+//         var descripcion = $('input[name=descripcion]').val();
+//         var precio = $('input[name=precio]').val();
+//         var stock = $('input[name=stock]').val();
+//         var id_categoria = $('select[name=id_categoria]').val();
+//         var imagen = $('input[name=imagen]').val();
+
+//         $.ajax({
+//             type: "POST",
+//             url: "{{route('crearProducto')}}",
+//             data: {
+//                 nombre:nombre,
+//                 descripcion:descripcion,
+//                 precio:precio,
+//                 stock:stock,
+//                 id_categoria:id_categoria,
+//                 imagen:imagen
+//             },
+//             success:function(data){
+//                 mostrarMensaje(data.mensaje);
+//                 limpiarCampos();
+//             }
+//         })
+
+//     });

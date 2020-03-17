@@ -8,8 +8,24 @@ use App\Categoria;
 class CategoriasController extends Controller
 {
     public function listadoCategorias(){
-        $categorias = Categoria::all()->sortBy('id_categoria_padre');
-        $categorias = Categoria::paginate(5);
+        $categorias = Categoria::all();
+        if(isset($_GET['orderBy'])){
+          if($_GET['orderBy']=="id"){
+            $categorias = Categoria::orderBy('id','asc')->paginate(5);
+            $categorias->withPath('?orderBy='.$_GET['orderBy']);
+          }else if($_GET['orderBy']=="nombre"){
+            $categorias = Categoria::orderBy('nombre','asc')->paginate(5);
+            $categorias->withPath('?orderBy='.$_GET['orderBy']);
+          }else if($_GET['orderBy']=="padre"){
+            $categorias = Categoria::orderBy('id_categoria_padre','asc')->paginate(5);
+            $categorias->withPath('?orderBy='.$_GET['orderBy']);
+          }else if($_GET['orderBy']=="orden"){
+            $categorias = Categoria::orderBy('orden','asc')->paginate(5);
+            $categorias->withPath('?orderBy='.$_GET['orderBy']);
+          }
+        }else{
+          $categorias = Categoria::paginate(5);
+        }
         $vac = compact('categorias');
         return view('ABM.listadoCategorias',$vac);
     }
