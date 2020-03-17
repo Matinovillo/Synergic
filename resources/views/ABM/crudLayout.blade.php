@@ -100,7 +100,7 @@
         </div>
     </div>
 
-     {{-- jquery --}}y
+     {{-- jquery --}}
     
     <!-- bootstrap -->
     <script

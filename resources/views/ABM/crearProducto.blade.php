@@ -85,8 +85,9 @@
               @enderror
             </div>
           </div>
-          <div class="col-12 text-center">
-            <button type="submit" name="editUser" class="btn btn-primary">GUARDAR</button>
+          <div class="col-12">
+            <button type="submit" name="editUser" class="btn btn-primary"><i class="fas fa-save mr-2"></i>Guardar</button>
+            <a href="/admin/listadoProductos"><button type="button" class="btn btn-danger"><i class="fas fa-ban mr-2"></i>Volver</button></a> 
           </div>
         </div>
       </form>
