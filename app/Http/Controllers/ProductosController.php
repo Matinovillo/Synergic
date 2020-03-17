@@ -85,7 +85,7 @@ class ProductosController extends Controller
               }
             
 
-            return redirect("/admin/crearProducto")->with('success', 'El producto se creo con exito!');
+            return redirect("/admin/crearProducto")->with('success', 'Producto añadido con exito');
           }
 
         public function editarProductoVista($id){
