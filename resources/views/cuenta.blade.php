@@ -37,25 +37,53 @@
           <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
             <h2 class="text-muted p-2">Mis datos</h2>
             <div class="row p-4">
-              <div class="col-xl-6">
-                <h5 class="text-muted">Nombre</h5>
-              <p class="h6">{{auth()->user()->nombre}}</p>
+              <div class="col-xl-4">
+                <h5 class="text-muted">•Nombre</h5>
+              <p class="h6">
+                {{auth()->user()->nombre}}
+              </p>
               </div>
-              <div class="col-xl-6">
-                <h5 class="text-muted">Apellido</h5>
+              <div class="col-xl-4">
+                <h5 class="text-muted">•Apellido</h5>
                 <p class="h6">{{auth()->user()->apellido}}</p>
+              </div>
+              <div class="col-xl-4">
+                <h5 class="text-muted">•Fecha de nacimiento</h5>
+                <p class="h6">{{auth()->user()->fecha_nacimiento}}</p>
               </div>
             </div>
             <div class="row mt-4 p-4">
-              <div class="col-xl-6">
-                <h5 class="text-muted">Email</h5>
+              <div class="col-xl-4">
+                <h5 class="text-muted">•Email</h5>
                 <p class="h6">{{auth()->user()->email}}</p>
               </div>
-              <div class="col-xl-6">
-                <h5 class="text-muted">Domicilio</h5>
-                <p class="h6">{{auth()->user()->domicilio}}</p>
-              </div>
             </div>
+            <div class="row mt-4 p-4">
+              <div class="col-xl-4">
+                <h5 class="text-muted">•Calle</h5>
+                @if(isset($domicilio))
+              <p class="h6">{{$domicilio->calle}} {{$domicilio->numero}}</p>
+                @else
+                <p class="h6 text-muted">Falta completar dato</p>
+                @endif
+              </div>
+              <div class="col-xl-4">
+                <h5 class="text-muted">Barrio</h5>
+                @if(isset($domicilio))
+                <p class="h6">B° {{$domicilio->barrio}}</p>
+                @else
+                <p class="h6 text-muted">Falta completar dato</p>
+                @endif
+              </div>
+              <div class="col-xl-4">
+                <h5 class="text-muted">•Provincia</h5>
+                @if(isset($domicilio->provincia))
+              <p class="h6">{{$domicilio->provincia->nombre}}</p>
+              @else
+                <p class="h6 text-muted">Falta completar dato</p>
+                @endif
+              </div>
+          </div>
           </div>
 {{-- PRODUCTOS FAVORITOS --}}
           <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
@@ -95,44 +123,57 @@
                   </div>
                 </div>
                 {{--  --}}
+                <div class="col-md-4 mb-3">
+                  <label for="" class="text-muted">Fecha de nacimiento</label>
+                  <input type="date" class="form-control" id="" value="{{auth()->user()->fecha_nacimiento}}" required name="fecha_nacimiento">
+                </div>
               </div>
               {{--  --}}
               <div class="form-row">
                 <div class="col-md-6 mb-3">
-                  <label for="" class="text-muted">Domicilio</label>
-                  <input type="text" class="form-control" id="" placeholder="domicilio" >
+                  <label for="" class="text-muted">Calle</label>
+                <input type="text" class="form-control" id="" placeholder="Calle" name="calle" value="@if($domicilio){{$domicilio->calle}}@endif">
                 </div>
                 {{--  --}}
                 <div class="col-md-3 mb-3">
-                  <label for="" class="text-muted">Ciudad</label>
-                  <input type="text" class="form-control" id="" placeholder="Ciudad">
+                  <label for="" class="text-muted">Numero</label>
+                  <input type="text" class="form-control" id="" placeholder="Numero" name="numero" value="@if($domicilio){{$domicilio->numero}}@endif">
                 </div>
                 {{--  --}}
                 <div class="col-md-3 mb-3">
                   <label for="" class="text-muted">Barrio</label>
-                  <input type="text" class="form-control" id="" placeholder="Barrio">
+                  <input type="text" class="form-control" id="" placeholder="Barrio" name="barrio" value="@if($domicilio){{$domicilio->barrio}}@endif">
                 </div>
+                 {{-- ------------------------------- --}}
+              </div>
                 {{--  --}}
-                <div class="col-md-3 mb-3">
-                  <div class="form-group">
-                    <label for="" class="text-muted">Sexo</label>
-                    <select class="form-control" id="">
-                      <option>1</option>
-                      <option>2</option>
-                      <option>3</option>
-                      <option>4</option>
-                      <option>5</option>
-                    </select>
+                <div class="form-row">
+                  <div class="col-md-3 mb-3">
+                    <label for="" class="text-muted">Codigo postal</label>
+                    <input type="text" class="form-control" id="" placeholder="Barrio" name="codigo_postal" value="@if($domicilio){{$domicilio->codigo_postal}}@endif">
+                  </div>
+                  {{--  --}}
+                  <div class="col-md-3 mb-3">
+                    <div class="form-group">
+                      <label for="" class="text-muted">Provincia</label>
+                      <select class="form-control" id="" placeholder="Pronvincia" name="id_provincia">
+                        <option value="">provincia</option>
+                           @foreach ($provincias as $provincia)
+                               <option value="{{$provincia->id}}">{{$provincia->nombre}}</option>
+                            @endforeach
+                      </select>
+                      </div>
+                  </div>
+                  <div class="col-md-6 mb-6">
+                    <div class="form-group ml-5">
+                      <label for="avatar" class="text-muted">Avatar</label>
+                      <input type="file" name="avatar" class="form-control-file" id="avatar">
                     </div>
+                  </div>
                 </div>
-                {{--  --}}
-                <div class="col-md-6 mb-6">
-                <div class="form-group ml-5">
-                  <label for="avatar" class="text-muted">Avatar</label>
-                  <input type="file" name="avatar" class="form-control-file" id="avatar">
-                </div>
-              </div>
-              </div>
+               
+              
+              
               <button class="btn btn-outline-info" type="submit">Guardar</button>
             </form>
           </div>
