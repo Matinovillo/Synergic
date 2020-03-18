@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Fotos;
 use App\Producto;
+use App\Domicilio;
+use App\Provincia;
 class UserController extends Controller
 {
     
@@ -14,7 +16,10 @@ class UserController extends Controller
     public function cuenta(){
         $producto = Producto::find(8);
         $foto = User::find(auth()->user()->id)->foto;
-        $vac = compact('foto','producto');
+        $domicilio = User::find(auth()->user()->id)->domicilio;
+        $provincias = Provincia::all();
+        
+        $vac = compact('foto','producto','domicilio','provincias');
         return view('/cuenta', $vac);
         
     }
@@ -22,12 +27,46 @@ class UserController extends Controller
     public function modificarDatos(Request $req){
         $user = new User();
         $user = User::find(auth()->user()->id);
-
         $user->nombre = $req['nombre'];
         $user->apellido = $req['apellido'];
         $user->email = $req['email'];
-        $user->save();
+        $user->fecha_nacimiento = $req['fecha_nacimiento'];
+        
+       
+        
+        $domicilio = User::find(auth()->user()->id)->domicilio;
+        if($domicilio == null){
+            $domicilio = new Domicilio();
+            $domicilio->calle = $req['calle'];
+            $domicilio->barrio = $req['barrio'];
+            $domicilio->numero = $req['numero'];
+            $domicilio->codigo_postal = $req['codigo_postal'];
+            $domicilio->id_provincia = $req['id_provincia'];
 
+            $domicilios = Domicilio::all();
+            if(count($domicilios)==0){
+                $domicilio->save();
+                $domicilios = Domicilio::all();
+                $domicilios = $domicilios->last();
+                $domiciliosId = $domicilios->id;
+                $user->id_domicilio = $domiciliosId;
+
+            }else{
+                $domicilios = $domicilios->last();
+                $domiciliosId = $domicilios->id+1;
+                $user->id_domicilio = $domiciliosId;
+                $domicilio->save();
+            }
+           
+        }else{
+            $domicilio->calle = $req['calle'];
+            $domicilio->barrio = $req['barrio'];
+            $domicilio->numero = $req['numero'];
+            $domicilio->codigo_postal = $req['codigo_postal'];
+            $domicilio->id_provincia = $req['id_provincia'];
+            $domicilio->save();
+        }
+        $user->save();
         return redirect('/cuenta');
     }
 
