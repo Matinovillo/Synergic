@@ -34,12 +34,12 @@ route::get('/admin', function(){
 route::get('admin/listadoProductos', 'productosController@listadoProductos');
 //agregar producto
 route::get('admin/crearProducto','productosController@crearProductoVista');
-route::post('admin/crearProducto','productosController@crearProducto');
+route::post('admin/crearProducto','productosController@crearProducto')->name("producto.crear");
 //editar producto
 route::get('admin/editarProducto/{id}','productosController@editarProductoVista');
 route::post('admin/editarProducto/{id}','productosController@editarProducto');
 //borrar producto
-route::post('/borrarProducto', 'productosController@borrarProducto');
+route::post('/borrarProducto/{id}', 'productosController@borrarProducto')->name("producto-delete");
 //borrar imagen de producto
 route::post('/borrarImagen','productosController@borrarImagenDeProducto');
 
@@ -57,7 +57,7 @@ route::post('admin/crearCategoria','CategoriasController@crearCategoria');
 route::get('admin/editarCategoria/{id}','CategoriasController@editarCategoriaVista');
 route::post('admin/editarCategoria/{id}','CategoriasController@editarCategoria');
 //borrar categoria
-route::post('/borrarCategoria', 'CategoriasController@borrarCategoria');
+route::post('/borrarCategoria/{id}', 'CategoriasController@borrarCategoria');
 
 //listado Pedidos
 route::get('admin/listadoPedidos',function(){
