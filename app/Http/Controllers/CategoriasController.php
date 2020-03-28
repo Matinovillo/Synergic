@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Categoria;
+use Illuminate\Support\Facades\DB;
+
 
 class CategoriasController extends Controller
 {
@@ -78,7 +80,7 @@ class CategoriasController extends Controller
         $category = Categoria::whereNull('id_categoria_padre')->get();
         $vac = compact('category','categoria');
         return view('ABM.editarCategoria',$vac);
-    }
+      }
 
         public function editarCategoria(Request $request,$id){
         $categoria = new Categoria();
@@ -97,10 +99,18 @@ class CategoriasController extends Controller
         return redirect("admin/listadoCategorias");
       }
 
-      public function borrarCategoria(Request $request){
-        $id = $request['id'];
+
+      public function borrarCategoria($id){
+       
         $categoria = Categoria::find($id);
         $categoria->delete();
-        return redirect('admin/listadoCategorias');
+        return response()->json([
+          'message' => 'Data deleted successfully!'
+        ]);
+      }
+
+      public function listadoapi(){
+        $categorias = Categoria::all();
+        return json_encode($categorias);
       }
 }

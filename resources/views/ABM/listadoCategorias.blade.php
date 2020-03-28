@@ -1,5 +1,7 @@
 @extends('ABM.crudLayout')
-
+@section('token')
+<meta name="csrf-token" content="{{ csrf_token() }}">
+@endsection
 @section('categorias', 'active')
 @section('title', 'Admin Page')
 @section('dashboard', 'Categorias')
@@ -40,6 +42,28 @@
   </div>
 </div>
 
+@if (session('success'))
+<div class="col-sm-12">
+ <div class="alert  alert-success alert-dismissible fade show" role="alert">
+     {{ session('success') }}
+         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+             <span aria-hidden="true">&times;</span>
+         </button>
+   </div>
+</div>
+@endif
+
+@if (session('error'))
+<div class="col-sm-12">
+ <div class="alert  alert-danger alert-dismissible fade show" role="alert">
+     {{ session('error') }}
+         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+             <span aria-hidden="true">&times;</span>
+         </button>
+   </div>
+</div>
+@endif
+
 <section class="admin-table-sec my-2">
     <div class="container-fluid">
     <div class="row">
@@ -71,11 +95,14 @@
                         <td>{{$categoria->orden}}</td>
               <td class="d-flex">
                 <a title="editar" href="/admin/editarCategoria/{{$categoria->id}}"><button class="action-button-edit mr-2"><i class="fas fa-pen"></i></button></a>
-                <form action="/borrarCategoria" method="post">
+                {{-- <form action="/borrarCategoria" method="post">
                   @csrf
                   <input type="hidden" name="id" value="{{$categoria->id}}">
                 <a title="eliminar"><button type="submit" class="action-button-delete" onclick="return ConfirmarDelete()"><i class="fas fa-trash-alt" ></i></button></a>
-              </form>
+              </form> --}}
+              <a href="/borrarCategoria/{{$categoria->id}}" id="deleteCategoria" data-id="{{ $categoria->id }}" class="delete-categoria">
+                <button class="categoria-delete action-button-delete"><i class="fas fa-trash-alt"></i></button>
+              </a>
               </td>
             </tr>
           @endforeach

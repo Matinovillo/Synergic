@@ -67,7 +67,17 @@
             <div class="form-group">
               <label>Categoria:</label>
               <select class="form-control" name="id_categoria">
-              <option value="{{$producto->categoria->id}}">{{$producto->categoria->nombre}}</option>
+                
+                @if($producto->id_categoria != null)
+                  <option value="{{$producto->categoria->id}}">{{$producto->categoria->nombre}}</option>
+                @else
+                  @if(count($categorias) == 0)
+                    <option value="">No hay categorias</option>
+                  @else
+                  <option value="">Elegi una categoria</option>
+                  @endif
+                @endif
+
                 @foreach ($categorias as $categoria)
                   <option value="{{$categoria->id}}">{{$categoria->nombre}}</option>
                 @endforeach
@@ -84,7 +94,8 @@
             </div>
           </div>
           <div class="col-12 text-center">
-            <button type="submit" class="btn btn-primary">GUARDAR</button>
+            <button type="submit" class="btn btn-primary"><i class="fas fa-save mr-2"></i>Guardar</button>
+            <a href="/admin/listadoProductos" class="btn btn-danger"><i class="fas fa-ban mr-2"></i>Volver</a>
           </div>
         </div>
       </form>
