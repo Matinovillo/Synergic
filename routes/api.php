@@ -13,6 +13,10 @@ use Illuminate\Http\Request;
 |
 */
 
+Route::get("/categorias", "CategoriasController@listadoapi");
+
+Route::get("/productos", "ProductosController@listadoapi");
+
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
