@@ -1,7 +1,7 @@
-@include('layouts.configTop')
+@extends('layouts.main')
 
-
-
+@section('contenido')
+  
 <div class="page">
     <div class="contenido-login">
       <div class="envolver-login">
@@ -89,4 +89,4 @@
     </div>
   </div>
 
-  @include('layouts.configBot')
+  @endsection
