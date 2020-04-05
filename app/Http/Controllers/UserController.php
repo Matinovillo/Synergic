@@ -14,13 +14,18 @@ class UserController extends Controller
     
     //User profile methods
     public function cuenta(){
-        $producto = Producto::find(8);
-        $foto = User::find(auth()->user()->id)->foto;
-        $domicilio = User::find(auth()->user()->id)->domicilio;
-        $provincias = Provincia::all();
-        
-        $vac = compact('foto','producto','domicilio','provincias');
-        return view('/cuenta', $vac);
+        if(auth()->user() != null){
+            $producto = Producto::find(8);
+            $foto = User::find(auth()->user()->id)->foto;
+            $domicilio = User::find(auth()->user()->id)->domicilio;
+            $provincias = Provincia::all();
+            
+            $vac = compact('foto','producto','domicilio','provincias');
+            return view('/cuenta', $vac);
+        }else{
+            return view('/cuenta');
+        }
+       
         
     }
 
