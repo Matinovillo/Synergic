@@ -277,7 +277,7 @@ header .header-row{
 }
 
 
-/*  1.5 Product slider   */
+/*  1.5 Productos de muestra   */
 .prdcts-slider{
 	background-color:  rgba(238, 238, 238, 0.541);
 }
@@ -625,6 +625,113 @@ a{
 	cursor: pointer;
 }
 
+.producto-imagen-link{
+	max-width: 200px;
+	max-height: 200px;
+	margin: auto;
+	padding: 25px;
+}
+
+#sidebar {
+width: 100%;
+color: #0e8ce4;
+-webkit-transition: all 0.3s;
+-o-transition: all 0.3s;
+transition: all 0.3s;
+position: relative;
+z-index: 0;
+border-left: 1px solid rgba(0, 0, 0, 0.05); 
+}
+#sidebar ul li {
+	font-size: 16px; 
+}
+#sidebar ul li > ul {
+margin-left: 10px; 
+}
+#sidebar ul li > ul li {
+font-size: 13px; 
+}
+#sidebar ul li > ul li a {
+border-bottom: 1px solid rgba(0, 0, 0, 0.05); 
+}
+#sidebar ul li > ul li a span {
+ color: #0e8ce4; 
+}
+#sidebar ul li a {
+  padding: 10px 0;
+  display: block;
+  color: black;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05); 
+}
+@media (max-width: 767.98px) {
+ 	#sidebar {
+	width: 100%;
+	} 
+}
+#sidebar .custom-menu {
+	display: inline-block;
+	position: absolute;
+	top: 20px;
+	right: 0;
+	margin-right: -20px;
+	-webkit-transition: 0.3s;
+	-o-transition: 0.3s;
+	transition: 0.3s; 
+}
+@media (prefers-reduced-motion: reduce) {
+#sidebar .custom-menu {
+	-webkit-transition: none;
+	-o-transition: none;
+	transition: none;
+ } 
+}
+ #sidebar .custom-menu .btn {
+	width: 60px;
+	height: 60px;
+	border-radius: 50%;
+	position: relative; }
+#sidebar .custom-menu .btn i {
+	margin-right: -40px;
+	font-size: 14px; }
+#sidebar .custom-menu .btn.btn-primary {
+	background: transparent;
+	border-color: transparent; }
+ #sidebar .custom-menu .btn.btn-primary:after {
+	z-index: -1;
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	content: '';
+	-webkit-transform: rotate(45deg);
+	-ms-transform: rotate(45deg);
+	transform: rotate(45deg);
+	background: #fc7fb2;
+	border-radius: 10px; 
+}
+ #sidebar .custom-menu .btn.btn-primary:hover, #sidebar .custom-menu .btn.btn-primary:focus {
+ 	background: transparent !important;
+	 border-color: transparent !important;
+ }
+  
+  a[data-toggle="collapse"] {
+	position: relative; 
+}
+  
+  .dropdown-toggle::after {
+	display: block;
+	position: absolute;
+	top: 50%;
+	right: 0;
+	-webkit-transform: translateY(-50%);
+	-ms-transform: translateY(-50%);
+	transform: translateY(-50%); 
+}
+  
+.card:hover{
+	box-shadow: 0 .5rem 1rem rgba(14, 140, 228,.25)!important;
+}
 /*****************************
 3.0 Contact page
 *****************************/
