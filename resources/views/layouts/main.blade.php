@@ -20,11 +20,9 @@
 
   <title>Synergic || Tienda tecno</title>
 </head>
-<body>
-  
-  
+<body> 
    <!-- Top Bar -->
-  <div class="top_bar">
+   <div class="top_bar">
     <div class="container-fluid">
       <div class="row">
         <div class="col-xl-12 d-flex ">
@@ -36,8 +34,6 @@
             <i class="fas fa-envelope top-bar-icon"></i>
             <a href="Synergic@gmail.com">Synergic@gmail.com</a>
           </div>
-          
-          
           <div class="top_bar_content ml-auto">
             @if (Route::has('login'))
             <div class="top_bar_user">
@@ -48,9 +44,6 @@
                 </a>
                 </div>
               <span> | </span>
-              
-              
-              
               <div>
                 <a href="{{ route('logout') }}"
                    onclick="event.preventDefault();
@@ -62,9 +55,6 @@
                     @csrf
                 </form>
             </div>
-             
-            
-            
             @else
               <a href="{{ route('login') }}"><i class='fas fa-user mr-2 top-bar-icon'></i>Ingresar</a>
               <span> | </span>
@@ -74,20 +64,12 @@
               @endauth
           </div>
         @endif
-            
-         
-         
-         
-         
-         
           </div>
         </div>
       </div>
     </div>
   </div>
   <!-- /Top Bar -->
-
-
   <!-- header -->
   <header>
     <div class="container">
@@ -108,7 +90,7 @@
             <div class="up-item">
               <div class="shopping-card">
                 <span>0</span>
-                <a href="shop cart.php">
+                <a href="carrito">
                   <i class="fas fa-shopping-cart"></i>
                   Carrito de compras
                 </a>
@@ -127,22 +109,19 @@
       </div>
   </header>
   <!--/Header-->
-
-
   <!--Nav Menu-->
   <nav class="menu" id="menu">
     <div class="contenedor contenedor-botones-menu">
       <button id="btn-menu-barras" class="btn-menu-barras"><i class="fas fa-bars"></i></button>
       <button id="btn-menu-cerrar" class="btn-menu-cerrar"><i class="fas fa-times"></i></button>
     </div>
-
     <div class="contenedor contenedor-enlaces-nav">
       <div class="btn-departamentos" id="btn-departamentos">
         <p id="cat-title">Todas las <span>Categorias</span></p>
         <i class="fas fa-caret-down"></i>
       </div>
-
       <div class="enlaces">
+        <a href="/productos">Productos</a>
         <a href="/">Home</a>
         <a href="contact.php">Contacto</a>
         {{-- si el usuario loguea se muestra cuenta --}}
@@ -151,7 +130,6 @@
           <a href="/cuenta">Cuenta</a>
           @endauth
         @else
-        
         @endif
         <a href="F.a.q.php">F.A.Q</a>
       </div>
@@ -162,176 +140,24 @@
         <div class="categorias">
           <button class="btn-regresar"><i class="fas fa-arrow-left"></i> Regresar</button>
           <h3 class="subtitulo">Categorias</h3>
-
-          <a href="productos.php" data-categoria="componentes-de-pc">Componentes de PC<i class="fas fa-angle-right"></i></a>
-          <a href="#" data-categoria="pc-de-escritorio">PC de escritorio <i class="fas fa-angle-right"></i></a>
-          <a href="#" data-categoria="notebooks">Notebooks <i class="fas fa-angle-right"></i></a>
-          <a href="#" data-categoria="monitores">Monitores <i class="fas fa-angle-right"></i></a>
-          <a href="#" data-categoria="perifericos">Perifericos <i class="fas fa-angle-right"></i></a>
+          <a href="/productos">Todos los productos<i class="fas fa-angle-right"></i></a>
+          @foreach($categorias as $categoria)
+                
+                <a data-categoria="{{$categoria->id}}">{{$categoria->nombre}}<i class="fas fa-angle-right"></i></a>
+          @endforeach
         </div>
-
         <div class="contenedor-subcategorias">
-          <div class="subcategoria " data-categoria="componentes-de-pc">
+          @foreach($categorias as $categoria)
+          <div class="subcategoria " data-categoria="{{$categoria->id}}">
             <div class="enlaces-subcategoria">
-              <button class="btn-regresar"><i class="fas fa-arrow-left"></i>Regresar</button>
-              <h3 class="subtitulo">Componentes de PC</h3>
-              <a href="#">Procesadores</a>
-              <a href="#">Motherboards</a>
-              <a href="#">Memoria RAM</a>
-              <a href="#">Placas de video</a>
-              <a href="#">Hard Disk</a>
+              <!--<button class="btn-regresar"><i class="fas fa-arrow-left"></i>Regresar</button>-->
+              <h3 class="subtitulo">{{$categoria->nombre}}</h3>
+                  @foreach ($categoria->hijas as $subCategoria)
+                      <a href="{{route('productosPorCategoria', $subCategoria->nombre)}}">{{$subCategoria->nombre }}</a>
+                  @endforeach
             </div>
-
-            <div class="banner-subcategoria">
-              <a href="#">
-                <img src="https://via.placeholder.com/300x300" alt="">
-              </a>
-            </div>
-
-            <div class="galeria-subcategoria">
-              <a href="#">
-                <img src="https://via.placeholder.com/300x300" alt="">
-              </a>
-              <a href="#">
-                <img src="https://via.placeholder.com/300x300" alt="">
-              </a>
-              <a href="#">
-                <img src="https://via.placeholder.com/300x300" alt="">
-              </a>
-              <a href="#">
-                <img src="https://via.placeholder.com/300x300" alt="">
-              </a>
-            </div>
-          </div>
-
-
-          <div class="subcategoria" data-categoria="pc-de-escritorio">
-            <div class="enlaces-subcategoria">
-              <button class="btn-regresar"><i class="fas fa-arrow-left"></i>Regresar</button>
-              <h3 class="subtitulo">PC de escritorio</h3>
-              <a href="#">AMD</a>
-              <a href="#">INTEL</a>
-            </div>
-
-            <div class="banner-subcategoria">
-              <a href="#">
-                <img src="https://via.placeholder.com/300x300" alt="">
-              </a>
-            </div>
-
-            <div class="galeria-subcategoria">
-              <a href="#">
-                <img src="https://via.placeholder.com/300x300" alt="">
-              </a>
-              <a href="#">
-                <img src="https://via.placeholder.com/300x300" alt="">
-              </a>
-              <a href="#">
-                <img src="https://via.placeholder.com/300x300" alt="">
-              </a>
-              <a href="#">
-                <img src="https://via.placeholder.com/300x300" alt="">
-              </a>
-            </div>
-          </div>
-
-          <div class="subcategoria" data-categoria="notebooks">
-            <div class="enlaces-subcategoria">
-              <button class="btn-regresar"><i class="fas fa-arrow-left"></i>Regresar</button>
-              <h3 class="subtitulo">Notebooks</h3>
-              <a href="#">Acer</a>
-              <a href="#">Lenovo</a>
-              <a href="#">Asus</a>
-              <a href="#">HP</a>
-            </div>
-
-            <div class="banner-subcategoria">
-              <a href="#">
-                <img src="https://via.placeholder.com/300x300" alt="">
-              </a>
-            </div>
-
-            <div class="galeria-subcategoria">
-              <a href="#">
-                <img src="https://via.placeholder.com/300x300" alt="">
-              </a>
-              <a href="#">
-                <img src="https://via.placeholder.com/300x300" alt="">
-              </a>
-              <a href="#">
-                <img src="https://via.placeholder.com/300x300" alt="">
-              </a>
-              <a href="#">
-                <img src="https://via.placeholder.com/300x300" alt="">
-              </a>
-            </div>
-          </div>
-
-
-          <div class="subcategoria" data-categoria="monitores">
-            <div class="enlaces-subcategoria">
-              <button class="btn-regresar"><i class="fas fa-arrow-left"></i>Regresar</button>
-              <h3 class="subtitulo">Monitores</h3>
-              <a href="#">Acer</a>
-              <a href="#">LG</a>
-              <a href="#">Samsung</a>
-              <a href="#">Philips</a>
-            </div>
-
-            <div class="banner-subcategoria">
-              <a href="#">
-                <img src="https://via.placeholder.com/300x300" alt="">
-              </a>
-            </div>
-
-            <div class="galeria-subcategoria">
-              <a href="#">
-                <img src="https://via.placeholder.com/300x300" alt="">
-              </a>
-              <a href="#">
-                <img src="https://via.placeholder.com/300x300" alt="">
-              </a>
-              <a href="#">
-                <img src="https://via.placeholder.com/300x300" alt="">
-              </a>
-              <a href="#">
-                <img src="https://via.placeholder.com/300x300" alt="">
-              </a>
-            </div>
-          </div>
-
-          <div class="subcategoria" data-categoria="perifericos">
-            <div class="enlaces-subcategoria">
-              <button class="btn-regresar"><i class="fas fa-arrow-left"></i>Regresar</button>
-              <h3 class="subtitulo">Perifericos</h3>
-              <a href="#">Teclados</a>
-              <a href="#">Mouses</a>
-              <a href="#">Auriculares</a>
-              <a href="#">Microfonos</a>
-              <a href="#">Webcam</a>
-            </div>
-
-            <div class="banner-subcategoria">
-              <a href="#">
-                <img src="https://via.placeholder.com/300x300" alt="">
-              </a>
-            </div>
-
-            <div class="galeria-subcategoria">
-              <a href="#">
-                <img src="https://via.placeholder.com/300x300" alt="">
-              </a>
-              <a href="#">
-                <img src="https://via.placeholder.com/300x300" alt="">
-              </a>
-              <a href="#">
-                <img src="https://via.placeholder.com/300x300" alt="">
-              </a>
-              <a href="#">
-                <img src="https://via.placeholder.com/300x300" alt="">
-              </a>
-            </div>
-          </div>
+           </div>
+          @endforeach
         </div>
       </div>
     </div>

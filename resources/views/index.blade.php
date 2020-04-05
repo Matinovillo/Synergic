@@ -1,6 +1,8 @@
 @extends('layouts.main')
 @section('contenido')
     
+   
+
   <section class="carousel-sec">
     <div class="bd-example">
       <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
@@ -131,7 +133,7 @@
               {{-- 1ra seccion --}}
                       <div class="item carousel-item active">
                           <div class="row">
-                  @for($i=0 ; $i<4 ; $i++)
+                            @for($i=0 ; $i<4 ; $i++)
                               <div class="col-sm-3">
                                   <div class="thumb-wrapper ">
                                       <span class="wish-icon"><i class="far fa-heart"></i></span>
