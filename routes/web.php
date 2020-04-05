@@ -11,25 +11,27 @@
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
 
 Auth::routes();
 
-//Route::get('/home', 'HomeController@index')->name('home');
-
+//pagina principal
+Route::get('/','IndexController@indexView');
+//carrito
+Route::get('carrito','CarritoController@view');
+//cuenta
 Route::get('cuenta', 'UserController@cuenta');
 Route::post('cuenta', 'UserController@modificarDatos');
+//productos
+Route::get('productos','IndexController@productosVista')->name('todosLosProductos');
+Route::get('productos/{nombre}','IndexController@productosPorCategoria')->name('productosPorCategoria');
 
+Route::get('producto/{nombre}','IndexController@productoDetail')->name('productoDetail');
 
 //ABM
 
 route::get('/admin', function(){
     return view('ABM.admin');
 });
-
-
 //listado de productos
 route::get('admin/listadoProductos', 'productosController@listadoProductos');
 //agregar producto
