@@ -9,22 +9,29 @@ use App\Fotos;
 use App\Producto;
 use App\Domicilio;
 use App\Provincia;
+use App\Favoritos;
 class UserController extends Controller
 {
     
     //User profile methods
     public function cuenta(){
         if(auth()->user() != null){
-            $producto = Producto::find(8);
             $foto = User::find(auth()->user()->id)->foto;
             $domicilio = User::find(auth()->user()->id)->domicilio;
             $provincias = Provincia::all();
+
+            $idProd = array();
+            $favoritos = Favoritos::where('id_usuario',auth()->id())->get();
+            foreach($favoritos as $fav){
+                array_push($idProd, $fav->id_producto);
+            }
+            $favs = Producto::whereIn('id',$idProd)->get();
             
-            $vac = compact('foto','producto','domicilio','provincias');
+            $vac = compact('foto','domicilio','provincias','favs');
             return view('/cuenta', $vac);
-        }else{
+            }else{
             return view('/cuenta');
-        }
+            }
        
         
     }
