@@ -12,7 +12,10 @@
 
   <!-- Font Awesome icons CSS-->
   <link rel="stylesheet" href="/fonts/css webfont/all.min.css">
-
+ 
+  {{-- owlcarousel --}}
+  <link rel="stylesheet" href="/owl/owl.carousel.min.css">
+  <link rel="stylesheet" href="/owl/owl.theme.default.min.css">
   <!-- Secciones CSS-->
   <link rel="stylesheet" href="/css/styles.css">
   <link rel="stylesheet" href="/css/login.css">
@@ -89,8 +92,8 @@
           <div class="user-panel">
             <div class="up-item">
               <div class="shopping-card">
-                <span>0</span>
-                <a href="carrito">
+              <span>{{Cart::getContent()->count()}}</span>
+                <a href="{{route('cart')}}">
                   <i class="fas fa-shopping-cart"></i>
                   Carrito de compras
                 </a>
@@ -270,12 +273,17 @@
 <!--/Footer-->
 
 
+  <script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
 
+  {{-- owlcarousel --}}
+  <script src="/owl/owl.carousel.min.js"></script>
+  <!-- sweet alert -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 
   <!-- bootstrap -->
-  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-  integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
-  crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
   integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
   crossorigin="anonymous"></script>

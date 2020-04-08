@@ -7,18 +7,18 @@
         <div class="col-lg-8 contentProductShopping col-cont">
           <form name="cart_quantity" method="post">
             <div class="title_section_summary text-center" style="margin-bottom: 40px">
-              {{$producto[0]->nombre}}
+              {{$producto->nombre}}
             </div>
             <div class="row">
               <div class="col-sm-3 contenido-centrado-imgs">
 
-                @foreach ($producto as $product )
-                @foreach ($product->fotos as $foto)
+              
+                @foreach ($producto->fotos as $foto)
                    <div class="contentImageShoppingImgs">
                        <img src="/storage/{{$foto->nombre}}" width="100" height="100">
                    </div>
                 @endforeach
-               @endforeach
+            
                 
               </div>
 
@@ -29,8 +29,8 @@
 
                   <div class="carousel-inner">
 
-                    @foreach ($producto as $product)
-                     @foreach ($product->fotos as $posicion => $foto)
+                
+                     @foreach ($producto->fotos as $posicion => $foto)
                         @if($posicion == 0)
                         <div class="carousel-item active">
                             <img src="/storage/{{$foto->nombre}}" width="100" height="100">
@@ -42,7 +42,7 @@
                         @endif
                         
                      @endforeach
-                    @endforeach
+                  
             
                   </div>
 
@@ -63,7 +63,7 @@
         <div class="col-lg-4 content_cart_order_totals col-cont">
           <div class="contentTotals">
             <div class="text-center order-total-out-price text-primary">
-              ${{$producto[0]->precio}}
+              ${{$producto->precio}}
             </div>
             <div class="padding-col quote-col modal-col" style="padding-right: 0">
               <div class="modal-container" href="_metodosPagoMP.php?price=26990&amp;hide_comodities_button=true"
@@ -106,7 +106,7 @@
               <div class="">
 
                 <div class="theme-text">
-                  <div class="title">Disponibilidad: En stock: {{$producto[0]->stock}}</div>
+                  <div class="title">Disponibilidad: En stock: {{$producto->stock}}</div>
 
                   <div class="title">Modelo: loremipsum</div>
                 </div>
@@ -114,13 +114,25 @@
             </div>
 
             <!-- ------------------------------------------------------------------------ -->
-            <div class="buttonAction text-center action-shopping-cart">
-              <a id="tdb1" href="#">
-                <span class="btn ">
-                  Comprar
-                </span>
-              </a>
-            </div>
+            @if (Route::has('login'))
+              @auth
+                <div class="buttonAction text-center action-shopping-cart">
+                  <a id="tdb1" href="{{route('cart.add', $producto->id)}}">
+                    <span class="btn">
+                      Añadir al carrito
+                    </span>
+                  </a>
+                </div>
+            @else
+              <div class="buttonAction text-center action-shopping-cart">
+                <a id="tdb1" class="addtocart" href="{{route('cart.add', $producto->id)}}">
+                  <span class="btn">
+                    Añadir al carrito
+                  </span>
+                </a>
+              </div>
+            @endauth
+          @endif
           </div>
         </div>
       </div>
@@ -134,7 +146,7 @@
       <h3>Descripcion</h3>
 
       <div class="row">
-        <p>{{$producto[0]->descripcion}}</p>
+        <p>{{$producto->descripcion}}</p>
       </div>
       <div class="row">
 

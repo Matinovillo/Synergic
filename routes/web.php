@@ -16,8 +16,27 @@ Auth::routes();
 
 //pagina principal
 Route::get('/','IndexController@indexView');
+
+
+
 //carrito
-Route::get('carrito','CarritoController@view');
+Route::get('/carrito','CarritoController@view')->name('cart')->middleware('auth');
+
+Route::get('/add-to-cart/{product}','CarritoController@add')->name('cart.add')->middleware('auth');
+Route::get('cart/destroy/{product}','CarritoController@destroy')->name('cart.destroy')->middleware('auth');
+Route::get('cart/update/{product}','CarritoController@update')->name('cart.update')->middleware('auth');
+Route::get('cart/clear','CarritoController@clear')->name('cart.clear')->middleware('auth');
+
+
+//favortios
+Route::get('/add-to-favorito/{product}','FavoritosController@add')->name('favorito.add')->middleware('auth');
+Route::get('favorito/destroy/{product}','FavoritosController@destroy')->name('favorito.destroy')->middleware('auth');
+
+
+
+
+
+
 //cuenta
 Route::get('cuenta', 'UserController@cuenta');
 Route::post('cuenta', 'UserController@modificarDatos');

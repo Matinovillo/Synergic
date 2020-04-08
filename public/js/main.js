@@ -85,3 +85,42 @@ btnCerrarMenu.addEventListener('click', (e)=> {
 	});
 	document.querySelector('body').style.overflow = 'visible';
 });
+
+
+
+	$(".addtocart").click(function (e) {
+		e.preventDefault()
+		Swal.fire({
+	title: '<strong>Hola usuario!</strong>',
+			icon: 'info',
+			html:
+			  'Para realizar una compra debes ' +
+			  '<a href="/login">Ingresar!</a> '+
+			  'Si no tenes una cuenta registrate <a href="/register">Aca!</a> ',
+			showCloseButton: true,
+			showCancelButton: true,
+			focusConfirm: false,
+		  })
+	});
+
+
+$('.owl-carousel').owlCarousel({
+	loop:false,
+	nav:true,
+	dots:false,
+	navText : ["<i class='fas fa-angle-double-left'></i>","<i class='fas fa-angle-double-right'></i>"],
+	
+	slideBy: '1',
+	// center: false,
+    responsive:{
+        0:{
+            items:1
+        },
+        600:{
+            items:3
+        },
+        1000:{
+            items:4
+        }
+    }
+})

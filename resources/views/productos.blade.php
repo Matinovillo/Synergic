@@ -81,13 +81,13 @@
         
         </div>
         <div class="row">
-          <!-- -----item 1------ -->
+          <!-- -----item------ -->
           @foreach ($productos as $producto )
           <div class="col-xl-4 col-lg-4 col-md-6 mb-4">
             <div class="card h-100 sm-shadow">
             <a href="{{route('productoDetail', str_replace(" ", "+", $producto->nombre))}}" class="producto-imagen-link">
                     <img class="card-img-top" src="/storage/{{$producto->fotos[0]->nombre}}"alt="">
-                </a>
+            </a>
                 
                 <div class="card-body">
                   <h4 class="card-title">
@@ -100,7 +100,7 @@
               </div>
           </div>
           @endforeach
-
+          <!-- -----/item------ -->
         </div>
         <div class="row">
           <div class="col-12">

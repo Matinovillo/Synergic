@@ -23,7 +23,7 @@ class productoRequest extends FormRequest
     public function rules()
     {
         return [
-            'nombre' => 'required|min:10|max:255|string',
+            'nombre' => 'required|min:10|max:255|string|unique:App\Producto,nombre',
             'descripcion' =>'required|string',
             'precio' =>'required|numeric',
             'stock' =>'required|numeric',
@@ -35,6 +35,7 @@ class productoRequest extends FormRequest
     public function messages()
     {
         return [
+            'nombre.unique' => 'El producto ingresado ya existe!',
             'required' => 'El campo :attribute no puede estar vacio',
             'string' => 'El campo :attribute debe ser de tipo texto',
             'min' => 'El campo :attribute debe tener un minimo de :min caracteres',

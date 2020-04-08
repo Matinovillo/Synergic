@@ -49,29 +49,29 @@
   
   <!--cards-->
   <section class="card-section">
-    <div class="cards">
+    <div class="info-cards">
       <div class="container">
         <div class="row">
   
         <!-- Char. Item -->
         <div class="col-lg-3 col-md-6 char_col">
           
-          <div class="cards-item d-flex flex-row align-items-center justify-content-start">
-            <div class="cards-icon"><img src="../img/char_1.png" alt=""></div>
-            <div class="cards-content">
-              <div class="cards-title">Envios Gratis</div>
-              <div class="cards-subtitle">En productos seleccionados</div>
+          <div class="info-cards-item d-flex flex-row align-items-center justify-content-start">
+            <div class="info-cards-icon"><img src="../img/char_1.png" alt=""></div>
+            <div class="info-cards-content">
+              <div class="info-cards-title">Envios Gratis</div>
+              <div class="info-cards-subtitle">En productos seleccionados</div>
             </div>
           </div>
         </div>
         <!-- Char. Item -->
         <div class="col-lg-3 col-md-6 char_col">
           
-          <div class="cards-item d-flex flex-row align-items-center justify-content-start">
-            <div class="cards-icon"><img src="../img/char_2.png" alt=""></div>
-            <div class="cards-content">
-              <div class="cards-title">Devoluciones</div>
-              <div class="cards-subtitle">No dudes en consultar!</div>
+          <div class="info-cards-item d-flex flex-row align-items-center justify-content-start">
+            <div class="info-cards-icon"><img src="../img/char_2.png" alt=""></div>
+            <div class="info-cards-content">
+              <div class="info-cards-title">Devoluciones</div>
+              <div class="info-cards-subtitle">No dudes en consultar!</div>
             </div>
           </div>
         </div>
@@ -79,22 +79,22 @@
         <!-- Char. Item -->
         <div class="col-lg-3 col-md-6 char_col">
           
-          <div class="cards-item d-flex flex-row align-items-center justify-content-start">
-            <div class="cards-icon"><img src="../img/char_3.png" alt=""></div>
-            <div class="cards-content">
-              <div class="cards-title">Formas de pago</div>
-              <div class="cards-subtitle">Recibimos todas las tarjetas</div>
+          <div class="info-cards-item d-flex flex-row align-items-center justify-content-start">
+            <div class="info-cards-icon"><img src="../img/char_3.png" alt=""></div>
+            <div class="info-cards-content">
+              <div class="info-cards-title">Formas de pago</div>
+              <div class="info-cards-subtitle">Recibimos todas las tarjetas</div>
             </div>
           </div>
         </div>
         <!-- Char. Item -->
         <div class="col-lg-3 col-md-6 char_col">
           
-          <div class="cards-item d-flex flex-row align-items-center justify-content-start">
-            <div class="cards-icon"><img src="../img/contact_3.png" alt=""></div>
-            <div class="cards-content">
-              <div class="cards-title">Visita nuestra tienda</div>
-              <div class="cards-subtitle">1481 lorem, Córdoba, Arg</div>
+          <div class="info-cards-item d-flex flex-row align-items-center justify-content-start">
+            <div class="info-cards-icon"><img src="../img/contact_3.png" alt=""></div>
+            <div class="info-cards-content">
+              <div class="info-cards-title">Visita nuestra tienda</div>
+              <div class="info-cards-subtitle">1481 lorem, Córdoba, Arg</div>
             </div>
           </div>
         </div>
@@ -102,107 +102,47 @@
     </div>
     </div>
   </section>
-  <!--cards-->
-  <!--Banner-->
-<div class="banner1">
-  <div class="container">
-  <div class="row">
-      <div class="col-lg-12">
-      <h2>Productos destacados</h2>
-      </div>
-  </div>
-  </div>
-</div>
-<!--/Banner-->
 
-<!--Productos-->
-<section class="prdcts-slider">
   
-      <div class="container">
-          <div class="row">
-              <div class="col-md-12">
-                  <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="0">
-                  <!-- Carousel indicators -->
-                  <ol class="carousel-indicators">
-                      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-                      <li data-target="#myCarousel" data-slide-to="1"></li>
-                      <li data-target="#myCarousel" data-slide-to="2"></li>
-                  </ol>   
-                  <!-- Wrapper for carousel items -->
-                  <div class="carousel-inner">
-              {{-- 1ra seccion --}}
-                      <div class="item carousel-item active">
-                          <div class="row">
-                            @for($i=0 ; $i<4 ; $i++)
-                              <div class="col-sm-3">
-                                  <div class="thumb-wrapper ">
-                                      <span class="wish-icon"><i class="far fa-heart"></i></span>
-                                      <div class="img-box">
-                                          <img src="/img/pc.png" class="img-responsive img-fluid" alt="">									
-                                      </div>
-                                      <div class="thumb-content">
-                                          <h4>Apple iPad</h4>									
-                                          <p class="item-price">Precio: <b>$369.00</b></p>
-                                          <a href="#" class="btn btn-primary">Add to Cart</a>
-                                      </div>						
-                                  </div>
-                              </div>
-                              @endfor	
-                          </div>
-                   </div>
-              
-              {{-- 2da seccion --}}
-                      <div class="item carousel-item">
-                          <div class="row">
-                  @for($i=0 ; $i<4 ; $i++)
-                              <div class="col-sm-3">
-                                  <div class="thumb-wrapper ">
-                                      <span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-                                      <div class="img-box">
-                                          <img src="/img/pc.png" class="img-responsive img-fluid" alt="">									
-                                      </div>
-                                      <div class="thumb-content">
-                                          <h4>Apple iPad</h4>									
-                                          <p class="item-price">Precio: <b>$369.00</b></p>
-                                          <a href="#" class="btn btn-primary">Add to Cart</a>
-                                      </div>						
-                                  </div>
-                              </div>
-                              @endfor	
-                          </div>
+<div class="container">
+<section class="prdct-slider">
+  <div class="row">
+    <div class="col-xl-12 col-sm-12">
+      <div class="owl-carousel owl-theme">
+         @foreach ($notebooks as $notebook)   
+          <div class="cards">
+            <div class="card-slider card--1">
+              <div class="card__img">
+      
               </div>
-          
-              {{-- 3ra seccion --}}
-                  <div class="item carousel-item">
-                          <div class="row">
-                  @for($i=0 ; $i<4 ; $i++)
-                              <div class="col-sm-3">
-                                  <div class="thumb-wrapper ">
-                                      <span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-                                      <div class="img-box">
-                                          <img src="/img/pc.png" class="img-responsive img-fluid" alt="">									
-                                      </div>
-                                      <div class="thumb-content">
-                                          <h4>Apple iPad</h4>									
-                                          <p class="item-price">Precio: <b>$369.00</b></p>
-                                          <a href="#" class="btn btn-primary">Add to Cart</a>
-                                      </div>						
-                                  </div>
-                              </div>
-                              @endfor	
-                          </div>
-                      </div>
-                  </div>
-                  <!-- Carousel controls -->
-                  <a class="carousel-control left carousel-control-prev" href="#myCarousel" data-slide="prev">
-                      <i class="fa fa-angle-left"></i>
-                  </a>
-                  <a class="carousel-control right carousel-control-next" href="#myCarousel" data-slide="next">
-                      <i class="fa fa-angle-right"></i>
-                  </a>
+              <div class="card__img--hover">
+                <a href="{{route('productoDetail', str_replace(" ", "+", $notebook->nombre))}}" class="producto-imagen-link">
+                  <img class="card-img-top" src="/storage/{{$notebook->fotos->first()->nombre}}" alt="">
+                </a>
+              </div>     
+              <div class="card__info">
+                <p class="card__title  text-center">
+                  <a href="{{route('productoDetail', str_replace(" ", "+", $notebook->nombre))}}">
+                    {{substr($notebook->nombre,0,60)}}...
+                 </a>
+                </p>
+                Precio: <span class="card__category text-success">${{$notebook->precio}}</span>
+                @if (Route::has('login'))
+                 @auth
+                  <span class="card__category"><a href="{{route('cart.add', $notebook->id)}}" class="card__author text-success" title="author"><i class="fas fa-cart-plus"></i></a></span>
+                  <span class="card__category"><a href="{{route('favorito.add', $notebook->id)}}" class="card__author text-muted mx-2" title="author"><i class="fas fa-heart"></i></a></span>
+                @else
+                  <span class="card__category"><a href="{{route('cart.add', $notebook->id)}}" class="card__author addtocart" title="author"><i class="fas fa-cart-plus"></i></a></span>
+                  <span class="card__category"><a href="{{route('favorito.add', $notebook->id)}}" class="card__author mx-2 addtocart" title="author"><i class="fas fa-heart"></i></a></span>
+                 @endauth
+                @endif
               </div>
-              </div>
-          </div>
+            </div>
+          </div> 
+        @endforeach
       </div>
+    </div>
+  </div>
 </section>
-@endsection
+</div>
+@endsection 

@@ -87,8 +87,37 @@
          </div>
          </div>
 {{-- PRODUCTOS FAVORITOS --}}
-         <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
-           
+        <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+          <div class="row">
+          
+          @foreach ($favs as $productos) 
+          <div class="col-4"> 
+          <div class="cards">
+            <div class="card-slider card--1">
+              <div class="card__img">
+      
+              </div>
+              <div class="card__img--hover">
+                <a href="{{route('productoDetail', str_replace(" ", "+", $productos->nombre))}}" class="producto-imagen-link">
+                  <img class="card-img-top" src="/storage/{{$productos->fotos->first()->nombre}}" alt="">
+                </a>
+              </div>     
+              <div class="card__info">
+                <p class="card__title  text-center">
+                  <a href="{{route('productoDetail', str_replace(" ", "+", $productos->nombre))}}">
+                    {{substr($productos->nombre,0,20)}}...
+                 </a>
+                </p>
+                Precio: <span class="card__category text-success">${{$productos->precio}}</span>
+                <span class="card__category"><a href="{{route('cart.add', $productos->id)}}" class="card__author" title="author"><i class="fas fa-cart-plus"></i></a></span>
+                <span class="card__category"><a href="{{route('favorito.destroy', $productos->id)}}" class="card__author text-danger" title="author"><i class="fas fa-heart"></i></a></span>
+              </div>
+            </div>
+          </div> 
+        </div> 
+        @endforeach
+
+      </div>
          </div>
 {{-- MIS COMPTRAS --}}
          <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
