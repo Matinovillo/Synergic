@@ -49,7 +49,7 @@
   <div class="container-fluid">
   <div class="row">
     <div class="col-xl-12">
-    <table class="table">
+    <table class="table table-light table-hover">
       <thead class="adm-th bg-dark" id="thead">
         <tr>
           <th scope="col">ID</th>
@@ -62,7 +62,7 @@
           <th scope="col">Acciones</th>
         </tr>
       </thead>
-              <tbody class="align-middle tr-content" id="productos">
+              <tbody class="align-middle tr-content " id="productos">
                 
                 {{-- @forelse($productos as $producto)
                     <tr scope="row">

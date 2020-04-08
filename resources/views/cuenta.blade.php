@@ -90,7 +90,7 @@
         <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
           <div class="row">
           
-          @foreach ($favs as $productos) 
+          @forelse ($favs as $productos) 
           <div class="col-4"> 
           <div class="cards">
             <div class="card-slider card--1">
@@ -115,7 +115,12 @@
             </div>
           </div> 
         </div> 
-        @endforeach
+        @empty
+        <div class="container">
+        <h3 class="text-center text-muted">No tenes productos favoritos! <a href="/productos">Continua navengado!</a></h3>
+        </div>
+        @endforelse
+        
 
       </div>
          </div>

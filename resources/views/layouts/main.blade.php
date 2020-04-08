@@ -42,7 +42,7 @@
             <div class="top_bar_user">
               @auth
               <div>
-                <a href="{{ url('') }}">
+                <a href="{{ url('/cuenta') }}">
                   <i class='fas fa-user mr-2 top-bar-icon'></i>Bienvenido! {{ Auth::user()->email }}
                 </a>
                 </div>
@@ -92,7 +92,8 @@
           <div class="user-panel">
             <div class="up-item">
               <div class="shopping-card">
-              <span>{{Cart::getContent()->count()}}</span>
+            <span>{{\Cart::session(auth()->id())->getContent()->count()}}</span>
+            
                 <a href="{{route('cart')}}">
                   <i class="fas fa-shopping-cart"></i>
                   Carrito de compras
@@ -145,8 +146,7 @@
           <h3 class="subtitulo">Categorias</h3>
           <a href="/productos">Todos los productos<i class="fas fa-angle-right"></i></a>
           @foreach($categorias as $categoria)
-                
-                <a data-categoria="{{$categoria->id}}">{{$categoria->nombre}}<i class="fas fa-angle-right"></i></a>
+                <a href="{{route('productosPorCategoria', str_replace(" ", "+", $categoria->nombre))}}" data-categoria="{{$categoria->id}}">{{$categoria->nombre}}<i class="fas fa-angle-right"></i></a>
           @endforeach
         </div>
         <div class="contenedor-subcategorias">
@@ -156,7 +156,7 @@
               <!--<button class="btn-regresar"><i class="fas fa-arrow-left"></i>Regresar</button>-->
               <h3 class="subtitulo">{{$categoria->nombre}}</h3>
                   @foreach ($categoria->hijas as $subCategoria)
-                      <a href="{{route('productosPorCategoria', $subCategoria->nombre)}}">{{$subCategoria->nombre }}</a>
+                      <a href="{{route('productosPorCategoria', str_replace(" ", "+", $subCategoria->nombre))}}">{{$subCategoria->nombre }}</a>
                   @endforeach
             </div>
            </div>

@@ -30,11 +30,19 @@ class IndexController extends Controller
     
     public function productosPorCategoria($nombre){ 
         $nombre = str_replace("+", " ", $nombre);
-        $categorias = Categoria::where('nombre',$nombre)->get();
-        foreach($categorias as $categoria){
-          $sub = $categoria->id;
+        $subcategoria = Categoria::where('nombre',$nombre)->get()->first();    
+        if($subcategoria->id_categoria_padre == null){
+          $category = Categoria::where('nombre',$subcategoria->nombre)->first();
+          $subcategory = $category->hijas;
+          $all = array($category->id);
+          foreach($subcategory as $sub){
+            array_push($all,$sub->id);
+          }
+          $productos = Producto::whereIn('id_categoria',$all)->paginate(9);
+        }else{
+          $productos = Producto::Where('id_categoria',"=",$subcategoria->id)->paginate(9);
         }
-        $productos = Producto::Where('id_categoria',"=",$sub)->paginate(9);
+      
         return view('productos',compact('productos'));
       }
     

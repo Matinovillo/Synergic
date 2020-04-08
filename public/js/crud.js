@@ -106,67 +106,6 @@ $("#submitBtn").click(function (e) {
 });
 
 
-//         //PAGINACION AJAX
-//     // $(document).on('click','.pagination a', function(e){
-//     //     e.preventDefault();
-//     //     var page = $(this).attr('href').split('page=')[1];
-//     //     getProducts(page);
-//     // })
-
-//     // function getProducts(page){
-//     //     $.ajax({
-//     //         url: "http://localhost:8000/admin/listadoProductos2?page=" + page,
-//     //     }).done(function(data){
-//     //        $('.content').html(data);
-
-//     //     });
-//     // }
-
-
-
-// (function() {
-//     document.querySelector('#multiSelectForm').addEventListener('submit', function (e) {
-//         e.preventDefault();
-//         var nombre = document.querySelector('#inpNombre').value;
-//         var descripcion = document.querySelector('#inpDesc').value;
-//         var precio = document.querySelector('#inpPrecio').value;
-//         var stock = document.querySelector('#inpStock').value;
-//         var id_categoria =  document.querySelector('#inpCategoria').value;
-//         var formData = new FormData();
-//         var imagefile = document.querySelector('#inpImg');
-
-//         formData.append("imagen", imagefile.files[0]);
-//         formData.append("id_categoria", id_categoria);
-//         formData.append("precio", precio);
-//         formData.append("stock", stock);
-//         formData.append("descripcion", descripcion);
-//         formData.append("nombre", nombre);
-//         axios.post(this.action, formData,{
-//             headers: {
-//                 'Content-Type': 'multipart/form-data'
-//               }
-//         })
-//         .then((response) => {
-//             console.log(response.data)
-//             Swal.fire({
-//                 title: 'Exito!',
-//                 text: response.data.sucess,
-//                 icon: 'success',
-//                 confirmButtonText: 'Continuar'
-//             });
-
-//         })
-//         .catch((error) => {
-
-//            console.log(error.response.toString);
-
-//         });
-//     });
-// })();
-
-
-
-
 // ------------------------------------------------------- //
 // Eliminar produto Ajax V.1
 // ------------------------------------------------------ //
@@ -250,8 +189,6 @@ function fetchProducto() {
             });
            
                 $('#productos').html(template);
-               
-
         }
     });
 }
