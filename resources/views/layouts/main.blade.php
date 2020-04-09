@@ -92,8 +92,13 @@
           <div class="user-panel">
             <div class="up-item">
               <div class="shopping-card">
-            <span>{{\Cart::session(auth()->id())->getContent()->count()}}</span>
-            
+                @if (Route::has('login'))
+                  @auth
+                    <span>{{\Cart::session(auth()->id())->getContent()->count()}}</span>
+                  @else
+                    <span>0</span>
+                  @endauth
+                @endif
                 <a href="{{route('cart')}}">
                   <i class="fas fa-shopping-cart"></i>
                   Carrito de compras
