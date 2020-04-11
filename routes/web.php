@@ -28,11 +28,7 @@ Route::get('cart/clear','CarritoController@clear')->name('cart.clear')->middlewa
 Route::get('/add-to-favorito/{product}','FavoritosController@add')->name('favorito.add')->middleware('auth');
 Route::get('favorito/destroy/{product}','FavoritosController@destroy')->name('favorito.destroy')->middleware('auth');
 
-
-
-
-
-
+//admin page
 Route::get('/admin','Admin\AdminController@index')->name('admin.page')->middleware('can:administrar');
 
 Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware('can:administrar')->group(function(){
@@ -44,23 +40,8 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware('can:admi
 Route::post('/borrarImagen','Admin\ProductosController@borrarImagenDeProducto')->name('admin.productos.borrarImg');
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 //cuenta
-Route::get('cuenta', 'CuentaController@cuenta');
+Route::get('cuenta', 'CuentaController@cuenta')->middleware('auth');
 Route::post('cuenta', 'CuentaController@modificarDatos');
 //productos
 Route::get('productos','IndexController@productosVista')->name('todosLosProductos');
