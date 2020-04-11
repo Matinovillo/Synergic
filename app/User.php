@@ -6,6 +6,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use App\Foto;
+use App\Role;
 
 class User extends Authenticatable
 {
@@ -46,6 +47,29 @@ class User extends Authenticatable
     public function domicilio()
     {
         return $this->belongsTo('App\Domicilio', 'id_domicilio');
+    }
+
+    public function roles()
+    {
+        return $this->belongsToMany('App\Role');
+    }
+
+    public function nombre(){
+        return $this->nombre . " " . $this->apellido;  
+    }
+
+    public function hasAnyRole($roles){
+        if($this->roles()->whereIn('nombre', $roles)->first()){
+            return true;
+        }
+            return false;
+    }
+
+    public function hasRole($role){
+        if($this->roles()->where('nombre', $role)->first()){
+            return true;
+        }
+            return false;
     }
     
 }
