@@ -1,4 +1,4 @@
-@extends('ABM.crudLayout')
+@extends('layouts.abm')
 @section('token')
 <meta name="csrf-token" content="{{ csrf_token() }}">
 @endsection
@@ -69,7 +69,7 @@
     <div class="row">
       <div class="col-xl-12">
     <div class="table-wrapper-scroll-y my-custom-scrollbar">
-    <table class="table shadow">
+    <table class="table table-light table-hover">
       <thead class="adm-th bg-dark">
         <tr>
           <th scope="col">ID</th>
@@ -94,12 +94,8 @@
                         </td>
                         <td>{{$categoria->orden}}</td>
               <td class="d-flex">
-                <a title="editar" href="/admin/editarCategoria/{{$categoria->id}}"><button class="action-button-edit mr-2"><i class="fas fa-pen"></i></button></a>
-                {{-- <form action="/borrarCategoria" method="post">
-                  @csrf
-                  <input type="hidden" name="id" value="{{$categoria->id}}">
-                <a title="eliminar"><button type="submit" class="action-button-delete" onclick="return ConfirmarDelete()"><i class="fas fa-trash-alt" ></i></button></a>
-              </form> --}}
+              <a title="editar" class="mr-2" href="{{ route('admin.categorias.edit', $categoria->id) }}"><button class="action-button-edit bg-warning"><i class="fas fa-pen"></i></button></a>
+
               <a href="/borrarCategoria/{{$categoria->id}}" id="deleteCategoria" data-id="{{ $categoria->id }}" class="delete-categoria">
                 <button class="categoria-delete action-button-delete"><i class="fas fa-trash-alt"></i></button>
               </a>

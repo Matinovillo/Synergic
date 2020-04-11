@@ -109,8 +109,16 @@
                  </a>
                 </p>
                 Precio: <span class="card__category text-success">${{$productos->precio}}</span>
-                <span class="card__category"><a href="{{route('cart.add', $productos->id)}}" class="card__author" title="author"><i class="fas fa-cart-plus"></i></a></span>
-                <span class="card__category"><a href="{{route('favorito.destroy', $productos->id)}}" class="card__author text-danger" title="author"><i class="fas fa-heart"></i></a></span>
+                <span class="card__category">
+                  <a href="{{route('cart.add', $productos->id)}}" class="card__author" title="Añadir al carrito">
+                    <i class="fas fa-cart-plus"></i>
+                  </a>
+                </span>
+                <span class="card__category">
+                  <a href="{{route('favorito.destroy', $productos->id)}}" class="card__author text-danger" title="Quitar de favoritos">
+                    <i class="fas fa-heart"></i>
+                  </a>
+                </span>
               </div>
             </div>
           </div> 
@@ -132,8 +140,8 @@
 
 
 {{-- MODIFICAR MIS DATOS --}}
-         <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
-           <h2 class="text-muted p-2">Modificar mis datos</h2>
+        <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
+          <h2 class="text-muted p-2">Modificar mis datos</h2>
            <form class="p-5" method="post">
              @csrf
              {{--  --}}
@@ -206,16 +214,12 @@
                    </div>
                  </div>
                </div>
-              
-             
-             
              <button class="btn btn-outline-info" type="submit">Guardar</button>
            </form>
          </div>
        </div>
 
      </div>
-
  </div>
 </div>
 

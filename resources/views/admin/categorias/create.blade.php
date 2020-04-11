@@ -1,4 +1,4 @@
-@extends('ABM.crudLayout')
+@extends('layouts.abm')
 
 @section('categorias', 'active')
 @section('title', 'Admin Page')
@@ -8,7 +8,7 @@
 <div class="form-back  my-5">
   <div class="row justify-content-center">
     <div class="col-10">
-      <form method="post">
+    <form method="post" action="{{ route('admin.categorias.store') }}">
         @csrf
         <div class="row">
           <div class="col-12">

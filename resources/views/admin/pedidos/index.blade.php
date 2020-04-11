@@ -1,4 +1,4 @@
-@extends('ABM.crudLayout')
+@extends('layouts.abm')
 
 @section('pedidos', 'active')
 @section('title', 'Admin Page')

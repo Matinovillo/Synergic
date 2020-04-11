@@ -1,8 +1,14 @@
-@extends('ABM.crudLayout')
+@extends('layouts.abm')
 @section('token')
 <meta name="csrf-token" content="{{ csrf_token() }}">
 @endsection
-@section('productos', 'active')
+{{-- @section('productos', 'active') --}}
+
+@section('show','show')
+@section('aria', 'true')
+@section('collapsed', 'collapsed')
+@section('listado', 'active')
+
 @section('title', 'Admin Page')
 @section('dashboard', 'Listado de productos')
 
@@ -12,23 +18,6 @@
    <div class="col-12">
       <div class="list-head my-2">
           <div class="row">
-            <div class="col-3 d-flex">
-            <form action="" method="GET">
-                <div class="form-group d-flex">
-                  <select class="form-control" name="orderBy" onchange="javascript:handleSelect(this)">
-                    <option value="">Ordenar por:</option>
-                    <option value="orderBy=id&">Id</option>
-                    <option value="orderBy=nombre&">Nombre</option>
-                    <option value="orderBy=precio&">Precio</option>
-                    <option value="orderBy=categoria&">Categoria</option>
-                  </select>
-                </div>
-            </form>
-              
-            </div>
-            <div class="col-3">
-
-            </div>
             <div class="col-6">
               <form method="GET" class="form-inline my-2 my-lg-0">
                 <input class="form-control mr-sm-2" type="search" name="search" placeholder="Search" aria-label="Search">
@@ -106,5 +95,7 @@
   window.location = "?"+elem.value;
   }
   </script> --}}
+
+  
 @endsection
 

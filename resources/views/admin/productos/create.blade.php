@@ -1,8 +1,14 @@
-@extends('ABM.crudLayout')
+@extends('layouts.abm')
 @section('token')
 <meta name="csrf-token" content="{{ csrf_token() }}">
 @endsection
-@section('productos', 'active')
+
+@section('show','show')
+@section('aria', 'true')
+@section('collapsed', 'collapsed')
+@section('crear', 'active')
+
+
 @section('title', 'Admin Page')
 @section('dashboard', 'Crear Producto')
 
@@ -77,14 +83,19 @@
             </div>
           </div>
           <div class="col-12">
-            <button type="submit" id="submitBtn" class="btn btn-primary"><i class="fas fa-save mr-2"></i>Guardar</button>
-            <a href="/admin/listadoProductos" class="btn btn-danger"><i class="fas fa-ban mr-2"></i>Volver</a> 
+            <button type="submit" id="producto-create-submit" class="btn btn-primary"><i class="fas fa-save mr-2"></i>Guardar</button>
+          <a href="{{ route('admin.productos.index')}}" class="btn btn-danger"><i class="fas fa-ban mr-2"></i>Volver</a> 
           </div>
         </div>
       </form>
     </div>
   </div>
 </div> 
+
+
+<script>
+    var routeStore = "{{route('admin.productos.store')}}"
+</script>
 @endsection
 
 

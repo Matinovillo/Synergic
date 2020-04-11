@@ -42,10 +42,18 @@
             <div class="top_bar_user">
               @auth
               <div>
+                @can('administrar')
+                <a href="{{ route('admin.page') }}">
+                  <i class='fas fa-cogs mr-2 top-bar-icon'></i>Admin
+                </a>
+                @endcan
+              </div>
+              <span> | </span>
+              <div>
                 <a href="{{ url('/cuenta') }}">
                   <i class='fas fa-user mr-2 top-bar-icon'></i>Bienvenido! {{ Auth::user()->email }}
                 </a>
-                </div>
+              </div>
               <span> | </span>
               <div>
                 <a href="{{ route('logout') }}"
@@ -53,11 +61,10 @@
                                  document.getElementById('logout-form').submit();">
                    <i class='fas fa-sign-out-alt mr-2 top-bar-icon'></i> {{ __('Cerrar Sesion') }}
                 </a>
-
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                     @csrf
                 </form>
-            </div>
+              </div>
             @else
               <a href="{{ route('login') }}"><i class='fas fa-user mr-2 top-bar-icon'></i>Ingresar</a>
               <span> | </span>

@@ -1,4 +1,4 @@
-@extends('ABM.crudLayout')
+@extends('layouts.abm')
 
 @section('productos', 'active')
 @section('title', 'Admin Page')
@@ -23,8 +23,10 @@
 <div class="form-back  my-5">
   <div class="row justify-content-center">
     <div class="col-10">
-      <form method="post" action="" enctype="multipart/form-data">
+      <form  action="{{ route('admin.productos.update', $producto) }}" method="POST" enctype="multipart/form-data">
+        {{ method_field('PUT') }}
         @csrf
+
         <div class="row">
           <div class="col-12">
             <div class="form-group">
@@ -94,8 +96,8 @@
             </div>
           </div>
           <div class="col-12 text-center">
-            <button type="submit" class="btn btn-primary"><i class="fas fa-save mr-2"></i>Guardar</button>
-            <a href="/admin/listadoProductos" class="btn btn-danger"><i class="fas fa-ban mr-2"></i>Volver</a>
+           <button type="submit" class="btn btn-primary"><i class="fas fa-save mr-2"></i>Guardar</button>
+            <a href="{{ route('admin.productos.index') }}" class="btn btn-danger"><i class="fas fa-ban mr-2"></i>Volver</a>
           </div>
         </div>
       </form>
@@ -113,16 +115,19 @@
       @foreach ( $imagen as $image )
     <div class="col-6 img-contenedor">    
       <div class="product-img p-2">
-        <form action="/borrarImagen" method="post">
+        <form action="{{ route('admin.productos.borrarImg')}} " method="post">
           @csrf
           <input type="hidden" name="id" value="{{$image->id}}">
           <input type="hidden" name="producto_id" value="{{$producto->id}}">
            <img src="/storage/{{$image->nombre}}" alt="">
-          <a class="btn-img-delete" title="eliminar"><button type="submit" class="action-button-delete"><i class="fas fa-trash-alt"></i></button></a>
+          <button title="borrar imagen" type="submit" class="action-button-delete btn-img-delete"><i class="fas fa-trash-alt"></i></button>
         </form>
       </div>
     </div>
       @endforeach
   </div>
 </div>
+
+
+
   @endsection
