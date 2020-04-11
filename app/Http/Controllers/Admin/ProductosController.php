@@ -167,7 +167,7 @@ class ProductosController extends Controller
         $producto_id = $req['producto_id'];
         $imagen = Producto_foto::find($id);
         $imagen->delete();
-        return redirect()->route('admin.productos.edit',$producto->id)->with('success', 'La imagen fue eliminada!');
+        return redirect()->route('admin.productos.edit',$producto_id)->with('success', 'La imagen fue eliminada!');
       }
 
 }
