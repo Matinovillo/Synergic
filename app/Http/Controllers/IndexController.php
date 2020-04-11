@@ -22,9 +22,7 @@ class IndexController extends Controller
     }
 
     public function productosVista(){
-
         $productos = Producto::paginate(9);
-        
         return view('productos', compact('productos'));
     }
     

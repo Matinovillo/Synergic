@@ -102,7 +102,7 @@ span {
 .action-button-delete{
 	width: 30px;
 	height: 30px;
-	border: 1px solid #e1e1e1;
+  border: 1px solid rgba(0, 0, 0, 0.5);
 	box-sizing: border-box;
 	color: white;
 	background-color:#ea2f10;
@@ -113,10 +113,9 @@ span {
 .action-button-edit{
 	width: 30px;
 	height: 30px;
-	border: 1px solid #e1e1e1;
+	border: 1px solid rgba(0, 0, 0, 0.5);
 	box-sizing: border-box;
 	color: black;
-	background-color:#eee;
 	font-size: 15px;
 }
 
@@ -546,6 +545,7 @@ nav.navbar .menu-btn {
   transition: all 0.7s;
 }
 
+
 nav.navbar .menu-btn span {
   width: 20px;
   height: 2px;
@@ -605,17 +605,10 @@ nav.navbar .nav-link {
   position: relative;
 }
 
-nav.navbar .nav-link span.badge-corner {
-  position: absolute;
-  top: 0;
-  right: 0;
-  font-weight: 400;
-  font-size: 0.7em;
-}
-
-nav.navbar .nav-link.language span {
-  margin-left: .3rem;
-  vertical-align: middle;
+nav.navbar .nav-link:hover {
+  color: #0e8ce4;
+  -webkit-transition: all 0.3s;
+    transition: all 0.3s;
 }
 
 nav.navbar .nav-link.logout i {
@@ -624,42 +617,6 @@ nav.navbar .nav-link.logout i {
 
 nav.navbar .nav-menu {
   margin-bottom: 0;
-}
-
-nav.navbar .search-box {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  right: 0;
-  padding: 0;
-  background: #fff;
-  z-index: 12;
-  border-radius: 0;
-  display: none;
-}
-
-nav.navbar .search-box .dismiss {
-  position: absolute;
-  top: 50%;
-  right: 20px;
-  -webkit-transform: translateY(-50%);
-  transform: translateY(-50%);
-  background: none;
-  border: none;
-  cursor: pointer;
-  font-size: 1.5em;
-  color: #999;
-}
-
-nav.navbar .search-box form {
-  height: 100%;
-}
-
-nav.navbar .search-box form input {
-  height: 100%;
-  border: none;
-  padding: 20px;
 }
 
 nav.navbar .dropdown-toggle::after {

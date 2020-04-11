@@ -1,22 +1,18 @@
 
+// ------------------------------------------------------- //
+// Sidevar
+// ------------------------------------------------------ //
 $(document).ready(function () {
-
     'use strict';
-    // ------------------------------------------------------- //
     // Card Close
-    // ------------------------------------------------------ //
     $('.card-close a.remove').on('click', function (e) {
         e.preventDefault();
         $(this).parents('.card').fadeOut();
     });
-
-    // ------------------------------------------------------- //
     // Sidebar Functionality
-    // ------------------------------------------------------ //
     $('#toggle-btn').on('click', function (e) {
         e.preventDefault();
         $(this).toggleClass('active');
-
         $('.side-navbar').toggleClass('shrinked');
         $('.content-inner').toggleClass('active');
         $(document).trigger('sidebarChanged');
@@ -30,12 +26,10 @@ $(document).ready(function () {
                 $('.navbar-header .brand-big').hide();
             }
         }
-
         if ($(window).outerWidth() < 1183) {
             $('.navbar-header .brand-small').show();
         }
     });
-
 });
 
 
@@ -52,7 +46,7 @@ function limpiarCampos() {
     $("#inpImg").val('');
 }
 
-$("#submitBtn").click(function (e) {
+$("#producto-create-submit").click(function (e) {
     e.preventDefault();
     var nombre = $("#inpNombre").val();
     var descripcion = $("#inpDesc").val();
@@ -62,7 +56,6 @@ $("#submitBtn").click(function (e) {
     var imagefile = document.querySelector('#inpImg');
 
     var formData = new FormData();
-
     formData.append("imagen", imagefile.files[0]);
     formData.append("id_categoria", categoria);
     formData.append("precio", precio);
@@ -70,19 +63,17 @@ $("#submitBtn").click(function (e) {
     formData.append("descripcion", descripcion);
     formData.append("nombre", nombre);
 
-
     $.ajax({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         },
-        url: "http://localhost:8000/admin/crearProducto",
+        url: routeStore,
         type: "POST",
         data: formData,
         processData: false,
         contentType: false,
         cache: false,
         success: function (data) {
-            console.log(data)
             Swal.fire({
                 title: 'Exito!',
                 text: 'El producto se cargo correctamente.',
@@ -92,8 +83,7 @@ $("#submitBtn").click(function (e) {
             limpiarCampos();
         },
         error: function (data) {
-            console.log(data);
-
+            console.log(data)
             Swal.fire({
                 title: 'Error!',
                 text: 'Hubo un error al cargar el producto.',
@@ -107,7 +97,7 @@ $("#submitBtn").click(function (e) {
 
 
 // ------------------------------------------------------- //
-// Eliminar produto Ajax V.1
+// Eliminar produto Ajax V.1 con redirect
 // ------------------------------------------------------ //
 // $(".delete-link").click(function (e) {
 //     e.preventDefault();
@@ -150,9 +140,9 @@ $("#submitBtn").click(function (e) {
 // });
 
 
-window.onload = function() {
+window.onload = function () {
     this.fetchProducto()
-  };
+};
 // ------------------------------------------------------- //
 // Listado productos
 // ------------------------------------------------------ //
@@ -163,15 +153,15 @@ function fetchProducto() {
         success: function (response) {
 
             let productos = JSON.parse(response);
-           
+
             let template = '';
             productos.forEach(producto => {
-              if(producto.categoria == null){
-                  producto.categoria = "Sin categoria"
-                  producto.categoria_id = null;
-              }
+                if (producto.categoria == null) {
+                    producto.categoria = "Sin categoria"
+                    producto.categoria_id = null;
+                }
                 template += `
-            <tr scope="row" taskId="${producto.id}">
+            <tr scope="row" productoId="${producto.id}">
                     <th scope="row">${producto.id}</th>
                     <td>${producto.nombre}</td>
                     <td>${producto.descripcion}</td>
@@ -179,16 +169,18 @@ function fetchProducto() {
                     <td>${producto.stock}</td>
                     <td>${producto.categoria}</td>
                     
-                    <td class="d-flex">
-                      
-                    <a title="editar" class="mr-2" href="/admin/editarProducto/${producto.id}"><button class="action-button-edit"><i class="fas fa-pen"></i></button></a>
+                    <td class="d-flex">                      
+                    <a title="editar" class="mr-2" href="http://localhost:8000/admin/productos/${producto.id}/edit">
+                        <button class="action-button-edit">
+                            <i class="fas fa-pen"></i>
+                        </button>
+                    </a>
                     <button class="producto-delete action-button-delete"><i class="fas fa-trash-alt"></i></button>
-               
                     </td>
                   </tr>`
             });
-           
-                $('#productos').html(template);
+
+            $('#productos').html(template);
         }
     });
 }
@@ -209,14 +201,13 @@ $(document).on('click', '.producto-delete', function () {
     }).then((result) => {
         if (result.value) {
             let element = $(this)[0].parentElement.parentElement;
-            let id = $(element).attr('taskId')
-
+            let id = $(element).attr('productoId')
             $.ajax({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
-                url: 'http://localhost:8000/borrarProducto/' + id,
-                type: 'post',
+                url: 'http://localhost:8000/admin/productos/' + id,
+                type: 'DELETE',
                 success: function (data) {
                     Swal.fire(
                         'Exito!',
@@ -252,13 +243,12 @@ $(".delete-categoria").click(function (e) {
     }).then((result) => {
         if (result.value) {
             var id = $(this).data("id");
-            console.log(id);
             var token = $("meta[name='csrf-token']").attr("content");
             var url = e.target;
             $.ajax(
                 {
-                    url: "/borrarCategoria/" + id,
-                    type: 'post',
+                    url: "http://localhost:8000/admin/categorias/" + id,
+                    type: 'DELETE',
                     data: {
                         _token: token,
                         id: id

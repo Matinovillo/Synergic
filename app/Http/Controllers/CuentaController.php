@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-
 use Illuminate\Http\Request;
 use App\User;
 use App\Fotos;
@@ -10,9 +9,10 @@ use App\Producto;
 use App\Domicilio;
 use App\Provincia;
 use App\Favoritos;
-class UserController extends Controller
+
+class CuentaController extends Controller
 {
-    
+     
     //User profile methods
     public function cuenta(){
         if(auth()->user() != null){
@@ -97,7 +97,4 @@ class UserController extends Controller
         $usuario->delete();
         return redirect('admin/listadoUsuarios');
       }
-
 }
-
-    
