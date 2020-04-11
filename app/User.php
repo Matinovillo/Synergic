@@ -39,6 +39,10 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    public function nombre(){
+        return $this->nombre . " " . $this->apellido;  
+    }
+
     public function foto()
     {
         return $this->belongsTo('App\Fotos', 'id_foto');
@@ -52,10 +56,6 @@ class User extends Authenticatable
     public function roles()
     {
         return $this->belongsToMany('App\Role');
-    }
-
-    public function nombre(){
-        return $this->nombre . " " . $this->apellido;  
     }
 
     public function hasAnyRole($roles){

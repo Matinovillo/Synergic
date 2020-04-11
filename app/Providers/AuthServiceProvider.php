@@ -29,7 +29,7 @@ class AuthServiceProvider extends ServiceProvider
             return $usuario->hasRole('admin');
         });
 
-        /* Si hay mas de 2 roles
+        /*
         Gate::define('administrar',function($usuario){
             return $usuario->hasAnyRole(['admin','otrorol']);
         });
