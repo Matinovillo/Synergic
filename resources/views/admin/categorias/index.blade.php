@@ -88,9 +88,12 @@
                         <th scope="row">{{$categoria->id}}</th>
                         <td>{{$categoria->nombre}}</td>
                         <td>{{$categoria->descripcion}}</td>
-                        <td>@foreach ($categoria->padre()->get() as $padre)
-                            {{$padre->nombre}}
-                            @endforeach
+                        <td>
+                            @if($categoria->padre()->get()->first() == null)
+                              No tiene
+                            @else
+                            {{$categoria->padre()->get()->first()->nombre}}
+                            @endif
                         </td>
                         <td>{{$categoria->orden}}</td>
               <td class="d-flex">
