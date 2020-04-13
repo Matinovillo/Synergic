@@ -11,18 +11,20 @@ class IndexController extends Controller
 { 
 
     public function indexView(){
-        $category = Categoria::where('nombre','notebook')->first();
+        $category = Categoria::where('nombre','Notebook')->first();
         if($category != null){
-        $subcategory = $category->hijas;
-        $all = array($category->id);
+          $subcategory = $category->hijas;
+          $all = array($category->id);
             foreach($subcategory as $sub){
-              array_push($all,$sub->id);
-              $notebooks = Producto::whereIn('id_categoria',$all)->inRandomOrder()->take(8)->get();        
-              return view('index',compact('notebooks'));
-            }
+               array_push($all,$sub->id);
+              }
+            $notebooks = Producto::whereIn('id_categoria',$all)->inRandomOrder()->take(8)->get();        
+            return view('index',compact('notebooks'));
+        }else{
+            $notebooks = [];
+            return view('index',compact('notebooks'));
         }
-        $notebooks = [];
-        return view('index',compact('notebooks'));  
+          
     }
 
     public function productosVista(){

@@ -86,7 +86,7 @@
           <div class="col-xl-4 col-lg-4 col-md-6 mb-4">
             <div class="card h-100 sm-shadow">
             <a href="{{route('productoDetail', str_replace(" ", "+", $producto->nombre))}}" class="producto-imagen-link">
-                    <img class="card-img-top" src="/storage/{{$producto->fotos[0]->nombre}}"alt="">
+                    <img class="card-img-top" src="/storage/{{$producto->fotos()->get()->first()->nombre}}"alt="">
             </a>
                 
                 <div class="card-body">
