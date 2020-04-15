@@ -50,7 +50,7 @@
               </div>
               <span> | </span>
               <div>
-                <a href="{{ url('/cuenta') }}">
+                <a href="{{ url('/cuenta/datospersonales') }}">
                   <i class='fas fa-user mr-2 top-bar-icon'></i>Bienvenido! {{ Auth::user()->email }}
                 </a>
               </div>
@@ -90,10 +90,10 @@
           </a>
         </div>
         <div class="col-xl-5 col-lg-4 col-md-12 col-sm-12 col-xs-12">
-          <form class="form-inline">
-            <input class="form-control mr-sm-2 inpt" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn src-btn" type="submit"><i class="fas fa-search"></i></button>
-          </form>
+        <form class="form-inline" method="GET" action="{{ url('productos')}}">
+            <input class="form-control mr-sm-2 inpt" type="search" placeholder="Lo que estas buscando, Encontralo aca!" aria-label="Search" name="search">
+            <button class="btn src-btn text-muted" type="submit"><i class="fas fa-search"></i></button>
+        </form>
         </div>
         <div class="col-xl-5 col-lg-6 col-md-12 col-sm-12 col-xs-12 p-0 text-center">
           <div class="user-panel">
@@ -114,7 +114,7 @@
             </div>
             <div class="up-item ml-xl-5 ml-3 ml-md-5">
               <div class="shopping-card">
-                <a href="#">
+                <a href="{{ url('cuenta/misfavoritos') }}">
                 <i class="fas fa-heart"></i>
                 Productos favoritos
                 </a>
@@ -143,7 +143,7 @@
         {{-- si el usuario loguea se muestra cuenta --}}
         @if (Route::has('login'))
           @auth
-          <a href="/cuenta">Cuenta</a>
+          <a href="{{url('/cuenta/datospersonales')}}">Cuenta</a>
           @endauth
         @else
         @endif

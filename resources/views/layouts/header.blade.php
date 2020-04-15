@@ -60,7 +60,7 @@
         <div class="col-xl-5 col-lg-4 col-md-12 col-sm-12 col-xs-12">
           <form class="form-inline">
             <input class="form-control mr-sm-2 inpt" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn src-btn" type="submit"><i class="fas fa-search"></i></button>
+           
           </form>
         </div>
         <div class="col-xl-5 col-lg-6 col-md-12 col-sm-12 col-xs-12 p-0 text-center">

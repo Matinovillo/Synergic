@@ -65,49 +65,13 @@
             <div class="text-center order-total-out-price text-primary">
               ${{$producto->precio}}
             </div>
-            <div class="padding-col quote-col modal-col" style="padding-right: 0">
-              <div class="modal-container" href="_metodosPagoMP.php?price=26990&amp;hide_comodities_button=true"
-                tabindex="-1" rel="modalOpenPage" data-toggle="modal" data-target="#paymentMethodsMP"
-                style="cursor: pointer;">
-                <div class="modal-detail-display payment-method">
-                  <div class="theme-icon">
-                    <div class="container-icon">
-                      <i class="fa fa-credit-card" aria-hidden="true"></i>
-                    </div>
-                  </div>
-                  <div class="theme-text">
-                    <div class="title">PAGÁ EN MUCHAS CUOTAS</div>
-                    <div>calculá tu cuota y forma de pago</div>
-                  </div>
-                  <div class="access-icon"><i class="fa fa-chevron-right" aria-hidden="true"></i></div>
-                </div>
-              </div>
-            </div>
-            <div class="padding-col modal-col">
-              <div class="modal-container" href="sending_methods_modal.php" tabindex="-1" rel="modalOpenPage"
-                data-toggle="modal" data-target="#sendingMethods" style="cursor: pointer;">
-                <div class="modal-detail-display payment-method">
-                  <div class="theme-icon">
-                    <div class="container-icon">
-                      <i class="fa fa-truck" aria-hidden="true"></i>
-                    </div>
-                  </div>
-                  <div class="theme-text">
-                    <div class="title">RECIBÍ TU PRODUCTO</div>
-                    <div>seleccioná la forma de entrega</div>
-                  </div>
-
-                  <div class="access-icon"><i class="fa fa-chevron-right" aria-hidden="true"></i></div>
-                </div>
-              </div>
-            </div>
+           
             <!-- ---------------------------------------------------------------------- -->
             <div class="padding-col p-3">
               <div class="">
 
                 <div class="theme-text">
-                  <div class="title">Disponibilidad: En stock: {{$producto->stock}}</div>
-
+                  <div class="title">Disponibilidad: En stock</div>
                   <div class="title">Modelo: loremipsum</div>
                 </div>
               </div>
@@ -141,7 +105,7 @@
   <!--/Product Details-->
 
   <!-- descripcion -->
-  <section class="prdcts-desc">
+  {{-- <section class="prdcts-desc">
     <div class="container">
       <h3>Descripcion</h3>
 
@@ -189,5 +153,52 @@
       </div>
     </div>
 
+  </section> --}}
+
+
+   
+<div class="container">
+  <h3 class="text-muted my-2">Productos Relacionados</h3>
+  <section class="prdct-slider">
+    <div class="row">
+      <div class="col-xl-12 col-sm-12">
+        <div class="owl-carousel owl-theme">
+           @foreach ($productosRelacionados as $related)   
+            <div class="cards">
+              <div class="card-slider card--1">
+                <div class="card__img">
+        
+                </div>
+                <div class="card__img--hover">
+                  <a href="{{route('productoDetail', str_replace(" ", "+", $related->nombre))}}" class="producto-imagen-link">
+                    <img class="card-img-top" src="/storage/{{$related->fotos->first()->nombre}}" alt="">
+                  </a>
+                </div>     
+                <div class="card__info">
+                  <p class="card__title  text-center">
+                    <a href="{{route('productoDetail', str_replace(" ", "+", $related->nombre))}}">
+                      {{substr($related->nombre,0,60)}}...
+                    </a>
+                  </p>
+                  Precio: <span class="card__category text-success">${{$related->precio}}</span>
+                  @if (Route::has('login'))
+                   @auth
+                    <span class="card__category"><a href="{{route('cart.add', $related->id)}}" class="card__author text-success" title="author"><i class="fas fa-cart-plus"></i></a></span>
+                    <span class="card__category"><a href="{{route('favorito.add', $related->id)}}" class="card__author text-muted mx-2" title="author"><i class="fas fa-heart"></i></a></span>
+                  @else
+                    <span class="card__category"><a href="{{route('cart.add', $related->id)}}" class="card__author addtocart" title="author"><i class="fas fa-cart-plus"></i></a></span>
+                    <span class="card__category"><a href="{{route('favorito.add', $related->id)}}" class="card__author mx-2 addtocart" title="author"><i class="fas fa-heart"></i></a></span>
+                   @endauth
+                  @endif
+                </div>
+              </div>
+            </div> 
+          @endforeach
+        </div>
+      </div>
+    </div>
   </section>
+  </div>
+
+  
 @endsection

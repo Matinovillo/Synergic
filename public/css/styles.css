@@ -1182,53 +1182,49 @@ td, th {
 7.0 account page
 *****************************/
 
-/* 7.1 Not logged user */
-.account-sec{
-    min-height: 73vh;
+ .account-sidebar{
+	 border-right: 1px solid rgba(0, 0, 0, 0.2);
+ }
+
+ .account-sidebar nav{
+	height: 100vh;
 }
 
-.account-logo a img{
-    height: 50px;
-    width: 200px;
-    margin-top: 50px;
-	margin-bottom: 50px;
-}
-.account-text h3{
-    color: #646a7c;
-}
-.account-text a{
-    color: #0e8ce4;
-}
+ .list-group-item.active{
+	background-color: rgba(14, 139, 228, 0.7)!important;
+	border-left: 3px solid #0e8ce4;
+ }
 
-/* 7.2 Logged user */
-.profile-name{
-	color: #646a7c;
-}
-.profile-card{
-	background-color: #eee;
-	border-radius: 10px;
-	height: 500px;
-	padding:10px
-}
-
-.profile-avatar{
-	max-height: 230px;
-    max-width: 230px;
-    position: relative;
-    margin: auto;
-    text-align: center;
-    right: 27px;
+ 
+.account-item{
+	border: none;
+	padding-left: 0;
+	border-radius: 0%!important;
+	padding-left: 5px;
+	
 	
 }
-
-.avatar-content{
-	max-height: 200px;
-	max-width: 200px;
-	background-color: rgba(0,0,0,0.3);
-	border-radius: 100%;
-	margin: auto;
-	overflow: hidden;
+.account-item i{
+	font-size: 25px;
+	margin-right: 10px;
 }
+
+.account-item:hover{
+	border-left: 3px solid #0e8ce4;
+	background-color: rgba(14, 139, 228, 0.7);
+	-webkit-transition: all 0.3s;
+	-o-transition: all 0.3s;
+	transition: all 0.3s;
+	color: white;
+}
+
+#user-avatar{
+	max-width: 150px;
+	max-height: 150px;
+	margin-bottom: 5px;
+}
+
+
 /*****************************
 8.0 Shopping Cart
 *****************************/

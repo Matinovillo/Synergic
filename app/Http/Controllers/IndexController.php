@@ -26,9 +26,13 @@ class IndexController extends Controller
         }
           
     }
-
-    public function productosVista(){
-        $productos = Producto::paginate(9);
+    
+    public function productosVista(Request $req){
+        if(isset($req['search'])){
+          $productos = Producto::where('nombre','like', '%'. $req['search'].'%')->paginate(9);
+        }else{
+          $productos = Producto::paginate(9);
+        }
         return view('productos', compact('productos'));
     }
     
@@ -53,7 +57,15 @@ class IndexController extends Controller
     public function productoDetail($nombre){
       $nombre = str_replace("+"," ", $nombre);
       $producto = Producto::where('nombre',$nombre)->with('fotos')->first();
-      return view('detalle',compact('producto'));
+
+      $productoCategoria = $producto->categoria->padre()->first()->hijas()->get();
+      dd($productoCategoria);
+      $id = [];
+      foreach($productoCategoria as $categoria){
+        array_push($id, $categoria->id);
+      }
+      $productosRelacionados = Producto::whereIn('id_categoria',$id)->inRandomOrder()->get();
+
+      return view('detalle',compact('producto','productosRelacionados'));
     }
 }
-

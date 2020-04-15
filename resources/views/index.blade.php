@@ -1,8 +1,5 @@
 @extends('layouts.main')
 @section('contenido')
-    
-   
-
   <section class="carousel-sec">
     <div class="bd-example">
       <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
