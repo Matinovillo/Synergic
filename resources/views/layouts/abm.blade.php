@@ -93,7 +93,7 @@
                 </ul>
              </li>
 
-              <li class="@yield('pedidos')"><a href="/admin/listadoPedidos"> <i class="fas fa-clipboard-list"></i>Pedidos</a></li>
+              <li class="@yield('pedidos')"><a href="{{Route('admin.pedidos.index')}}"> <i class="fas fa-clipboard-list"></i>Pedidos</a></li>
 
 
               
@@ -112,7 +112,7 @@
             </header>
 
             {{-- content --}}
-            <div class="content">
+            <div class="content p-4">
                 @yield("content")
             </div>
             

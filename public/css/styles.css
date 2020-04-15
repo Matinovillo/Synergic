@@ -1376,6 +1376,7 @@ td, th {
 	border-color: #0e8ce4;
 	color: #0e8ce4;
 }
+
 .cart_button_checkout
 {
     background-color: #0e8ce4 ;
@@ -1551,8 +1552,34 @@ td, th {
 }
 
 
+/*****************************
+8.0 Finalizar compra
+*****************************/
 
+.comprar-title{
+	border-bottom: 1px solid #6c757d;
+}
 
+.compra-img-content img{
+	height: 5rem;
+}
+
+.producto-row{
+	align-items: center;
+	border-bottom: 1px solid #6c757d55;
+}
+
+.producto-row:last-child{
+	border-bottom: none
+}
+
+.compra-price{
+	flex: auto;
+}
+
+.compra-foot{
+	align-items: baseline;
+}
 
 /*****************************
 8.0 RESPONSIVE INDEX

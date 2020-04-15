@@ -35,6 +35,7 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware('can:admi
     Route::resource('/usuarios','UsersController', ['except' => ['show','store','create']]);
     Route::resource('/productos','ProductosController');
     Route::resource('/categorias','CategoriasController');
+    Route::resource('/pedidos', 'VentasController',['except' => ['create']]);
 });
 
 Route::post('/borrarImagen','Admin\ProductosController@borrarImagenDeProducto')->name('admin.productos.borrarImg');
@@ -42,7 +43,7 @@ Route::post('/borrarImagen','Admin\ProductosController@borrarImagenDeProducto')-
 
 //cuenta
 Route::get('cuenta', 'CuentaController@cuenta')->middleware('auth');
-Route::post('cuenta', 'CuentaController@modificarDatos');
+Route::post('cuenta', 'CuentaController@modificarDatos')->name('cuenta.modificar');
 //productos
 Route::get('productos','IndexController@productosVista')->name('todosLosProductos');
 Route::get('productos/{nombre}','IndexController@productosPorCategoria')->name('productosPorCategoria');
@@ -50,6 +51,10 @@ Route::get('productos/{nombre}','IndexController@productosPorCategoria')->name('
 Route::get('producto/{nombre}','IndexController@productoDetail')->name('productoDetail');
 
 
+//finalizar compra
 
+Route::get('/comprar/datos','ComprasController@completarDatos')->name('finalizar.compra');
+Route::get('/comprar/opciones','ComprasController@opcionesCompra')->name('opciones.compra');
+Route::post('/generarPedido','ComprasController@crearPedido')->name('generar.pedido');
 
 

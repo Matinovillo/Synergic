@@ -79,7 +79,7 @@ class CuentaController extends Controller
             $domicilio->save();
         }
         $user->save();
-        return redirect('/cuenta');
+        return back();
     }
 
     //User ABM methods

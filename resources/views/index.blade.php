@@ -124,7 +124,7 @@
                 <p class="card__title  text-center">
                   <a href="{{route('productoDetail', str_replace(" ", "+", $notebook->nombre))}}">
                     {{substr($notebook->nombre,0,60)}}...
-                 </a>
+                  </a>
                 </p>
                 Precio: <span class="card__category text-success">${{$notebook->precio}}</span>
                 @if (Route::has('login'))

@@ -13,7 +13,9 @@
                     <div class="cart_items">
                         <ul class="cart_list p-0">
                             <li class="cart_item clearfix">
-                            <div class="cart_item_image"><img src="/storage/{{$item->attributes->imagen}}" alt=""></div>
+                            <div class="cart_item_image">
+                                <img src="/storage/{{$item->attributes->imagen}}" alt="">
+                            </div>
                                 <div class="cart_item_info d-flex flex-md-row flex-column justify-content-between">
                                     <div class="cart_item_name cart_info_col">
                                         <div class="cart_item_title">Producto</div>
@@ -71,11 +73,13 @@
                         </div>
 
                     </div>
-                    <div class="cart_buttons mt-sm-auto mt-lg-4 mt-md-4 text-md-right">
+                    <div class="cart_buttons mt-sm-auto mt-lg-4 mt-md-4 text-md-right d-flex">
                         <form action="{{route('cart.clear')}}" method="GET">
                             <button type="submit" class="button cart_button_clear">Vaciar Carrito</button>
                         </form>
+                    <a href="{{ Route('finalizar.compra') }}"><button type="submit" class="button cart_button_checkout">Finalizar compra</button></a> 
                     </div>
+
 
                     @else
                         <div class="container text-muted text-center">

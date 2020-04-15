@@ -200,10 +200,14 @@
                    <div class="form-group">
                      <label for="" class="text-muted">Provincia</label>
                      <select class="form-control" id="" placeholder="Pronvincia" name="id_provincia">
-                       <option value="">provincia</option>
-                          @foreach ($provincias as $provincia)
-                              <option value="{{$provincia->id}}">{{$provincia->nombre}}</option>
-                           @endforeach
+                      @if(auth()->user()->domicilio()->first() != null)
+                      <option value="{{ auth()->user()->domicilio()->first()->provincia()->first()->id }}"> {{ auth()->user()->domicilio()->first()->provincia()->first()->nombre }}</option>
+                      @else
+                      <option value="">Provincias</option>
+                         @foreach ($provincias as $provincia)
+                             <option value="{{$provincia->id}}">{{$provincia->nombre}}</option>
+                          @endforeach
+                      @endif
                      </select>
                      </div>
                  </div>

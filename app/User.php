@@ -71,5 +71,9 @@ class User extends Authenticatable
         }
             return false;
     }
-    
+
+    public function pedidos()
+    {
+        return $this->hasMany('App\Ventas','id_usuario');
+    }
 }

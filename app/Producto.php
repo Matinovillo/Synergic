@@ -27,4 +27,8 @@ class Producto extends Model
     {
         return $this->hasMany('App\Favoritos','id_producto');
     }
+
+    public function detalleVenta(){
+        return $this->hasMany('App\Detalle_venta','id_producto');
+    }
 }
