@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Categoria;
 use App\Producto;
+use App\Categoria;
+use MercadoPago\SDK;
+use Illuminate\Http\Request;
+
 class CarritoController extends Controller
 {
     public function view(){
@@ -50,5 +52,43 @@ class CarritoController extends Controller
     public function clear(){
         \Cart::session(auth()->id())->clear();
         return back();
+    }
+
+    //mercado pago
+    public function confirm(){
+       \MercadoPago\SDK::setAccessToken(env('MP_TEST_ACCESS_TOKEN'));
+            $cart = \Cart::session(auth()->id())->getContent();   
+            
+         // Crea un objeto de preferencia
+            $preference = new \MercadoPago\Preference();
+
+            $productos = [];
+
+        // Crea un ítem en la preferencia
+        foreach($cart as $product){
+            $item = new \MercadoPago\Item();
+            $item->title = $product->name;
+            //$item->picture_url = "/storage/".$product->attributes->imagen;
+            $item->currency_id = "ARS";
+            $item->quantity = $product->quantity;
+            $item->unit_price = $product->price;
+            
+            $productos[] = $item;
+        }
+
+            
+            $preference->items = $productos;
+
+            $preference->back_urls = [
+                "success" => route('mp.sucess'),
+                "failure" => route('mp.failure'),
+                "pending" => route('mp.pending')
+            ];
+        
+            
+            $preference->save();
+
+            return redirect($preference->init_point);
+            
     }
 }

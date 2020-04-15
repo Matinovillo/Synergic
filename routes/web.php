@@ -23,6 +23,17 @@ Route::get('/add-to-cart/{product}','CarritoController@add')->name('cart.add')->
 Route::get('cart/destroy/{product}','CarritoController@destroy')->name('cart.destroy')->middleware('auth');
 Route::get('cart/update/{product}','CarritoController@update')->name('cart.update')->middleware('auth');
 Route::get('cart/clear','CarritoController@clear')->name('cart.clear')->middleware('auth');
+//mercado pago
+
+Route::post('carrito/confirmar','CarritoController@confirm')->name('confirmar.compra');
+
+Route::get('mp/sucess', 'MercadoPagoController@sucess')->name('mp.sucess');
+Route::get('mp/failure', 'MercadoPagoController@failure')->name('mp.failure');
+Route::get('mp/pending', 'MercadoPagoController@pending')->name('mp.pending');
+
+
+
+
 
 //favortios
 Route::get('/add-to-favorito/{product}','FavoritosController@add')->name('favorito.add')->middleware('auth');

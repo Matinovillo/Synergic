@@ -78,6 +78,13 @@
                             <button type="submit" class="button cart_button_clear">Vaciar Carrito</button>
                         </form>
                     <a href="{{ Route('finalizar.compra') }}"><button type="submit" class="button cart_button_checkout">Finalizar compra</button></a> 
+
+                    {{-- implemendo mercado pago --}}
+                    <form action="{{ route('confirmar.compra') }}" class="mx-5"  method="POST">
+                        @csrf
+                        <button type="submit" class="button cart_button_checkout">Confirmar compra</button></a>
+                     </form>
+                        
                     </div>
 
 
