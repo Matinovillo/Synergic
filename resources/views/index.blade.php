@@ -106,7 +106,7 @@
   <div class="row">
     <div class="col-xl-12 col-sm-12">
       <div class="owl-carousel owl-theme">
-         @foreach ($notebooks as $notebook)   
+         @forelse ($notebooks as $notebook)   
           <div class="cards">
             <div class="card-slider card--1">
               <div class="card__img">
@@ -136,7 +136,9 @@
               </div>
             </div>
           </div> 
-        @endforeach
+          @empty
+          
+        @endforelse
       </div>
     </div>
   </div>
