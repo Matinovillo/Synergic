@@ -25,7 +25,9 @@ class ProductosController extends Controller
      */
     public function index()
     {
-        return view('admin.productos.index');
+        $productos = Producto::paginate(4);
+        
+        return view('admin.productos.index', compact('productos'));
     }
 
     /**
@@ -35,7 +37,7 @@ class ProductosController extends Controller
      */
     public function create()
     {
-        $categorias = Categoria::all();
+        $categorias = Categoria::whereNotNull('id_categoria_padre')->get();
         $vac = compact('categorias');
         return view('admin.productos.create',$vac);
     }
@@ -154,8 +156,8 @@ class ProductosController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy(Producto $producto)
-    {
-        $producto->fotos()->delete();
+    {   
+        //$producto->fotos()->delete();
         $producto->delete();
         return response()->json([
           'message' => 'Data deleted successfully!'
