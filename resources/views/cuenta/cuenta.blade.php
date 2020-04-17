@@ -9,11 +9,12 @@
   <div class="row">
     {{-- profile sidebar --}}
     <div class="col-md-3 account-sidebar mt-5">
-      <h3 class="text-left font-weight-bolder text-muted mb-5 ">Mi cuenta</h3>
+      <h3 class="text-left font-weight-bolder title-color mb-5 ">Mi cuenta</h3>
       <nav >
         <div class="list-group account-list">
           <a href="{{ url('cuenta/datospersonales') }}" class="list-group-item list-group-item-action account-item @yield('datos')">
             <i class="fas fa-user"></i> Mis datos
+          </a>
           <a href="{{ url('cuenta/misfavoritos') }}" class="list-group-item list-group-item-action account-item @yield('favs')">
             <i class="fas fa-shopping-bag"></i> Mis productos favoritos
           </a>

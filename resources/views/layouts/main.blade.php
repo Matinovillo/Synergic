@@ -91,7 +91,7 @@
         </div>
         <div class="col-xl-5 col-lg-4 col-md-12 col-sm-12 col-xs-12">
         <form class="form-inline" method="GET" action="{{ url('productos')}}">
-            <input class="form-control mr-sm-2 inpt" type="search" placeholder="Lo que estas buscando, Encontralo aca!" aria-label="Search" name="search">
+            <input class="form-control mr-sm-2 inpt" type="search" placeholder="Buscar productos" aria-label="Search" name="search">
             <button class="btn src-btn text-muted" type="submit"><i class="fas fa-search"></i></button>
         </form>
         </div>
@@ -139,7 +139,7 @@
       <div class="enlaces">
         <a href="/productos">Productos</a>
         <a href="/">Home</a>
-        <a href="contact.php">Contacto</a>
+        <a href="{{url('contacto')}}">Contacto</a>
         {{-- si el usuario loguea se muestra cuenta --}}
         @if (Route::has('login'))
           @auth
@@ -180,7 +180,7 @@
   <!--/Nav Menu-->
 
   {{-- content --}}
-      <div class="mb-5">
+      <div class="mb-5 index-content">
         @yield("contenido")
       </div>
   {{-- /content --}}
