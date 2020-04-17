@@ -1,8 +1,8 @@
 @extends('layouts.abm')
 
-@section('categorias', 'active')
+@section('subcategorias', 'active')
 @section('title', 'Admin Page')
-@section('dashboard', 'Editar Categoria')
+@section('dashboard', 'Editar Subcategoria')
 
 @section('content')
 
@@ -21,15 +21,15 @@
 <div class="form-back my-5">
   <div class="row justify-content-center my-5">
     <div class="col-10">
-      <form action="{{ route('admin.categorias.update', $categoria) }}" method="post">
+      <form action="{{ route('admin.subcategorias.update', $subcategoria) }}" method="post">
         {{ method_field('PUT') }}
         @csrf
         <div class="row">
           <div class="col-12">
             <div class="form-group">
               <label>Nombre:</label>
-            <input type="text" class="form-control" value="{{$categoria->nombre}}" name="nombre">
-            @error('nombre')
+            <input type="text" class="form-control" value="{{$subcategoria->nombre}}" name="nombre">
+              @error('nombre')
                 <small class="text-danger">{{$message}}</small>
               @enderror
             </div>
@@ -37,7 +37,7 @@
           <div class="col-6">
             <div class="form-group">
               <label>Descripcion:</label>
-              <input type="text" class="form-control" value="{{$categoria->descripcion}}" name="descripcion">
+              <input type="text" class="form-control" value="{{$subcategoria->descripcion}}" name="descripcion">
               @error('descripcion')
                 <small class="text-danger">{{$message}}</small>
               @enderror
@@ -46,8 +46,23 @@
           <div class="col-6">
             <div class="form-group">
               <label>Orden:</label>
-              <input type="text" class="form-control" name="orden" value="{{$categoria->orden}}">
+              <input type="text" class="form-control" name="orden" value="{{$subcategoria->orden}}">
                @error('nombre')
+                <small class="text-danger">{{$message}}</small>
+              @enderror
+            </div>
+          </div>
+
+          <div class="col-6">
+            <div class="form-group">
+              <label>Categoria:</label>
+              <select class="form-control" name="id_categoria_padre">
+                <option value="">Elegí una Categoria</option>
+                @foreach ($category as $padre)
+                <option value="{{$padre->id}}">{{$padre->nombre}}</option>
+               @endforeach
+              </select>
+              @error('id_categoria_padre')
                 <small class="text-danger">{{$message}}</small>
               @enderror
             </div>
@@ -55,7 +70,7 @@
   
           <div class="col-12 text-center">
             <button type="submit" class="btn btn-primary"><i class="fas fa-save mr-2"></i>Guardar</button>
-            <a href="{{ route('admin.categorias.index') }}" class="btn btn-danger"><i class="fas fa-ban mr-2"></i>Volver</a>
+            <a href="{{ route('admin.subcategorias.index') }}" class="btn btn-danger"><i class="fas fa-ban mr-2"></i>Volver</a>
           </div>
         </div>
       </form>
@@ -64,10 +79,5 @@
 </div>
   
   @endsection
-  
-  
-  
-  
-  
   
   

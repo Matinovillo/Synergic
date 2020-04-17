@@ -86,12 +86,19 @@
              </li>
               <li class="@yield('usuarios')"><a href="{{Route('admin.usuarios.index')}}"> <i class="fas fa-user"></i>Usuarios</a></li>
 
-              <li class="@yield('categorias')"><a href="#exampledropdownDropdown2" aria-expanded="false" data-toggle="collapse"><i class="fas fa-box-open"></i> Categorias </a>
+              <li class="@yield('categorias')"><a href="#exampledropdownDropdown2" aria-expanded="false" data-toggle="collapse"><i class="fas fa-tag"></i>Categorias </a>
                 <ul id="exampledropdownDropdown2" class="collapse list-unstyled">
                   <li><a href="{{Route('admin.categorias.index')}}"><i class="fas fa-list-ul"></i>Listado de categorias</a></li>
                   <li><a href="{{Route('admin.categorias.create')}}"><i class="fas fa-plus"></i>Crear categoria</a></li>
                 </ul>
              </li>
+
+             <li class="@yield('subcategorias')"><a href="#exampledropdownDropdown3" aria-expanded="false" data-toggle="collapse"><i class="fas fa-tags"></i>Subcategorias</a>
+              <ul id="exampledropdownDropdown3" class="collapse list-unstyled">
+                <li><a href="{{Route('admin.subcategorias.index')}}"><i class="fas fa-list-ul"></i>Listado de Subcategorias</a></li>
+                <li><a href="{{Route('admin.subcategorias.create')}}"><i class="fas fa-plus"></i>Crear Subcategoria</a></li>
+              </ul>
+           </li>
 
               <li class="@yield('pedidos')"><a href="{{Route('admin.pedidos.index')}}"> <i class="fas fa-clipboard-list"></i>Pedidos</a></li>
 

@@ -20,7 +20,7 @@
               @enderror
             </div>
           </div>
-          <div class="col-12">
+          <div class="col-6">
             <div class="form-group">
               <label class="text-muted h6">Descripcion:</label>
             <input type="text" class="form-control" value="{{old('descripcion')}}" name="descripcion">
@@ -29,22 +29,6 @@
               @enderror
             </div>
           </div>
-          <div class="col-6">
-            <div class="form-group">
-              <label class="text-muted h6">Categoria:</label>
-              <select class="form-control" name="id_categoria_padre">
-                <option value="">Elegí una Categoria</option>
-                @foreach ($categorias as $padre)
-                    <option value="{{$padre->id}}">{{$padre->nombre}}</option>
-                @endforeach
-              <option value="0">Categoria padre</option>
-              </select>
-              @error('id_categoria_padre')
-                <small class="text-danger">{{$message}}</small>
-              @enderror
-            </div>
-          </div>
-
           <div class="col-6">
             <div class="form-group">
               <label class="text-muted h6">Orden:</label>

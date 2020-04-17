@@ -20,26 +20,9 @@ class CategoriasController extends Controller
      */
     public function index()
     {
-        $categorias = Categoria::all();
-        if(isset($_GET['orderBy'])){
-          if($_GET['orderBy']=="id"){
-            $categorias = Categoria::orderBy('id','asc')->paginate(5);
-            $categorias->withPath('?orderBy='.$_GET['orderBy']);
-          }else if($_GET['orderBy']=="nombre"){
-            $categorias = Categoria::orderBy('nombre','asc')->paginate(5);
-            $categorias->withPath('?orderBy='.$_GET['orderBy']);
-          }else if($_GET['orderBy']=="padre"){
-            $categorias = Categoria::orderBy('id_categoria_padre','asc')->paginate(5);
-            $categorias->withPath('?orderBy='.$_GET['orderBy']);
-          }else if($_GET['orderBy']=="orden"){
-            $categorias = Categoria::orderBy('orden','asc')->paginate(5);
-            $categorias->withPath('?orderBy='.$_GET['orderBy']);
-          }
-        }else{
-          $categorias = Categoria::paginate(5);
-        }
-        $vac = compact('categorias');
-        return view('admin.categorias.index',$vac);
+      $categorias = Categoria::whereNull('id_categoria_padre')->paginate(5);
+      $vac = compact('categorias');
+      return view('admin.categorias.index',$vac);
     }
 
     /**
@@ -49,10 +32,7 @@ class CategoriasController extends Controller
      */
     public function create()
     {
-        $categorias = Categoria::whereNull('id_categoria_padre')->get();
-        
-        $vac = compact('categorias');
-        return view('admin.categorias.create',$vac);
+        return view('admin.categorias.create');
     }
 
     /**
@@ -67,26 +47,13 @@ class CategoriasController extends Controller
         
         $categoria->nombre = $req['nombre'];
         $categoria->descripcion = $req['descripcion'];
-        if($req['id_categoria_padre'] == '0'){
-          $req['id_categoria_padre'] = null;
-        }else{
-          $categoria->id_categoria_padre = $req['id_categoria_padre'];
-        }
+        $categoria->id_categoria_padre = null;
         $categoria->orden = $req['orden'];
         $categoria->save();
+
         return redirect()->route('admin.categorias.index');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Categoria  $categoria
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Categoria $categoria)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.
@@ -96,9 +63,7 @@ class CategoriasController extends Controller
      */
     public function edit(Categoria $categoria)
     {
-        $category = Categoria::whereNull('id_categoria_padre')->get();
-        $vac = compact('category','categoria');
-        return view('admin.categorias.edit',$vac);
+        return view('admin.categorias.edit',compact('categoria'));
     }
 
     /**
@@ -112,15 +77,10 @@ class CategoriasController extends Controller
     {
       $categoria->nombre = $request['nombre'];
       $categoria->descripcion = $request['descripcion'];
-      if($request['id_categoria_padre'] == '0'){
-        $categoria->id_categoria_padre = null;
-      }else{
-        $categoria->id_categoria_padre = $request['id_categoria_padre'];
-      }
       $categoria->orden= $request['orden'];
       $categoria->save();
 
-      return redirect()->route('admin.categorias.edit',$categoria->id)->with('success', 'El la categoria se modifico con exito!');
+      return redirect()->route('admin.categorias.edit',$categoria->id)->with('success', 'La categoria se modifico con exito!');
 
     }
 

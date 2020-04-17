@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CategoriasRequest extends FormRequest
+class SubcategoriaRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,9 +24,10 @@ class CategoriasRequest extends FormRequest
     public function rules()
     {
         return [
-          'nombre' => 'required|max:100|string',
-          'descripcion' =>'required|string',
-          'orden' =>'numeric'
+            'nombre' => 'required|max:30|string|min:5',
+            'descripcion' => 'required|string',
+            'id_categoria_padre' => 'required',
+            'orden' =>'numeric'
         ];
     }
 
@@ -35,8 +36,10 @@ class CategoriasRequest extends FormRequest
         return [
           'required' => 'El campo :attribute no puede estar vacio',
           'string' => 'El campo :attribute debe ser de tipo texto',
-          'max' => 'El campo :attributte no puede tener mas de :max caracteres',
-          'numeric' =>'El campo :attribute debe ser un numero'
+          'max' => 'El campo :attribute no puede tener mas de :max caracteres',
+          'min' => 'El campo :attribute tiene que tener mas de :min caracteres',
+          'numeric' =>'El campo :attribute debe ser un numero',
+          'id_categoria_padre.required' => 'Tenes que seleccionar una categoria!',
         ];
     }
 }

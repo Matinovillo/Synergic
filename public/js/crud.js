@@ -96,99 +96,10 @@ $("#producto-create-submit").click(function (e) {
 });
 
 
-// ------------------------------------------------------- //
+
 // Eliminar produto Ajax V.1 con redirect
-// ------------------------------------------------------ //
-// $(".delete-link").click(function (e) {
-//     e.preventDefault();
-//     Swal.fire({
-//         title: '¿Estas seguro?',
-//         text: "No podras restaurar el producto!",
-//         icon: 'warning',
-//         showCancelButton: true,
-//         confirmButtonColor: '#0e8ce4',
-//         cancelButtonColor: '#d33',
-//         confirmButtonText: 'Borrar',
-//         cancelButtonText: 'Cancelar'
-//     }).then((result) => {
-//         if (result.value) {
-//             var id = $(this).data("id");
-//             var token = $("meta[name='csrf-token']").attr("content");
-//             var url = e.target;
-//             $.ajax(
-//                 {
-//                     url: "/borrarProducto/" + id,
-//                     type: 'post',
-//                     data: {
-//                         _token: token,
-//                         id: id
-//                     },
-//                     success: function (response) {
-//                         $("#success").html(response.message)
-//                         Swal.fire(
-//                             'Exito!',
-//                             'Producto borrado correctamente',
-//                             'success'
-//                         );
-//                         var URLactual = window.location;
-//                         window.location.replace(URLactual);
-//                     }
-
-//                 });
-//         }
-//     });
-// });
-
-
-window.onload = function () {
-    this.fetchProducto()
-};
-// ------------------------------------------------------- //
-// Listado productos
-// ------------------------------------------------------ //
-function fetchProducto() {
-    $.ajax({
-        url: 'http://localhost:8000/api/productos',
-        type: 'GET',
-        success: function (response) {
-
-            let productos = JSON.parse(response);
-
-            let template = '';
-            productos.forEach(producto => {
-                if (producto.categoria == null) {
-                    producto.categoria = "Sin categoria"
-                    producto.categoria_id = null;
-                }
-                template += `
-            <tr scope="row" productoId="${producto.id}">
-                    <th scope="row">${producto.id}</th>
-                    <td>${producto.nombre}</td>
-                    <td>${producto.descripcion}</td>
-                    <td>${producto.precio}</td>
-                    <td>${producto.stock}</td>
-                    <td>${producto.categoria}</td>
-                    
-                    <td class="d-flex">                      
-                    <a title="editar" class="mr-2" href="http://localhost:8000/admin/productos/${producto.id}/edit">
-                        <button class="action-button-edit">
-                            <i class="fas fa-pen"></i>
-                        </button>
-                    </a>
-                    <button class="producto-delete action-button-delete"><i class="fas fa-trash-alt"></i></button>
-                    </td>
-                  </tr>`
-            });
-
-            $('#productos').html(template);
-        }
-    });
-}
-// ------------------------------------------------------- //
-// Borrar producto Version final
-// ------------------------------------------------------ //
-
-$(document).on('click', '.producto-delete', function () {
+$(".delete-producto").click(function (e) {
+    e.preventDefault();
     Swal.fire({
         title: '¿Estas seguro?',
         text: "No podras restaurar el producto!",
@@ -200,26 +111,123 @@ $(document).on('click', '.producto-delete', function () {
         cancelButtonText: 'Cancelar'
     }).then((result) => {
         if (result.value) {
-            let element = $(this)[0].parentElement.parentElement;
-            let id = $(element).attr('productoId')
-            $.ajax({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-                url: 'http://localhost:8000/admin/productos/' + id,
-                type: 'DELETE',
-                success: function (data) {
-                    Swal.fire(
-                        'Exito!',
-                        'Producto borrado correctamente',
-                        'success'
-                    );
-                    fetchProducto();
-                }
-            });
+            var id = $(this).data("id");
+            var token = $("meta[name='csrf-token']").attr("content");
+            var url = e.target;
+            $.ajax(
+                {   
+                    url: "http://localhost:8000/admin/productos/" + id,
+                    type: 'DELETE',
+                    data: {
+                        _token: token,
+                        id: id
+                    },
+                    success: function (response) {
+                        $("#success").html(response.message)
+                        Swal.fire(
+                            'Exito!',
+                            'Producto borrado correctamente',
+                            'success'
+                        );
+                        var URLactual = window.location;
+                        window.location.replace(URLactual);
+                    },
+
+                    error: function (response){
+                        $("#success").html(response.message)
+                        Swal.fire(
+                            'Ups!',
+                            'No se pudo borrar el producto :(',
+                            'error'
+                        );
+                    }
+
+                });
         }
     });
 });
+
+
+// window.onload = function () {
+//     this.fetchProducto()
+// };
+// // ------------------------------------------------------- //
+// // Listado productos
+// // ------------------------------------------------------ //
+// function fetchProducto() {
+//     $.ajax({
+//         url: 'http://localhost:8000/api/productos',
+//         type: 'GET',
+//         success: function (response) {
+
+//             let productos = JSON.parse(response);
+
+//             let template = '';
+//             productos.forEach(producto => {
+//                 if (producto.categoria == null) {
+//                     producto.categoria = "Sin categoria"
+//                     producto.categoria_id = null;
+//                 }
+//                 template += `
+//             <tr scope="row" productoId="${producto.id}">
+//                     <th scope="row">${producto.id}</th>
+//                     <td>${producto.nombre}</td>
+//                     <td>${producto.descripcion}</td>
+//                     <td>${producto.precio}</td>
+//                     <td>${producto.stock}</td>
+//                     <td>${producto.categoria}</td>
+                    
+//                     <td class="d-flex">                      
+//                     <a title="editar" class="mr-2" href="http://localhost:8000/admin/productos/${producto.id}/edit">
+//                         <button class="action-button-edit">
+//                             <i class="fas fa-pen"></i>
+//                         </button>
+//                     </a>
+//                     <button class="producto-delete action-button-delete"><i class="fas fa-trash-alt"></i></button>
+//                     </td>
+//                   </tr>`
+//             });
+
+//             $('#productos').html(template);
+//         }
+//     });
+// }
+// ------------------------------------------------------- //
+// Borrar producto Version final
+// ------------------------------------------------------ //
+
+// $(document).on('click', '.producto-delete', function () {
+//     Swal.fire({
+//         title: '¿Estas seguro?',
+//         text: "No podras restaurar el producto!",
+//         icon: 'warning',
+//         showCancelButton: true,
+//         confirmButtonColor: '#0e8ce4',
+//         cancelButtonColor: '#d33',
+//         confirmButtonText: 'Borrar',
+//         cancelButtonText: 'Cancelar'
+//     }).then((result) => {
+//         if (result.value) {
+//             let element = $(this)[0].parentElement.parentElement;
+//             let id = $(element).attr('productoId')
+//             $.ajax({
+//                 headers: {
+//                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+//                 },
+//                 url: 'http://localhost:8000/admin/productos/' + id,
+//                 type: 'DELETE',
+//                 success: function (data) {
+//                     Swal.fire(
+//                         'Exito!',
+//                         'Producto borrado correctamente',
+//                         'success'
+//                     );
+//                     fetchProducto();
+//                 }
+//             });
+//         }
+//     });
+// });
 
 
 
@@ -233,7 +241,7 @@ $(".delete-categoria").click(function (e) {
     e.preventDefault();
     Swal.fire({
         title: '¿Estas seguro?',
-        text: "Al eliminar una categoria se borraran todas sus subcategorias",
+        text: "Todas sus subcatgorias seran eliminadas tambien",
         icon: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#0e8ce4',
