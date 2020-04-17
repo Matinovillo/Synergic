@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\User;
+use App\Contact;
 use App\Producto;
 use App\Categoria;
-use App\User;
+use Illuminate\Http\Request;
+use App\Http\Requests\ContactRequest;
 
 class IndexController extends Controller
 { 
@@ -59,7 +61,6 @@ class IndexController extends Controller
       $producto = Producto::where('nombre',$nombre)->with('fotos')->first();
 
       $productoCategoria = $producto->categoria->padre()->first()->hijas()->get();
-      dd($productoCategoria);
       $id = [];
       foreach($productoCategoria as $categoria){
         array_push($id, $categoria->id);
@@ -68,4 +69,25 @@ class IndexController extends Controller
 
       return view('detalle',compact('producto','productosRelacionados'));
     }
+    
+    public function contact(){
+      return view('contact');
+    }
+
+    public function mensaje(ContactRequest $request){
+        Contact::create([
+          'nombre' => $request['nombre'],
+          'apellido' => $request['apellido'],
+          'celular' => $request['celular'],
+          'telefono' => $request['telefono'],
+          'email' => $request['email'],
+          'mensaje' => $request['mensaje']
+        ]);
+
+        return back()->with('')->with('success', 'Tu mensaje fue enviado correctamente. Tendras una respuesta a la brevedad, Gracias.');
+
+    }
+
+
 }
+
