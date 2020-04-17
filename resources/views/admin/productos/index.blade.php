@@ -13,28 +13,29 @@
 @section('dashboard', 'Listado de productos')
 
 @section('content')
+
 <div class="container-fluid">
-  <div class="row">
-   <div class="col-12">
-      <div class="list-head my-2">
-          <div class="row">
-            <div class="col-6">
-              <form method="GET" class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" name="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Search</button>
-              </form>
-            </div>
-          </div>
-      </div>
+<nav class="navbar navbar-light bg-light p-2">
+  <form class="form-inline">
+    <div class="input-group">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
     </div>
-  </div>
+    <div class="input-group mx-4">
+      <select class="custom-select">
+        <option selected>Open this select menu</option>
+        <option value="1">One</option>
+        <option value="2">Two</option>
+        <option value="3">Three</option>
+      </select>
+    </div>
+  </form>
+</nav>
 </div>
 
 
 
-
-
-<section class="admin-table-sec my-2">
+<section class="admin-table-sec table-responsive my-2">
   <div class="container-fluid">
   <div class="row">
     <div class="col-xl-12">
@@ -53,33 +54,36 @@
       </thead>
               <tbody class="align-middle tr-content " id="productos">
                 
-                {{-- @forelse($productos as $producto)
+                @forelse($productos as $producto)
                     <tr scope="row">
                     <th scope="row">{{$producto->id}}</th>
-                    <td>{{$producto->nombre}}</td>
-                    <td>{{$producto->descripcion}}</td>
+                    <td>{{substr($producto->nombre,0,30)}}...</td>
+                    <td>{{substr($producto->descripcion,0,50)}}...</td>
                     <td>{{$producto->precio}}</td>
                     <td>{{$producto->stock}}</td>
                     <td>{{$producto->categoria->nombre}}</td>
                     
-                    <td class="d-flex">
-                      
-                      <a title="editar" class="mr-2" href="/admin/editarProducto/{{$producto->id}}"><button class="action-button-edit"><i class="fas fa-pen"></i></button></a>
-                      <a href="/borrarProducto/{{$producto->id}}" id="deleteProducto" data-id="{{ $producto->id }}" class="delete-link">
+                    <td class="d-flex">                      
+                     <a title="editar" class="mr-2" href="{{route('admin.productos.edit',$producto->id)}}">
+                      <button class="action-button-edit">
+                         <i class="fas fa-pen"></i>
+                      </button>
+                      </a>
+                      <a id="deleteProducto" data-id="{{ $producto->id }}" class="delete-producto">
                         <button class="producto-delete action-button-delete"><i class="fas fa-trash-alt"></i></button>
                       </a>
-               
-                    </td>
+                      
+                      </td>
                   </tr>
                   @empty
-                    <h1 class="text-muted text-center">No hay productos.</h1>
+                    
                   
-                @endforelse --}}
+                @endforelse
                 
               </tbody>
     </table>
     <h1 class="text-muted text-center d-none" id="empty">No hay productos.</h1>
-  {{-- {{ $productos->links() }} --}}
+  
 
   </div>
   

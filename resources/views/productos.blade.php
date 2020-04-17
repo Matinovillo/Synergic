@@ -82,7 +82,7 @@
         </div>
         <div class="row">
           <!-- -----item------ -->
-          @foreach ($productos as $producto )
+          @forelse ($productos as $producto )
           <div class="col-xl-4 col-lg-4 col-md-6 mb-4">
             <div class="card h-100 sm-shadow">
             <a href="{{route('productoDetail', str_replace(" ", "+", $producto->nombre))}}" class="producto-imagen-link">
@@ -99,7 +99,11 @@
                 </div>
               </div>
           </div>
-          @endforeach
+          @empty
+          {{-- @if(isset($_GET['search']))
+            <h2 class="text-muted text-center">No se encontraron productos para: {{$_GET['search']}}</h2>
+          @endif --}}
+          @endforelse
           <!-- -----/item------ -->
         </div>
         <div class="row">
