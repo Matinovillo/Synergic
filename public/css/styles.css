@@ -276,7 +276,6 @@ header .header-row{
     border-bottom: 3px solid rgba(238, 238, 238, 0.746) ;
 }
 
-
 /*  1.5 Productos de muestra   */
 .owl-nav{
 	font-size: 15px;
@@ -738,24 +737,33 @@ border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 /*****************************
 3.0 Contact page
 *****************************/
-.contacto {
-	font-size: 2em;
-	border-bottom: 1px solid #aaaaaa;
-	margin: 0 auto;
+.contact-widget .cw-item {
+    margin-bottom: 50px;
 }
-.mensaje {
-	font-size:1em!important;
-}
-
-.contact .form-group .btn-contact{
-	background-color: #0e8ce4;
-	color: white;
+.contact-widget .cw-item h5 {
+    color: #1e1e1e;
+    font-weight: 600;
+    margin-bottom: 30px;
 }
 
+.title-color{
+	color: #1e1e1e;
+}
 
-.warning::placeholder {
-  color: red!important;
-  opacity:0.3!important;
+.contact-widget .cw-item ul li {
+    color: #838383;
+    font-size: 14px;
+    font-weight: 500;
+    list-style: none;
+    line-height: 28px;
+}
+
+.map {
+    padding-top: 100px;
+}
+
+.map iframe {
+    width: 100%;
 }
 
 /*****************************
