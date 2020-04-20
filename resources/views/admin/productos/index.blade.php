@@ -16,6 +16,7 @@
 
 <div class="container-fluid">
 <nav class="navbar navbar-light bg-light p-2">
+  {{$productos->links()}}
   <form class="form-inline">
     <div class="input-group">
       <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
@@ -61,7 +62,13 @@
                     <td>{{substr($producto->descripcion,0,50)}}...</td>
                     <td>{{$producto->precio}}</td>
                     <td>{{$producto->stock}}</td>
-                    <td>{{$producto->categoria->nombre}}</td>
+                    <td>
+                      @if($producto->categoria != null)
+                      {{$producto->categoria()->first()->nombre}}
+                      @else
+                      sin categoria
+                      @endif
+                    </td>
                     
                     <td class="d-flex">                      
                      <a title="editar" class="mr-2" href="{{route('admin.productos.edit',$producto->id)}}">
@@ -81,10 +88,7 @@
                 @endforelse
                 
               </tbody>
-    </table>
-    <h1 class="text-muted text-center d-none" id="empty">No hay productos.</h1>
-  
-
+    </table>  
   </div>
   
 
@@ -92,14 +96,5 @@
   </div>
 </section>
 
-
-{{-- <script type="text/javascript">
-  function handleSelect(elem)
-  {
-  window.location = "?"+elem.value;
-  }
-  </script> --}}
-
-  
 @endsection
 

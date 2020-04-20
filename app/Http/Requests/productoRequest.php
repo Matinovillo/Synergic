@@ -28,7 +28,7 @@ class productoRequest extends FormRequest
             'precio' =>'required|numeric',
             'stock' =>'required|numeric',
             'id_categoria' =>'required',
-            'imagen' =>'file'
+            'imagen' =>'file|required'
         ];
     }
 

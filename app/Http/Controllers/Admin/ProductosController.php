@@ -25,7 +25,7 @@ class ProductosController extends Controller
      */
     public function index()
     {
-        $productos = Producto::paginate(4);
+        $productos = Producto::paginate(8);
         
         return view('admin.productos.index', compact('productos'));
     }
@@ -48,7 +48,7 @@ class ProductosController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(productoRequest $request)
+    public function store(ProductoRequest $request)
     {
         Producto::create([
             'nombre' => $request['nombre'],
@@ -70,8 +70,7 @@ class ProductosController extends Controller
             $imagen->id_producto = $productoId;
             $imagen->save();
             }
-            // return redirect('admin/crearProducto');
-            return response()->json(['success' => true]);
+        return back()->with('success', 'El producto fue añadido correctamente!');
     }
 
     /**
