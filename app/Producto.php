@@ -23,9 +23,8 @@ class Producto extends Model
         return $this->hasMany('App\Producto_foto','id_producto');
     }
     
-    public function favoritos()
-    {
-        return $this->hasMany('App\Favoritos','id_producto');
+    public function usuario(){
+        return $this->belongsToMany('App\User','favoritos_users','id_producto','id_usuario');
     }
 
     public function detalleVenta(){

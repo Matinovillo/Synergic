@@ -58,6 +58,10 @@ class User extends Authenticatable
         return $this->belongsToMany('App\Role');
     }
 
+    public function productosFavoritos(){
+        return $this->belongsToMany('App\Producto','favoritos_users','id_usuario','id_producto');
+    }
+
     public function hasAnyRole($roles){
         if($this->roles()->whereIn('nombre', $roles)->first()){
             return true;

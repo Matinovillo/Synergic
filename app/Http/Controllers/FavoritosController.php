@@ -3,26 +3,23 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Favoritos;
+use App\Producto;
+use App\User;
 
 class FavoritosController extends Controller
 {
     public function add($id){
-        $favorito = new Favoritos();
-        $favorito->id_producto = $id;
-        $favorito->id_usuario = auth()->id();
-        $favorito->save();
-        return back();
+       $producto = Producto::where('id',$id)->first();
+       $usuario = auth()->user();
+       $usuario->productosFavoritos()->syncWithoutDetaching($producto);
+       return redirect(url('cuenta/misfavoritos'));
     }
 
     public function destroy($id){
-        $producto = Favoritos::where([
-            ['id_producto', '=', $id],
-            ['id_usuario', '=', auth()->id()],
-        ])->get()->first();
-        
-        $producto->delete();
-        return back();
+        $producto = Producto::find($id);
+        $usuario = auth()->user();
+        $usuario->productosFavoritos()->detach($producto);
+        return back()->with('success', 'El producto fue eliminado de tus favoritos');
     }
 
 }

@@ -25,7 +25,7 @@ Route::get('cart/update/{product}','CarritoController@update')->name('cart.updat
 Route::get('cart/clear','CarritoController@clear')->name('cart.clear')->middleware('auth');
 
 //favoritos
-Route::get('/add-to-favorito/{product}','FavoritosController@add')->name('favorito.add')->middleware('auth');
+Route::post('/add-to-favorito/{product}','FavoritosController@add')->name('favorito.add')->middleware('auth');
 Route::get('favorito/destroy/{product}','FavoritosController@destroy')->name('favorito.destroy')->middleware('auth');
 
 //mercado pago

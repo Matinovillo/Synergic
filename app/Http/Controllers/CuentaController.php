@@ -27,13 +27,7 @@ class CuentaController extends Controller
     }
 
     public function favoritos(){
-        $idProd = array();
-        $favoritos = Favoritos::where('id_usuario',auth()->id())->get();
-        foreach($favoritos as $fav){
-        array_push($idProd, $fav->id_producto);
-        }
-        $favs = Producto::whereIn('id',$idProd)->get();
-        return view('cuenta.favoritos',compact('favs'));
+        return view('cuenta.favoritos');
     }
 
     public function pedidos(){
