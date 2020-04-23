@@ -13,7 +13,7 @@ class Categoria extends Model
 
 
     public function producto(){
-        return $this->hasOne('App\Producto','id_categoria');
+        return $this->hasMany('App\Producto','id_categoria');
     }
 
     public function hijas(){
