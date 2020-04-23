@@ -80,7 +80,7 @@ class CuentaController extends Controller
         }
         $user->save();
         
-        return redirect('cuenta/datospersonales')->with('success', 'Los datos fueron actualizados.');
+        return back()->with('success', 'Los datos fueron actualizados.');
     }
 
 }
