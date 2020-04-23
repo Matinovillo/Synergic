@@ -46,14 +46,13 @@
       <tbody>
   
           @foreach ($ventas as $pedido)
-            {{-- @dd($pedido->estado()->first()->nombre) --}}
+            
             <tr scope="row">
-                <th scope="row">{{ $pedido->id }}</th>
-                <td>{{ $pedido->codigo }}</td>
-                <td>{{ $pedido->created_at }}</td>
-                <td>{{ $pedido->usuario()->first()->nombre()}}</td>
-                {{-- <td>{{ $pedido->detalle()->first()->detalleProducto()->first()->nombre }}</td> --}}
-                <td>{{ $pedido->estado()->first()->nombre}}</td>
+                <th>{{ $pedido->id }}</th>
+                <th>{{$pedido->codigo}}</th>
+                <th>{{$pedido->created_at}}</th>
+                <th>{{$pedido->usuario()->first()->nombre()}}</th>
+                <th>{{$pedido->estado}}</th>
                 <td><a href="">Ver detalles</a></td>
                 <td class="d-flex">
                    <a title="editar" class="mr-2" href=""><button class="action-button-edit bg-warning"><i class="fas fa-pen"></i></button></a>

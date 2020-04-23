@@ -105,15 +105,15 @@
   <!--/Product Details-->
 
   <!-- descripcion -->
-  {{-- <section class="prdcts-desc">
+  <section class="prdcts-desc">
     <div class="container">
       <h3>Descripcion</h3>
 
       <div class="row">
         <p>{{$producto->descripcion}}</p>
       </div>
+{{--       
       <div class="row">
-
         <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-xs-12 desc-item">
           <i class="fas fa-memory desc-icon"></i>
           <span>Memoria Ram</span>
@@ -150,10 +150,10 @@
           <p>aca va la descripcion de tal cosa</p>
         </div>
 
-      </div>
+      </div> --}}
     </div>
 
-  </section> --}}
+  </section>
 
 
    

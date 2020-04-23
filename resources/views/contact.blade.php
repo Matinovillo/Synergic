@@ -75,22 +75,21 @@
                     <div class="cw-item">
                         <h5>Direccion</h5>
                         <ul>
-                            <li>1525 Awesome Lane, </li>
-                            <li>Los Angeles, CA</li>
+                            <li>1481 Lorem ipsum dolor amet | B° Lorem ipsum</li>
+                            <li>Córdoba | Argentina</li>
                         </ul>
                     </div>
                     <div class="cw-item">
                         <h5>Telefono</h5>
                         <ul>
-                            <li>+1 (603)535-4592</li>
-                            <li>+1 (603)535-4556</li>
+                            <li>+54 351 921 0101</li>
+                            <li>492 1111</li>
                         </ul>
                     </div>
                     <div class="cw-item">
                         <h5>E-mail</h5>
                         <ul>
-                            <li>contact@violetstore.com</li>
-                            <li>www.violetstore.com</li>
+                            <li>Synergic@gmail.com</li>
                         </ul>
                     </div>
                     <div class="cw-item">

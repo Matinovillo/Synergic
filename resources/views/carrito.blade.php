@@ -3,7 +3,16 @@
 <div class="cart_section">
     <div class="container">
         <div class="row">
-       
+            @if (session('fail'))
+            <div class="col-sm-12">
+             <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                 {{ session('fail') }}
+                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                         <span aria-hidden="true">&times;</span>
+                     </button>
+               </div>
+            </div>
+            @endif
             <div class="col-lg-10 offset-lg-1">
                 @if(Cart::session(auth()->id())->getContent()->count() > 0)
                 <div class="cart_container">
@@ -77,8 +86,7 @@
                         <form action="{{route('cart.clear')}}" method="GET">
                             <button type="submit" class="button cart_button_clear">Vaciar Carrito</button>
                         </form>
-                    <a href="{{ Route('finalizar.compra') }}"><button type="submit" class="button cart_button_checkout">Finalizar compra</button></a> 
-
+                    {{-- <a href="{{ Route('finalizar.compra') }}"><button type="submit" class="button cart_button_checkout">Finalizar compra</button></a>  --}}
                     {{-- implemendo mercado pago --}}
                     <form action="{{ route('confirmar.compra') }}" class="mx-5"  method="POST">
                         @csrf

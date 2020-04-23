@@ -14,25 +14,39 @@
 
 @section('content')
 
-<div class="container-fluid">
-<nav class="navbar navbar-light bg-light p-2">
-  {{$productos->links()}}
-  <form class="form-inline">
-    <div class="input-group">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </div>
-    <div class="input-group mx-4">
-      <select class="custom-select">
-        <option selected>Open this select menu</option>
-        <option value="1">One</option>
-        <option value="2">Two</option>
-        <option value="3">Three</option>
-      </select>
-    </div>
-  </form>
+<nav class="container-fluid filter-nav">
+  <ul class="list-unstyled d-flex">
+    <li>
+    <form action="{{ Route('admin.productos.index') }}" class="form-inline" method="GET">
+  
+          <select id="inputState" class="form-control" name="orderBy">
+            <option value="">Odernar Por</option>
+            <option value="id">ID</option>
+            <option value="nombre">Nombre</option>
+            <option value="precio">Precio</option>
+            <option value="stock">Stock</option>
+            <option value="id_categoria">Categoria</option>
+          </select>
+
+          <button type="submit" class="btn btn-outline-primary ml-2">Filtrar</button>
+      </form>
+    </li>
+    <li class="search-fiter">
+      <form class="form-inline" action="{{ Route('admin.productos.index') }}">
+        <select id="inputState" class="form-control" name="tipo">
+          <option value="">Buscar Por</option>
+          <option value="nombre">Nombre</option>
+          <option value="precio">Precio</option>
+          <option value="stock">Stock</option>
+          <option value="id_categoria">Categoria</option>
+        </select>
+
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="buscar">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      </form>
+    </li>
+  </ul>
 </nav>
-</div>
 
 
 
@@ -88,7 +102,8 @@
                 @endforelse
                 
               </tbody>
-    </table>  
+    </table> 
+    {{$productos->links()}} 
   </div>
   
 
