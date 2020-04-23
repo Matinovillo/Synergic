@@ -3,6 +3,17 @@
 
 <div class="container my-5 p-5">
     <div class="row">
+
+      @if (session('success'))
+    <div class="col-sm-12">
+     <div class="alert  alert-success alert-dismissible fade show" role="alert">
+         {{ session('success') }}
+             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                 <span aria-hidden="true">&times;</span>
+             </button>
+       </div>
+    </div>
+   @endif
         <div class="col-md-12">
             <h4 class="text-muted comprar-title">Completar datos</h4>
         </div>
@@ -128,8 +139,16 @@
                 </li>
               </ul>
             <div class="card-footer d-flex">
-              <a class="text-muted h6 m-auto" href="{{route('cart')}}"><i class="fas fa-chevron-left mr-2"></i>Volver al carrito</a>
-              <a class="text-primary h6 m-auto" href="{{route('opciones.compra')}}">Continuar<i class="fas fa-chevron-right ml-2"></i></a>
+              {{-- <a class="text-muted h6 m-auto" href="{{route('cart')}}"><i class="fas fa-chevron-left mr-2"></i>Volver al carrito</a> --}}
+              <form action="{{ route('confirmar.compra') }}" method="POST">
+                @csrf
+                
+                <button type="submit" class="btn compra-btn border pr-4 rounded">
+                
+                <span>Pagar con</span>
+                <img src="/img/mp-logo.png" class="compra-img" alt="">
+                </button></a>
+             </form>
             </div>
           </div>
           

@@ -75,13 +75,17 @@
             <td>{{implode('-', $usuario->roles()->get()->pluck('nombre')->toArray())}}</td>
             <td class="d-flex">
               @can('editar-usuario')
-            <a title="editar" class="mr-2" href="{{ route('admin.usuarios.edit', $usuario->id) }}"><button class="action-button-edit bg-warning"><i class="fas fa-pen"></i></button></a>
+              <a title="editar" class="mr-2" href="{{ route('admin.usuarios.edit', $usuario->id) }}">
+                <button class="btn btn-warning">
+                  <i class="fas fa-pen"></i>
+                </button>
+              </a>
               @endcan
               @can('borrar-usuario')
             <form action="{{ route('admin.usuarios.destroy',$usuario) }}" method="POST">
                 @csrf
                 {{ method_field('DELETE') }}
-                <button type="submit" class="action-button-delete bg-danger"><i class="fas fa-trash-alt"></i></button></a>
+                <button type="submit" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button></a>
             </form>
               @endcan
             </td>

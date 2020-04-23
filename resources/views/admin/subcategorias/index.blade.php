@@ -59,10 +59,10 @@
                                 <td>{{$subcategoria->orden}}</td>
                                 <td class="text-left">
                                     <a title="editar" class="mr-2" href="{{ route('admin.subcategorias.edit', $subcategoria->id) }}">
-                                        <button class="action-button-edit bg-warning"><i class="fas fa-pen"></i></button>
+                                        <button class="btn btn-warning"><i class="fas fa-pen"></i></button>
                                     </a>
                                     <a id="deleteCategoria" data-id="{{ $subcategoria->id }}" class="delete-categoria">
-                                        <button class="categoria-delete action-button-delete"><i class="fas fa-trash-alt"></i></button>
+                                        <button class="categoria-delete btn btn-danger"><i class="fas fa-trash-alt"></i></button>
                                     </a>
                                 </td>
                             </tr>

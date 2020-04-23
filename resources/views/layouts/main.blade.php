@@ -213,7 +213,8 @@
     </div>
     <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-xs-12">
       <h5><i class="fas fa-credit-card mr-3"></i>Pagos</h5>
-      <p class="text-muted">Recibimos todas las formas de pagos</p>
+      <p class="text-muted">Con mercado pago, paga de la forma que quieras</p>
+      <img src="/img/mp-logo.png" class="compra-img" alt="">
       <img src="../img/cards.png" alt="">
     </div>
     <div class="col-xl-1 col-lg-1 col-md-6 col-sm-12 col-xs-12 ">

@@ -70,12 +70,18 @@
               <tbody class="align-middle tr-content " id="productos">
                 
                 @forelse($productos as $producto)
-                    <tr scope="row">
+              <tr scope="row" class="@if($producto->stock == 0){{"table-danger"}} @endif">
                     <th scope="row">{{$producto->id}}</th>
                     <td>{{substr($producto->nombre,0,30)}}...</td>
                     <td>{{substr($producto->descripcion,0,50)}}...</td>
                     <td>{{$producto->precio}}</td>
-                    <td>{{$producto->stock}}</td>
+                    <td>
+                       @if($producto->stock == 0)
+                        <b>{{"Sin stock"}}</b>  
+                       @else
+                        {{$producto->stock}}
+                       @endif
+                    </td>
                     <td>
                       @if($producto->categoria != null)
                       {{$producto->categoria()->first()->nombre}}
@@ -86,12 +92,12 @@
                     
                     <td class="d-flex">                      
                      <a title="editar" class="mr-2" href="{{route('admin.productos.edit',$producto->id)}}">
-                      <button class="action-button-edit">
+                      <button class="btn btn-warning shadow">
                          <i class="fas fa-pen"></i>
                       </button>
                       </a>
                       <a id="deleteProducto" data-id="{{ $producto->id }}" class="delete-producto">
-                        <button class="producto-delete action-button-delete"><i class="fas fa-trash-alt"></i></button>
+                        <button class="producto-delete btn btn-danger shadow"><i class="fas fa-trash-alt"></i></button>
                       </a>
                       
                       </td>
