@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Ventas;
+use App\Producto;
 use App\Detalle_venta;
 use Illuminate\Http\Request;
 
@@ -32,6 +33,10 @@ class MercadoPagoController extends Controller
            $detalle->precio_unitario = $producto->price;
            $detalle->id_venta = $venta->id;
            $detalle->save();
+
+           $stock = Producto::find($producto->id);
+           $stock->stock = $stock->stock - $producto->quantity;
+           $stock->save();
        }
 
        \Cart::session(auth()->id())->clear();
