@@ -84,11 +84,12 @@ class VentasController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Ventas  $ventas
+     * @param  \App\Ventas  $pedido
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Ventas $ventas)
+    public function destroy(Ventas $pedido)
     {
-        //
+        $pedido->delete();
+        return back()->with('success', 'Se elimino el pedido');
     }
 }
