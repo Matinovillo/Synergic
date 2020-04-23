@@ -71,32 +71,21 @@
               <div class="">
 
                 <div class="theme-text">
-                  <div class="title">Disponibilidad: En stock</div>
-                  <div class="title">Modelo: loremipsum</div>
+                  <div class="title h5">@if($producto->stock <= 0) {{"Sin stock"}}  @else {{"En stock"}} @endif</div>
+                  <div class="title h5">Modelo: loremipsum</div>
                 </div>
               </div>
             </div>
 
             <!-- ------------------------------------------------------------------------ -->
-            @if (Route::has('login'))
-              @auth
+           
                 <div class="buttonAction text-center action-shopping-cart">
-                  <a id="tdb1" href="{{route('cart.add', $producto->id)}}">
-                    <span class="btn">
-                      Añadir al carrito
+                <a id="tdb1" class="@if(Route::has('login')) @auth {{''}}  @else {{ "addtocart" }} @endauth @endif " href="{{route('cart.add', $producto->id)}}">
+                    <span class="btn @if($producto->stock <= 0) {{"disabled"}} @endif">
+                      @if($producto->stock <= 0) {{"Sin stock"}}  @else {{"Añadir al carrito"}} @endif
                     </span>
                   </a>
                 </div>
-            @else
-              <div class="buttonAction text-center action-shopping-cart">
-                <a id="tdb1" class="addtocart" href="{{route('cart.add', $producto->id)}}">
-                  <span class="btn">
-                    Añadir al carrito
-                  </span>
-                </a>
-              </div>
-            @endauth
-          @endif
           </div>
         </div>
       </div>
@@ -181,15 +170,10 @@
                     </a>
                   </p>
                   Precio: <span class="card__category text-success">${{$related->precio}}</span>
-                  @if (Route::has('login'))
-                   @auth
-                    <span class="card__category"><a href="{{route('cart.add', $related->id)}}" class="card__author text-success" title="author"><i class="fas fa-cart-plus"></i></a></span>
-                    <span class="card__category"><a href="{{route('favorito.add', $related->id)}}" class="card__author text-muted mx-2" title="author"><i class="fas fa-heart"></i></a></span>
-                  @else
-                    <span class="card__category"><a href="{{route('cart.add', $related->id)}}" class="card__author addtocart" title="author"><i class="fas fa-cart-plus"></i></a></span>
-                    <span class="card__category"><a href="{{route('favorito.add', $related->id)}}" class="card__author mx-2 addtocart" title="author"><i class="fas fa-heart"></i></a></span>
-                   @endauth
-                  @endif
+                  
+                    <span class="card__category"><a href="{{route('cart.add', $related->id)}}" class="card__author text-success @if(Route::has('login')) @auth {{''}}  @else {{ "addtocart" }} @endauth @endif" title="author"><i class="fas fa-cart-plus"></i></a></span>
+                    <span class="card__category"><a href="{{route('favorito.add', $related->id)}}" class="card__author text-muted mx-2 @if(Route::has('login')) @auth {{''}}  @else {{ "addtocart" }} @endauth @endif" title="author"><i class="fas fa-heart"></i></a></span>
+                
                 </div>
               </div>
             </div> 

@@ -86,9 +86,11 @@
           <div class="col-xl-4 col-lg-4 col-md-6 mb-4">
             <div class="card h-100 sm-shadow">
             <a href="{{route('productoDetail', str_replace(" ", "+", $producto->nombre))}}" class="producto-imagen-link">
-                    <img class="card-img-top" src="/storage/{{$producto->fotos()->get()->first()->nombre}}"alt="">
+                    <img class="card-img-top" src="/storage/{{$producto->fotos()->get()->first()->nombre}}"alt="">   
             </a>
-                
+            @if($producto->stock <= 0)
+              <p class="text-muted text-center h5 font-weight-bolder nostock">Sin stock</p>
+            @endif  
                 <div class="card-body">
                   <h4 class="card-title">
                     <a href=""></a>

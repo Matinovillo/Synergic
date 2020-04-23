@@ -142,28 +142,19 @@
                   </a>
                 </p>
                 Precio: <span class="card__category text-success">${{$notebook->precio}}</span>
-                @if (Route::has('login'))
-                 @auth
-                 {{-- Si esta logueado --}}
-
+                
                  {{-- boton carrito --}}
                   <span class="card__category">
-                    <a href="{{route('cart.add', $notebook->id)}}" class="card__author text-success" title="Añadir al carrito">
+                    <a href="{{route('cart.add', $notebook->id)}}" class="card__author text-success @if(Route::has('login')) @auth {{''}}  @else {{ "addtocart" }} @endauth @endif" title="Añadir al carrito">
                       <i class="fas fa-cart-plus"></i>
                     </a>
                   </span>
                   {{-- boton favorito --}}
                   <span class="card__category">
-                  <a href="{{route('favorito.add', $notebook->id)}}" id="favorite{{$notebook->id}}" class="card__author favorite-add  mx-2" title="author" data-id="{{$notebook->id}}">
+                    <a href="{{route('favorito.add', $notebook->id)}}" id="favorite{{$notebook->id}}" class="card__author favorite-add  mx-2 @if(Route::has('login')) @auth {{''}}  @else {{ "addtocart" }} @endauth @endif" title="author" data-id="{{$notebook->id}}">
                       <i class="fas fa-heart"></i>
                     </a>
                   </span>
-                @else
-                 {{-- Si no esta logueado --}}
-                  <span class="card__category"><a href="{{route('cart.add', $notebook->id)}}" class="card__author addtocart" title="author"><i class="fas fa-cart-plus"></i></a></span>
-                  <span class="card__category"><a href="{{route('favorito.add', $notebook->id)}}" class="card__author mx-2 addtocart" title="author"><i class="fas fa-heart"></i></a></span>
-                 @endauth
-                @endif
               </div>
             </div>
           </article> 
