@@ -66,7 +66,7 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware('can:admi
     Route::resource('/productos','ProductosController');
     Route::resource('/categorias','CategoriasController');
     Route::resource('/subcategorias','SubcategoriasController',['except' => ['show','destroy']]);
-    Route::resource('/pedidos', 'VentasController',['except' => ['create']]);
+    Route::resource('/pedidos', 'VentasController',['except' => ['show','store','create']]);
 });
 
 

@@ -90,6 +90,8 @@ class VentasController extends Controller
     public function destroy(Ventas $pedido)
     {
         $pedido->delete();
-        return back()->with('success', 'Se elimino el pedido');
+         return response()->json([
+          'message' => 'Data deleted successfully!'
+        ]);
     }
 }

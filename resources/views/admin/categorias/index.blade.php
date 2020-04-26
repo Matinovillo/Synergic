@@ -8,19 +8,32 @@
 
 @section('content')
 
-<div class="container-fluid">
-  <div class="row">
-   <div class="col-12">
-      <div class="list-head my-2">
-          <div class="row">
-            <div class="col-md-6">
-              {{ $categorias->links() }}
-            </div>
-          </div>
-      </div>
+<div class="d-flex container flex-row justify-content-between align-items-center bg-dark">
+    <div class="p-2">
+      <form action="{{ Route('admin.categorias.index') }}" class="form-inline" method="GET">
+    
+        <select id="inputState" class="form-control" name="orderBy">
+          <option value="">Ordenar Por</option>
+          <option value="id" @if($order === "id") {{"selected"}} @endif>ID</option>
+          <option value="nombre" @if($order === "nombre") {{"selected"}} @endif>Nombre</option>
+          <option value="orden" @if($order === "orden") {{"selected"}} @endif>Orden</option>
+        </select>
+    
+        <button type="submit" class="btn btn-primary ml-2">Filtrar</button>
+    </form>
+    </div>
+    <div class="p-2">
+      <form class="form-inline" action="{{ Route('admin.categorias.index') }}">
+        <select name="tipo" class="form-control mr-2">
+          <option value="nombre">Buscar por</option>
+          <option value="id" @if($tipo === "id") {{"selected"}} @endif>ID</option>
+          <option value="nombre" @if($tipo === "nombre") {{"selected"}} @endif>Nombre</option>
+        </select>
+        <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Search" name="buscar" value="{{$buscar}}">
+        <button class="btn btn-primary my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
+      </form>
     </div>
   </div>
-</div>
 
 @if (session('success'))
 <div class="col-sm-12">
@@ -67,18 +80,13 @@
                           @endforeach
                       </tbody>
                   </table>
+                  {{$categorias->appends(["tipo" => $tipo, "buscar" => $buscar])->appends(["orderBy" => $order])->links()}}
               </div>
           </div>
       </div>
   </div>
 </section>
-  
-  <script type="text/javascript">
-  function handleSelect(elem)
-  {
-  window.location = "?"+elem.value;
-  }
-  </script>
+ 
 
 @endsection
 

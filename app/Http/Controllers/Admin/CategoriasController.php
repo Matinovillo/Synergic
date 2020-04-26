@@ -18,11 +18,15 @@ class CategoriasController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $req)
     {
-      $categorias = Categoria::whereNull('id_categoria_padre')->paginate(5);
-      $vac = compact('categorias');
-      return view('admin.categorias.index',$vac);
+        $order = $req['orderBy'];
+        $buscar = $req['buscar'];
+        $tipo = $req['tipo'];
+        $categorias = Categoria::whereNull('id_categoria_padre');
+        $categorias = $categorias->BuscarSubCategoria($tipo,$buscar)->orderBy(($order=="") ? "id" : $order )->paginate(5);
+        $vac = compact('categorias','buscar','tipo','order');
+        return view('admin.categorias.index',$vac);
     }
 
     /**

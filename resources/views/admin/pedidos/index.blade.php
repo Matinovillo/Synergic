@@ -1,5 +1,7 @@
 @extends('layouts.abm')
-
+@section('token')
+<meta name="csrf-token" content="{{ csrf_token() }}">
+@endsection
 @section('pedidos', 'active')
 @section('title', 'Admin Page')
 @section('dashboard', 'Pedidos')
@@ -74,13 +76,16 @@
                        <i class="fas fa-pen"></i>
                       </button>
                     </a>
-                  <form action="{{Route('admin.pedidos.destroy',$pedido->id)}}" method="POST">
+                  {{-- <form action="{{Route('admin.pedidos.destroy',$pedido->id)}}" method="POST">
                       @csrf
                        {{ method_field('DELETE') }}
                          <button type="submit" class="btn btn-danger shadow">
                            <i class="fas fa-trash-alt"></i>
                           </button>        
-                   </form>
+                   </form> --}}
+                    <a id="deletePedido" data-id="{{ $pedido->id }}" class="delete-pedido">
+                      <button class="pedido-delete btn btn-danger"><i class="fas fa-trash-alt"></i></button>
+                   </a>
               </td>
             </tr>
           @endforeach
