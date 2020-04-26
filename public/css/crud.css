@@ -934,6 +934,11 @@ section.dashboard-counts div[class*='col-']:last-of-type .item {
   font-size: 20px;
 }
 
+.filter-nav ul li{
+  width: 100%;
+  text-align: center;
+}
+
 
 
 
