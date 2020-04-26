@@ -318,6 +318,85 @@ $(".delete-categoria").click(function (e) {
 
 
 // ------------------------------------------------------- //
-// Validaciones crear producto
+// Eliminar usuario
 // ------------------------------------------------------ //
 
+$(".delete-usuario").click(function (e) {
+    e.preventDefault();
+    Swal.fire({
+        title: 'Deseas eliminar este usuario?',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#0e8ce4',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Borrar',
+        cancelButtonText: 'Cancelar'
+    }).then((result) => {
+        if (result.value) {
+            var id = $(this).data("id");
+            var token = $("meta[name='csrf-token']").attr("content");
+            var url = e.target;
+            $.ajax(
+                {
+                    url: "http://localhost:8000/admin/usuarios/" + id,
+                    type: 'DELETE',
+                    data: {
+                        _token: token,
+                        id: id
+                    },
+                    success: function (response) {
+                        $("#success").html(response.message)
+                        Swal.fire(
+                            'Exito!',
+                            'El usuario fue eliminado',
+                            'success'
+                        );
+                        var URLactual = window.location;
+                        window.location.replace(URLactual);
+                    }
+
+                });
+        }
+    });
+});
+
+$(".delete-pedido").click(function (e) {
+    e.preventDefault();
+    Swal.fire({
+        title: 'Deseas eliminar pedido?',
+        text: "No se podra recuperar esta informacion",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#0e8ce4',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Borrar',
+        cancelButtonText: 'Cancelar'
+    }).then((result) => {
+        if (result.value) {
+            var id = $(this).data("id");
+            var token = $("meta[name='csrf-token']").attr("content");
+            var url = e.target;
+            $.ajax(
+                {
+                    url: "http://localhost:8000/admin/pedidos/" + id,
+                    type: 'DELETE',
+                    data: {
+                        _token: token,
+                        id: id
+                    },
+                    success: function (response) {
+                        $("#success").html(response.message)
+                        Swal.fire(
+                            'Exito!',
+                            'El pedido fue eliminado',
+                            'success'
+                        );
+                        var URLactual = window.location;
+                        window.location.replace(URLactual);
+                    }
+
+                });
+        }
+    });
+});
+    

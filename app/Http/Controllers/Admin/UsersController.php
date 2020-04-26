@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\userValidation;
 use App\User;
 use App\Role;
 use App\Fotos;
@@ -11,6 +12,7 @@ use App\Domicilio;
 use App\Provincia;
 use App\Favoritos;
 use Gate;
+use Illuminate\Validation\Rule;
 use Illuminate\Http\Request;
 
 class UsersController extends Controller
@@ -30,8 +32,9 @@ class UsersController extends Controller
     {
         $buscar = $req['buscar'];
         $tipo = $req['tipo'];
-        $usuarios = User::Buscar($tipo,$buscar)->paginate(8);
-        return view('admin.usuarios.index',compact('usuarios','tipo','buscar'));
+        $order = $req['orderBy'];
+        $usuarios = User::Buscar($tipo,$buscar)->orderBy(($order=="") ? "id" : $order )->paginate(8);
+        return view('admin.usuarios.index',compact('usuarios','tipo','buscar','order'));
     }
 
 
@@ -54,12 +57,33 @@ class UsersController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\userValidation  $request
      * @param  \App\User  $usuario
-     * @return \Illuminate\Http\Response
+     * @return \App\Http\Requests\userValidation
      */
     public function update(Request $request, User $usuario)
-    {
+    {   
+             $reglas = [
+            'email' => [
+                'required',
+                 Rule::unique('users')->ignore($usuario->id),
+                 'email:rfc,dns',
+            ],
+            'nombre' => 'required|string|min:3',
+            'apellido' => 'required|string|min:3',
+            'roles' => 'required',
+            ];
+            $mensajes = [
+            'email.unique' => 'El email ingresado ya esta en uso',
+            'email:rfc,dns' => 'El email ingresado no parece ser valido',
+            'roles.required' => 'El usuario debe tener al menos un rol asignado',
+            'required' => 'El campo :attribute no puede estar vacio',
+            'string' => 'El campo :attribute debe ser de tipo texto',
+            'min' => 'El campo :attribute debe tener un minimo de :min caracteres',
+            'max' => 'El campo :attributte no puede tener mas de :max caracteres'
+            ];
+            $this->validate($request,$reglas,$mensajes);
+
         $usuario->roles()->sync($request->roles);
         $usuario->nombre = $request->nombre;
         $usuario->apellido= $request->apellido;
@@ -84,6 +108,8 @@ class UsersController extends Controller
         $usuario->roles()->detach();
         $usuario->delete();
 
-        return redirect()->route('admin.usuarios.index')->with('success', 'El usuario se elimino correctamente');
+        return response()->json([
+        'message' => 'Data deleted successfully!'
+        ]);;
     }
 }

@@ -38,7 +38,7 @@
             <div class="form-group">
               <label class="text-muted">Apellido:</label>
             <input type="text" class="form-control" value="{{ $usuario->apellido }}" name="apellido">
-              @error('descripcion')
+              @error('apellido')
                 <small class="text-danger">{{$message}}</small>
               @enderror
             </div>
@@ -47,7 +47,7 @@
             <div class="form-group">
               <label class="text-muted">E-mail</label>
             <input type="text" class="form-control" value="{{  $usuario->email }}" name="email">
-              @error('precio')
+              @error('email')
                 <small class="text-danger">{{$message}}</small>
               @enderror
             </div>
@@ -60,12 +60,8 @@
               <input type="checkbox" name="roles[]" class="custom-control-input" id="check-{{$rol->id}}" value="{{ $rol->id }}" @if($usuario->roles->pluck('id')->contains($rol->id)) checked @endif>
                 <label class="custom-control-label" for="check-{{$rol->id}}">{{ $rol->nombre }}</label>
               </div>
-                  {{-- <div class="form-check">
-                  <input type="checkbox" name="roles[]" value="{{ $rol->id }}" @if($usuario->roles->pluck('id')->contains($rol->id)) checked @endif>
-                  <label for="">{{ $rol->nombre }}</label>
-                  </div> --}}
               @endforeach
-              @error('stock')
+              @error('roles')
                 <small class="text-danger">{{$message}}</small>
               @enderror
             </div>

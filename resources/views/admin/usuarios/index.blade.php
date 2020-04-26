@@ -1,5 +1,7 @@
 @extends('layouts.abm')
-
+@section('token')
+<meta name="csrf-token" content="{{ csrf_token() }}">
+@endsection
 @section('usuarios', 'active')
 @section('title', 'Admin Page')
 @section('dashboard', 'Usuarios')
@@ -35,12 +37,11 @@
     <form action="{{ Route('admin.usuarios.index') }}" class="form-inline" method="GET">
   
       <select id="inputState" class="form-control" name="orderBy">
-        {{-- <option value="">Ordenar Por</option>
+        <option value="">Ordenar Por</option>
         <option value="id" @if($order === "id") {{"selected"}} @endif>ID</option>
         <option value="nombre" @if($order === "nombre") {{"selected"}} @endif>Nombre</option>
-        <option value="precio" @if($order === "precio") {{"selected"}} @endif>Precio</option>
-        <option value="stock" @if($order === "stock") {{"selected"}} @endif>Stock</option>
-        <option value="id_categoria" @if($order === "id_categoria") {{"selected"}} @endif>Categoria</option> --}}
+        <option value="apellido" @if($order === "apellido") {{"selected"}} @endif>Apellido</option>
+        <option value="email" @if($order === "email") {{"selected"}} @endif>Precio</option>
       </select>
   
       <button type="submit" class="btn btn-primary ml-2">Filtrar</button>
@@ -49,7 +50,7 @@
   <div class="p-2">
     <form class="form-inline" action="{{ Route('admin.usuarios.index') }}">
       <select name="tipo" class="form-control mr-2">
-        <option value="">Buscar por</option>
+        <option value="nombre">Buscar por</option>
         <option value="id" @if($tipo === "id") {{"selected"}} @endif>ID</option>
         <option value="nombre" @if($tipo === "nombre") {{"selected"}} @endif>Nombre</option>
         <option value="apellido" @if($tipo === "apellido") {{"selected"}} @endif>Apellido</option>
@@ -98,35 +99,23 @@
                 </button>
               </a>
               @endcan
-              @can('borrar-usuario')
-                <form action="{{ route('admin.usuarios.destroy',$usuario) }}" method="POST">
-                @csrf
-                {{ method_field('DELETE') }}
-                <button type="submit" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button></a>
-                </form>
-              @endcan
+              
+                <a id="deleteUsuario" data-id="{{ $usuario->id }}" class="delete-usuario">
+                    <button class="usuario-delete btn btn-danger"><i class="fas fa-trash-alt"></i></button>
+                </a>
+         
             </td>
           </tr>
         @endforeach
+      
 
     </tbody>
   </table>
-  {{$usuarios->appends(["tipo" => $tipo, "buscar" => $buscar])->links()}}
+  {{$usuarios->appends(["tipo" => $tipo, "buscar" => $buscar])->appends(["orderBy" => $order])->links()}}
   </div>
   </div>
   </div>
 </section>
 
-
-<script>
-  function ConfirmarDelete(){
-    var respuesta = confirm('¿Estas seguro que deseas eliminar este usuario?');
-    if(respuesta == true){
-      return true;
-    }else{
-      return false;
-    }
-  }
-</script>
 
 @endsection
