@@ -39,6 +39,7 @@
     </div> 
   </div> 
   @empty
+
   <div class="container my-5">
   <h3 class="text-center text-muted">No tenes productos favoritos! <a href="/productos">Ver productos</a></h3>
   </div>

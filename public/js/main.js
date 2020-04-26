@@ -125,6 +125,15 @@ $('.owl-carousel').owlCarousel({
 	}
 })
 
+function desoradd(id, item) {
+	let add = "http://localhost:8000/add-to-favorito/" + id;
+	let destroy = "http://localhost:8000/favorito/destroy/" + id;
+	if (item.classList.contains('text-danger')) {
+		return destroy;
+	} else {
+		return add;
+	}
+}
 
 $(".favorite-add").click(function (e) {
 	e.preventDefault()
@@ -132,13 +141,14 @@ $(".favorite-add").click(function (e) {
 	let token = $("meta[name='csrf-token']").attr("content");
 	$.ajax(
 		{
-			url: "http://localhost:8000/add-to-favorito/" + id,
+			url: desoradd(id, this),
 			type: 'POST',
 			data: {
 				_token: token,
 				id: id
 			},
 			success: function (response) {
+				$("#favorite" + id).toggleClass('text-danger', 'text-primary');
 				Swal.fire(
 					'El producto se añadio a tus favoritos',
 					'',

@@ -1,5 +1,7 @@
 @extends('layouts.main')
-
+@section('token')
+<meta name="csrf-token" content="{{ csrf_token() }}">
+@endsection
 @section('contenido')
 <section class="section_page shoppingProducts container">
     <div class="container">
@@ -146,12 +148,25 @@
 
 
    
-<div class="container">
-  <h3 class="text-muted my-2">Productos Relacionados</h3>
-  <section class="prdct-slider">
+<div class="container my-5">
+  <h3 class="text-muted my-2 border-bottom">Productos Relacionados</h3>
+  <section class="border-bottom">
     <div class="row">
       <div class="col-xl-12 col-sm-12">
         <div class="owl-carousel owl-theme">
+          @php
+        $favs = [];
+        if(auth()->user() != null){
+          $userfavs = auth()->user()->productosFavoritos()->get();
+        }else{
+          $userfavs = [];
+        }
+        
+        foreach ($userfavs as $value) {
+          array_push($favs, $value->id);
+        }
+      
+      @endphp
            @foreach ($productosRelacionados as $related)   
             <div class="cards">
               <div class="card-slider card--1">
@@ -171,8 +186,18 @@
                   </p>
                   Precio: <span class="card__category text-success">${{$related->precio}}</span>
                   
-                    <span class="card__category"><a href="{{route('cart.add', $related->id)}}" class="card__author text-success @if(Route::has('login')) @auth {{''}}  @else {{ "addtocart" }} @endauth @endif" title="author"><i class="fas fa-cart-plus"></i></a></span>
-                    <span class="card__category"><a href="{{route('favorito.add', $related->id)}}" class="card__author text-muted mx-2 @if(Route::has('login')) @auth {{''}}  @else {{ "addtocart" }} @endauth @endif" title="author"><i class="fas fa-heart"></i></a></span>
+                    {{-- boton carrito --}}
+                  <span class="card__category">
+                    <a href="{{route('cart.add', $related->id)}}" class="card__author text-success @if(Route::has('login')) @auth {{''}}  @else {{ "addtocart" }} @endauth @endif" title="Añadir al carrito">
+                      <i class="fas fa-cart-plus"></i>
+                    </a>
+                  </span>
+                  {{-- boton favorito --}}
+                  <span class="card__category">
+                    <a href="{{route('favorito.add', $related->id)}}" id="favorite{{$related->id}}" class="@if(in_array($related->id, $favs) == true) {{"text-danger"}} @endif card__author favorite-add  mx-2 @if(Route::has('login')) @auth {{''}}  @else {{ "addtocart" }} @endauth @endif" title="author" data-id="{{$related->id}}">
+                      <i class="fas fa-heart"></i>
+                    </a>
+                  </span>
                 
                 </div>
               </div>
