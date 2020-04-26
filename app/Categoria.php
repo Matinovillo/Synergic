@@ -23,4 +23,10 @@ class Categoria extends Model
     public function padre(){
     return $this->belongsTo('App\Categoria', 'id_categoria_padre');
     }
+
+    public function scopeBuscarSubCategoria($query,$tipo,$buscar){
+        if($tipo && $buscar){
+            return $query->where($tipo,'like',"%$buscar%");
+        }
+    }
 }

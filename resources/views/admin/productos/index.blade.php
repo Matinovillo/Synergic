@@ -14,39 +14,33 @@
 
 @section('content')
 
-<nav class="container-fluid filter-nav">
-  <ul class="list-unstyled d-flex">
-    <li>
+<div class="d-flex container flex-row justify-content-between align-items-center bg-dark">
+  <div class="p-2">
     <form action="{{ Route('admin.productos.index') }}" class="form-inline" method="GET">
   
-          <select id="inputState" class="form-control" name="orderBy">
-            <option value="">Odernar Por</option>
-            <option value="id">ID</option>
-            <option value="nombre">Nombre</option>
-            <option value="precio">Precio</option>
-            <option value="stock">Stock</option>
-            <option value="id_categoria">Categoria</option>
-          </select>
-
-          <button type="submit" class="btn btn-outline-primary ml-2">Filtrar</button>
-      </form>
-    </li>
-    <li class="search-fiter">
-      <form class="form-inline" action="{{ Route('admin.productos.index') }}">
-        <select id="inputState" class="form-control" name="tipo">
-          <option value="">Buscar Por</option>
-          <option value="nombre">Nombre</option>
-          <option value="precio">Precio</option>
-          <option value="stock">Stock</option>
-          <option value="id_categoria">Categoria</option>
-        </select>
-
-        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="buscar">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-      </form>
-    </li>
-  </ul>
-</nav>
+      <select id="inputState" class="form-control" name="orderBy">
+        <option value="">Ordenar por:</option>
+        <option value="id" @if($order === "id") {{"selected"}} @endif>ID</option>
+        <option value="nombre" @if($order === "nombre") {{"selected"}} @endif>Nombre</option>
+        <option value="precio" @if($order === "precio") {{"selected"}} @endif>Precio</option>
+        <option value="stock" @if($order === "stock") {{"selected"}} @endif>Stock</option>
+        <option value="id_categoria" @if($order === "id_categoria") {{"selected"}} @endif>Categoria</option>
+      </select>
+  
+      <button type="submit" class="btn btn-primary ml-2">Filtrar</button>
+  </form>
+  </div>
+  <div class="p-2">
+    <form class="form-inline" action="{{ Route('admin.productos.index') }}">
+      <input class="form-control mr-sm-2" type="search" placeholder="Buscar por el nombre" aria-label="Search" name="buscar" value="{{$string}}">
+      <button class="btn btn-primary my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
+    </form>
+  </div>
+</div>
+    
+    
+      
+  
 
 
 
@@ -109,7 +103,9 @@
                 
               </tbody>
     </table> 
-    {{$productos->links()}} 
+   
+    {{$productos->appends(["buscar" => $string])->appends(["orderBy" => $order])->links()}} 
+
   </div>
   
 

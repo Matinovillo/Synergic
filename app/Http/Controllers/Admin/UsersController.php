@@ -26,13 +26,12 @@ class UsersController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $req)
     {
-        $usuarios = User::all();
-        foreach ($usuarios as $user) {
-            $foto = User::find($user->id)->foto;
-        }
-        return view('admin.usuarios.index',compact('usuarios','foto'));
+        $buscar = $req['buscar'];
+        $tipo = $req['tipo'];
+        $usuarios = User::Buscar($tipo,$buscar)->paginate(8);
+        return view('admin.usuarios.index',compact('usuarios','tipo','buscar'));
     }
 
 

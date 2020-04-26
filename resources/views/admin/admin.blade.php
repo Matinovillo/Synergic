@@ -41,7 +41,7 @@
              </div>
              <div class="h5 text-muted mx-auto ">
                 Productos sin stock <br>
-                <a href="">Ver productos</a>
+             <a href="{{route('admin.productos.index')}}">Ver productos</a>
              </div>
           </div>
        </div>
@@ -56,11 +56,11 @@
                 <i class="fas fa-store mx-2" ></i>
              </div>
              <div class="h2 text-primary">
-              1
+              {{count($pedidos)}}
              </div>
              <div class="h5 text-muted mx-auto">
                  Pedidos <br>
-                 <a href="">Ver pedidos</a>
+             <a href="{{Route('admin.pedidos.index')}}">Ver pedidos</a>
              </div>
           </div>
           
@@ -87,7 +87,6 @@
     </div>
  </div>
 </div> 
-        
   </section>
 
 @endsection

@@ -19,10 +19,14 @@ class SubcategoriasController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $req)
     {
-        $categorias = Categoria::whereNotNull('id_categoria_padre')->paginate(5);
-        $vac = compact('categorias');
+        $order = $req['orderBy'];
+        $buscar = $req['buscar'];
+        $tipo = $req['tipo'];
+        $categorias = Categoria::whereNotNull('id_categoria_padre');
+        $categorias = $categorias->BuscarSubCategoria($tipo,$buscar)->orderBy(($order=="") ? "id_categoria_padre" : $order )->paginate(5);
+        $vac = compact('categorias','buscar','tipo','order');
         return view('admin.subcategorias.index',$vac);
     }
 

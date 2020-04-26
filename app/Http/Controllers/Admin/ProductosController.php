@@ -23,11 +23,17 @@ class ProductosController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $req)
     {
-        $productos = Producto::paginate(8);
-        
-        return view('admin.productos.index', compact('productos'));
+        $string = $req['buscar'];
+        $order = $req['orderBy'];
+        $productos = Producto::paginate(4);
+        if($req['buscar'] || $req['orderBy']){
+            $productos = Producto::where('nombre','like',"%$string%")->orderBy(($order=="") ? "id" : $order )->paginate(5);
+        }else{
+        $productos = Producto::paginate(4);
+        }
+        return view('admin.productos.index', compact('productos','string','order'));
     }
 
     /**

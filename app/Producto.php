@@ -31,9 +31,4 @@ class Producto extends Model
         return $this->hasMany('App\Detalle_venta','id_producto');
     }
 
-    public function scopeBuscar($query,$tipo,$buscar){
-        if($tipo && $buscar){
-            return $query->where($tipo,'like',"%$buscar%");
-        }
-    }
 }

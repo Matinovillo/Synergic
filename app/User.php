@@ -80,4 +80,10 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Ventas','id_usuario');
     }
+
+    public function scopeBuscar($query,$tipo,$buscar){
+        if($tipo && $buscar){
+            return $query->where($tipo,'like',"%$buscar%");
+        }
+    }
 }

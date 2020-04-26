@@ -29,20 +29,35 @@
        </div>
 @endif
 
-<div class="container-fluid">
-  <div class="row">
-   <div class="col-12">
-      <div class="list-head my-2">
-          <div class="row">
-            <div class="col-6">
-              <form method="GET" class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" name="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Search</button>
-              </form>
-            </div>
-          </div>
-      </div>
-    </div>
+
+<div class="d-flex container flex-row justify-content-between align-items-center bg-dark">
+  <div class="p-2">
+    <form action="{{ Route('admin.usuarios.index') }}" class="form-inline" method="GET">
+  
+      <select id="inputState" class="form-control" name="orderBy">
+        {{-- <option value="">Ordenar Por</option>
+        <option value="id" @if($order === "id") {{"selected"}} @endif>ID</option>
+        <option value="nombre" @if($order === "nombre") {{"selected"}} @endif>Nombre</option>
+        <option value="precio" @if($order === "precio") {{"selected"}} @endif>Precio</option>
+        <option value="stock" @if($order === "stock") {{"selected"}} @endif>Stock</option>
+        <option value="id_categoria" @if($order === "id_categoria") {{"selected"}} @endif>Categoria</option> --}}
+      </select>
+  
+      <button type="submit" class="btn btn-primary ml-2">Filtrar</button>
+  </form>
+  </div>
+  <div class="p-2">
+    <form class="form-inline" action="{{ Route('admin.usuarios.index') }}">
+      <select name="tipo" class="form-control mr-2">
+        <option value="">Buscar por</option>
+        <option value="id" @if($tipo === "id") {{"selected"}} @endif>ID</option>
+        <option value="nombre" @if($tipo === "nombre") {{"selected"}} @endif>Nombre</option>
+        <option value="apellido" @if($tipo === "apellido") {{"selected"}} @endif>Apellido</option>
+        <option value="email" @if($tipo === "email") {{"selected"}} @endif>Email</option>
+      </select>
+      <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Search" name="buscar" value="{{$buscar}}">
+      <button class="btn btn-primary my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
+    </form>
   </div>
 </div>
 
@@ -56,6 +71,7 @@
       <tr>
         <th scope="col">ID</th>
         <th scope="col">Nombre</th>
+        <th scope="col">Apellido</th>
         <th scope="col">Email</th>
         <th scope="col">Fecha de registro</th>
         <th scope="col">Fecha de modificacion</th>
@@ -68,7 +84,8 @@
         @foreach($usuarios as $usuario)
           <tr scope="row">
   					<th scope="row">{{$usuario->id}}</th>
-  					<td>{{$usuario->nombre()}}</td>
+            <td>{{$usuario->nombre}}</td>
+            <td>{{$usuario->apellido}}</td>
   					<td>{{$usuario->email}}</td>
             <td>{{$usuario->created_at}}</td>
             <td>{{$usuario->updated_at}}</td>
@@ -82,11 +99,11 @@
               </a>
               @endcan
               @can('borrar-usuario')
-            <form action="{{ route('admin.usuarios.destroy',$usuario) }}" method="POST">
+                <form action="{{ route('admin.usuarios.destroy',$usuario) }}" method="POST">
                 @csrf
                 {{ method_field('DELETE') }}
                 <button type="submit" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button></a>
-            </form>
+                </form>
               @endcan
             </td>
           </tr>
@@ -94,6 +111,7 @@
 
     </tbody>
   </table>
+  {{$usuarios->appends(["tipo" => $tipo, "buscar" => $buscar])->links()}}
   </div>
   </div>
   </div>
