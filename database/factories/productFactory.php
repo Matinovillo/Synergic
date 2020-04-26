@@ -11,6 +11,6 @@ $factory->define(App\Producto::class, function (Faker $faker) {
         "descripcion" =>$faker->sentence(15),
         "precio" => $faker->numberBetween($min = 1000, $max = 9000),
         "stock" =>$faker->randomDigit,
-        "id_categoria" =>$faker->numberBetween($min = 1, $max = 10) // 8567,
+        "id_categoria" =>$faker->numberBetween($min = 2, $max = 4) // 8567,
     ];
 });
