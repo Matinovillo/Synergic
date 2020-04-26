@@ -52,6 +52,7 @@ body {
 		color: #212529;
 		text-align: left;
 		background-color: #f8fafc;
+		overflow-x: hidden; 
 }
 
 
@@ -222,12 +223,14 @@ header .header-row{
 	padding: 0 2px;
 	margin-left: -7px;
 }
-/*1.3 Carousel*/
-.carrusel img{
-	width: 100%;
-	height: 50vh;
-}
 
+/* 1.3 Carousel */
+
+.carousel-caption{
+	color: #1e1e1e!important;
+	font-weight: 600;
+	
+}
 /*1.4 cards*/
 .info-cards
 {
@@ -277,13 +280,45 @@ header .header-row{
 
 /*  1.5 Productos de muestra   */
 .owl-nav{
-	font-size: 15px;
-	color: #0e8ce4;
+	font-size: 25px;
+	color: white;
 }
 
+.card__info .card__title a{
+	text-decoration: none;
+	color: #1e1e1e;
+}
+
+.slider-price{
+	color: #1e1e1e;
+	padding-left: 5px;
+	padding-right: 5px;
+}
+
+.slider-title{
+	color: #1e1e1e;
+	
+}
+
+.slider-link a{
+	color: grey;
+	text-decoration: none;
+}
+
+.slider-link a:hover{
+	font-size: 18px;
+	color: #009EE3;
+	-webkit-transition: all 0.3s;
+	-o-transition: all 0.3s;
+	transition: all 0.3s;
+}
 
 .prdct-slider{
-	background-color: #eee;
+	background-image: url('/img/note3.jpg');
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: bottom;
+	border-radius: 5px ;
 }
 .cards {
     width: 100%;
@@ -937,11 +972,6 @@ td, th {
 }
 
 
-.carousel-icon{
-    font-size: 45px !important;
-    color: #000;
-}
-
 .padding-col {
     border-bottom: 1px solid #CDCDCD;
 }
@@ -1095,7 +1125,7 @@ td, th {
  }
 
  .account-sidebar nav{
-	height: 100vh;
+	height: 50vh;
 }
 
  .list-group-item.active{
@@ -1583,6 +1613,39 @@ td, th {
 		margin: 3px;
 		display: none;
 	}
+
+	/* index slider */
+	.slider-title{
+		color: #f1f1f1!important;
+	}
+
+	.slider-link a{
+		color: #f1f1f1!important;
+	}
+
+	.carousel-item{
+		height: 30vh;
+	}
+	
+	.carousel-caption{
+		left: 1%;
+	}
+	.carousel-item img{
+		height: 25vh;
+	}
+
+	.carousel-caption h1{
+		font-size: 20px!important;
+		
+	}
+	.carousel-caption p {
+		font-size: 12px!important;
+		font-weight: 600;
+	}
+
+	.carousel-caption p a{
+		font-size: 12px!important;
+	}
 }
 /*
 Medium devices (tablets, 768px and up) */
@@ -1618,6 +1681,18 @@ Medium devices (tablets, 768px and up) */
 		margin: 0 auto;
 		text-align: center;
 		font: 19px;
+	}
+	/* index slider */
+	.slider-title{
+		color: #f1f1f1!important;
+	}
+
+	.slider-link a{
+		color: #f1f1f1!important;
+	}
+
+	.slider-link a:hover{
+		color: #1e1e1e!important;
 	}
  }
 
