@@ -37,12 +37,10 @@ class Ventas extends Model
         return $this->hasMany('App\Detalle_venta','id_venta');
     }
 
-    public static function generarCodigo($longitud) {
-        $key = '';
-        $pattern = '1234567890';
-        $max = strlen($pattern)-1;
-        for($i=0;$i < $longitud;$i++) $key .= $pattern{mt_rand(0,$max)};
-        return $key;
-    }   
+    public function scopeBuscar($query,$tipo,$buscar){
+        if($tipo && $buscar){
+            return $query->where($tipo,'like',"%$buscar%");
+        }
+    }
 
 }

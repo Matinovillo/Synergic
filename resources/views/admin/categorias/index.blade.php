@@ -8,7 +8,7 @@
 
 @section('content')
 
-<div class="d-flex container flex-row justify-content-between align-items-center bg-dark">
+<div class="d-flex flex-row justify-content-between align-items-center bg-dark">
     <div class="p-2">
       <form action="{{ Route('admin.categorias.index') }}" class="form-inline" method="GET">
     
@@ -46,12 +46,10 @@
 </div>
 @endif
 
-<section class="admin-table-sec my-2">
-  <div class="container-fluid">
+<section class="my-2">
       <div class="row">
           <div class="col-xl-12">
-              <div class="table-wrapper-scroll-y my-custom-scrollbar">
-                  <table class="table table-light table-hover">
+                  <table class="table table-sm-responsive table-light table-hover">
                       <thead class="adm-th bg-dark">
                           <tr>
                               <th scope="col">ID</th>
@@ -83,8 +81,6 @@
                   {{$categorias->appends(["tipo" => $tipo, "buscar" => $buscar])->appends(["orderBy" => $order])->links()}}
               </div>
           </div>
-      </div>
-  </div>
 </section>
  
 

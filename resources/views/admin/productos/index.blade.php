@@ -2,7 +2,7 @@
 @section('token')
 <meta name="csrf-token" content="{{ csrf_token() }}">
 @endsection
-{{-- @section('productos', 'active') --}}
+
 
 @section('show','show')
 @section('aria', 'true')
@@ -14,7 +14,7 @@
 
 @section('content')
 
-<div class="d-flex container flex-row justify-content-between align-items-center bg-dark">
+<div class="d-flex flex-row justify-content-between align-items-center bg-dark">
     <div class="p-2">
         <form action="{{ Route('admin.productos.index') }}" class="form-inline" method="GET">
 
@@ -44,8 +44,7 @@
 
 
 
-<section class="admin-table-sec table-responsive my-2">
-    <div class="container-fluid">
+<section class="table-sm-responsive my-2">
         <div class="row">
             <div class="col-xl-12">
                 <table class="table table-light table-hover">
@@ -103,7 +102,6 @@
                 {{$productos->appends(["buscar" => $string])->appends(["orderBy" => $order])->links()}}
             </div>
         </div>
-    </div>
 </section>
 
 @endsection

@@ -19,11 +19,15 @@ class VentasController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        $ventas = Ventas::all();   
+    public function index(Request $req)
+    {   
+        $order = $req['orderBy'];
+        $buscar = $req['buscar'];
+        $tipo = $req['tipo'];
+        $ventas = Ventas::Buscar($tipo,$buscar)->orderBy(($order=="") ? "id" : $order )->paginate(5);
         $detalle = Detalle_venta::all();
-        return view('admin.pedidos.index',compact('ventas','detalle'));
+        
+        return view('admin.pedidos.index',compact('ventas','detalle','order','buscar','tipo'));
     }
 
     /**
