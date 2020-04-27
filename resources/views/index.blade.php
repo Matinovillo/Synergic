@@ -18,17 +18,19 @@
                     <div class="carousel-caption text-left">
                         <h1 class="text-muted">PC's de escritorio.</h1>
                         <p>Encontra la <span class="text-primary h6">PC</span> que mas se adapte a vos</p>
-                        <p><a class="btn btn-lg btn-light" href="{{Route('productosPorCategoria',"PC+de+escritorio")}}" role="button">Ver pc de escritorio</a></p>
+                        <p><a class="btn btn-lg btn-primary" href="{{Route('productosPorCategoria',"PC+de+escritorio")}}"
+                                role="button">Ver pc de escritorio</a></p>
                     </div>
                 </div>
             </div>
             <div class="carousel-item">
                 <img class="second-slide img-fluid" src="/img/carousel4.jpg" alt="Second slide">
                 <div class="container">
-                    <div class="carousel-caption text-right">
+                    <div class="carousel-caption text-left">
                         <h1 class="text-muted">Monitores</h1>
-                        <p>Los mejores <span class="text-primary h6">Monitores</span>, estan aca.</p>
-                        <p><a class="btn btn-lg btn-light" href="{{Route('productosPorCategoria',"Monitores")}}" role="button">Ver monitores</a></p>
+                        <p>La mejor calidad de <span class="text-primary h6">Monitores</span>, Los encontras aca.</p>
+                        <p><a class="btn btn-lg btn-primary" href="{{Route('productosPorCategoria',"Monitores")}}"
+                                role="button">Ver monitores</a></p>
                     </div>
                 </div>
             </div>
@@ -37,8 +39,9 @@
                 <div class="container">
                     <div class="carousel-caption text-right">
                         <h1 class="text-muted">Notebooks</h1>
-                        <p>Encontra la <span class="text-primary h6">Notebook</span> que mas se adapte a vos</p>
-                        <p><a class="btn btn-lg btn-light" href="{{Route('productosPorCategoria',"Notebook")}}" role="button">Ver notebooks</a></p>
+                        <p>Encontra la <span class="text-primary h6">Notebook</span> que buscas y llevala donde vos quieras</p>
+                        <p><a class="btn btn-lg btn-primary" href="{{Route('productosPorCategoria',"Notebook")}}"
+                                role="button">Ver notebooks</a></p>
                     </div>
                 </div>
             </div>
@@ -111,20 +114,13 @@
         </div>
 </section>
 
-{{-- <div class="container">
-    <div class="row">
-        <div class="col-12">
-            <span class="text-muted h3 mr-2">¡Encontra la mejores notebook!</span>
-            <span class="text-muted text-small"><a href="{{Route('productosPorCategoria',"Notebook")}}">Ver notebooks</a></span>
-        </div>
-    </div>
-</div> --}}
 
 <section class="prdct-slider shadow">
     <div class="row">
         <div class="col-xl-3 d-flex flex-column d-flex justify-content-center align-items-center">
-          <div class="h4 mr-2 slider-title">¡Encontra la mejores notebook!</div>
-          <div class="text-small h5 slider-link"><a href="{{Route('productosPorCategoria',"Notebook")}}">Ver notebooks</a></div>
+            <div class="slider-title">¡Encontra la mejores notebook!</div>
+            <div class="text-small h5 slider-link"><a href="{{Route('productosPorCategoria',"Notebook")}}">Ver
+                    notebooks</a></div>
         </div>
         <div class="col-xl-9 col-sm-12">
             <div class="owl-carousel owl-theme">
@@ -148,30 +144,39 @@
 
                         </div>
                         <div class="card__img--hover">
-                            <a href="{{route('productoDetail', str_replace(" ", "+", $notebook->nombre))}}" class="producto-imagen-link">
+                            <a href="{{route('productoDetail', str_replace(" ", "+", $notebook->nombre))}}"
+                                class="producto-imagen-link">
                                 <img class="card-img-top" src="/storage/{{$notebook->fotos->first()->nombre}}" alt="">
                             </a>
                         </div>
                         <div class="card__info">
                             <p class="card__title  text-center">
                                 <a href="{{route('productoDetail', str_replace(" ", "+", $notebook->nombre))}}">
-                                    {{substr($notebook->nombre,0,40)}}...
+                                    {{substr($notebook->nombre,0,35)}}...
                                 </a>
                             </p>
-                            Precio: <span class="h6 mx-3 font-weight-bold slider-price">${{$notebook->precio}}</span>
-
-                            {{-- boton carrito --}}
-                            <span class="card__category">
-                                <a href="{{route('cart.add', $notebook->id)}}" class="card__author text-muted @if(Route::has('login')) @auth {{''}}  @else {{ "addtocart" }} @endauth @endif" title="Añadir al carrito">
-                                    <i class="fas fa-cart-plus"></i>
-                                </a>
-                            </span>
-                            {{-- boton favorito --}}
-                            <span class="card__category">
-                                <a href="{{route('favorito.add', $notebook->id)}}" id="favorite{{$notebook->id}}" class="@if(in_array($notebook->id, $favs) == true) {{"text-danger"}} @endif card__author favorite-add  mx-2 @if(Route::has('login')) @auth {{''}}  @else {{ "addtocart" }} @endauth @endif" title="author" data-id="{{$notebook->id}}">
-                                    <i class="fas fa-heart"></i>
-                                </a>
-                            </span>
+                            <div class="d-flex justify-content-between">
+                                <div class="">
+                                    Precio:
+                                </div>
+                                <div class="">
+                                    <span class="h6 font-weight-bold slider-price">${{$notebook->precio}}</span>
+                                </div>
+                                <div class="h5">
+                                    {{-- boton favorito --}}
+                                    <a href="{{route('favorito.add', $notebook->id)}}" id="favorite{{$notebook->id}}"
+                                        class="@if(in_array($notebook->id, $favs) == true) {{"text-danger"}} @endif favorite-add  mx-2 @if(Route::has('login')) @auth {{''}}  @else {{ "addtocart" }} @endauth @endif"
+                                        title="author" data-id="{{$notebook->id}}">
+                                        <i class="fas fa-heart"></i>
+                                    </a>
+                                    {{-- boton carrito --}}
+                                    <a href="{{route('cart.add', $notebook->id)}}"
+                                        class="text-info @if(Route::has('login')) @auth {{''}}  @else {{ "addtocart" }} @endauth @endif"
+                                        title="Añadir al carrito">
+                                        <i class="fas fa-cart-plus"></i>
+                                    </a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </article>

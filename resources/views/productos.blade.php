@@ -46,15 +46,6 @@
                         </ul>
                     </div>
                 </nav>
-
-                {{--
-                <div class="list-group mb-3 container-fluid">
-                    <li class="list-group-item category-head">
-                        CATEGORIA
-                    </li>
-                    @foreach($categorias as $categoria)
-                    <a href="#" class="list-group-item list-group-item-action">{{$categoria->nombre}}</a> @endforeach
-            </div> --}}
         </div>
 
     </div>
@@ -87,8 +78,7 @@
                 </div>
             </div>
             @empty
-            {{-- @if(isset($_GET['search']))
-                <h2 class="text-muted text-center">No se encontraron productos para: {{$_GET['search']}}</h2> @endif --}}
+
             @endforelse
             <!-- -----/item------ -->
         </div>
