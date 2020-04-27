@@ -5,9 +5,8 @@
 @section('account-content')
 
 <div class="row">
-      
     @forelse (auth()->user()->Productosfavoritos()->get() as $productos) 
-    <div class="col-4"> 
+    <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-xs-12"> 
     <div class="cards">
       <div class="card-slider card--1 shadow">
         <div class="card__img">
