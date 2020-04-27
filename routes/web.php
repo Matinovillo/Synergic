@@ -42,6 +42,7 @@ Route::post('/generarPedido','ComprasController@crearPedido')->name('generar.ped
 
 //cuenta
 Route::get('cuenta/datospersonales', 'CuentaController@datos')->middleware('auth');
+Route::post('cuenta/datospersonales', 'CuentaController@updateAvatar')->middleware('auth');
 Route::get('cuenta/misfavoritos', 'CuentaController@favoritos')->middleware('auth');
 Route::get('cuenta/mispedidos', 'CuentaController@pedidos')->middleware('auth');
 Route::get('cuenta/modificardatos', 'CuentaController@edit')->middleware('auth');
