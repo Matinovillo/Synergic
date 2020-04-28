@@ -15,7 +15,7 @@
 
                     <div class="list-group list-group-flush mb-3 container-fluid">
                         @foreach($categorias as $categoria)
-                        <a href="{{route('productosPorCategoria', str_replace(" ", "+ ", $categoria->nombre))}}" class="list-group-item list-group-item-action">{{$categoria->nombre}}</a> @endforeach
+                        <a href="{{route('productosPorCategoria', str_replace(" ", "+", $categoria->nombre))}}" class="list-group-item list-group-item-action">{{$categoria->nombre}}</a> @endforeach
                     </div>
 
                 </div>
@@ -36,7 +36,7 @@
                                 <a href="#pageSubmenu{{$categoria->id}}" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">{{$categoria->nombre}}</a>
                                 <ul class="collapse list-unstyled" id="pageSubmenu{{$categoria->id}}">
                                     @foreach ($categoria->hijas as $subCategoria)
-                                    <li><a href="{{route('productosPorCategoria', str_replace(" ", "+ ", $subCategoria->nombre))}}"><span class="fa fa-chevron-right mr-2"></span>{{$subCategoria->nombre }}</a></li>
+                                    <li><a href="{{route('productosPorCategoria', str_replace(" ", "+", $subCategoria->nombre))}}"><span class="fa fa-chevron-right mr-2"></span>{{$subCategoria->nombre }}</a></li>
                                     @endforeach
                                 </ul>
                             </li>

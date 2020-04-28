@@ -56,10 +56,11 @@
           <div class="col-6">
             <div class="form-group">
               <label>Categoria:</label>
+              {{-- @dd($subcategoria->id_categoria_padre) --}}
               <select class="form-control" name="id_categoria_padre">
-                <option value="">Elegí una Categoria</option>
+              <option value="{{$subcategoria->id_categoria_padre}}">Elegí una Categoria</option>
                 @foreach ($category as $padre)
-                <option value="{{$padre->id}}">{{$padre->nombre}}</option>
+              <option value="{{$padre->id}}" @if($padre->id == $subcategoria->id_categoria_padre) {{"selected"}} @endif>{{$padre->nombre}}</option>
                @endforeach
               </select>
               @error('id_categoria_padre')
