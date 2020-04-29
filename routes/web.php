@@ -72,3 +72,9 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware('can:admi
 
 
 Route::post('/validacion-iniciar-sesion', 'ValidacionIniciarSesionController@iniciar_sesion');
+
+
+//facebook login
+
+Route::get('login/facebook', 'Auth\LoginFacebookController@redirect');
+Route::get('login/facebook/callback', 'Auth\LoginFacebookController@callback');

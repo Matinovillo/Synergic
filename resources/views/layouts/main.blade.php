@@ -319,6 +319,19 @@
                       Inciar sesion
                     </button>
                   </div>
+                  <div class="d-flex mt-4 justify-content-between">
+                    <a href="{{url('login/facebook')}}" class="btn-face">
+                      <i class="fab fa-facebook"></i>
+                      Facebook
+                    </a>
+          
+                    <a href="#" class="btn-google">
+                      <img src="../img/icon-google.png" alt="Google">
+                      Google
+                    </a> 
+                  </div>
+                
+
                   <div class="text-center w-full no-acount">
                     <a href="{{ route('password.request') }}">
                       @if (Route::has('password.request'))
