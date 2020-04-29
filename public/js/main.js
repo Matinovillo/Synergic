@@ -90,17 +90,7 @@ btnCerrarMenu.addEventListener('click', (e) => {
 
 $(".addtocart").click(function (e) {
 	e.preventDefault()
-	Swal.fire({
-		title: '<strong>Hola usuario!</strong>',
-		icon: 'info',
-		html:
-			'Para realizar una compra debes ' +
-			'<a href="/login">Ingresar!</a> ' +
-			'Si no tenes una cuenta registrate <a href="/register">Aca!</a> ',
-		showCloseButton: true,
-		showCancelButton: true,
-		focusConfirm: false,
-	})
+	$('#LoginModal').modal('show')
 });
 
 
@@ -158,3 +148,51 @@ $(".favorite-add").click(function (e) {
 
 		});
 });
+
+let campoEmail = document.getElementById('campoLoginEmail');
+let campoPassword = document.getElementById('campoLoginPassword');
+let emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/
+
+campoEmail.onblur = function(){
+	if(this.value.trim() == ''){
+		campoEmail.parentElement.querySelector('b').innerText = "Este campo es obligatorio";
+		campoEmail.classList.toggle('validationBorder')
+	}else if(!emailRegex.test(this.value)){
+		campoEmail.parentElement.querySelector('b').innerText = "El email ingresado no tiene un formato valido";
+		campoEmail.classList.toggle('validationBorder')
+	}
+}
+campoPassword.onblur = function(){
+	if(this.value.trim() == ''){
+		campoPassword.parentElement.querySelector('b').innerText = "Este campo es obligatorio";
+		campoPassword.classList.toggle('validationBorder')
+	}else if(this.value.length < 6 ){
+		campoPassword.parentElement.querySelector('b').innerText = "La contraseña debe tener al menos 6 digitos";
+		campoPassword.classList.toggle('validationBorder')
+	}
+}
+
+
+$('#formulario-iniciar-sesion').submit( function(e) {
+			
+
+		e.preventDefault()
+        let formulario = $('#formulario-iniciar-sesion').serialize();
+        $.ajax({
+            method: 'post',
+            url: '/validacion-iniciar-sesion',
+            data: formulario,
+            success: function( res ) {
+                location.reload();
+            },
+            error: function( error ) {
+				let errores = error.responseJSON.errors;
+				console.log(document.getElementById('validateError'));
+				document.getElementById('validateError').classList.remove('d-none')
+				document.getElementById('validateError').parentElement.querySelector('p').innerText = errores.login[0];
+             
+            },
+        });
+
+
+    });

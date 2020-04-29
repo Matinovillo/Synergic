@@ -15,7 +15,7 @@
 Auth::routes();
 
 //pagina principal
-Route::get('/','IndexController@indexView');
+Route::get('/','IndexController@indexView')->name('index');
 
 //carrito
 Route::get('/carrito','CarritoController@view')->name('cart')->middleware('auth');
@@ -71,3 +71,4 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware('can:admi
 });
 
 
+Route::post('/validacion-iniciar-sesion', 'ValidacionIniciarSesionController@iniciar_sesion');

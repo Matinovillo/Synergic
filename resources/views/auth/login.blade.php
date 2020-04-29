@@ -77,8 +77,8 @@
           </div>
 
           <div class="contenidod-login-formulario-btn">
-            <button class="login-formulario-btn" type="submit">
-                {{ __('Iniciar sesion') }}
+            <button class="btn btn-lg btn-primary w-100" type="submit">
+               Iniciar sesion
             </button>
           </div>
 
@@ -90,15 +90,6 @@
             @endif
           </div>
 
-          <a href="#" class="btn-face">
-            <i class="fab fa-facebook"></i>
-            Facebook
-          </a>
-
-          <a href="#" class="btn-google">
-            <img src="../img/icon-google.png" alt="Google">
-            Google
-          </a>
 
           <div class="text-center w-full no-acount">
             <span class="txt1">
@@ -132,11 +123,5 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
   integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
   crossorigin="anonymous"></script>
-  
-  
-  
-  {{-- main js --}}
-  <script src="/js/main.js"></script>
-
 </body>
 </html>

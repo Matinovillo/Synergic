@@ -61,7 +61,6 @@ button:hover {
 /*-----------login------------------*/
 .contenido-login{
 	width: 100%;
-	min-height: 100vh;
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
@@ -69,14 +68,19 @@ button:hover {
 	position: relative;
 	z-index: 1;
 }
+.errorHeader { 
+  font-weight: bold; 
+  color: red;
+  /* visibility: hidden; */ 
+  display: none; 
+}
 
 .envolver-login{
   width: 450px;
   background: #fff;
   border-radius: 3px;
   overflow: hidden;
-  padding: 30px 50px 30px 50px;
-  border: 1px solid #e6e6e6;
+  padding: 30px 60px 30px 60px;
 }
 
 .formulario-login{

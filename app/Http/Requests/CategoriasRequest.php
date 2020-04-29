@@ -36,8 +36,8 @@ class CategoriasRequest extends FormRequest
           'required' => 'El campo :attribute no puede estar vacio',
           'string' => 'El campo :attribute debe ser de tipo texto',
           'max' => 'El campo :attribute no puede tener mas de :max caracteres',
-          'min' => 'El campo :attribute debe tener al menos :min caracteres'
-          'numeric' =>'El campo :attribute debe ser un numero'
+          'min' => 'El campo :attribute debe tener al menos :min caracteres',
+          'numeric'=> 'El campo :attribute debe ser un numero',
         ];
     }
 }

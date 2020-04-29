@@ -70,6 +70,14 @@ a {
 	text-decoration: none;
 }
 
+.validationBorder{
+	border: 1px solid red;
+}
+
+.validationBorderSuccess{
+	border: 1px solid rgb(58, 202, 58);
+}
+
 /*****************************
 1.0 Home
 *****************************/
@@ -79,7 +87,7 @@ a {
 {
 	width: 100%;
 	background: white;
-	border-bottom: solid 1px rgba(0,0,0,0.05)
+	border-bottom: solid 1px rgba(0,0,0,0.08)
 }
 
 .top-bar-icon{
@@ -130,7 +138,7 @@ a {
     color: rgba(0,0,0,0.3);
 
 }
-.top_bar_user a, .top_bar_user .main-logout-input
+.top_bar_user a, .login-button, .top_bar_user .main-logout-input
 {
 	font-size: 16px;
 	font-weight: 300;
@@ -159,6 +167,12 @@ header{
     margin-bottom: 10px;
 }
 
+.login-img{
+	width: 200px;
+    height: 50px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
 header .header-row{
 	align-items: center;
 
