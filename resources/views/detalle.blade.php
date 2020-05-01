@@ -181,7 +181,7 @@
                 <div class="card__info">
                   <p class="card__title  text-center">
                     <a href="{{route('productoDetail', str_replace(" ", "+", $related->nombre))}}">
-                      {{substr($related->nombre,0,60)}}...
+                      {{substr($related->nombre,0,35)}}...
                     </a>
                   </p>
                   Precio: <span class="card__category text-success">${{$related->precio}}</span>

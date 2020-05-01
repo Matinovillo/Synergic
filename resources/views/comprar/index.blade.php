@@ -19,64 +19,88 @@
         </div>
         {{-- Formulario --}}
         <div class="col-md-8">
-          <form action="{{Route('cuenta.modificar')}}" method="post">
+          <form action="{{Route('cuenta.modificar')}}" method="post" class="needs-validation" novalidate>
                 @csrf
                 {{--  --}}
                 <div class="form-row">
                   <div class="col-md-6 mb-3">
-                    <label for="" class="text-muted">Nombre</label>
-                    <input type="text" class="form-control" value="{{auth()->user()->nombre}}" required name="nombre">
+                    <label for="completarNombre" class="text-muted">Nombre</label>
+                    <input type="text" class="form-control @error('nombre') is-invalid @enderror" id="completarNombre" value="{{auth()->user()->nombre}}" required name="nombre">
+                    @error('nombre')
+                      <strong class="text-danger">{{$message}}</strong>
+                  	@enderror
                   </div>
                   {{--  --}}
                   <div class="col-md-6 mb-3">
-                    <label for="" class="text-muted">Apellido</label>
-                    <input type="text" class="form-control" id="" value="{{auth()->user()->apellido}}" required name="apellido">
+                    <label for="completarApellido" class="text-muted">Apellido</label>
+                    <input type="text" class="form-control @error('apellido') is-invalid @enderror" id="completarApellido" value="{{auth()->user()->apellido}}" required name="apellido">
+                    @error('apellido')
+                     <strong class="text-danger">{{$message}}</strong>
+                  	@enderror
                   </div>
                   {{--  --}}
                   <div class="col-md-6 mb-3">
-                    <label for="" class="text-muted">E-mail</label>
+                    <label for="completarEmail" class="text-muted">E-mail</label>
                     <div class="input-group">
                       <div class="input-group-prepend">
                         <span class="input-group-text" id="inputGroupPrepend">@</span>
                       </div>
-                      <input type="text" class="form-control" id="" value="{{auth()->user()->email}}" aria-describedby="inputGroupPrepend" required name="email">
+                      <input type="text" class="form-control @error('email') is-invalid @enderror" id="completarEmail" value="{{auth()->user()->email}}" aria-describedby="inputGroupPrepend" required name="email">
+                      @error('email')
+                       <strong class="text-danger">{{$message}}</strong>
+            	        @enderror
                     </div>
                   </div>
                   {{--  --}}
                   <div class="col-md-4 mb-3">
-                    <label for="" class="text-muted">Fecha de nacimiento</label>
-                    <input type="date" class="form-control" id="" value="{{auth()->user()->fecha_nacimiento}}" required name="fecha_nacimiento">
+                    <label for="completarFecha" class="text-muted">Fecha de nacimiento</label>
+                    <input type="date" class="form-control @error('fecha_nacimiento') is-invalid @enderror" id="completarFecha" value="{{auth()->user()->fecha_nacimiento}}" required name="fecha_nacimiento">
+                    @error('fecha_nacimiento')
+                    <strong class="text-danger">{{$message}}</strong>
+            	      @enderror
                   </div>
                 </div>
                 {{--  --}}
                 <div class="form-row">
                   <div class="col-md-6 mb-3">
-                    <label for="" class="text-muted">Calle</label>
-                  <input type="text" class="form-control" id="" placeholder="Calle" name="calle" value="@if($domicilio){{$domicilio->calle}}@endif">
+                    <label for="completarCalle" class="text-muted">Calle</label>
+                  <input type="text" class="form-control @error('calle') is-invalid @enderror" id="completarCalle" placeholder="Calle" name="calle" value="@if($domicilio){{$domicilio->calle}}@endif">
+                  @error('calle')
+                  <strong class="text-danger">{{$message}}</strong>
+                @enderror
+                </div>
+                  {{--  --}}
+                  <div class="col-md-3 mb-3">
+                    <label for="completarNumero" class="text-muted">Numero</label>
+                    <input type="text" class="form-control @error('numero') is-invalid @enderror" id="completarNumero" placeholder="Numero" name="numero" value="@if($domicilio){{$domicilio->numero}}@endif">
+                    @error('numero')
+                <strong class="text-danger">{{$message}}</strong>
+            	@enderror
                   </div>
                   {{--  --}}
                   <div class="col-md-3 mb-3">
-                    <label for="" class="text-muted">Numero</label>
-                    <input type="text" class="form-control" id="" placeholder="Numero" name="numero" value="@if($domicilio){{$domicilio->numero}}@endif">
-                  </div>
-                  {{--  --}}
-                  <div class="col-md-3 mb-3">
-                    <label for="" class="text-muted">Barrio</label>
-                    <input type="text" class="form-control" id="" placeholder="Barrio" name="barrio" value="@if($domicilio){{$domicilio->barrio}}@endif">
+                    <label for="completarBarrio" class="text-muted">Barrio</label>
+                    <input type="text" class="form-control @error('barrio') is-invalid @enderror" id="completarBarrio" placeholder="Barrio" name="barrio" value="@if($domicilio){{$domicilio->barrio}}@endif">
+                    @error('barrio')
+                     <strong class="text-danger">{{$message}}</strong>
+            	     @enderror
                   </div>
                    {{-- ------------------------------- --}}
                 </div>
                   {{--  --}}
                   <div class="form-row">
                     <div class="col-md-3 mb-3">
-                      <label for="" class="text-muted">Codigo postal</label>
-                      <input type="text" class="form-control" id="" placeholder="Barrio" name="codigo_postal" value="@if($domicilio){{$domicilio->codigo_postal}}@endif">
+                      <label for="completarCodigo" class="text-muted">Codigo postal</label>
+                      <input type="text" class="form-control @error('codigo_postal') is-invalid @enderror" id="completarCodigo" placeholder="Barrio" name="codigo_postal" value="@if($domicilio){{$domicilio->codigo_postal}}@endif">
+                      @error('codigo_postal')
+                      <strong class="text-danger">{{$message}}</strong>
+                      @enderror
                     </div>
                     {{--  --}}
                     <div class="col-md-3 mb-3">
                       <div class="form-group">
-                        <label for="" class="text-muted">Provincia</label>
-                        <select class="form-control" id="" placeholder="Pronvincia" name="id_provincia">
+                        <label for="completarProvincia" class="text-muted">Provincia</label>
+                        <select class="form-control @error('id_provincia') is-invalid @enderror" id="completarProvincia" placeholder="Pronvincia" name="id_provincia">
                           {{-- <option value="">provincia</option> --}}
                           @if(auth()->user()->domicilio()->first() != null)
                           <option value="{{ auth()->user()->domicilio()->first()->provincia()->first()->id }}"> {{ auth()->user()->domicilio()->first()->provincia()->first()->nombre }}</option>
@@ -87,6 +111,9 @@
                               @endforeach
                           @endif
                         </select>
+                        @error('id_provincia')
+                        <strong class="text-danger">{{$message}}</strong>
+                      	@enderror
                         </div>
                     </div>
                   </div>

@@ -16,10 +16,10 @@
             <i class="fas fa-user"></i> Mis datos
           </a>
           <a href="{{ url('cuenta/misfavoritos') }}" class="list-group-item list-group-item-action account-item @yield('favs')">
-            <i class="fas fa-shopping-bag"></i> Mis productos favoritos
+            <i class="fas fa-heart"></i> Mis productos favoritos
           </a>
           <a href="{{ url('cuenta/mispedidos') }}" class="list-group-item list-group-item-action account-item @yield('mispedidos')">
-            <i class="fas fa-heart"></i> Mis pedidos
+            <i class="fas fa-shopping-bag"></i> Mis compras
           </a>
           <a href="{{ url('cuenta/modificardatos') }}" class="list-group-item list-group-item-action account-item @yield('modificar')">
             <i class="fas fa-cogs"></i> Modificar mis datos

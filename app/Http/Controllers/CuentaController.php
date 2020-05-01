@@ -2,27 +2,27 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\User;
 use App\Fotos;
 use App\Producto;
 use App\Domicilio;
-use App\Provincia;
 use App\Favoritos;
+use App\Provincia;
+use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
+use App\Http\Requests\ModificarDatosCuentaRequest;
 
 class CuentaController extends Controller
 {
-     
-    //User profile methods
-
+    
     
     public function datos(){
        
-            $foto = User::find(auth()->user()->id)->foto;
-            $domicilio = User::find(auth()->user()->id)->domicilio;
-            $provincias = Provincia::all();
-            $vac = compact('foto','domicilio','provincias');
-            return view('cuenta.user', $vac);
+        $foto = User::find(auth()->user()->id)->foto;
+        $domicilio = User::find(auth()->user()->id)->domicilio;
+        $provincias = Provincia::all();
+        $vac = compact('foto','domicilio','provincias');
+         return view('cuenta.user', $vac);
            
     }
 
@@ -31,7 +31,11 @@ class CuentaController extends Controller
     }
 
     public function pedidos(){
-        return view('cuenta.pedidos');
+        $pedidos = auth()->user()->pedidos()->paginate(2);
+        $vac = compact('pedidos');
+
+        return view('cuenta.pedidos',$vac);
+
     }
 
     public function edit(){
@@ -42,7 +46,38 @@ class CuentaController extends Controller
     }
 
     public function update(Request $req){
-        $user = new User();
+
+        $reglas = [
+            'nombre' => 'required|min:3|max:15|string',
+            'apellido' =>'required|min:3|max:15|string',
+            'email' => [
+                'required',
+                 Rule::unique('users')->ignore(auth()->user()->id),
+                 'email:rfc,dns',
+            ],
+            'fecha_nacimiento' =>'required|date',
+            'numero' =>'required|numeric',
+            'barrio' =>'required|string',
+            'codigo_postal' => 'required|numeric',
+            'id_provincia' => 'required',
+        ];
+
+        $mensajes = [
+            'required' => 'Este campo es obligatorio.',
+            'min' => 'El campo :attribute debe tener mas de :min caracteres',
+            'max' => 'El campo :attribute debe tener menos de :max caracteres',
+            'string' => 'El campo :attribute es de tipo texto',
+            'email.unique' => 'El email ingresado ya esta en uso',
+            'email:rfc,dns' => 'El email ingresado no es valido',
+            'date' => 'La fecha ingresada no es valida',
+            'numeric' => 'El campo :attribute debe ser de tipo numero',
+        ];
+
+        $this->validate($req,$reglas,$mensajes);
+
+
+
+
         $user = User::find(auth()->user()->id);
         $user->nombre = $req['nombre'];
         $user->apellido = $req['apellido'];
