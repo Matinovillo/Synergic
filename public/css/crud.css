@@ -93,6 +93,11 @@ span {
 	height: 100vh;
 }
 
+.admin-card{
+  min-height: 100px;
+  text-align: center;
+  min-width: 250px;
+}
 
 
 .table td, .table th{

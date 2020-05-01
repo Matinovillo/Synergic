@@ -17,7 +17,8 @@
         <option value="">Ordenar Por</option>
         <option value="id" @if($order==="id" ) {{"selected"}} @endif>ID</option>
         <option value="forma_pago" @if($order==="nombre" ) {{"selected"}} @endif>Forma de pago</option>
-        <option value="estado" @if($order==="categoria" ) {{"selected"}} @endif>estado</option>
+        <option value="estado" @if($order==="categoria" ) {{"selected"}} @endif>Estado</option>
+        <option value="created_at" @if($order==="created_at" ) {{"selected"}} @endif>Fecha</option>
       </select>
 
       <button type="submit" class="btn btn-primary ml-2">Filtrar</button>
@@ -53,7 +54,7 @@
         </div>
       </div>
       @endif
-      <table class="table table-light table-hover">
+      <table class="table table-light table-hover table-responsive-sm">
         <thead class="adm-th bg-dark">
           <tr>
             <th scope="col">ID</th>

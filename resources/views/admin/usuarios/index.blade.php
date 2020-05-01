@@ -99,7 +99,7 @@
                 </button>
               </a>
               @endcan
-              <a id="deleteUsuario" data-id="{{ $usuario->id }}" class="delete-usuario">
+              <a id="deleteUsuario" data-id="{{ $usuario->id }}" class="delete-usuario @if($usuario->hasRole('admin')) d-none @endif">
                 <button class="usuario-delete btn btn-danger"><i class="fas fa-trash-alt"></i></button>
               </a>
             </td>

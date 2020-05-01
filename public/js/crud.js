@@ -400,3 +400,43 @@ $(".delete-pedido").click(function (e) {
     });
 });
     
+
+$(".delete-mensaje").click(function (e) {
+    
+    Swal.fire({
+        title: 'Eliminar el mensaje?',
+        text: "",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#0e8ce4',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Borrar',
+        cancelButtonText: 'Cancelar'
+    }).then((result) => {
+        if (result.value) {
+            var id = $(this).data("id");
+            var token = $("meta[name='csrf-token']").attr("content");
+            var url = e.target;
+            $.ajax(
+                {
+                    url: "http://localhost:8000/admin/borrarMensaje/"+id,
+                    type: 'GET',
+                    data: {
+                        _token: token,
+                        id: id
+                    },
+                    success: function (response) {
+                        $("#success").html(response.message)
+                        Swal.fire(
+                            'Exito!',
+                            'El mensaje se elimino',
+                            'success'
+                        );
+                        var URLactual = window.location;
+                        window.location.replace(URLactual);
+                    }
+
+                });
+        }
+    });
+});

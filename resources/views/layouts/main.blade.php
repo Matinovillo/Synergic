@@ -62,7 +62,7 @@
               <div>
                 <form id="logout-form" action="{{ route('logout') }}" method="POST">
                   @csrf
-                  <input class="main-logout-input" type="submit" value="Cerrar sesion">
+                  <input class="main-logout-input bg-white" type="submit" value="Cerrar sesion">
                   <i class='fas fa-sign-out-alt mr-2 top-bar-icon'></i>
                 </form>
               </div>

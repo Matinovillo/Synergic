@@ -98,7 +98,7 @@ class ProductosController extends Controller
      */
     public function edit(Producto $producto)
     {
-        $categorias = Categoria::all();
+        $categorias = Categoria::whereNotNull('id_categoria_padre')->get();
         $imagen = $producto->fotos;
         
         // $imagen = Producto_foto::where('id_producto',$id)->get();

@@ -60,6 +60,7 @@ route::post('contacto','IndexController@mensaje');
 
 //admin page
 Route::get('/admin','Admin\AdminController@index')->name('admin.page')->middleware('can:administrar');
+Route::get('/admin/deletemensaje/{id}','Admin\AdminController@borrarMensaje')->name('borrarMensaje')->middleware('can:administrar');
 Route::post('/borrarImagen','Admin\ProductosController@borrarImagenDeProducto')->name('admin.productos.borrarImg');
 
 Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware('can:administrar')->group(function(){
