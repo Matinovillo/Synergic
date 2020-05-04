@@ -24,7 +24,7 @@ class CategoriasController extends Controller
         $buscar = $req['buscar'];
         $tipo = $req['tipo'];
         $categorias = Categoria::whereNull('id_categoria_padre');
-        $categorias = $categorias->BuscarSubCategoria($tipo,$buscar)->orderBy(($order=="") ? "id" : $order )->paginate(5);
+        $categorias = $categorias->BuscarSubCategoria($tipo,$buscar)->orderBy(($order=="") ? "id" : $order )->paginate(6);
         $vac = compact('categorias','buscar','tipo','order');
         return view('admin.categorias.index',$vac);
     }

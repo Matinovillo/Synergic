@@ -41,9 +41,6 @@
 
 
 
-
-
-
 <section class="table-sm-responsive my-2">
         <div class="row">
             <div class="col-xl-12">

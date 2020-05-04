@@ -27,11 +27,10 @@ class ProductosController extends Controller
     {
         $string = $req['buscar'];
         $order = $req['orderBy'];
-        $productos = Producto::paginate(4);
         if($req['buscar'] || $req['orderBy']){
-            $productos = Producto::where('nombre','like',"%$string%")->orderBy(($order=="") ? "id" : $order )->paginate(5);
+            $productos = Producto::where('nombre','like',"%$string%")->orderBy(($order=="") ? "id" : $order )->paginate(6);
         }else{
-        $productos = Producto::paginate(4);
+        $productos = Producto::paginate(6);
         }
         return view('admin.productos.index', compact('productos','string','order'));
     }

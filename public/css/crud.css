@@ -871,11 +871,13 @@ section.dashboard-counts div[class*='col-']:last-of-type .item {
   
 }
 
-.product-img .btn-img-delete{
-  position: relative;
-  right: 34px;
-  bottom: 83px;
+.img-delete-btn{
+  position: absolute;
+  bottom: 180px;
+  left: 97px;
+  
 }
+
 
 .form-back{
   background-color: #fff;

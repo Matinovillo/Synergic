@@ -115,7 +115,7 @@
 </section>
 
 
-<section class="prdct-slider shadow">
+<section class="prdct-slider">
     <div class="row">
         <div class="col-xl-3 d-flex flex-column d-flex justify-content-center align-items-center">
             <div class="slider-title">¡Encontra la mejores notebook!</div>

@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Auth;
 
 class ValidacionIniciarSesionController extends Controller
 {
-    public function iniciar_sesion(Request $request) // Validación formulario [ FormRequest ]
+    public function iniciar_sesion(IniciarSesionFormRequest $request) // Validación formulario [ FormRequest ]
     {
         $remember = ($request->remember) ? true : false;
 

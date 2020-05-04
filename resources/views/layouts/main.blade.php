@@ -251,13 +251,7 @@
     </div>
   </footer>
 
-  @if (session('openLogin'))
-  {{-- //some js function that will open your hidden modal
-    //if you use bootstrap modal --}}
-  <script>
-    $('#exampleModalLong').modal('show');
-  </script>
-  @endif
+  
 
 
   <!-- Modal -->
