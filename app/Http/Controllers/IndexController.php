@@ -88,6 +88,9 @@ class IndexController extends Controller
 
     }
 
+    public function faqView(){
+      return view("faq");
+    }
 
 }
 

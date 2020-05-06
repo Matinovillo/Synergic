@@ -33,8 +33,6 @@ Route::post('carrito/confirmar','CarritoController@confirm')->name('confirmar.co
 Route::get('mp/sucess', 'MercadoPagoController@sucess')->name('mp.sucess');
 Route::get('mp/failure', 'MercadoPagoController@failure')->name('mp.failure');
 Route::get('mp/pending', 'MercadoPagoController@pending')->name('mp.pending');
-
-//Pasarela de pago
 Route::get('/comprar/datos','ComprasController@completarDatos')->name('finalizar.compra');
 Route::get('/comprar/opciones','ComprasController@opcionesCompra')->name('opciones.compra');
 Route::post('/generarPedido','ComprasController@crearPedido')->name('generar.pedido');
@@ -71,7 +69,10 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware('can:admi
     Route::resource('/pedidos', 'VentasController',['except' => ['show','store','create']]);
 });
 
+//faq
+route::get("/FAQ","IndexController@faqView");
 
+//modal login 
 Route::post('/validacion-iniciar-sesion', 'ValidacionIniciarSesionController@iniciar_sesion');
 
 

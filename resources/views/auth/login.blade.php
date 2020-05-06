@@ -25,7 +25,7 @@
 </head>
 <body>
 
-
+      
 
 <div class="page">
     <div class="contenido-login">
@@ -48,9 +48,7 @@
                 <strong>{{ $message }}</strong>
             </span>
             @enderror
-            <div class="invalid-feedback">
-              Por favor, Ingrese el E-Mail.
-            </div>
+         
             
           </div>
 
@@ -66,9 +64,6 @@
                 <strong>{{ $message }}</strong>
             </span>
             @enderror
-            <div class="invalid-feedback">
-              Por favor, ingrese la contraseña.
-            </div>
           </div>
 
           <div class="custom-control custom-checkbox">

@@ -12,11 +12,6 @@
       </div>
     </div>
 
-    <div class="row">
-      <div class="col-12">
-        <h6 class="reg-title m-0">Cliente nuevo</h6>
-      </div>
-    </div>
 
     <div class="row register-body-card my-3 mb-5 ">
         <div class="col-12">

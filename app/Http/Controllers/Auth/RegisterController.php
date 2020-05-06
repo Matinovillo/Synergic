@@ -56,7 +56,7 @@ class RegisterController extends Controller
             'apellido' => ['required', 'string','min:4', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'fecha_nacimiento' =>['required','date'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'password' => ['required', 'string', 'min:6', 'confirmed'],
             'avatar' => ['file'],
         
         ]);

@@ -155,7 +155,7 @@
         @endauth
         @else
         @endif
-        <a href="F.a.q.php">F.A.Q</a>
+        <a href="{{ url('/FAQ') }}">F.A.Q</a>
       </div>
     </div>
 

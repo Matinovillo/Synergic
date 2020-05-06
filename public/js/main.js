@@ -95,13 +95,11 @@ $(".addtocart").click(function (e) {
 
 
 $('.owl-carousel').owlCarousel({
-	loop: false,
+	loop: true,
 	nav: true,
 	dots: false,
 	navText: ["<i class='fas fa-angle-double-left'></i>", "<i class='fas fa-angle-double-right'></i>"],
-
 	slideBy: '1',
-	// center: false,
 	responsive: {
 		0: {
 			items: 1

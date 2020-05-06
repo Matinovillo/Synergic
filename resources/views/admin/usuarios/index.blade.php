@@ -41,7 +41,8 @@
         <option value="id" @if($order==="id" ) {{"selected"}} @endif>ID</option>
         <option value="nombre" @if($order==="nombre" ) {{"selected"}} @endif>Nombre</option>
         <option value="apellido" @if($order==="apellido" ) {{"selected"}} @endif>Apellido</option>
-        <option value="email" @if($order==="email" ) {{"selected"}} @endif>Precio</option>
+        <option value="email" @if($order==="email" ) {{"selected"}} @endif>email</option>
+        <option value="created_at" @if($order==="created_at" ) {{"selected"}} @endif>Fecha de registro</option>
       </select>
 
       <button type="submit" class="btn btn-primary ml-2">Filtrar</button>

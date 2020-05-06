@@ -95,7 +95,8 @@
 
                     @else
                         <div class="container text-muted text-center">
-                            <h4>No hay productos en el carrito! <a href="/productos">Encontra lo que buscas aqui!</a></h4>
+                            <h4>No hay productos en el carrito :(</h4>
+                            <h5><a href="/productos">Ver productos</a></h5>
                         </div>
                     @endif
                 </div>
