@@ -77,7 +77,7 @@
          Mensajes
       </h4>
      
-      <table class="table table-hover table-sm table-light shadow-sm  table-responsive">
+      <table class="table table-hover table-sm table-light shadow-sm  table-responsive-sm">
          <thead>
            <tr>
              <th scope="col">id</th>
