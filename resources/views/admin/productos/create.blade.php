@@ -89,7 +89,7 @@
             <div class="form-group">
               <label for="exampleFormControlTextarea1">Descripcion </label>
               <textarea class="form-control" id="exampleFormControlTextarea1" 
-              rows="3" placeholder="Descripcion del producto" name="descripcion" value="{{old("descripcion")}}"></textarea>
+              rows="3" placeholder="Descripcion del producto" name="descripcion">{{old("descripcion")}}</textarea>
               @error('descripcion')
                 <small class="text-danger"><strong>{{$message}}</strong></small>
               @enderror
