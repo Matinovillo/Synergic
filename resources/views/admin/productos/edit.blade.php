@@ -37,15 +37,6 @@
               @enderror
             </div>
           </div>
-          <div class="col-12">
-            <div class="form-group">
-              <label>Descripcion:</label>
-              <input type="text" class="form-control" value="{{$producto->descripcion}}" name="descripcion">
-              @error('descripcion')
-              <small class="text-danger">{{$message}}</small>
-              @enderror
-            </div>
-          </div>
           <div class="col-6">
             <div class="form-group">
               <label>Precio:</label>
@@ -93,6 +84,17 @@
             <div class="form-group">
               <label>Agregar mas Imagenes</label>
               <input name="imagen" type="file" class="form-control-file" id="exampleFormControlFile1">
+            </div>
+          </div>
+          <div class="col-12">
+            <div class="form-group">
+              <label for="exampleFormControlTextarea1">Descripcion </label>
+              <textarea class="form-control" id="exampleFormControlTextarea1" 
+              rows="6" name="descripcion">{{$producto->descripcion}}</textarea>
+             
+              @error('descripcion')
+              <small class="text-danger">{{$message}}</small>
+              @enderror
             </div>
           </div>
           <div class="col-12 text-center">

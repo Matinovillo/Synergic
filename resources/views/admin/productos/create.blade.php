@@ -41,15 +41,7 @@
               @enderror
             </div>
           </div>
-          <div class="col-xl-12 col-md-12 col-sm-12 col-xs-12">
-            <div class="form-group">
-              <label class="text-muted h6">Descripcion:</label>
-              <input type="text" class="form-control" value="{{old("descripcion")}}" name="descripcion">
-              @error('descripcion')
-                <small class="text-danger"><strong>{{$message}}</strong></small>
-              @enderror
-            </div>
-          </div>
+      
           <div class="col-xl-6 col-md-6 col-sm-12 col-xs-12">
             <div class="form-group">
               <label class="text-muted h6">Precio:</label>
@@ -90,6 +82,16 @@
               <input type="file" class="form-control-file" name="imagen">
               @error('imagen')
               <small class="text-danger"><strong>{{$message}}</strong></small>
+              @enderror
+            </div>
+          </div>
+          <div class="col-xl-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="form-group">
+              <label for="exampleFormControlTextarea1">Descripcion </label>
+              <textarea class="form-control" id="exampleFormControlTextarea1" 
+              rows="3" placeholder="Descripcion del producto" name="descripcion" value="{{old("descripcion")}}"></textarea>
+              @error('descripcion')
+                <small class="text-danger"><strong>{{$message}}</strong></small>
               @enderror
             </div>
           </div>
