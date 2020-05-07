@@ -8,8 +8,8 @@
       <div class="row">
         <div class="col-lg-8 contentProductShopping col-cont">
           <form name="cart_quantity" method="post">
-            <div class="title_section_summary text-center" style="margin-bottom: 40px">
-              {{$producto->nombre}}
+            <div class="title_section_summary text-center @if($producto->stock <= 0) text-danger @endif" style="margin-bottom: 40px">
+              {{$producto->nombre}} @if($producto->stock <= 0) (sin stock) @endif
             </div>
             <div class="row">
               <div class="col-sm-3 contenido-centrado-imgs">
@@ -73,8 +73,10 @@
               <div class="">
 
                 <div class="theme-text">
-                  <div class="title h5">@if($producto->stock <= 0) {{"Sin stock"}}  @else {{"En stock"}} @endif</div>
-                  <div class="title h5">Modelo: loremipsum</div>
+                  <div class="title h6">
+                    @if($producto->stock <= 0) {{"Disponibilidad: Sin stock"}}  @else {{"Disponibilidad: En stock"}} @endif
+                  </div>
+                  <div class="title h6">Modelo: loremipsum</div>
                 </div>
               </div>
             </div>
@@ -82,7 +84,7 @@
             <!-- ------------------------------------------------------------------------ -->
            
                 <div class="buttonAction text-center action-shopping-cart">
-                <a id="tdb1" class="@if(Route::has('login')) @auth {{''}}  @else {{ "addtocart" }} @endauth @endif " href="{{route('cart.add', $producto->id)}}">
+                <a id="tdb1" class="@if(Route::has('login')) @auth {{''}}  @else addtocart @endauth @endif @if($producto->stock <= 0) cantaddtocart @endif" href="{{route('cart.add', $producto->id)}}">
                     <span class="btn @if($producto->stock <= 0) {{"disabled"}} @endif">
                       @if($producto->stock <= 0) {{"Sin stock"}}  @else {{"Añadir al carrito"}} @endif
                     </span>
@@ -103,48 +105,7 @@
       <div class="row">
         <p>{{$producto->descripcion}}</p>
       </div>
-{{--       
-      <div class="row">
-        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-xs-12 desc-item">
-          <i class="fas fa-memory desc-icon"></i>
-          <span>Memoria Ram</span>
-          <p>aca va la descripcion de tal cosa</p>
-        </div>
 
-        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-xs-12 desc-item">
-          <i class="fas fa-microchip desc-icon"></i>
-          <span>Procesador</span>
-          <p>aca va la descripcion de tal cosa</p>
-        </div>
-
-        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-xs-12  desc-item">
-          <i class="fas fa-hdd desc-icon"></i>
-          <span>Almacenamiento</span>
-          <p>aca va la descripcion de tal cosa</p>
-        </div>
-
-        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-xs-12  desc-item">
-          <i class="fas fa-desktop desc-icon"></i>
-          <span>Utilidad</span>
-          <p>aca va la descripcion de tal cosa</p>
-        </div>
-
-        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-xs-12  desc-item">
-          <i class="fas fa-wifi desc-icon"></i>
-          <span>Conectividad</span>
-          <p>aca va la descripcion de tal cosa</p>
-        </div>
-
-        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-xs-12  desc-item">
-          <i class="fab fa-windows desc-icon"></i>
-          <span>Sistema</span>
-          <p>aca va la descripcion de tal cosa</p>
-        </div>
-
-      </div> --}}
-    </div>
-
-  </section>
 
 
    

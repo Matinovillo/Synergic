@@ -60,7 +60,7 @@
                     <tbody class="align-middle tr-content " id="productos">
 
                         @forelse($productos as $producto)
-                        <tr scope="row" class="@if($producto->stock == 0){{"table-danger"}} @endif">
+                        <tr scope="row" class="@if($producto->stock <= 0){{"table-danger"}} @endif">
                             <th scope="row">{{$producto->id}}</th>
                             <td>{{substr($producto->nombre,0,30)}}...</td>
                             <td>{{substr($producto->descripcion,0,50)}}...</td>

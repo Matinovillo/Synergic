@@ -87,13 +87,13 @@ btnCerrarMenu.addEventListener('click', (e) => {
 });
 
 
-
+//Si el usuario no esta logueado al comprar muestra el modal login
 $(".addtocart").click(function (e) {
 	e.preventDefault()
 	$('#LoginModal').modal('show')
 });
 
-
+//Slider de productos
 $('.owl-carousel').owlCarousel({
 	loop: true,
 	nav: true,
@@ -113,6 +113,8 @@ $('.owl-carousel').owlCarousel({
 	}
 })
 
+
+//Function
 function desoradd(id, item) {
 	let add = "http://localhost:8000/add-to-favorito/" + id;
 	let destroy = "http://localhost:8000/favorito/destroy/" + id;
@@ -123,6 +125,7 @@ function desoradd(id, item) {
 	}
 }
 
+//Añadir a favoritos
 $(".favorite-add").click(function (e) {
 	e.preventDefault()
 	let id = $(this).data("id");
@@ -147,50 +150,61 @@ $(".favorite-add").click(function (e) {
 		});
 });
 
+
+//Validaciones del login desde el frontend
 let campoEmail = document.getElementById('campoLoginEmail');
 let campoPassword = document.getElementById('campoLoginPassword');
 let emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/
 
-campoEmail.onblur = function(){
-	if(this.value.trim() == ''){
+campoEmail.onblur = function () {
+	if (this.value.trim() == '') {
 		campoEmail.parentElement.querySelector('b').innerText = "Este campo es obligatorio";
 		campoEmail.classList.toggle('validationBorder')
-	}else if(!emailRegex.test(this.value)){
+	} else if (!emailRegex.test(this.value)) {
 		campoEmail.parentElement.querySelector('b').innerText = "El email ingresado no tiene un formato valido";
 		campoEmail.classList.toggle('validationBorder')
 	}
 }
-campoPassword.onblur = function(){
-	if(this.value.trim() == ''){
+campoPassword.onblur = function () {
+	if (this.value.trim() == '') {
 		campoPassword.parentElement.querySelector('b').innerText = "Este campo es obligatorio";
 		campoPassword.classList.toggle('validationBorder')
-	}else if(this.value.length < 6 ){
+	} else if (this.value.length < 6) {
 		campoPassword.parentElement.querySelector('b').innerText = "La contraseña debe tener al menos 6 digitos";
 		campoPassword.classList.toggle('validationBorder')
 	}
 }
 
 
-$('#formulario-iniciar-sesion').submit( function(e) {
-			
-
-		e.preventDefault()
-        let formulario = $('#formulario-iniciar-sesion').serialize();
-        $.ajax({
-            method: 'post',
-            url: '/validacion-iniciar-sesion',
-            data: formulario,
-            success: function( res ) {
-                location.reload();
-            },
-            error: function( error ) {
-				let errores = error.responseJSON.errors;
-				console.log(document.getElementById('validateError'));
-				document.getElementById('validateError').classList.remove('d-none')
-				document.getElementById('validateError').parentElement.querySelector('p').innerText = errores.login[0];
-             
-            },
-        });
+$('#formulario-iniciar-sesion').submit(function (e) {
+	e.preventDefault()
+	let formulario = $('#formulario-iniciar-sesion').serialize();
+	$.ajax({
+		method: 'post',
+		url: '/validacion-iniciar-sesion',
+		data: formulario,
+		success: function (res) {
+			location.reload();
+		},
+		error: function (error) {
+			let errores = error.responseJSON.errors;
+			console.log(document.getElementById('validateError'));
+			document.getElementById('validateError').classList.remove('d-none')
+			document.getElementById('validateError').parentElement.querySelector('p').innerText = errores.login[0];
+		},
+	});
+});
 
 
-    });
+//Producto sin stock
+
+
+$('.cantaddtocart').click(function (e) {
+	e.preventDefault();
+
+	Swal.fire({
+		icon: 'error',
+		title: '',
+		text: 'Este producto no esta disponible',
+	})
+})
