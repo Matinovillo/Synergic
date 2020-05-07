@@ -267,9 +267,9 @@
         </div>
         <div class="modal-body">
           <div class="text-center">
-            <a href="/">
+            <div>
               <img src="../img/logo.png" class="login-img" alt="">
-            </a>
+            </div>
           </div>
             <div class="contenido-login">
               <div class="envolver-login">

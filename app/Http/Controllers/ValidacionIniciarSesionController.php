@@ -20,7 +20,7 @@ class ValidacionIniciarSesionController extends Controller
 
         } else {
 
-            return response()->json( ['errors' => ['login' => ['Error al inciar sesion, comprueba los datos ingresados.']]], 422);
+            return response()->json( ['errors' => ['login' => ['El usuario ingresado no existe, comprueba los datos y vuelve a intentarlo']]], 422);
 
         }
 
