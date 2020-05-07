@@ -19,7 +19,7 @@
             <i class="fas fa-heart"></i> Mis productos favoritos
           </a>
           <a href="{{ url('cuenta/mispedidos') }}" class="list-group-item list-group-item-action account-item @yield('mispedidos')">
-            <i class="fas fa-shopping-bag"></i> Mis compras
+            <i class="fas fa-shopping-bag"></i> Mis Pedidos
           </a>
           <a href="{{ url('cuenta/modificardatos') }}" class="list-group-item list-group-item-action account-item @yield('modificar')">
             <i class="fas fa-cogs"></i> Modificar mis datos

@@ -913,7 +913,39 @@ section.dashboard-counts div[class*='col-']:last-of-type .item {
 
 /** Small devices (landscape phones, 576px and up)**/
 @media (max-width: 576.98px) {
-    
+    .form-back{
+      width: 100%;
+    }
+
+    .filter-sec{
+      flex-direction: column!important;
+      align-items: flex-start!important;
+    }
+
+    .filter-item1 button{
+      position: absolute;
+      left: 160px;
+    }
+
+    .filter-item2 button{
+      position: absolute;
+      left: 220px;
+      margin: 0!important;
+    }
+
+    .filter-item3{
+      width: 100%;
+    }
+
+    .filter-item3 button{
+      margin: 0!important;
+      margin-top: 5px!important;
+    }
+    .filter-select{
+      margin-bottom: 10px;
+      width: 100%;
+    }
+  
 }
 
 /*Medium devices (tablets, 768px and up) */

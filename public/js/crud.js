@@ -445,6 +445,9 @@ $(".delete-mensaje").click(function (e) {
 $('.owl-carousel').owlCarousel({
     loop:true,
     margin:10,
+    nav: true,
+    navText: ["<i class='fas fa-angle-double-left'></i>", "<i class='fas fa-angle-double-right'></i>"],
+	dots: true,
     responsiveClass:true,
     responsive:{
         0:{

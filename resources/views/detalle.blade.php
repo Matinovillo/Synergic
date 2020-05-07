@@ -149,13 +149,13 @@
                   
                     {{-- boton carrito --}}
                   <span class="card__category">
-                    <a href="{{route('cart.add', $related->id)}}" class="card__author text-success @if(Route::has('login')) @auth {{''}}  @else {{ "addtocart" }} @endauth @endif" title="Añadir al carrito">
+                    <a href="{{route('cart.add', $related->id)}}" class="card__author text-primary @if(Route::has('login')) @auth {{''}}  @else {{ "addtocart" }} @endauth @endif" title="Añadir al carrito">
                       <i class="fas fa-cart-plus"></i>
                     </a>
                   </span>
                   {{-- boton favorito --}}
                   <span class="card__category">
-                    <a href="{{route('favorito.add', $related->id)}}" id="favorite{{$related->id}}" class="@if(in_array($related->id, $favs) == true) {{"text-danger"}} @endif card__author favorite-add  mx-2 @if(Route::has('login')) @auth {{''}}  @else {{ "addtocart" }} @endauth @endif" title="author" data-id="{{$related->id}}">
+                    <a href="{{route('favorito.add', $related->id)}}" id="favorite{{$related->id}}" class="text-primary @if(in_array($related->id, $favs) == true) {{"text-danger"}} @endif card__author favorite-add  mx-2 @if(Route::has('login')) @auth {{''}}  @else {{ "addtocart" }} @endauth @endif" title="author" data-id="{{$related->id}}">
                       <i class="fas fa-heart"></i>
                     </a>
                   </span>

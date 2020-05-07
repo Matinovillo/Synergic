@@ -18,14 +18,14 @@
        </div>
       @endif
 
-<div class="form-back  my-5">
+<div class="form-back  my-3">
   <div class="row justify-content-center">
     <div class="col-10">
     <form action="{{ route('admin.usuarios.update', $usuario) }}" method="POST">
         {{ method_field('PUT') }}
         @csrf
         <div class="row">
-          <div class="col-6">
+          <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12">
             <div class="form-group">
               <label class="text-muted">Nombre:</label>
             <input type="text" class="form-control" value="{{ $usuario->nombre }}" name="nombre">
@@ -34,7 +34,7 @@
             @enderror
             </div>
           </div>
-          <div class="col-6">
+          <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12">
             <div class="form-group">
               <label class="text-muted">Apellido:</label>
             <input type="text" class="form-control" value="{{ $usuario->apellido }}" name="apellido">
@@ -43,7 +43,7 @@
               @enderror
             </div>
           </div>
-          <div class="col-6">
+          <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12">
             <div class="form-group">
               <label class="text-muted">E-mail</label>
             <input type="text" class="form-control" value="{{  $usuario->email }}" name="email">
@@ -66,13 +66,6 @@
               @enderror
             </div>
           </div>
-
-        {{--   <div class="col-6">
-            <div class="form-group">
-              <label>Agregar mas Imagenes</label>
-              <input name="imagen" type="file" class="form-control-file" id="exampleFormControlFile1">
-            </div>
-          </div> --}}
 
           <div class="col-12 text-center">
             <button type="submit" class="btn btn-primary"><i class="fas fa-save mr-2"></i>Guardar</button>

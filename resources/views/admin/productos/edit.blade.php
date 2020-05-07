@@ -20,7 +20,7 @@
 </div>
 @endif
 
-<div class="form-back  my-5">
+<div class="form-back my-3">
   <div class="row justify-content-center">
     <div class="col-10">
       <form action="{{ route('admin.productos.update', $producto) }}" method="POST" enctype="multipart/form-data">
@@ -28,7 +28,7 @@
         @csrf
 
         <div class="row">
-          <div class="col-12">
+          <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="form-group">
               <label>Nombre:</label>
               <input type="text" class="form-control" value="{{$producto->nombre}}" name="nombre">
@@ -37,7 +37,7 @@
               @enderror
             </div>
           </div>
-          <div class="col-6">
+          <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12">
             <div class="form-group">
               <label>Precio:</label>
               <input type="text" class="form-control" value="{{$producto->precio}}" name="precio">
@@ -46,7 +46,7 @@
               @enderror
             </div>
           </div>
-          <div class="col-6">
+          <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12">
             <div class="form-group">
               <label>Stock:</label>
               <input type="text" class="form-control" value="{{$producto->stock}}" name="stock">
@@ -56,7 +56,7 @@
             </div>
           </div>
 
-          <div class="col-6">
+          <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12">
             <div class="form-group">
               <label>Categoria:</label>
               <select class="form-control" name="id_categoria">
@@ -80,13 +80,13 @@
               @enderror
             </div>
           </div>
-          <div class="col-6">
+          <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12">
             <div class="form-group">
               <label>Agregar mas Imagenes</label>
               <input name="imagen" type="file" class="form-control-file" id="exampleFormControlFile1">
             </div>
           </div>
-          <div class="col-12">
+          <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="form-group">
               <label for="exampleFormControlTextarea1">Descripcion </label>
               <textarea class="form-control" id="exampleFormControlTextarea1" 
@@ -97,7 +97,7 @@
               @enderror
             </div>
           </div>
-          <div class="col-12 text-center">
+          <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
             <button type="submit" class="btn btn-primary"><i class="fas fa-save mr-2"></i>Guardar</button>
             <a href="{{ route('admin.productos.index') }}" class="btn btn-danger"><i
                 class="fas fa-ban mr-2"></i>Volver</a>

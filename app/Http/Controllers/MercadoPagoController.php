@@ -41,7 +41,7 @@ class MercadoPagoController extends Controller
 
        \Cart::session(auth()->id())->clear();
 
-       return redirect(url('cuenta/mispedidos'))->with('success', 'Gracias por tu compra!');
+       return redirect(url('cuenta/mispedidos'))->with('compraSuccess', 'Gracias por tu compra!');
     }
 
     public function failure(Request $req){

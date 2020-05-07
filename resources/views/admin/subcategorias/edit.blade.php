@@ -18,7 +18,7 @@
 @endif
 
 
-<div class="form-back my-5">
+<div class="form-back my-3">
   <div class="row justify-content-center my-5">
     <div class="col-10">
       <form action="{{ route('admin.subcategorias.update', $subcategoria) }}" method="post">
@@ -34,7 +34,7 @@
               @enderror
             </div>
           </div>
-          <div class="col-6">
+          <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12">
             <div class="form-group">
               <label>Descripcion:</label>
               <input type="text" class="form-control" value="{{$subcategoria->descripcion}}" name="descripcion">
@@ -43,7 +43,7 @@
               @enderror
             </div>
           </div>
-          <div class="col-6">
+          <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12">
             <div class="form-group">
               <label>Orden:</label>
               <input type="text" class="form-control" name="orden" value="{{$subcategoria->orden}}">
@@ -53,7 +53,7 @@
             </div>
           </div>
 
-          <div class="col-6">
+          <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12">
             <div class="form-group">
               <label>Categoria:</label>
               {{-- @dd($subcategoria->id_categoria_padre) --}}

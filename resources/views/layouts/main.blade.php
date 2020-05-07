@@ -189,7 +189,7 @@
   <!--/Nav Menu-->
 
   {{-- content --}}
-  <div class="mb-5 index-content">
+  <div class="index-content">
     @yield("contenido")
   </div>
   {{-- /content --}}

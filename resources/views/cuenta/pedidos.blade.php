@@ -3,10 +3,10 @@
 @section('account-title', 'Mis pedidos')
 @section('mispedidos', 'active')
 @section('account-content')
-@if (session('success'))
+@if (session('compraSuccess'))
 <div class="col-sm-12">
     <div class="alert alert-sucess alert-dismissible fade show" role="alert">
-        {{ session('success') }}
+        {{ session('compraSuccess') }}
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
         </button>
@@ -58,7 +58,7 @@
                                 <div class="cart_item_price cart_info_col">
                                     <div class="cart_item_title text-center">Precio Total</div>
                                     <div class="cart_item_text mt-lg-4">
-                                       {{ $item->precio_total }}
+                                        $ {{ $item->precio_total }}
                                     </div>
                                 </div>
                                 <div class="cart_item_total cart_info_col">

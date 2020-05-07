@@ -14,8 +14,8 @@
 
 @section('content')
 
-<div class="d-flex flex-row justify-content-between align-items-center bg-dark">
-    <div class="p-2">
+<div class="d-flex flex-row justify-content-between align-items-center bg-dark filter-sec">
+    <div class="p-2 filter-item1">
         <form action="{{ Route('admin.productos.index') }}" class="form-inline" method="GET">
 
             <select id="inputState" class="form-control" name="orderBy">
@@ -30,10 +30,10 @@
             <button type="submit" class="btn btn-primary ml-2">Filtrar</button>
         </form>
     </div>
-    <div class="p-2">
+    <div class="p-2 filter-item2">
         <form class="form-inline" action="{{ Route('admin.productos.index') }}">
             <input class="form-control mr-sm-2" type="search" placeholder="Buscar por el nombre" aria-label="Search" name="buscar" value="{{$string}}">
-            <button class="btn btn-primary my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
+            <button class="btn btn-primary my-sm-0" type="submit"><i class="fas fa-search"></i></button>
         </form>
     </div>
 </div>

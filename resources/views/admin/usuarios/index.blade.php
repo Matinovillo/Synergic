@@ -32,8 +32,8 @@
 @endif
 
 
-<div class="d-flex flex-row justify-content-between align-items-center bg-dark">
-  <div class="p-2">
+<div class="d-flex flex-row justify-content-between align-items-center bg-dark filter-sec">
+  <div class="p-2 filter-item3">
     <form action="{{ Route('admin.usuarios.index') }}" class="form-inline" method="GET">
 
       <select id="inputState" class="form-control" name="orderBy">
@@ -48,16 +48,16 @@
       <button type="submit" class="btn btn-primary ml-2">Filtrar</button>
     </form>
   </div>
-  <div class="p-2">
+  <div class="p-2 filter-item4">
     <form class="form-inline" action="{{ Route('admin.usuarios.index') }}">
-      <select name="tipo" class="form-control mr-2">
+      <select name="tipo" class="form-control mr-2 filter-select">
         <option value="nombre">Buscar por</option>
         <option value="id" @if($tipo==="id" ) {{"selected"}} @endif>ID</option>
         <option value="nombre" @if($tipo==="nombre" ) {{"selected"}} @endif>Nombre</option>
         <option value="apellido" @if($tipo==="apellido" ) {{"selected"}} @endif>Apellido</option>
         <option value="email" @if($tipo==="email" ) {{"selected"}} @endif>Email</option>
       </select>
-      <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Search" name="buscar"
+      <input class="form-control mr-sm-2 filter-input" type="search" placeholder="Buscar" aria-label="Search" name="buscar"
         value="{{$buscar}}">
       <button class="btn btn-primary my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
     </form>

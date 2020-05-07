@@ -9,11 +9,11 @@
 
 @section('content')
 
-<div class="d-flex flex-row justify-content-between align-items-center bg-dark">
-  <div class="p-2">
+<div class="d-flex flex-row justify-content-between align-items-center bg-dark filter-sec">
+  <div class="p-2 filter-item3">
     <form action="{{ Route('admin.pedidos.index') }}" class="form-inline" method="GET">
 
-      <select id="inputState" class="form-control" name="orderBy">
+      <select id="inputState" class="form-control filter-select" name="orderBy">
         <option value="">Ordenar Por</option>
         <option value="id" @if($order==="id" ) {{"selected"}} @endif>ID</option>
         <option value="forma_pago" @if($order==="nombre" ) {{"selected"}} @endif>Forma de pago</option>
@@ -24,7 +24,7 @@
       <button type="submit" class="btn btn-primary ml-2">Filtrar</button>
     </form>
   </div>
-  <div class="p-2">
+  <div class="p-2 filter-item4">
     <form class="form-inline" action="{{ Route('admin.pedidos.index') }}">
       <select name="tipo" class="form-control mr-2">
         <option value="id">Buscar por</option>
