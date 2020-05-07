@@ -159,19 +159,22 @@ let emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/
 campoEmail.onblur = function () {
 	if (this.value.trim() == '') {
 		campoEmail.parentElement.querySelector('b').innerText = "Este campo es obligatorio";
-		campoEmail.classList.toggle('validationBorder')
+		campoEmail.classList.add('validationBorder')
 	} else if (!emailRegex.test(this.value)) {
 		campoEmail.parentElement.querySelector('b').innerText = "El email ingresado no tiene un formato valido";
-		campoEmail.classList.toggle('validationBorder')
+		campoEmail.classList.add('validationBorder')
+	} else{
+		campoEmail.classList.remove('validationBorder')
+		campoEmail.parentElement.querySelector('b').innerText = "";
 	}
 }
 campoPassword.onblur = function () {
 	if (this.value.trim() == '') {
 		campoPassword.parentElement.querySelector('b').innerText = "Este campo es obligatorio";
-		campoPassword.classList.toggle('validationBorder')
-	} else if (this.value.length < 6) {
-		campoPassword.parentElement.querySelector('b').innerText = "La contraseña debe tener al menos 6 digitos";
-		campoPassword.classList.toggle('validationBorder')
+		campoPassword.classList.add('validationBorder')
+	}else{
+		campoPassword.classList.remove('validationBorder')
+		campoPassword.parentElement.querySelector('b').innerText = "";
 	}
 }
 
@@ -188,9 +191,11 @@ $('#formulario-iniciar-sesion').submit(function (e) {
 		},
 		error: function (error) {
 			let errores = error.responseJSON.errors;
-			console.log(document.getElementById('validateError'));
-			document.getElementById('validateError').classList.remove('d-none')
-			document.getElementById('validateError').parentElement.querySelector('p').innerText = errores.login[0];
+			Swal.fire({
+				icon: 'error',
+				title: '',
+				text: errores.login[0],
+			})
 		},
 	});
 });
