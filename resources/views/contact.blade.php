@@ -18,7 +18,7 @@
              </div>
           </div>
          @endif
-            <form method="POST">
+            <form method="POST" class="mb-5">
               @csrf
                 <div class="form-row">
                   <div class="form-group col-md-6">

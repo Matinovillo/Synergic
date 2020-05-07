@@ -173,7 +173,7 @@
           @foreach($categorias as $categoria)
           <div class="subcategoria " data-categoria="{{$categoria->id}}">
             <div class="enlaces-subcategoria">
-              <!--<button class="btn-regresar"><i class="fas fa-arrow-left"></i>Regresar</button>-->
+              <button class="btn-regresar"><i class="fas fa-arrow-left"></i>Regresar</button>
               <h3 class="subtitulo">{{$categoria->nombre}}</h3>
               @foreach ($categoria->hijas as $subCategoria)
               <a
@@ -230,10 +230,10 @@
         </div>
         <div class="col-xl-1 col-lg-1 col-md-6 col-sm-12 col-xs-12 ">
           <ul class="list-unstyled text-small nav-footer">
-            <li><a class="text-muted" href="#">Home</a></li>
-            <li><a class="text-muted" href="#">Productos</a></li>
-            <li><a class="text-muted" href="#">Contacto</a></li>
-            <li><a class="text-muted" href="#">FAQ</a></li>
+            <li><a class="text-muted" href="{{ url("/") }}">Home</a></li>
+            <li><a class="text-muted" href="{{ url("/productos") }}">Productos</a></li>
+            <li><a class="text-muted" href="{{ url("/contacto") }}">Contacto</a></li>
+            <li><a class="text-muted" href="{{ url("/FAQ") }}">FAQ</a></li>
           </ul>
         </div>
 
