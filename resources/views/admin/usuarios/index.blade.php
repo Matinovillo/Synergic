@@ -68,7 +68,7 @@
   <div class="row">
     <div class="col-xl-12">
 
-      <table class="table table-sm-responsive table-light table-hover">
+      <table class="table table-responsive-sm table-light table-hover">
         <thead class="adm-th bg-dark">
           <tr>
             <th scope="col">ID</th>

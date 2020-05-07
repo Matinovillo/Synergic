@@ -50,7 +50,7 @@
   <section class="my-2">
         <div class="row">
             <div class="col-xl-12">
-                    <table class="table table-light table-hover">
+                    <table class="table table-light table-hover table-responsive-sm">
                         <thead class="adm-th bg-dark">
                             <tr>
                                 <th scope="col">ID</th>

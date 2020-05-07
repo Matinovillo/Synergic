@@ -171,7 +171,7 @@
                                     </a>
                                     {{-- boton carrito --}}
                                     <a href="{{route('cart.add', $notebook->id)}}"
-                                        class="text-info @if(Route::has('login')) @auth {{''}}  @else {{ "addtocart" }} @endauth @endif"
+                                        class="text-primary @if(Route::has('login')) @auth {{''}}  @else {{ "addtocart" }} @endauth @endif"
                                         title="Añadir al carrito">
                                         <i class="fas fa-cart-plus"></i>
                                     </a>
