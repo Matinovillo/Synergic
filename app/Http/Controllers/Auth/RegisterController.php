@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\User;
+use App\Role;
 use App\Fotos;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
@@ -55,7 +56,7 @@ class RegisterController extends Controller
             'apellido' => ['required', 'string','min:4', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'fecha_nacimiento' =>['required','date'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'password' => ['required', 'string', 'min:6', 'confirmed'],
             'avatar' => ['file'],
         
         ]);
@@ -79,10 +80,9 @@ class RegisterController extends Controller
           $fotos = Fotos::all();
           $fotos = $fotos->last();
         
-        }else{
-            
         }
-        return User::create([
+
+        $newUser = User::create([
             'nombre' => $data['nombre'],
             'apellido' => $data['apellido'],
             'email' => $data['email'],
@@ -90,6 +90,11 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
             'id_foto' => $avatar = (isset($data['avatar'])) ? $fotos->id : 1,
         ]);
+
+        $rol = Role::select('id')->where('nombre','user')->first();
+
+        $newUser->roles()->attach($rol);
+        return $newUser;
     }
 
     

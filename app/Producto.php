@@ -3,7 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-
+use app\Categoria;
 class Producto extends Model
 {
     public $table = "productos";
@@ -22,4 +22,13 @@ class Producto extends Model
     {
         return $this->hasMany('App\Producto_foto','id_producto');
     }
+    
+    public function usuario(){
+        return $this->belongsToMany('App\User','favoritos_users','id_producto','id_usuario');
+    }
+
+    public function detalleVenta(){
+        return $this->hasMany('App\Detalle_venta','id_producto');
+    }
+
 }

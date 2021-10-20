@@ -287,7 +287,7 @@ main article {
 		flex-direction: column;
 		align-items: flex-start;
 		justify-content: flex-start;
-		position: fixed;
+		position: absolute;
 		left: 0;
 		background: #232F3F;
 		height: 100vh;

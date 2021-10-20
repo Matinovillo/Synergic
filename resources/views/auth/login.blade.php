@@ -1,6 +1,31 @@
-@include('layouts.configTop')
+<!doctype html>
+<html lang="en">
 
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+  <!-- Font Awesome icons CSS-->
+  <link rel="stylesheet" href="/fonts/css webfont/all.min.css">
+ 
+  {{-- owlcarousel --}}
+  <link rel="stylesheet" href="/owl/owl.carousel.min.css">
+  <link rel="stylesheet" href="/owl/owl.theme.default.min.css">
+  <!-- Secciones CSS-->
+  <link rel="stylesheet" href="/css/styles.css">
+  <link rel="stylesheet" href="/css/login.css">
+  <link rel="stylesheet" href="/css/navmenu.css">
+
+  <title>Synergic || Tienda tecno</title>
+</head>
+<body>
+
+      
 
 <div class="page">
     <div class="contenido-login">
@@ -23,9 +48,7 @@
                 <strong>{{ $message }}</strong>
             </span>
             @enderror
-            <div class="invalid-feedback">
-              Por favor, Ingrese el E-Mail.
-            </div>
+         
             
           </div>
 
@@ -41,9 +64,6 @@
                 <strong>{{ $message }}</strong>
             </span>
             @enderror
-            <div class="invalid-feedback">
-              Por favor, ingrese la contraseña.
-            </div>
           </div>
 
           <div class="custom-control custom-checkbox">
@@ -52,8 +72,8 @@
           </div>
 
           <div class="contenidod-login-formulario-btn">
-            <button class="login-formulario-btn" type="submit">
-                {{ __('Iniciar sesion') }}
+            <button class="btn btn-lg btn-primary w-100" type="submit">
+               Iniciar sesion
             </button>
           </div>
 
@@ -65,15 +85,6 @@
             @endif
           </div>
 
-          <a href="#" class="btn-face">
-            <i class="fab fa-facebook"></i>
-            Facebook
-          </a>
-
-          <a href="#" class="btn-google">
-            <img src="../img/icon-google.png" alt="Google">
-            Google
-          </a>
 
           <div class="text-center w-full no-acount">
             <span class="txt1">
@@ -89,4 +100,23 @@
     </div>
   </div>
 
-  @include('layouts.configBot')
+  
+  <script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+
+  {{-- owlcarousel --}}
+  <script src="/owl/owl.carousel.min.js"></script>
+  <!-- sweet alert -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+
+  <!-- bootstrap -->
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+  integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+  crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+  integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+  crossorigin="anonymous"></script>
+</body>
+</html>

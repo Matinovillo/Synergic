@@ -13,7 +13,7 @@ class Categoria extends Model
 
 
     public function producto(){
-        return $this->hasOne('App\Producto','id_categoria');
+        return $this->hasMany('App\Producto','id_categoria');
     }
 
     public function hijas(){
@@ -22,5 +22,11 @@ class Categoria extends Model
 
     public function padre(){
     return $this->belongsTo('App\Categoria', 'id_categoria_padre');
+    }
+
+    public function scopeBuscarSubCategoria($query,$tipo,$buscar){
+        if($tipo && $buscar){
+            return $query->where($tipo,'like',"%$buscar%");
+        }
     }
 }
