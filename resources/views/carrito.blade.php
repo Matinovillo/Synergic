@@ -18,7 +18,7 @@
                 <div class="cart_container">
                     <div class="cart_title">Carrito de Compras</div>
                     @foreach ($cartItems as $item )
-                    
+
                     <div class="cart_items">
                         <ul class="cart_list p-0">
                             <li class="cart_item clearfix">
@@ -66,13 +66,11 @@
                                     </div>
                                 </div>
                             </li>
-                           
+
 
                         </ul>
                     </div>
                     @endforeach
-                    
-                    <!-- ----------------------------------------------------------------------- -->
 
                     <!-- Order Total -->
                     <div class="order_total">
@@ -86,10 +84,8 @@
                         <form action="{{route('cart.clear')}}" method="GET">
                             <button type="submit" class="button cart_button_clear">Vaciar Carrito</button>
                         </form>
-                    <a href="{{ Route('finalizar.compra') }}"><button type="submit" class="button cart_button_checkout">Finalizar compra</button></a> 
-                    {{-- implemendo mercado pago --}}
-                    
-                        
+                    <a href="{{ Route('finalizar.compra') }}"><button type="submit" class="button cart_button_checkout">Finalizar compra</button></a>
+
                     </div>
 
 
