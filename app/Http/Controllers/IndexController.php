@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\User;
 use App\Contact;
 use App\Producto;
 use App\Categoria;
@@ -13,7 +12,18 @@ class IndexController extends Controller
 {
 	public function indexView()
 	{
+		/* $results = DB::table("productos")
+			->join('categorias', 'productos.id_categoria', '=', 'categorias.id')
+			->where("categorias.id_categoria_padre", "=", 2)
+			->pluck('productos.id')
+			->toArray();
+
+		return view('index', [
+			'notebooks' => Producto::whereIn("id", $results)->take(8)->get()
+		]); */
+
 		$category = Categoria::where('nombre', 'Notebook')->first();
+
 		if ($category != null) {
 			$subcategory = $category->hijas;
 			$all = array($category->id);

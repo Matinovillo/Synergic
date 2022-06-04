@@ -55,7 +55,7 @@
                     </div>
                 @endif
                 <table class="table table-light table-hover table-responsive-sm">
-                    <thead class="adm-th bg-dark">
+                    <thead class="bg-dark">
                         <tr>
                             <th scope="col">ID</th>
                             <th scope="col">Codigo</th>

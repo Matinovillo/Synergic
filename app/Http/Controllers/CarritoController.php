@@ -14,7 +14,6 @@ class CarritoController extends Controller
 
 	public function add($product)
 	{
-
 		$product = Producto::find($product);
 		$foto = $product->fotos()->first();
 		$imagen = $foto->nombre;
@@ -59,6 +58,8 @@ class CarritoController extends Controller
 	//mercado pago
 	public function confirm()
 	{
+		abort(404, 'Not Found.');
+
 		\MercadoPago\SDK::setAccessToken(env('MP_TEST_ACCESS_TOKEN'));
 
 		$cart = \Cart::session(auth()->id())->getContent();

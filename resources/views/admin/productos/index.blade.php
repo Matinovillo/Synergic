@@ -43,7 +43,7 @@
         <div class="row">
             <div class="col-xl-12">
                 <table class="table table-light table-hover table-responsive-sm">
-                    <thead class="adm-th bg-dark" id="thead">
+                    <thead class="bg-dark" id="thead">
                         <tr>
                             <th scope="col">ID</th>
                             <th scope="col">Nombre</th>
@@ -62,7 +62,7 @@
                                 <th scope="row">{{ $producto->id }}</th>
                                 <td>{{ substr($producto->nombre, 0, 30) }}...</td>
                                 <td>{{ substr($producto->descripcion, 0, 50) }}...</td>
-                                <td>{{ $producto->precio }}</td>
+                                <td>$ {{ number_format($producto->precio, 2, ",", ".") }}</td>
                                 <td>
                                     @if ($producto->stock == 0)
                                         <b>{{ 'Sin stock' }}</b>
